@@ -1,0 +1,38 @@
+.head {
+    padding: 18px 31px;
+    background-color: #FFFFFF;
+    box-shadow: 2px 8px 15px rgba(85, 85, 85, 0.05);
+}
+.nav-brand {
+    line-height: 44px;
+}
+.search-box {
+    background-color: #FFFFFF;
+    border: 1px solid #848484;
+    box-sizing: border-box;
+    border-radius: 15px;
+    padding: 10px 0px 10px 44px;
+    width: 360px;
+}
+.search-box img {
+    margin-right: 16px;
+}
+input {
+    border: 0px;
+    outline: none;
+    width: 80%
+}
+.lastChild {
+    display: flex;
+    justify-content: space-between;
+    line-height: 44px;
+    padding-right: 49px;
+}
+.name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 44px;
+    text-align: right;
+    letter-spacing: 0.002em;
+    color: #254750;
+}

@@ -10,6 +10,8 @@ import { FrameComponent } from './@theme/components/frame/frame.component';
 import { OtpComponent } from './@auth/components/otp/otp.component';
 import { ForgotPasswordFrameComponent } from './@theme/components/forgot-password-frame/forgot-password-frame.component';
 import { ForgotPasswordComponent } from './@auth/components/forgot-password/forgot-password.component';
+import { ListingComponent } from './@components/listing/listing.component';
+import { HeaderComponent } from './@theme/components/header/header.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +20,9 @@ import { ForgotPasswordComponent } from './@auth/components/forgot-password/forg
     FrameComponent,
     OtpComponent,
     ForgotPasswordFrameComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    ListingComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
