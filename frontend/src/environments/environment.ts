@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url: 'https://dev-app-ip.eastus.cloudapp.azure.com:44312',
+  url_login: 'http://dev-app-ip.eastus.cloudapp.azure.com:44312/login',
+  appUrl: 'http://dev-app-ip.eastus.cloudapp.azure.com:44312'
+
 };
 
 /*

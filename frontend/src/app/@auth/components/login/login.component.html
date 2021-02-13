@@ -1,0 +1,46 @@
+<div class="body">  
+
+<div class="left">
+  <app-frame></app-frame>
+</div>
+  <div class="right">
+    <div class="text">
+      <h5>Welcome Back!</h5>
+      <h6>Log in to continue.</h6>
+    </div>
+    <form class="form" (submit)="handleSubmit()">
+        <div class="form-group" style="margin-bottom: 15px">
+            <label for="email"> Email address</label>
+            <div class="input-box">
+              <input type="email" name="email" [(ngModel)]="user.email" />
+            </div>
+        </div>
+        <div class="form-group " style="margin-bottom: 15px">
+            <label for="password">Password</label>
+            <div class="input-box password">
+              <input type="text" name="password" [(ngModel)]="user.password" />
+                <div (click)="togglePasswordType()" style="cursor: pointer">
+                  <img src="assets/auth/eye.svg" *ngIf="type=='text'" />
+                  <img src="assets/auth/eye.svg" *ngIf="type=='password'"/>
+                </div>
+            </div>
+        </div>
+        <div class="forgot-password">
+            Forgot Password?
+        </div>
+      
+        
+
+        <div>
+          <button type='submit'>Log In</button>
+        </div>
+        <div class="last-text">
+          <p>Don't have an account?</p>
+          <a href="/register">Create Account</a>
+        </div>
+    </form>
+  </div>
+</div>
+
+
+  

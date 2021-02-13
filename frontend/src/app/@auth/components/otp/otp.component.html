@@ -1,0 +1,33 @@
+<div class="body">
+    <div>
+        <div class="envelop">
+            <img src="assets/auth/envelop.svg" />
+        </div>
+        <div class="text1">
+        OTP Authentication
+        </div>
+        <div class="text2">
+            Enter the OTP sent to your mail
+        </div>
+        <div class="text2" style="width: 262px" *ngIf="confirmViaEmail">
+            Confirm the verification information sent to your email to complete your login process.
+        </div>
+        <div class="input text-center">
+            <div class="box ">
+                <input type="number" name="one" [(ngModel)]="input.one" #one autofocus (keyup)="inputFunc($event, 1)">
+            </div>
+            <div class="box">
+                <input type="number" name="two" [(ngModel)]="input.two" #two (keyup)="inputFunc($event, 2)">
+            </div>
+            <div class="box">
+                <input type="number" name="three" [(ngModel)]="input.three" #three (keyup)="inputFunc($event, 3)">
+            </div>
+            <div class="box" style="margin-right: 0px" >
+                <input type="number" name="four" [(ngModel)]="input.four" #four (keyup)="inputFunc($event, 4)">
+            </div>
+        <div>   
+    </div>
+</div>
+
+<div class="text3">Resend OTP?</div>
+<button mat-button>Verify</button>

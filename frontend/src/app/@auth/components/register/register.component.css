@@ -1,0 +1,143 @@
+
+.body {
+    display: flex;
+}
+.text1 {
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 37px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #26474E;
+}
+.text2 {
+    margin: 12px 0px 38px 0px;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #26474E;
+}
+.text3 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.02em;
+    color: #26474E;
+}
+.left {
+    background-color: #F0F4F5;
+    width: 50%;
+}
+.frame {
+    display: flex;
+    justify-content: center;
+}
+.right {
+    padding: 115px 100px 253px 85px;
+    width: 50%
+}
+h5 {
+   font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: -0.02em;
+    color: #254750;
+}
+h6 {
+   font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.02em;
+    color: #000000;
+    margin-top: 12px
+}
+label {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #254750;
+    margin-bottom: 7px;
+}
+.input-box, select, #mobile {
+    border: 1px solid #254750;
+    border-radius: 15px;
+    padding: 9px 12px;
+    
+}
+.form {
+    margin-top: 25px;
+}
+input {
+    width: 96%;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #254750;
+    outline: none;
+    border: 0px;
+}
+.double-input{
+    display: flex;
+}
+.double:first-child{
+    margin-right: 5px;
+}
+.double {
+    width: 50%;
+}
+
+.password {
+    display: flex;
+}
+#password {
+    width: 90%;
+}
+#mobile {
+    width: 85%
+}
+select {
+    width: 15%;
+    padding: 4px 10px;
+    margin-right: 5px;
+}
+button {
+    margin: 15px 0px 12px 0px;
+    background-color: #26474E;
+    color: white;
+    border-radius: 15px;
+    padding: 14px;
+    width: 100%;
+}
+button:hover {
+    background-color: white;
+    color: #26474E;
+}
+.last-text {
+    text-align: center;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    color: #254750;
+    display: flex;
+    justify-content: center;
+}
+.last-text a {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #254750;
+    margin-left: 7px;
+}
+option, select {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #254750;
+}
+option {
+    padding: 19px;
+}
