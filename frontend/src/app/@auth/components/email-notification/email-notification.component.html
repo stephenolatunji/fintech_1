@@ -1,0 +1,54 @@
+<div class="body" *ngIf="!successful">
+    <div class="head">
+
+        <img src="assets/auth/anelloh2.svg" />
+        <div class="text1">
+            Email Verification
+        </div>
+
+    </div>
+
+    <div class="body-text">
+        <div>Hi Tella,</div>
+        <div class="child2">You're almost done!</div>
+        <div>
+            Thank you  for signing up with Anelloh. <br />
+            Please click the button below to <br />verify your account and to confirm we’ve got the right email address.
+        </div>
+    </div>
+
+    <button mat-button>Verify</button>
+
+</div>
+
+
+<div class="body" *ngIf="successful">
+    <div class="head" style="background-color: white">
+
+        <img src="assets/footer/anelloh3.svg" />
+        <div class="success-text">
+            Verification Successful
+        </div>
+
+    </div>
+
+    <div class="body-text2">
+        <div>Welcome to Anelloh, the best foreign exchange platform!</div>
+        
+        <div>
+            Thanks for signing up to Anelloh. We are here to offer you the best solution to your currency exchange with just a SWAP. <br /> <br />
+
+            Anelloh was created with you in mind, to save you time from struggling to get your currency exchange to your prefered currency and we have also designed our platform to give you the best experience when making your transaction.  <br /> <br />
+
+            As a form of appreciation, you’ll get regular updates and special offers to help you fulfill your financial needs.  <br /> <br />
+
+            In case you have any further questions, visit our website or social media page. <br /> <br />
+
+            Once again, welcome our world of currency exchange solution. <br /> <br />
+
+            Cheers to a start of easy and  secured digital solution relationship!!! <br /> <br />
+        </div>
+    </div>
+
+</div>
+<app-footer></app-footer>

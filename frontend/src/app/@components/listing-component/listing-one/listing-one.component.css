@@ -1,0 +1,123 @@
+.parent {
+    background-color: #E5E5EF;
+}
+.body {
+    padding: 30px 30px;
+    display: flex;
+    margin-top: 5px;
+    background-color: #FFFFFF;
+}
+.rect {
+    display: block;
+    width: 80%;
+}
+.rect1 {
+    background: #76CDCD;
+    box-shadow: 2px 8px 15px rgba(78, 147, 147, 0.1);
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    padding: 23px 45px;
+}
+.rect1 .text .one {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #26474E;
+}
+.rect1 .text .two {
+    margin: 10px 0px 16px 0px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #262C31;
+}
+.group {
+    margin-left: 30px;
+    padding: 55px 34px;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(152, 157, 179, 0.3);
+    box-sizing: border-box;
+    box-shadow: 2px 8px 20px rgba(152, 157, 179, 0.15);
+    border-radius: 5px;
+    height: 53vh;
+}
+.rect1 .text button {
+    background: #F27348;
+    border-radius: 15px;
+    padding: 14px 45px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    border: 0px
+}
+.rect2 {
+    margin: 40px 0px;
+    padding-bottom: 26px;
+}
+.rect2 .head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+.rect2 .head div:first-child {
+    font-size: 18px;
+    line-height: 29px;display: flex;
+    align-items: flex-end;
+    color: #26474E;
+    font-weight: bold;
+}
+.rect2 .head div:nth-child(2) a {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+    text-align: right;
+    color: #26474E;
+    font-weight: 600;
+}
+td {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 40px;
+    letter-spacing: 0.002em;
+    color: #254750;
+    min-width: 160px;
+}
+th {
+    padding: 20px 0 14px 25px;
+}
+td {
+    padding-left: 25px;
+}
+tr {
+    border-bottom: 1px solid #E8E8E8;
+}
+.button {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    padding: 11px 30px;
+    background-color: #F27348;
+    border-radius: 15px;
+    border: 0px
+}
+.table {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(152, 157, 179, 0.1);
+    border-radius: 5px;
+}
+.thead{
+    background: #26474E;
+    color: white
+}
+table th:last-child{
+  border-radius:0 10px 10px 0;
+}
+table th:first-child{
+  border-radius:10px 0 0 10px;
+}

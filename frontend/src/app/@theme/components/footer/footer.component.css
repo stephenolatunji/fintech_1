@@ -1,0 +1,48 @@
+.footer {
+    background-color: rgba(118, 205, 205, 0.5);
+    padding: 25px 42px;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    /* or 150% */
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+    letter-spacing: 0.001em;
+    width: 100%;
+    color: #4D4D4D;
+}
+.second {
+    margin: 8px 0px;
+}
+
+.last {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    /* identical to box height, or 150% */
+    margin-top: 10px;
+    text-align: center;
+
+    color: #4D4D4D;
+}
+.first {
+    display: flex; justify-content: center;
+}
+.first a {
+    margin-right: 32px;
+}
+.first a:last-child {
+    margin-right: 0px;
+}
+.third a{
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 18px;
+    /* identical to box height, or 150% */
+
+    text-align: center;
+    text-decoration-line: underline;
+
+    color: #4D4D4D;
+}

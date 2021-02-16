@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {  FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';;
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,11 @@ import { ForgotPasswordFrameComponent } from './@theme/components/forgot-passwor
 import { ForgotPasswordComponent } from './@auth/components/forgot-password/forgot-password.component';
 import { ListingComponent } from './@components/listing/listing.component';
 import { HeaderComponent } from './@theme/components/header/header.component';
+import { ListingOneComponent } from './@components/listing-component/listing-one/listing-one.component';
+import { ListingTwoComponent } from './@components/listing-component/listing-two/listing-two.component';
+import { EmailNotificationComponent } from './@auth/components/email-notification/email-notification.component';
+import { FooterComponent } from './@theme/components/footer/footer.component';
+import { DocUploadComponent } from './@auth/components/doc-upload/doc-upload.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +27,12 @@ import { HeaderComponent } from './@theme/components/header/header.component';
     ForgotPasswordFrameComponent,
     ForgotPasswordComponent,
     ListingComponent,
-    HeaderComponent
+    HeaderComponent,
+    ListingOneComponent,
+    ListingTwoComponent,
+    EmailNotificationComponent,
+    FooterComponent,
+    DocUploadComponent
   ],
   imports: [
     BrowserModule,
