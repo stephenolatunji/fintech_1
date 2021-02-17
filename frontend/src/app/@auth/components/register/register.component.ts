@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ServerService } from './../../../@theme/services/server.service';
 
 @Component({
@@ -9,25 +10,35 @@ import { ServerService } from './../../../@theme/services/server.service';
 export class RegisterComponent implements OnInit {
 
   public user = {
-    firstName: null,
-    lastName: null,
-    userName: null,
-    email: null,
-    password: null,
-    phoneNumber: null,
-    countryCode: null
+    firstName: '',
+    lastName: '',
+    userName: '',
+    email: '',
+    password: '',
+    phoneNumber: '',
+    countryCode: '+234'
   };
-  type: string = 'password';
+  type: string = 'password'; err;
 
-  constructor(private server: ServerService) { }
+  constructor(private server: ServerService, private router: Router) { }
 
   ngOnInit(): void {
+    if (this.server.userDetails !== undefined) {
+      this.user = this.server.userDetails
+    }
   }
 
-  handleSubmit() {
-    this.server.newUser(this.user).subscribe(data => {
-      console.log(data)
-    })
+  handleNext() {
+
+    if (this.user.firstName == '' || this.user.lastName == '' || this.user.userName == '' || this.user.email == '' || this.user.password == '' || this.user.phoneNumber == '') {
+      this.err = 'Please fill all fields'
+    }
+
+    else {
+      this.err = ''
+      this.server.userDetails = this.user;
+      this.router.navigate(['upload']);
+    }
   }
 
   togglePasswordType() {

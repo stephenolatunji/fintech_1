@@ -1,0 +1,30 @@
+.body {
+    padding: 79px 0px 55.69px 101px;
+}
+.text1 {
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 60px;
+    /* identical to box height, or 125% */
+
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.002em;
+    margin-bottom: 41px;
+    color: #254750;
+
+}
+.text2 {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+    display: flex;
+    align-items: center;
+    letter-spacing: -0.02em;
+
+    color: #254750;
+}
+.section-two {
+    display: flex;
+    align-items: center;
+}

@@ -1,4 +1,8 @@
 .head {
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    z-index: 1;
     padding: 18px 31px;
     background-color: #FFFFFF;
     box-shadow: 2px 8px 15px rgba(85, 85, 85, 0.05);

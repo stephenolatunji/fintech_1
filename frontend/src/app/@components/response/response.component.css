@@ -1,0 +1,97 @@
+.body {
+    padding: 19px 48px; background-color: #fff;
+    min-height: 99vh;
+}
+.success {
+    margin-top: 12px 0px 0 0px;
+}
+.text1 {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: #26474E;
+    margin: 25.58px 0px 15px 0px;
+    text-align: center;
+}
+.text2 {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    letter-spacing: 0.002em;
+    margin-bottom: 36px;
+    color: #4D4D4D;
+}   
+.box {
+    background: #FFFFFF;
+    box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+    padding: 37px 34px;
+    margin-bottom: 34px;
+    width: 40%;
+    display: flex; justify-content: space-between;
+}
+.box .d-flex div div:first-child, .box .d-flex div div:last-child, .non-flex div:first-child, .non-flex div:last-child {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+    color: #262C31
+}
+
+.box .d-flex div div:nth-child(2) {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: #F27348;
+    margin: 7px 0px 5px 0px;
+}
+
+.notice {
+    text-align: center;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.002em;
+    color: #4D4D4D;
+}
+
+.btn-section {
+    display: flex;
+    justify-content: center;
+    margin: 40px 0px 86px 0px;
+}
+.btn-section button  {
+    /* width: 40%; */
+    border: 1px solid #F27348;
+    border-radius: 15px;
+    padding: 14px 84px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;width: 50%;
+    text-align: center;
+    background-color: #F27348;
+    color: #fff;
+    outline: none;
+}
+.btn-section button:last-child {
+    margin-left: 16px;
+}
+.btn-section button:hover {
+    opacity: .7;
+}
+.not-btn-section {
+    display: flex;
+   justify-content: center;
+}
+.not-success-btn {
+    padding: 14px 71px   !important;
+    margin-bottom: 108px  !important;
+    background-color: #F27348;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    border-radius: 15px;
+    outline: none;
+}

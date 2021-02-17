@@ -1,0 +1,114 @@
+.parent{
+    background-color: #E5E5EF;
+}
+.body {
+    padding: 40px 30px;
+    display: flex;
+    margin-top: 5%;
+    background-color: #FFFFFF;
+}
+.segment1 {
+    box-shadow: 0px 4px 10px rgba(38, 71, 78, 0.1);
+    border-radius: 5px;
+    padding: 40px 137px;
+    width: 75%;
+}
+.card {
+    padding: 113.06px 124px 239px 124px;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(152, 157, 179, 0.4);
+    border-radius: 15px;
+    
+}
+.text1 {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #F27348;  
+    text-align: center;
+}
+.text2 {
+    margin: 44.83px 0px 34.74px 0px;
+    color: #254750;
+    display: flex; justify-content: center;
+}
+.text3 {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #262C31;
+}
+.text4 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    color: #254750;
+    margin-top: 24.82px
+}
+
+.text-group {
+    margin-bottom: 35.12px;
+    padding-bottom: 39.74px;
+    border-bottom: 1px solid rgba(152, 157, 179, 0.4);
+}
+.btn-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 45.19px;
+}
+.btn-section button:first-child, .btn-section button:last-child {
+    border: 1px solid #F27348;
+    border-radius: 15px;
+    padding: 14px 105px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;width: 50%;
+    text-align: center;
+    color: #F27348;
+    outline: none;
+}
+
+.btn-section button:last-child {
+    background-color: #F27348;
+    color: #fff;
+    margin-left: 15.25px;
+}
+
+.btn-section button:last-child:hover, .btn-section button:first-child:hover {
+    opacity: .7;
+}
+.group2 {
+    padding: 55px 34.9px 63px 34px;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(152, 157, 179, 0.3);
+    box-sizing: border-box;
+    box-shadow: 2px 8px 20px rgba(152, 157, 179, 0.15);
+    border-radius: 5px;
+    height: 53vh;
+}
+.group1 {
+    padding: 40px 30px 56px 30px;
+    background-color: #76CDCD;
+    box-shadow: 2px 8px 15px rgba(78, 147, 147, 0.1);
+    border-radius: 5px;
+    margin-bottom: 16px;
+}
+.group1 .flex {
+    border-bottom: 1px solid rgba(152, 157, 179, 0.4); padding: 21px 0px; display: flex; align-items: center;
+}
+.segment2 { 
+    margin-left: 30px;
+}
+.text1_ {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: #254750;
+}
+.text2_ {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #262C31;
+    width: 40%;
+}

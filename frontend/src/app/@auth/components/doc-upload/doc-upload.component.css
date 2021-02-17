@@ -5,5 +5,102 @@
     line-height: 24px;
 
     color: #26474E;
+}
+.whole {
+    padding: 50px 100px;
+}
+label {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #26474E;
+}
+.input-box {
+    border: 1px solid #254750;
+    border-radius: 15px;
+    padding: 14px 24px;
+    margin: 8px 0px 40px 0px;
+}
 
+.form-group {
+    margin-top: 23px;
+}
+ 
+.edit {
+    display: flex;
+}
+#edit {
+    width: 90%;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #262C31;
+    background-color: #E5E5E5;
+    outline: none;
+    border: 0px;
+}
+.text1 {
+    margin: 36px 0px 20px 0px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 24px;
+    color: #26474E; 
+}
+.text2 {
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #254750;
+}
+mat-radio-group {
+    display: flex;
+    align-items: center;
+}
+.choice-selection span {
+    font-weight: 600;
+    font-size: 16px;
+    /* line-height: 50px; */
+    color: #254750;
+    margin-left: 16px;
+}
+.drag-drop {
+    border: 2px dashed #4D4D4D;
+    padding: 40px 50px; margin: 15px 0px 43px 0px;
+    /* display: flex; */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.files-list {
+    background: transparent;
+    border: 1px solid grey;
+    display: flex;
+    justify-content: center;
+    margin: 10px auto;
+    border-radius: 12px;
+    padding-top: 9px;
+    width: 40%;
+    color: #1c8adb;
+}
+
+button {
+    background-color: #26474E;
+    padding: 14px 94px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    border: 0px;
+}
+.drag-drop span {
+    color: #F27348;
+    cursor: pointer;
+}
+.drag-drop span:hover {
+    text-decoration: underline
+}
+.drag-drop img {
+    margin-bottom: 8px;
 }
