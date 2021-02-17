@@ -37,9 +37,10 @@
     justify-content: center;
 }
 .right {
-    padding: 115px 100px 253px 85px;
+    padding: 66px 100px 253px 85px;
     width: 50%
 }
+
 h5 {
    font-weight: 600;
     font-size: 24px;
@@ -113,8 +114,7 @@ button {
     width: 100%;
 }
 button:hover {
-    background-color: white;
-    color: #26474E;
+    opacity: .5;
 }
 .last-text {
     text-align: center;

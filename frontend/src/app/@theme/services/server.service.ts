@@ -6,6 +6,8 @@ import { environment } from "../../../environments/environment";
 })
 export class ServerService {
 
+  public userDetails;
+
   constructor(private http: HttpClient) { }
 
   newUser(user) {
@@ -15,4 +17,5 @@ export class ServerService {
   logIn(user) {
     return this.http.post<any>(`${environment.url}/api/authentication/login`, user)
   }
+  
 }

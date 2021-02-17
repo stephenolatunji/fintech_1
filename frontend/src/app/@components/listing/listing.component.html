@@ -1,60 +1,187 @@
-<div class="parent">
-    <app-header></app-header>
-    <div class="body">
-        <div class="rect">
 
-            <div class="rect1">
-                <div class="text">
-                    <div class="one">
-                        Publish your orders to get<br /> swapped
+<div class="parent">
+    <app-header ></app-header>
+    <div class="body">
+        <div class="segment1">
+
+            <!-- create order -->
+            <div class="text1">Create order</div>
+            <div class="square-box ">
+                <div class="first-line">
+            
+                    <div class="w-50">
+                        <div class="text2">
+                            I want to swap
+                        </div>
+                        <div class="input-section">
+                            <select>
+                                <option>NGN</option>
+                            </select>
+                            <input type="number" />
+                        </div>
                     </div>
-                    <div class="two">
-                        The best platform to exchange currencies.
+            
+                </div>
+                <!-- Market Rate -->
+                <div class="second-line">
+                    Market Rate
+                    <!-- condition toggler -->
+                    <div class="card-list">
+                        <div class="cards">
+                        <div style="position: relative">
+                            <img src="assets/listing/usd.svg" />
+                            <span class="country">GBP</span>
+                        </div>
+                            <div class="d-flex" style="margin-top: 20px;">
+                                <div class="amount">
+                                    $0.00
+                                </div>
+                                <div class="chart">
+                                    <div>
+                                        <img src="assets/listing/down-trend.svg"  />
+                                    </div>
+                                    <div>
+                                        <img src="assets/listing/arrow-down.svg"  />
+                                        <span class="small-amount">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="cards">
+                            <img src="assets/listing/cad.svg" />
+                            <span class="country">CAD</span>
+                            <div class="d-flex" style="margin-top: 20px;">
+                                <div class="amount">
+                                    $0.00
+                                </div>
+                                <div class="chart">
+                                    <div>
+                                        <img src="assets/listing/up-trend.svg"  />
+                                    </div>
+                                    <div>
+                                        <img src="assets/listing/arrow-up.svg"  />
+                                        <span class="small-amount">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="cards">
+                            <img src="assets/listing/gbp.svg" />
+                            <span class="country">GBP</span>
+                            <div class="d-flex" style="margin-top: 20px;">
+                                <div class="amount">
+                                    $0.00
+                                </div>
+                                <div class="chart">
+                                    <div>
+                                        <img src="assets/listing/down-trend.svg"  />
+                                    </div>
+                                    <div>
+                                        <img src="assets/listing/arrow-down.svg"  />
+                                        <span class="small-amount">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <div class="cards">
+                            <img src="assets/listing/jpy.svg" />
+                            <span class="country">JPY</span>
+                            <div class="d-flex" style="margin-top: 20px;">
+                                <div class="amount">
+                                    $0.00
+                                </div>
+                                <div class="chart">
+                                    <div>
+                                        <img src="assets/listing/up-trend.svg"  />
+                                    </div>
+                                    <div>
+                                        <img src="assets/listing/arrow-up.svg"  />
+                                        <span class="small-amount">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <button mat-button>
-                        Create a new order
-                        </button>
+
+                    <!-- condition toggler -->
+                    <!-- <div class="single-card-list d-flex">
+                        <img src="assets/listing/ngn.svg" alt="">
+                        <div class="flex2">
+                            <div>NGN</div>
+                            <div>₦ 0.00/$ 0.00</div>
+                        </div>
+                        <div class="flex3 ml-auto">
+                            <img src="assets/listing/chart.svg" alt=""> <br />
+                            <img src="assets/listing/arrow-down.svg" alt=""> $0.00
+                        </div>
+                    </div> -->
+
                 </div>
-                <div class="">
-                    <img src="assets/listing/publish-listing.svg" />
+                
+                <!-- Prefered Rate -->
+                <div class="third-line" style="margin-top: 35px">
+                    My preferred rate
+                    <div class="d-flex">
+            
+                        <div class="w-50 input-section" style="margin-right: 21px">
+                            <select>
+                                <option>NGN</option>
+                            </select>
+                            <img src="assets/listing/swap.svg"  style="margin-right: 11px"/>
+                            <input type="number" />
+                        </div>
+                        <div class="w-50 input-section">
+                            <select>
+                                <option>NGN</option>
+                            </select>
+                            <input type="number" />
+                        </div>
+            
+                    </div>
+                
                 </div>
+            
             </div>
 
-            <div class="rect2">
-                <div class="head">
-                    <div>Top listings</div>
-                    <div><a href="" >View more</a></div>
+            <!-- destination account details -->
+            <div class="last-box row">
+                <div class="col-6" >
+                    <label for="bank">Bank</label><br />
+                    <select id="bank" class="col-12">
+                        <option>Access Bank</option>
+                        <option>Access Bank</option>
+                        <option>Access Bank</option>
+                    </select>
                 </div>
-                <table class="table table-hover" >
-                    <thead class="thead" >
-                        <tr>
-                            <th>To Swap</th>
-                            <th>For</th>
-                            <th>Prefered Date</th>
-                            <th>By</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody >
-                        <tr *ngFor="let item of items">
-                            <td>N200,000</td>
-                            <td>USD($)</td>
-                            <td>N 400/$1</td>
-                            <td>@Oluchi</td>
-                            <td>Published</td>
-                            <td>
-                                <button class="button" style="margin-right: 10px">View </button>
-                                <button class="button">Swap</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <div class="col-6" >
+                    <label for="bank" id="account_no">Account Number</label><br />
+                    <input type="number" id="account_no" class="col-12" />
+                </div>
+                
+                <div class="col-6" style="margin-top: 19.69px">
+                    <label for="routing_no">Routing Number</label><br />
+                    <input type="number" id="routing_no" class="col-12" />
+                </div>
+
+            </div>
+
+            <div class="btn-section d-flex">
+                <button mat-button  class="ml-auto">Publish</button>
+                <button mat-button>Find A Match</button>
             </div>
         </div>
 
-        <div class="group">
-            <img src="assets/listing/group.svg" />
+        <div class="segment2">
+            <div class="group1">
+                <img src="assets/listing/smallcard.svg" />
+            </div>
+            <div class="group2">
+                <img src="assets/listing/group.svg" />
+            </div>
         </div>
     </div>
 </div>

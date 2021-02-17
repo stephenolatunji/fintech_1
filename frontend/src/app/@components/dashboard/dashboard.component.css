@@ -4,7 +4,7 @@
 .body {
     padding: 30px 30px;
     display: flex;
-    margin-top: 5px;
+    margin-top: 5%;
     background-color: #FFFFFF;
 }
 .rect {
@@ -32,8 +32,8 @@
     line-height: 17px;
     color: #262C31;
 }
-.group {
-    margin-left: 30px;
+.group2, .group1 {
+    margin: 15px 0px 15px 30px;
     padding: 55px 34px;
     background-color: #FFFFFF;
     border: 1px solid rgba(152, 157, 179, 0.3);
@@ -120,4 +120,56 @@ table th:last-child{
 }
 table th:first-child{
   border-radius:10px 0 0 10px;
+}
+
+.group1 {
+    margin-top: 0px;
+    height: auto;
+    padding: 25px;
+    background-color: #FFFFFF;
+    box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+}
+.group1 .text1 {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: #254750;
+    margin-bottom: 23px;
+}
+.line {
+    display: flex;
+    padding: 25px 0px;
+    align-items: center;
+    border-bottom: 1px solid rgba(152, 157, 179, 0.4);
+}
+.text2 {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #262C31;  
+    width: 40%;  
+}
+.text3{
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: #254750;
+}
+.notice {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #4D4D4D;
+}
+.pay-now {
+    background-color: #F27348;
+    border-radius: 15px;
+    outline: none;
+    padding: 14px 88px;
+    font-weight: bold;
+    border: 0px;
+    margin-top: 19px;
+    font-size: 18px;
+    line-height: 22px;
 }
