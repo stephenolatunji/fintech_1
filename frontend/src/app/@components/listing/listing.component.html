@@ -14,10 +14,14 @@
                             I want to swap
                         </div>
                         <div class="input-section">
-                            <select>
-                                <option>NGN</option>
+                            <select name="fromCurrency" [(ngModel)]="order.fromCurrency" (change)="doCalculation()">
+                                <option value="NGN">NGN</option>
+                                <option value="USD">USD</option>
+                                <option value="EUR">EUR</option>
+                                <option value="GBP">GBP</option>
+                                <option value="CAD">CAD</option>
                             </select>
-                            <input type="number" />
+                            <input type="number" name="amount" [(ngModel)]="order.amount"  (keyup)="doCalculation()"/>
                         </div>
                     </div>
             
@@ -26,7 +30,7 @@
                 <div class="second-line">
                     Market Rate
                     <!-- condition toggler -->
-                    <div class="card-list">
+                    <div class="card-list" *ngIf="order.fromCurrency=='NGN'">
                         <div class="cards">
                         <div style="position: relative">
                             <img src="assets/listing/usd.svg" />
@@ -88,7 +92,7 @@
             
                         <div class="cards">
                             <img src="assets/listing/jpy.svg" />
-                            <span class="country">JPY</span>
+                            <span class="country">EUR</span>
                             <div class="d-flex" style="margin-top: 20px;">
                                 <div class="amount">
                                     $0.00
@@ -107,7 +111,7 @@
                     </div>
 
                     <!-- condition toggler -->
-                    <!-- <div class="single-card-list d-flex">
+                    <div class="single-card-list d-flex" *ngIf="order.fromCurrency!='NGN'">
                         <img src="assets/listing/ngn.svg" alt="">
                         <div class="flex2">
                             <div>NGN</div>
@@ -117,7 +121,7 @@
                             <img src="assets/listing/chart.svg" alt=""> <br />
                             <img src="assets/listing/arrow-down.svg" alt=""> $0.00
                         </div>
-                    </div> -->
+                    </div>
 
                 </div>
                 
@@ -127,17 +131,21 @@
                     <div class="d-flex">
             
                         <div class="w-50 input-section" style="margin-right: 21px">
-                            <select>
-                                <option>NGN</option>
-                            </select>
-                            <img src="assets/listing/swap.svg"  style="margin-right: 11px"/>
-                            <input type="number" />
+                          
+                            <!-- <div class="box">{{order.fromCurrency}}</div> -->
+                            <div class="box">Rate</div>
+                            <!-- <img src="assets/listing/swap.svg"  style="margin-right: 11px"/> -->
+                            <input type="number" [(ngModel)]="order.preferedRate" name="preferedRate"  (keyup)="doCalculation()"/>
                         </div>
                         <div class="w-50 input-section">
-                            <select>
-                                <option>NGN</option>
+                            <select [(ngModel)]="order.totalAmountCurrency" name="totalAmountCurrency" (change)="doCalculation()">
+                                <option value="USD">USD</option>
+                                <option value="NGN">NGN</option>
+                                <option value="EUR">EUR</option>
+                                <option value="GBP">GBP</option>
+                                <option value="CAD">CAD</option>
                             </select>
-                            <input type="number" />
+                            <input type="number" readonly [(ngModel)]="order.totalAmount" name="totalAmount"/>
                         </div>
             
                     </div>
@@ -150,28 +158,28 @@
             <div class="last-box row">
                 <div class="col-6" >
                     <label for="bank">Bank</label><br />
-                    <select id="bank" class="col-12">
-                        <option>Access Bank</option>
+                    <select id="bank" [(ngModel)]="order.bank" name="bank" class="col-12">
+                        <option value="access_bank">Access Bank</option>
                         <option>Access Bank</option>
                         <option>Access Bank</option>
                     </select>
                 </div>
 
                 <div class="col-6" >
-                    <label for="bank" id="account_no">Account Number</label><br />
-                    <input type="number" id="account_no" class="col-12" />
+                    <label for="bank" id="account_no" >Account Number</label><br />
+                    <input type="number" id="account_no"  [(ngModel)]="order.accountNumber" name="accountNumber" class="col-12" />
                 </div>
                 
                 <div class="col-6" style="margin-top: 19.69px">
                     <label for="routing_no">Routing Number</label><br />
-                    <input type="number" id="routing_no" class="col-12" />
+                    <input type="number" id="routing_no" name="routingNumber" [(ngModel)]="order.routingNumber" class="col-12" />
                 </div>
 
             </div>
 
             <div class="btn-section d-flex">
                 <button mat-button  class="ml-auto">Publish</button>
-                <button mat-button>Find A Match</button>
+                <button mat-button (click)="findMatch()">Find A Match</button>
             </div>
         </div>
 

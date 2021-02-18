@@ -13,16 +13,16 @@
             Confirm the verification information sent to your email to complete your login process.
         </div>
         <div class="input text-center">
-            <div class="box ">
+            <div class="box " id="box1">
                 <input type="number" name="one" [(ngModel)]="input.one" #one autofocus (keyup)="inputFunc($event, 1)">
             </div>
-            <div class="box">
+            <div class="box" id="box2">
                 <input type="number" name="two" [(ngModel)]="input.two" #two (keyup)="inputFunc($event, 2)">
             </div>
-            <div class="box">
-                <input type="number" name="three" [(ngModel)]="input.three" #three (keyup)="inputFunc($event, 3)">
+            <div class="box" id="box3">
+                <input type="number" name="three" [(ngModel)]="input.three"  #three (keyup)="inputFunc($event, 3)">
             </div>
-            <div class="box" style="margin-right: 0px" >
+            <div class="box" style="margin-right: 0px" id="box4" >
                 <input type="number" name="four" [(ngModel)]="input.four" #four (keyup)="inputFunc($event, 4)">
             </div>
         <div>   

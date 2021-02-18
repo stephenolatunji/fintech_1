@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
-
+import { MatExpansionModule } from "@angular/material/expansion";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RegisterComponent } from './@auth/components/register/register.component';
 import { LoginComponent } from './@auth/components/login/login.component';
 import { FrameComponent } from './@theme/components/frame/frame.component';
@@ -27,6 +28,7 @@ import { DashboardComponent } from './@components/dashboard/dashboard.component'
 import { PaymentSummaryComponent } from './@components/payment-summary/payment-summary.component';
 import { ActivityComponent } from './@components/activity/activity.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { ActivityTwoComponent } from './@components/activity-two/activity-two.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,14 +49,17 @@ import { NgxImageCompressService } from 'ngx-image-compress';
     ResponseComponent,
     DashboardComponent,
     PaymentSummaryComponent,
-    ActivityComponent
+    ActivityComponent,
+    ActivityTwoComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    BrowserAnimationsModule, 
     AppRoutingModule,
     HttpClientModule,
     MatCheckboxModule,
+    MatExpansionModule,
     MatButtonModule,MatRadioModule
   ],
   providers: [NgxImageCompressService],
