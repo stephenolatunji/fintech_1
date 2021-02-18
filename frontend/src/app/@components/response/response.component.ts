@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./response.component.css']
 })
 export class ResponseComponent implements OnInit {
-
+  success: Boolean = true;
   constructor() { }
 
   ngOnInit(): void {

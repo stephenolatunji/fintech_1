@@ -11,6 +11,8 @@ import { ListingComponent } from './@components/listing/listing.component';
 import { ResponseComponent } from './@components/response/response.component';
 import { DashboardComponent } from './@components/dashboard/dashboard.component';
 import { PaymentSummaryComponent } from './@components/payment-summary/payment-summary.component';
+import { ActivityComponent } from './@components/activity/activity.component';
+import { ActivityTwoComponent } from './@components/activity-two/activity-two.component';
 
 const routes: Routes = [
   { path: "", component: ComingSoonComponent },
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: 'notify', component: EmailNotificationComponent },
   { path: 'upload', component: DocUploadComponent },
+  { path: 'activity', component: ActivityComponent },
+  { path: 'transaction-summary', component: ActivityTwoComponent }
 ];
 
 @NgModule({

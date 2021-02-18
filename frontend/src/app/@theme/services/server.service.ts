@@ -18,4 +18,7 @@ export class ServerService {
     return this.http.post<any>(`${environment.url}/api/authentication/login`, user)
   }
 
+  createOrder(order) {
+    return this.http.post<any>(`${environment.url}/api/order/create`, order)
+  }
 }

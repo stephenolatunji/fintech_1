@@ -58,6 +58,9 @@
     width: 80%;
     outline: none
 }
+input {
+    padding: 0px 15px;
+}
 .card-list {
     display: flex;
 }
@@ -120,10 +123,16 @@
     border-radius: 15px;
     padding: 30px 36px;
 }
-.last-box select, .last-box input {
+.last-box select, .last-box input, .box {
     border: 1px solid #26474E;
     border-radius: 15px;
     padding: 12px 5px;
+}
+.box {
+    width: 80px;
+    margin-right: 9px;
+    text-align: center;
+    font-weight: bold;
 }
 label {
     font-weight: 600;

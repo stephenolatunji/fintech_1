@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { ServerService } from 'src/app/@theme/services/server.service';
 import { HelperService } from 'src/app/@theme/services/helper.service';
 import { NgxImageCompressService } from 'ngx-image-compress';
@@ -11,19 +11,16 @@ import { Router } from '@angular/router';
 })
 export class DocUploadComponent implements OnInit {
   @ViewChild("fileDropRef", { static: false }) fileDropEl: ElementRef;
-  files: any[] = [];
+  files: any[] = []; err;
 
-  public user_ = { document: '', docType: 'intPaassport', bvn: null }; user;
+  @Input() user;
+
+  public user_ = { documentImage: '', documentType: "1", bvn: '', documentNumber: '', documentExpiryDate: '' };
 
   constructor(private server: ServerService, private rout: Router, private helper: HelperService, private imageCompress: NgxImageCompressService) { }
 
   ngOnInit(): void {
-    if (this.server.userDetails == undefined) {
-      this.goBack();
-    }
-    else {
-      this.user = this.server.userDetails;
-    }
+
   }
 
   uploadFile(event) {
@@ -35,17 +32,28 @@ export class DocUploadComponent implements OnInit {
   }
 
   handleSubmit() {
-    if (this.user_.document !== '') {
-      this.user.docType = this.user_.docType;
-      this.user.bvn = this.user_.bvn;
-      this.user.document = this.user_.document;
-      // user
-      this.rout.navigate(['login']);
-    }
-  }
+    if (this.user_.documentImage !== '' && this.user_.documentNumber) {
 
-  goBack() {
-    window.history.back();
+
+      this.user.documentType = parseInt(this.user_.documentType);
+      this.user.bvn = this.user_.bvn;
+      this.user.documentImage = this.user_.documentImage;
+      this.user.documentNumber = this.user_.documentNumber;
+      this.user.documentExpiryDate = this.user_.documentExpiryDate;
+      this.user.gender = 1
+      // user
+
+      this.server.newUser(this.user).subscribe(dat => {
+        console.log(dat)
+      })
+      // this.rout.navigate(['login']);
+
+
+
+    }
+    else {
+      this.err = 'Please fill all fields'
+    }
   }
 
   prepareImage(image) {
@@ -60,7 +68,7 @@ export class DocUploadComponent implements OnInit {
 
   compressFile(image) {
     this.imageCompress.compressFile(image, -1, 50, 50).then(result => {
-      this.user_.document = result;
+      this.user_.documentImage = result;
     })
   }
 }

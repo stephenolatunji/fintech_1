@@ -7,7 +7,7 @@
     color: #26474E;
 }
 .whole {
-    padding: 50px 100px;
+    padding: 20px 100px;
 }
 label {
     font-weight: 500;
@@ -57,6 +57,9 @@ mat-radio-group {
     display: flex;
     align-items: center;
 }
+.choice-selection {
+    margin-bottom: 20px;
+}
 .choice-selection span {
     font-weight: 600;
     font-size: 16px;
@@ -65,8 +68,8 @@ mat-radio-group {
     margin-left: 16px;
 }
 .drag-drop {
-    border: 2px dashed #4D4D4D;
-    padding: 40px 50px; margin: 15px 0px 43px 0px;
+    border: 1.5px dashed #4D4D4D;
+    padding: 25px 50px; margin: 0px 0px 25px 0px;
     /* display: flex; */
     text-align: center;
     align-items: center;
@@ -74,13 +77,9 @@ mat-radio-group {
 }
 .files-list {
     background: transparent;
-    border: 1px solid grey;
     display: flex;
     justify-content: center;
-    margin: 10px auto;
-    border-radius: 12px;
-    padding-top: 9px;
-    width: 40%;
+    margin: 5px auto 0px auto;
     color: #1c8adb;
 }
 
@@ -93,6 +92,7 @@ button {
     line-height: 22px;
     color: #FFFFFF;
     border: 0px;
+    width: 100%;
 }
 .drag-drop span {
     color: #F27348;

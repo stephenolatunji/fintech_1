@@ -1,5 +1,3 @@
-
-
 .body {
     display: flex;
 }
@@ -31,7 +29,7 @@
 }
 .left {
     background-color: #F0F4F5;
-    width: 50%;
+    width: 50%; min-height: 99vh;
 }
 .frame {
     display: flex;

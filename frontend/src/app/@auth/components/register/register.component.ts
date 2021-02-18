@@ -18,7 +18,7 @@ export class RegisterComponent implements OnInit {
     phoneNumber: '',
     countryCode: '+234'
   };
-  type: string = 'password'; err;
+  type: string = 'password'; err; docUpload: boolean = false;
 
   constructor(private server: ServerService, private router: Router) { }
 
@@ -36,8 +36,7 @@ export class RegisterComponent implements OnInit {
 
     else {
       this.err = ''
-      this.server.userDetails = this.user;
-      this.router.navigate(['upload']);
+      this.docUpload = true
     }
   }
 

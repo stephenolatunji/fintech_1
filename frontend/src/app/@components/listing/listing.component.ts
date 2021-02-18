@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServerService } from 'src/app/@theme/services/server.service';
 
 @Component({
   selector: 'app-listing',
@@ -6,9 +7,32 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listing.component.css']
 })
 export class ListingComponent implements OnInit {
-  constructor() { }
+  public order = {
+    amount: null,
+    fromCurrency: 'NGN',
+    preferedRateCurrency: 'NGN',
+    preferedRate: null,
+    totalAmount: null,
+    totalAmountCurrency: 'USD',
+    bank: 'access_bank',
+    accountNumber: null,
+    routingNumber: null
+  }
+  constructor(private server: ServerService) { }
 
   ngOnInit(): void {
+  }
+
+  doCalculation() {
+    (this.order.fromCurrency == 'NGN') ?
+      this.order.totalAmount = this.order.amount / this.order.preferedRate :
+      this.order.totalAmount = this.order.amount * this.order.preferedRate
+  }
+
+  findMatch() {
+    this.server.createOrder(this.order).subscribe(data => {
+      console.log(data)
+    })
   }
 
 }

@@ -4,7 +4,7 @@
     /* padding: 183px 0px 296px 0px; */
 }
 .envelop {
-    margin: 183px 0px 55.7px 0px;
+    margin: 103px 0px 20.7px 0px;
 }
 .text1 {
     font-weight: bold;
@@ -44,6 +44,7 @@ input {
     outline: none;
     width: 90%;
     font-size: 20px;
+    caret-color: transparent;
     /* margin-top: 10px; */
     text-align: center;
 }
