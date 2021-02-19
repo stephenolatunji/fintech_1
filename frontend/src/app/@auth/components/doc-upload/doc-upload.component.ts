@@ -37,12 +37,14 @@ export class DocUploadComponent implements OnInit {
 
         this.user.documentType = parseInt(this.user_.documentType);
         this.user.bvn = this.user_.bvn;
-        this.user.documentImage = this.user_.documentImage;
+        this.user.documentImage = this.user_.documentImage.split(",")[1];
         this.user.documentNumber =  this.user_.documentNumber;
         this.user.documentExpiryDate = this.user_.documentExpiryDate;
-        this.user.gender = 1
+        this.user.gender = 1;
+        
         // user
-        console.log(this.user.documentImage)
+        console.log(this.user);
+        
         this.server.newUser(this.user).subscribe(dat=>{
           console.log(dat)
         })

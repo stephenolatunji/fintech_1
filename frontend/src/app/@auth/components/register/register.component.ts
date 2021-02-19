@@ -16,7 +16,11 @@ export class RegisterComponent implements OnInit {
     email: '',
     password: '',
     phoneNumber: '',
-    countryCode: '+234'
+    countryCode: '+234',
+
+    address: "string",
+    middleName: "string",
+    dateOfBirth: "2021-06-23"
   };
   type: string = 'password'; err; docUpload: boolean = false;
 
