@@ -35,8 +35,8 @@ export class RegisterComponent implements OnInit {
     }
 
     else {
-      this.err = ''
       this.docUpload = true
+      this.err = ''
     }
   }
 

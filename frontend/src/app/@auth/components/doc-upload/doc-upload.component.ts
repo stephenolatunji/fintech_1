@@ -42,7 +42,7 @@ export class DocUploadComponent implements OnInit {
         this.user.documentExpiryDate = this.user_.documentExpiryDate;
         this.user.gender = 1
         // user
-        
+        console.log(this.user.documentImage)
         this.server.newUser(this.user).subscribe(dat=>{
           console.log(dat)
         })
