@@ -70,8 +70,7 @@ button {
     width: 100%;
 }
 button:hover {
-    background-color: white;
-    color: #26474E;
+    opacity: .6;
 }
 .last-text {
     text-align: center;

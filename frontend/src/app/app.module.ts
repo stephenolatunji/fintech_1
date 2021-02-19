@@ -9,6 +9,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
 import { MatExpansionModule } from "@angular/material/expansion";
+import { MatSnackBar, MatSnackBarModule } from "@angular/material/snack-bar";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RegisterComponent } from './@auth/components/register/register.component';
 import { LoginComponent } from './@auth/components/login/login.component';
@@ -60,7 +61,7 @@ import { ActivityTwoComponent } from './@components/activity-two/activity-two.co
     HttpClientModule,
     MatCheckboxModule,
     MatExpansionModule,
-    MatButtonModule,MatRadioModule
+    MatButtonModule,MatRadioModule, MatSnackBarModule
   ],
   providers: [NgxImageCompressService],
   bootstrap: [AppComponent]

@@ -21,7 +21,7 @@
                                 <option value="GBP">GBP</option>
                                 <option value="CAD">CAD</option>
                             </select>
-                            <input autocomplete="off" type="number" name="amount" [(ngModel)]="order.amount"  (keyup)="doCalculation()"/>
+                            <input type="number" name="amount" [(ngModel)]="order.amount"  (keyup)="doCalculation()"/>
                         </div>
                     </div>
             
@@ -135,7 +135,7 @@
                             <!-- <div class="box">{{order.fromCurrency}}</div> -->
                             <div class="box">Rate</div>
                             <!-- <img src="assets/listing/swap.svg"  style="margin-right: 11px"/> -->
-                            <input autocomplete="off" type="number" [(ngModel)]="order.preferedRate" name="preferedRate"  (keyup)="doCalculation()"/>
+                            <input type="number" [(ngModel)]="order.preferedRate" name="preferedRate"  (keyup)="doCalculation()"/>
                         </div>
                         <div class="w-50 input-section">
                             <select [(ngModel)]="order.totalAmountCurrency" name="totalAmountCurrency" (change)="doCalculation()">
@@ -145,7 +145,7 @@
                                 <option value="GBP">GBP</option>
                                 <option value="CAD">CAD</option>
                             </select>
-                            <input autocomplete="off" type="number" readonly [(ngModel)]="order.totalAmount" name="totalAmount"/>
+                            <input type="number" readonly [(ngModel)]="order.totalAmount" name="totalAmount"/>
                         </div>
             
                     </div>
@@ -167,12 +167,12 @@
 
                 <div class="col-6" >
                     <label for="bank" id="account_no" >Account Number</label><br />
-                    <input autocomplete="off" type="number" id="account_no"  [(ngModel)]="order.accountNumber" name="accountNumber" class="col-12" />
+                    <input type="number" id="account_no"  [(ngModel)]="order.accountNumber" name="accountNumber" class="col-12" />
                 </div>
                 
                 <div class="col-6" style="margin-top: 19.69px">
                     <label for="routing_no">Routing Number</label><br />
-                    <input autocomplete="off" type="number" id="routing_no" name="routingNumber" [(ngModel)]="order.routingNumber" class="col-12" />
+                    <input type="number" id="routing_no" name="routingNumber" [(ngModel)]="order.routingNumber" class="col-12" />
                 </div>
 
             </div>

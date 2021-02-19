@@ -141,3 +141,7 @@ option, select {
 option {
     padding: 19px;
 }
+.pwdErr {
+    color: rgb(218, 63, 63);
+    font-size: 12px;
+}
