@@ -12,13 +12,13 @@
         <div class="form-group" style="margin-bottom: 15px">
             <label for="email"> Email address</label>
             <div class="input-box">
-              <input type="email" name="email" [(ngModel)]="user.email" />
+              <input autocomplete="off" type="email" name="email" [(ngModel)]="user.email" />
             </div>
         </div>
         <div class="form-group " style="margin-bottom: 15px">
             <label for="password">Password</label>
             <div class="input-box password">
-              <input type="text" name="password" id="password" [(ngModel)]="user.password" />
+              <input autocomplete="off" type="text" name="password" id="password" [(ngModel)]="user.password" />
                 <div (click)="togglePasswordType()" style="cursor: pointer">
                   <img src="assets/auth/eye.svg" *ngIf="type=='text'" />
                   <img src="assets/auth/eye2.svg" *ngIf="type=='password'"/>
@@ -41,5 +41,3 @@
     </form>
   </div>
 </div>
-
-  

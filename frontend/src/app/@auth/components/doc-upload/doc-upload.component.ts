@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class DocUploadComponent implements OnInit {
   @ViewChild("fileDropRef", { static: false }) fileDropEl: ElementRef;
-  files: any[] = []; err;
+  files: any[] = []; err; loading: boolean = false;
 
   @Input() user;
 
@@ -33,20 +33,21 @@ export class DocUploadComponent implements OnInit {
 
   handleSubmit() {
     if (this.user_.documentImage !== '' && this.user_.documentNumber) {
-
-
       this.user.documentType = parseInt(this.user_.documentType);
       this.user.bvn = this.user_.bvn;
-      this.user.documentImage = this.user_.documentImage;
+      this.user.documentImage = this.user_.documentImage.split(",")[1];
       this.user.documentNumber = this.user_.documentNumber;
-      this.user.documentExpiryDate = this.user_.documentExpiryDate;
-      this.user.gender = 1
-      // user
+      this.user.documentExpiryDate = this.user_.documentExpiryDate.toString();
+      this.user.gender = 1;
 
+      // user
+      console.log(this.user);
+      this.loading = true;
       this.server.newUser(this.user).subscribe(dat => {
-        console.log(dat)
+        this.loading = false;
+        //console.log(dat)
+        this.rout.navigate(['login']);
       })
-      // this.rout.navigate(['login']);
 
 
 

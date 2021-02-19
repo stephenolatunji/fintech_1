@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from '@angular/common/http';;
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -28,7 +28,7 @@ import { DashboardComponent } from './@components/dashboard/dashboard.component'
 import { PaymentSummaryComponent } from './@components/payment-summary/payment-summary.component';
 import { ActivityComponent } from './@components/activity/activity.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
-import { ActivityTwoComponent } from './@components/activity-two/activity-two.component';
+import { ActivityTwoComponent } from './@components/activity-two/activity-two.component';;
 @NgModule({
   declarations: [
     AppComponent,

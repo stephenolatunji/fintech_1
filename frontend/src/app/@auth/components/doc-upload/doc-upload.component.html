@@ -1,4 +1,4 @@
-  <div class="whole animate__animated animate__slideInLeft">
+  <div class="whole animate__animated animate__slideInRight">
     <!-- <div class="top">
         <img src="assets/auth/back.svg" alt="" (click)="goBack()" class="pointer">
     </div> -->
@@ -13,7 +13,7 @@
         <div class="form-group">
             <label for="password">Bank Verification Number</label>
             <div class="input-box edit">
-              <input type="number" id="edit" [(ngModel)]="user_.bvn" name="bvn"/>
+              <input autocomplete="off" type="number" id="edit" [(ngModel)]="user_.bvn" name="bvn"/>
             <div style="cursor: pointer" class="ml-auto">
                 <img src="assets/auth/edit.svg" />
             </div>
@@ -37,7 +37,7 @@
             <div class=""  *ngIf="user_.documentType=='2'">
                 <label for="edit">Serial Number</label>
                 <div class="input-box edit" style="margin-bottom: 0px;">
-                    <input type="number" name="documentNumber" [(ngModel)]="user_.documentNumber" />
+                    <input autocomplete="off" type="text" name="documentNumber" [(ngModel)]="user_.documentNumber" />
                 </div>
             </div>
 
@@ -46,13 +46,13 @@
                 <div style="width: 65%; margin-right: 10px;" >
                     <label for="edit">Passport Number</label>
                     <div class="input-box edit" style="margin-bottom: 0px;">
-                        <input type="number" name="documentNumber" [(ngModel)]="user_.documentNumber" />
+                        <input autocomplete="off" type="text" name="documentNumber" [(ngModel)]="user_.documentNumber" />
                     </div>
                 </div>
                 <div style="width: 35%;">
                     <label for="edit">Expiry Date</label>
                     <div class="input-box" style="margin-bottom: 0px;">
-                        <input type="date" name="documentExpiryDate" [(ngModel)]="user_.documentExpiryDate" />
+                        <input autocomplete="off" type="date" name="documentExpiryDate" [(ngModel)]="user_.documentExpiryDate" />
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                     <img src="assets/auth/share.svg" alt="">
                 </div>
                 <div>
-                    <input type="file" #fileInput id="fileInput" hidden (change)="uploadFile($event.target.files)" >
+                    <input autocomplete="off" type="file" #fileInput id="fileInput" hidden (change)="uploadFile($event.target.files)" >
                     Drag and drop your file here <br />
                     or <br /><span (click)="fileInput.click()"> browse</span>
                 </div>
@@ -74,8 +74,11 @@
             </div>
 
 
-            <button mat-button type="submit" (click)="handleSubmit()">
+            <button mat-button type="submit" (click)="handleSubmit()" *ngIf="!loading">
                 Create Account
+            </button>
+                <button mat-button *ngIf="loading">
+                Please wait...
             </button>
         </div>
     </form>

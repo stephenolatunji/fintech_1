@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from './../../../@theme/services/server.service';
 
@@ -9,14 +10,15 @@ import { ServerService } from './../../../@theme/services/server.service';
 export class LoginComponent implements OnInit {
 
   public user = { email: null, password: null }; loading: boolean = false; type: string = 'password';
-  constructor(private server: ServerService) { }
+  constructor(private server: ServerService, private rout: Router) { }
 
   ngOnInit(): void {
   }
 
   handleSubmit() {
+    console.log(this.user)
     this.server.logIn(this.user).subscribe(data => {
-      console.log(data)
+      this.rout.navigate(['dashboard'])
     })
   };
 

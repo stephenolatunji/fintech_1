@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   url: 'https://dev-app-ip.eastus.cloudapp.azure.com:44312',
-  url_login: 'http://dev-app-ip.eastus.cloudapp.azure.com:44312/login',
+  url_login: 'http://dev-app-ip.eastus.cloudapp.azure.com:44312',
   appUrl: 'http://dev-app-ip.eastus.cloudapp.azure.com:44312'
 
 };
