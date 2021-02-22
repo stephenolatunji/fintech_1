@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from './../../../@theme/services/server.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { AuthService } from '../../guard/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +12,12 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class LoginComponent implements OnInit {
 
   public user = { email: null, password: null }; loading: boolean = false; type: string = 'password'; err;
-  constructor(private server: ServerService, private _snackBar: MatSnackBar) { }
+  constructor(private server: ServerService, private _snackBar: MatSnackBar, private auth: AuthService, private rout: Router) { }
 
   ngOnInit(): void {
+    if(this.auth.isAuthenticated()) {
+      this.rout.navigate(['dashboard'])
+    }
   }
 
   handleSubmit() {
@@ -20,8 +25,9 @@ export class LoginComponent implements OnInit {
     this.server.logIn(this.user).subscribe(data => {
       this.loading = false;
       if(data.isSuccess) {
+        localStorage.setItem('token', data.token.accessToken);
         this.openSnackBar('Login Successful!');
-        console.log(data.token.accessToken)
+        this.rout.navigate(['dashboard'])
         console.log(data.entity)
       }
       else {

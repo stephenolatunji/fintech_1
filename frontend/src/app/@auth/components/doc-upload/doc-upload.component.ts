@@ -51,7 +51,7 @@ export class DocUploadComponent implements OnInit {
           if(dat.succeeded) {
 
             this.openSnackBar('Successful!');
-            this.rout.navigate(['dashboard']);
+            this.rout.navigate(['login']);
             console.log(dat.entity)
 
           }

@@ -6,8 +6,8 @@ import { environment } from "../../../environments/environment";
 })
 export class ServerService {
 
-  public userDetails;
-
+  public userDetails; matchFound;
+ 
   constructor(private http: HttpClient) { }
 
   newUser(user) {
@@ -19,6 +19,6 @@ export class ServerService {
   }
   
   createOrder(order) {
-    return this.http.post<any>(`${environment.url}/api/order/create`, order)
+    return this.http.post<any>(`${environment.url}/api/orders/create`, order)
   }
 }
