@@ -5,12 +5,16 @@ import { HttpClientModule } from '@angular/common/http';;
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
 import { MatExpansionModule } from "@angular/material/expansion";
-import { MatSnackBar, MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 import { RegisterComponent } from './@auth/components/register/register.component';
 import { LoginComponent } from './@auth/components/login/login.component';
 import { FrameComponent } from './@theme/components/frame/frame.component';
@@ -30,6 +34,7 @@ import { PaymentSummaryComponent } from './@components/payment-summary/payment-s
 import { ActivityComponent } from './@components/activity/activity.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { ActivityTwoComponent } from './@components/activity-two/activity-two.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +68,7 @@ import { ActivityTwoComponent } from './@components/activity-two/activity-two.co
     MatExpansionModule,
     MatButtonModule,MatRadioModule, MatSnackBarModule
   ],
-  providers: [NgxImageCompressService],
+  providers: [NgxImageCompressService,  { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },, JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

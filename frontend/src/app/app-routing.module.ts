@@ -13,21 +13,24 @@ import { DashboardComponent } from './@components/dashboard/dashboard.component'
 import { PaymentSummaryComponent } from './@components/payment-summary/payment-summary.component';
 import { ActivityComponent } from './@components/activity/activity.component';
 import { ActivityTwoComponent } from './@components/activity-two/activity-two.component';
+import { 
+  AuthGuardService as AuthGuard 
+} from './@auth/guard/auth-guard.service';
 
 const routes: Routes = [
   { path: "", component: ComingSoonComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
-  { path: "otp-auth", component: OtpComponent },
+  { path: "otp-auth", component: OtpComponent, canActivate: [AuthGuard]  },
   { path: "forgot-password", component: ForgotPasswordComponent },
-  { path: "listing", component: ListingComponent },
-  { path: "response", component: ResponseComponent },
-  { path: "summary", component: PaymentSummaryComponent },
-  { path: "dashboard", component: DashboardComponent },
-  { path: 'notify', component: EmailNotificationComponent },
+  { path: "listing", component: ListingComponent, canActivate: [AuthGuard]  },
+  { path: "response", component: ResponseComponent, canActivate: [AuthGuard]  },
+  { path: "summary", component: PaymentSummaryComponent, canActivate: [AuthGuard]  },
+  { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'notify', component: EmailNotificationComponent, canActivate: [AuthGuard]  },
   { path: 'upload', component: DocUploadComponent },
-  { path: 'activity', component: ActivityComponent },
-  { path: 'transaction-summary', component: ActivityTwoComponent }
+  { path: 'activity', component: ActivityComponent, canActivate: [AuthGuard]  },
+  { path: 'transaction-summary', component: ActivityTwoComponent, canActivate: [AuthGuard]  }
 ];
 
 @NgModule({

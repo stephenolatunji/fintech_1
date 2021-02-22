@@ -57,9 +57,6 @@ input {
 .password {
     display: flex;
 }
-#password {
-    width: 90%;
-}
 
 button {
     margin: 30px 0px 12px 0px;
