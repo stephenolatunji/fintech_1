@@ -1,0 +1,127 @@
+.body {
+    padding: 40px 30px;
+    background: white;
+    display: flex;
+}
+.first {
+    margin: 100px 30px;
+    padding: 73px 61px;
+    width: 75%;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(38, 71, 78, 0.1);
+    border-radius: 5px;
+}
+.text1 {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+    color: #26474E;
+}
+.text2 {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #F27348;
+}
+.box {
+    border: 1px solid rgba(152, 157, 179, 0.4);
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 29px 61px;
+    margin: 25px 0px 50px 0px;
+}
+.text3 {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: #262C31;
+}
+.pay-with-card {
+    background: #26474E;
+    border-radius: 15px;
+    padding: 13px 102px;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+}
+.pay-with-bank {
+    background: #F0F4F5;
+    border: 1px solid #26474E;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 8px rgba(240, 244, 245, 0.25);
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: #26474E;
+}
+input {
+    border: 1px solid #254750;
+    border-radius: 15px;
+    width: 100%;
+    padding: 10px;
+}
+.form-group1 {
+    width: 60%;
+}
+.form-group2 {
+    width: 25%;
+    margin: 0px 14px;
+}
+.form-group3 {
+    width: 15%;
+}
+.btn-section {
+    margin-top: 40px;
+    display: flex;
+}
+
+button {
+    background: #F27348;
+    border-radius: 15px;
+    color: white;
+    padding: 12px 122px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.group2 {
+    padding: 55px 34.9px 63px 34px;
+    background-color: #FFFFFF;
+    background: #FFFFFF;
+    box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+    border-radius: 5px;
+    /* height: 53vh; */
+    margin-top: 100px;
+}
+
+.text4 {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    color: #254750;
+    margin-bottom: 25px;
+}
+.text5{
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    color: #262C31;
+}
+.line {
+    padding: 25px 0px; display: flex; align-items: center;
+    border-bottom: 1px solid rgba(152, 157, 179, 0.4);;
+}
+.group {
+    background: #FFFFFF;
+    border: 1px solid rgba(152, 157, 179, 0.3);
+    box-sizing: border-box;
+    box-shadow: 2px 8px 20px rgba(152, 157, 179, 0.15);
+    border-radius: 5px;
+    padding: 50px 25px;
+}
+.notice {
+    margin-top: 28px;
+}

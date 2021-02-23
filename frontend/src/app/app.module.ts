@@ -34,6 +34,7 @@ import { PaymentSummaryComponent } from './@components/payment-summary/payment-s
 import { ActivityComponent } from './@components/activity/activity.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { ActivityTwoComponent } from './@components/activity-two/activity-two.component';
+import { PaymentPlatformComponent } from './@components/payment-platform/payment-platform.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ActivityTwoComponent } from './@components/activity-two/activity-two.co
     DashboardComponent,
     PaymentSummaryComponent,
     ActivityComponent,
-    ActivityTwoComponent
+    ActivityTwoComponent,
+    PaymentPlatformComponent
   ],
   imports: [
     BrowserModule,

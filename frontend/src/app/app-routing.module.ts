@@ -16,6 +16,7 @@ import { ActivityTwoComponent } from './@components/activity-two/activity-two.co
 import { 
   AuthGuardService as AuthGuard 
 } from './@auth/guard/auth-guard.service';
+import { PaymentPlatformComponent } from './@components/payment-platform/payment-platform.component';
 
 const routes: Routes = [
   { path: "", component: ComingSoonComponent },
@@ -24,13 +25,13 @@ const routes: Routes = [
   { path: "otp-auth", component: OtpComponent, canActivate: [AuthGuard]  },
   { path: "forgot-password", component: ForgotPasswordComponent },
   { path: "listing", component: ListingComponent, canActivate: [AuthGuard]  },
-  { path: "response", component: ResponseComponent, canActivate: [AuthGuard]  },
   { path: "summary", component: PaymentSummaryComponent, canActivate: [AuthGuard]  },
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'notify', component: EmailNotificationComponent, canActivate: [AuthGuard]  },
   { path: 'upload', component: DocUploadComponent },
   { path: 'activity', component: ActivityComponent, canActivate: [AuthGuard]  },
-  { path: 'transaction-summary', component: ActivityTwoComponent, canActivate: [AuthGuard]  }
+  { path: 'transaction-summary', component: ActivityTwoComponent, canActivate: [AuthGuard]  },
+  { path: 'payment-gateway', component: PaymentPlatformComponent, canActivate: [AuthGuard]  }
 ];
 
 @NgModule({

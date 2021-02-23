@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private server: ServerService, private _snackBar: MatSnackBar, private auth: AuthService, private rout: Router) { }
 
   ngOnInit(): void {
-    if(this.auth.isAuthenticated()) {
+    if(this.auth.isAuthenticated() && localStorage.getItem('customerId')!==null) {
       this.rout.navigate(['dashboard'])
     }
   }
@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
       this.loading = false;
       if(data.isSuccess) {
         localStorage.setItem('token', data.token.accessToken);
+        localStorage.setItem('customerId', data.entity.customerId);
         this.openSnackBar('Login Successful!');
         this.rout.navigate(['dashboard'])
         console.log(data.entity)

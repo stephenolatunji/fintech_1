@@ -1,54 +1,66 @@
-<div class="body" *ngIf="success">
-    <div class="d-flex"><img src="assets/listing/close.svg" class="ml-auto" alt=""></div>
-    <div class="success text-center">
-        <img src="assets/listing/success.svg" alt="">
-    </div>
-    <div class="text1">Congratulations!</div>
-    <div class="text2">
-        Anelloh has found you a match, you can<br /> now proceed with your transaction<br /> process
-    </div>
-    <div style="display: flex; justify-content: center;">
-        <div class="box">
-            <div class="d-flex">
-                <img src="assets/listing/usd.svg" class="mt-3" alt="" width="40" height="40" style="margin-right: 7px;">
-                <div style="display: block;">
-                    <div>You got</div>
-                    <div>{{data.convertedCurrency}} {{data.convertedAmount}}</div>
-                    <div>Rate ₦ {{data.rate}}/{{data.convertedCurrency}}</div>           
-                </div>
-            </div>
-            <div class="non-flex">
-                <div>Market rate</div>
-                <img src="assets/listing/up-trend.svg" class="mt-1" alt="">
-                <div style="margin-top: -6px;">+ ₦ 4.00 <img src="assets/listing/arrow-up.svg" alt=""></div>
-            </div>
 
-        </div>
-    </div>
-    <div class="notice">
-        <img src="assets/listing/notice.svg" alt="">
-        You have 12 hours to make payment or  your match will be cancelled.
-    </div>
-
-    <div class="btn-section">
-        <div class="d-flex">
-            <button mat-button >Pay Later</button>
-            <button mat-button >Pay Now</button>
-        </div>
-    </div>
-</div>
 
 <!-- !successful -->
-<div class="body" *ngIf="!success">
-    <div class="d-flex"><img src="assets/listing/close.svg" class="ml-auto" alt=""></div>
-    <div class="success text-center">
-        <img src="assets/listing/notSuccess.svg" alt="">
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTittle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+  
+        <div class="modal-header">
+          <i class="fa fa-arrow-left" aria-hidden="true" (click)="close()"></i>
+        </div>
+  
+        <div class="body modal-body" *ngIf="success">
+            <div class="d-flex"><img src="assets/listing/close.svg" class="ml-auto" alt=""></div>
+            <div class="success text-center">
+                <img src="assets/listing/success.svg" alt="">
+            </div>
+            <div class="text1">Congratulations!</div>
+            <div class="text2">
+                Anelloh has found you a match, you can<br /> now proceed with your transaction<br /> process
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <div class="box">
+                    <div class="d-flex">
+                        <img src="assets/listing/usd.svg" class="mt-3" alt="" width="40" height="40" style="margin-right: 7px;">
+                        <div style="display: block;">
+                            <div>You got</div>
+                            <div>{{data?.convertedCurrency}} {{data?.convertedAmount}}</div>
+                            <div>Rate ₦ {{data?.rate}}/{{data?.convertedCurrency}}</div>           
+                        </div>
+                    </div>
+                    <div class="non-flex">
+                        <div>Market rate</div>
+                        <img src="assets/listing/up-trend.svg" class="mt-1" alt="">
+                        <div style="margin-top: -6px;">+ ₦ 4.00 <img src="assets/listing/arrow-up.svg" alt=""></div>
+                    </div>
+        
+                </div>
+            </div>
+            <div class="notice">
+                <img src="assets/listing/notice.svg" alt="">
+                You have 12 hours to make payment or  your match will be cancelled.
+            </div>
+        
+            <div class="btn-section">
+                    <button mat-button >Pay Later</button>
+                    <button mat-button >Pay Now</button>
+            </div>
+        </div>
+        
+        <!-- unsuccessful -->
+        <div class="body  modal-body" *ngIf="!success">
+            <div class="d-flex"><img src="assets/listing/close.svg" class="ml-auto" alt=""></div>
+            <div class="success text-center">
+                <img src="assets/listing/notSuccess.svg" alt="">
+            </div>
+            <div class="text1">Oh No!</div>
+            <div class="text2">
+                Anelloh could not find you  a match, you<br /> can check out the listing for your<br /> prefered match
+            </div>
+            <div class="not-btn-section">
+                <button mat-button class="not-success-btn">View Listing</button>
+            </div>
+        </div>
     </div>
-    <div class="text1">Oh No!</div>
-    <div class="text2">
-        Anelloh could not find you  a match, you<br /> can check out the listing for your<br /> prefered match
-    </div>
-    <div class="not-btn-section">
-        <button mat-button class="not-success-btn">View Listing</button>
-    </div>
-</div>
+  </div>

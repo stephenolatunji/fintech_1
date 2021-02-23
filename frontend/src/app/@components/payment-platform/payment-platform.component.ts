@@ -3,11 +3,11 @@ import { Router } from '@angular/router';
 import { ServerService } from 'src/app/@theme/services/server.service';
 
 @Component({
-  selector: 'app-payment-summary',
-  templateUrl: './payment-summary.component.html',
-  styleUrls: ['./payment-summary.component.css']
+  selector: 'app-payment-platform',
+  templateUrl: './payment-platform.component.html',
+  styleUrls: ['./payment-platform.component.css']
 })
-export class PaymentSummaryComponent implements OnInit {
+export class PaymentPlatformComponent implements OnInit {
   paymentSummary;
   constructor(private server: ServerService, private rout: Router) { }
 

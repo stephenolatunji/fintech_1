@@ -11,7 +11,7 @@ import { ServerService } from 'src/app/@theme/services/server.service';
 
 export class ListingComponent implements OnInit {
   public order = { 
-    customerId: null,
+    customerId: localStorage.getItem('customerId'),
     myAmount: null, 
     myCurrency: 'NGN', 
     rate: null, 
@@ -25,7 +25,7 @@ export class ListingComponent implements OnInit {
    loading = {
     findMach: false
    }
-   
+   showResponse: boolean = false; matchFound;
   constructor(private server: ServerService, private _snackBar: MatSnackBar, private rout: Router) { }
 
   ngOnInit(): void {
@@ -39,6 +39,7 @@ export class ListingComponent implements OnInit {
   }
 
   checkIfAllInput(x) {
+    this.showResponse = false;
     if(this.order.myAmount!==null && this.order.rate!==null && this.order.myAccountNumber!==null && this.order.bankRouteNo!==null) {
       this.order.myAccountNumber = this.order.myAccountNumber.toString();
       this.order.bankRouteNo = this.order.bankRouteNo.toString();
@@ -56,15 +57,16 @@ export class ListingComponent implements OnInit {
       this.loading.findMach = false;
       if(data.succeeded) {
         this.openSnackBar('Finding Match...');
-        this.server.matchFound = data;
-        this.rout.navigate(['response']);
+        this.matchFound = data;
+        this.showResponse = true
       }
       else {
-        this.server.matchFound = 'No Match Found';
-        this.rout.navigate(['response']);
+        this.matchFound = 'No Match Found';
+        this.showResponse = true;
         this.openSnackBar(data.messages[0]);
       }
     }, err => {
+      this.showResponse = true
       this.loading.findMach = false;
       this.openSnackBar('Error!');
     })

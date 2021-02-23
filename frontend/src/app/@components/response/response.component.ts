@@ -1,31 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServerService } from 'src/app/@theme/services/server.service';
-
+declare var $: any;
 @Component({
   selector: 'app-response',
   templateUrl: './response.component.html',
   styleUrls: ['./response.component.css']
 })
+
 export class ResponseComponent implements OnInit {
-  success: boolean = false; data;
+  @Input() data;
+  success: boolean = false;
+  
   constructor(private server: ServerService, private rout: Router) { }
 
   ngOnInit(): void {
-    console.log(this.server.matchFound)
-    if(this.server.matchFound.succeeded) {
-      this.data = this.server.matchFound.entity;
-      this.success = true;
-    }
-
-    else if(this.server.matchFound == 'No Match Found') {
+    if(this.data == 'No Match Found') {
       this.success = false
     }
-
     else {
-      this.rout.navigate(['listing'])
+      this.success = true;
     }
+    $('#myModal').modal('show')
 
+  }
+
+  close() {
+    $('#myModal').modal('hide')
   }
 
 }
