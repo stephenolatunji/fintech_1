@@ -45,15 +45,14 @@ export class DocUploadComponent implements OnInit {
 
         this.loading = true;
         // user
-        console.log(this.user);
+     
         this.server.newUser(this.user).subscribe(dat=>{
           this.loading = false;
           if(dat.succeeded) {
-
+            localStorage.setItem('customerId', null)
             this.openSnackBar('Successful!');
             this.rout.navigate(['login']);
             console.log(dat.entity)
-
           }
           else {
             this.openSnackBar(`Sorry, ${dat.messages[0]}`);

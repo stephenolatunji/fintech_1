@@ -29,4 +29,8 @@ export class ResponseComponent implements OnInit {
     $('#myModal').modal('hide')
   }
 
+  backToListing() {
+    this.rout.navigate(['listing']);
+  }
+
 }
