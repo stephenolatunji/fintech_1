@@ -33,4 +33,12 @@ export class ResponseComponent implements OnInit {
     this.rout.navigate(['listing']);
   }
 
+  payNow() {
+    this.server.pendingOrders = this.data;
+  }
+
+  payLater() {
+    this.rout.navigate(['dashboard']);
+  }
+
 }

@@ -1,5 +1,5 @@
 <div class="head d-flex">
-    <div class="nav-brand">
+    <div class="nav-brand" (click)="goTo('dashboard')">
         <img src="assets/header/logo.svg" />
     </div>
 
@@ -9,7 +9,7 @@
     </div>
 
     <div class="lastChild">
-        <div style="margin-right: 42px">
+        <div style="margin-right: 42px" (click)="goTo('transaction_summary')">
             <img src="assets/header/activity.svg" />
         </div>
 

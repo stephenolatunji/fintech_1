@@ -180,7 +180,10 @@
             </div>
 
             <div class="btn-section d-flex">
-                <button mat-button  class="ml-auto">Publish</button>
+                <button mat-button  class="ml-auto" (click)="checkIfAllInput('publish')" *ngIf="!loading.publish">Publish</button>
+                <button mat-button class="ml-auto" *ngIf="loading.publish" style="padding: 7px 110px;">
+                    <img src="assets/auth/loader.gif" width="30" height="30" alt="">
+                </button> 
 
                 <button mat-button (click)="checkIfAllInput('findMatch')" *ngIf="!loading.findMach">
                     Find A Match

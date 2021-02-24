@@ -3,20 +3,21 @@
 
     <div class="first">
         <div class="text1">Payment Information</div>
-        <div class="text2 text-right"><span style="color: black">Swap</span> ₦ 44,500,045</div>
+        <div class="text2 text-right"><span style="color: black">Swap</span> {{paymentSummary?.myCurrency}} {{paymentSummary?.myAmount}}</div>
 
         <div class="box">
             <div class="text3">Select Payment Option</div>
             <div class="d-flex mt-4">
-                <div class="pay-with-card">
+                <button mat-button class="pay-with-card" id="card" (click)="paymentType('card')">
                     <img src="assets/payment/mastercard.svg" alt="">
                     Pay with Card
-                </div>
+                </button>
 
-                <div class="pay-with-card pay-with-bank ml-auto">
-                    <img src="assets/payment/bank.svg" alt="">
+                <button mat-button class="pay-with-card pay-with-bank ml-auto" id="bank" (click)="paymentType('bank')">
+                    <img src="assets/payment/bank_.svg" *ngIf="!bank">
+                    <img src="assets/payment/bank.svg" *ngIf="bank">
                     Pay with Bank
-                </div>
+                </button>
             </div>
         </div>
 
@@ -50,23 +51,23 @@
             </div>
             <div class="line">
                 <div class="text5 mr-auto">To swap</div>
-                <div class="text3">{{paymentSummary.myCurrency}} {{paymentSummary.myAmount}}</div>
+                <div class="text3">{{paymentSummary?.myCurrency}} {{paymentSummary?.myAmount}}</div>
             </div>
             <div class="line">
                 <div class="text5 mr-auto">Rate </div>
-                <div class="text3">₦ {{paymentSummary.rate}}</div>
+                <div class="text3">₦ {{paymentSummary?.rate}}</div>
             </div>
             <div class="line">
                 <div class="text5 mr-auto">Subtotal </div>
-                <div class="text3">{{paymentSummary.convertedCurrency}} {{paymentSummary.convertedAmount}}</div>
+                <div class="text3">{{paymentSummary?.convertedCurrency}} {{paymentSummary?.convertedAmount}}</div>
             </div>
             <div class="line">
                 <div class="text5 mr-auto">Proessing Fee </div>
-                <div class="text3">{{paymentSummary.convertedCurrency}} {{paymentSummary.transactionFee}}</div>
+                <div class="text3">{{paymentSummary?.convertedCurrency}} {{paymentSummary?.transactionFee}}</div>
             </div>
             <div class="line" style="border-bottom: 0px;">
                 <div class="text5 mr-auto">Total </div>
-                <div class="text3">{{paymentSummary.convertedCurrency}} {{ paymentSummary.convertedAmount + paymentSummary.transactionFee}}</div>
+                <div class="text3">{{paymentSummary?.convertedCurrency}} {{ paymentSummary?.convertedAmount + paymentSummary?.transactionFee}}</div>
             </div>
 
             <div class="notice d-flex">

@@ -17,9 +17,13 @@ export class ServerService {
   logIn(user) {
     return this.http.post<any>(`${environment.url}/api/authentication/login`, user)
   }
-  
+  // Publish
   createOrder(order) {
     return this.http.post<any>(`${environment.url}/api/orders/create`, order)
+  }
+
+  findMatch(order) {
+    return this.http.post<any>(`${environment.url}/api/orders/findmatch`, order)
   }
 
   getPendingOrders() {
@@ -28,5 +32,9 @@ export class ServerService {
 
   getTop10Listing() {
     return this.http.get<any>(`${environment.url}/api/orders/gettop10orderlistings`)
+  }
+
+  getTransactions() {
+    // return this.http.get<any>(`${environment.url}/api/orders/gettop10orderlistings`)
   }
 }

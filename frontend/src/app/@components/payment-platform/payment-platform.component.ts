@@ -8,7 +8,7 @@ import { ServerService } from 'src/app/@theme/services/server.service';
   styleUrls: ['./payment-platform.component.css']
 })
 export class PaymentPlatformComponent implements OnInit {
-  paymentSummary;
+  paymentSummary; bank: boolean = false;
   constructor(private server: ServerService, private rout: Router) { }
 
   ngOnInit(): void {
@@ -20,4 +20,22 @@ export class PaymentPlatformComponent implements OnInit {
     }
   }
 
+  paymentType(type) {
+    if(type == 'card') {
+      document.getElementById('card').style.backgroundColor = '#26474E'
+      document.getElementById('bank').style.backgroundColor = '#F0F4F5'
+      document.getElementById('bank').style.color = '#26474E'
+      document.getElementById('card').style.color = '#F0F4F5'
+      this.bank = false
+    }
+    else {
+      document.getElementById('bank').style.backgroundColor = '#26474E'
+      document.getElementById('card').style.backgroundColor = '#F0F4F5'
+      document.getElementById('bank').style.color = '#F0F4F5'
+      document.getElementById('card').style.color = '#26474E'
+      this.bank = true
+    }
+  }
+
+  
 }

@@ -8,7 +8,7 @@
     box-shadow: 2px 8px 15px rgba(85, 85, 85, 0.05);
 }
 .nav-brand {
-    line-height: 44px;
+    line-height: 44px; cursor: pointer;
 }
 .search-box {
     background-color: #FFFFFF;
@@ -31,6 +31,9 @@ input {
     justify-content: space-between;
     line-height: 44px;
     padding-right: 49px;
+}
+.lastChild div {
+    cursor: pointer;
 }
 .name {
     font-weight: 600;
