@@ -3,6 +3,8 @@ import { ServerService } from 'src/app/@theme/services/server.service';
 import { HelperService } from 'src/app/@theme/services/helper.service';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { RegisterComponent } from '../register/register.component';
 
 @Component({
   selector: 'app-doc-upload',
@@ -17,7 +19,7 @@ export class DocUploadComponent implements OnInit {
 
   public user_ = { documentImage: '', documentType: "1", bvn: '', documentNumber: '', documentExpiryDate: '' };
 
-  constructor(private server: ServerService, private rout: Router, private helper: HelperService, private imageCompress: NgxImageCompressService) { }
+  constructor(private reg: RegisterComponent, private server: ServerService, private rout: Router, private helper: HelperService, private imageCompress: NgxImageCompressService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
 
@@ -32,24 +34,37 @@ export class DocUploadComponent implements OnInit {
   }
 
   handleSubmit() {
-    if (this.user_.documentImage !== '' && this.user_.documentNumber) {
-      this.user.documentType = parseInt(this.user_.documentType);
-      this.user.bvn = this.user_.bvn;
-      this.user.documentImage = this.user_.documentImage.split(",")[1];
-      this.user.documentNumber = this.user_.documentNumber;
-      this.user.documentExpiryDate = this.user_.documentExpiryDate.toString();
-      this.user.gender = 1;
+    if (this.user_.documentImage !== '' && this.user_.documentNumber && this.user_.documentExpiryDate !== null) {
+      if ((this.user.countryCode == '+234' && this.user_.bvn !== null) || (this.user.countryCode != '+234')) {
 
-      // user
-      console.log(this.user);
-      this.loading = true;
-      this.server.newUser(this.user).subscribe(dat => {
-        this.loading = false;
-        //console.log(dat)
-        this.rout.navigate(['login']);
-      })
+        this.user.documentType = parseInt(this.user_.documentType);
+        this.user.bvn = this.user_.bvn;
+        this.user.documentImage = this.user_.documentImage.split(",")[1];
+        this.user.documentNumber = this.user_.documentNumber;
+        this.user.documentExpiryDate = this.user_.documentExpiryDate.toString();
 
+        this.loading = true;
+        // user
 
+        this.server.newUser(this.user).subscribe(dat => {
+          this.loading = false;
+          if (dat.succeeded) {
+            localStorage.setItem('customerId', null)
+            this.openSnackBar('Successful!');
+            this.rout.navigate(['login']);
+            console.log(dat.entity)
+          }
+          else {
+            this.openSnackBar(`Sorry, ${dat.messages[0]}`);
+            this.err = `Sorry, ${dat.messages[0]}`;
+          }
+        }, error => this.handleError(error))
+
+      }
+
+      else {
+        this.err = 'Please fill all fields'
+      }
 
     }
     else {
@@ -71,5 +86,18 @@ export class DocUploadComponent implements OnInit {
     this.imageCompress.compressFile(image, -1, 50, 50).then(result => {
       this.user_.documentImage = result;
     })
+  }
+
+  handleError(error) {
+    this.reg.docUpload = false;
+    console.log('here')
+    this.loading = false;
+    this.openSnackBar(`Sorry, Account creation was not successful!`);
+  }
+
+  openSnackBar(msg) {
+    this._snackBar.open(msg, '', {
+      duration: 2500,
+    });
   }
 }

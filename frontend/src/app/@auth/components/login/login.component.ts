@@ -1,6 +1,9 @@
-import { Router } from '@angular/router';
+
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from './../../../@theme/services/server.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../guard/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,22 +12,50 @@ import { ServerService } from './../../../@theme/services/server.service';
 })
 export class LoginComponent implements OnInit {
 
-  public user = { email: null, password: null }; loading: boolean = false; type: string = 'password';
-  constructor(private server: ServerService, private rout: Router) { }
+  public user = { email: null, password: null }; loading: boolean = false; type: string = 'password'; err;
+  constructor(private server: ServerService, private _snackBar: MatSnackBar, private auth: AuthService, private rout: Router) { }
 
   ngOnInit(): void {
+    if (this.auth.isAuthenticated() && localStorage.getItem('customerId') !== null) {
+      this.rout.navigate(['dashboard'])
+    }
   }
 
   handleSubmit() {
-    console.log(this.user)
+    this.loading = true
     this.server.logIn(this.user).subscribe(data => {
-      this.rout.navigate(['dashboard'])
-    })
+      this.loading = false;
+      if (data.isSuccess) {
+        localStorage.setItem('token', data.token.accessToken);
+        localStorage.setItem('customerId', data.entity.customerId);
+        this.openSnackBar('Login Successful!');
+        this.rout.navigate(['dashboard'])
+        console.log(data.entity)
+      }
+      else {
+        this.err = data.message;
+        this.openSnackBar(`Sorry, ${data.message}`)
+      }
+    }, error => this.handleError(error))
   };
 
   togglePasswordType() {
     this.type = document.getElementById("password").getAttribute("type") == 'password' ? 'text' : 'password';
     document.getElementById("password").setAttribute("type", this.type);
+  }
+
+  handleError(err) {
+    this.openSnackBar('Error Logging In');
+    this.err = 'Error Logging In!'
+    this.loading = false
+    console.log(err)
+    // if
+  }
+
+  openSnackBar(msg) {
+    this._snackBar.open(msg, '', {
+      duration: 2500,
+    });
   }
 
 }

@@ -1,6 +1,6 @@
 <div class="parent">
     <app-header></app-header>
-    <div class="body">
+    <div class="body animate__animated animate__slideInRight">
         <div class="segment1">
             <div class="card">
                 <div class="text1">@uche</div>
@@ -17,23 +17,25 @@
 
                 <div class="text-group">
                     <div class="text3">Currency</div>
-                    <div class="text4">United States Dollar</div>
+                    <div class="text4">
+                        {{paymentSummary.myCurrency=='USD'? 'United States Dollar' : 'Other'}}
+                    </div>
                 </div>
 
                 <div class="d-flex">
                     <div class="col-6"> 
                         <div class="text3">Amount</div>
-                        <div class="text4">$100,000</div>
+                        <div class="text4">{{paymentSummary.myCurrency}} {{paymentSummary.myAmount}}</div>
                     </div>
                     <div class="offset-1">
                         <div class="text3">Rate</div>
-                        <div class="text4">N445/$</div>
+                        <div class="text4">₦ {{paymentSummary.rate}}/$</div>
                     </div>
                 </div>
 
                 <div class="btn-section">
-                    <button mat-button >Back</button>
-                    <button mat-button>Swap</button>
+                    <button mat-button (click)="back()">Back</button>
+                    <button mat-button (click)="swap(paymentSummary)" >Swap</button>
                 </div>
 
             </div>  
@@ -43,23 +45,23 @@
                 <div class="text1_" style="margin-bottom: 37px;">Payment Summary</div>
                 <div class="flex" >
                     <div class="text2_ ">Need USD </div>
-                    <div class="text1_">$100,000</div>
+                    <div class="text1_">{{paymentSummary.myCurrency}} {{paymentSummary.myAmount}}</div>
                 </div>
                 <div class="flex">
                     <div class="text2_">Rate </div>
-                    <div class="text1_">₦ 445</div>
+                    <div class="text1_">₦ {{paymentSummary.rate}}</div>
                 </div>
                 <div class="flex">
                     <div class="text2_">Subtotal</div>
-                    <div class="text1_">₦ 44,500,000</div>
+                    <div class="text1_">{{paymentSummary.convertedCurrency}} {{paymentSummary.convertedAmount}}</div>
                 </div>
                 <div class="flex">
                     <div class="text2_">Proessing Fee</div>
-                    <div class="text1_">₦ 45</div>
+                    <div class="text1_">{{paymentSummary.transactionFee}}</div>
                 </div>
                 <div class="flex" style="border: 0px;">
                     <div class="text2_">Total</div>
-                    <div class="text1_">₦ 44,500,045</div>
+                    <div class="text1_">{{paymentSummary.convertedCurrency}} {{ paymentSummary.convertedAmount + paymentSummary.transactionFee}}</div>
                 </div>
                 <div class="d-flex mt-4">
                     <div>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ServerService } from 'src/app/@theme/services/server.service';
 
 @Component({
   selector: 'app-payment-summary',
@@ -6,10 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./payment-summary.component.css']
 })
 export class PaymentSummaryComponent implements OnInit {
-
-  constructor() { }
+  paymentSummary;
+  constructor(private server: ServerService, private rout: Router) { }
 
   ngOnInit(): void {
+    if (this.server.pendingOrders !== undefined) {
+      this.paymentSummary = this.server.pendingOrders;
+    }
+    else {
+      window.history.back();
+    }
+  }
+
+  swap(payment) {
+    this.server.pendingOrders = payment;
+    this.rout.navigate(['payment-gateway'])
+  }
+
+  back() {
+    window.history.back()
   }
 
 }

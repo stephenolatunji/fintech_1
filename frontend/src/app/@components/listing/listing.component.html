@@ -1,6 +1,6 @@
 <div class="parent">
     <app-header ></app-header>
-    <div class="body">
+    <div class="body animate__animated animate__slideInRight">
         <div class="segment1">
 
             <!-- create order -->
@@ -13,14 +13,14 @@
                             I want to swap
                         </div>
                         <div class="input-section">
-                            <select name="fromCurrency" [(ngModel)]="order.fromCurrency" (change)="doCalculation()">
+                            <select name="myCurrency" [(ngModel)]="order.myCurrency" (change)="doCalculation()">
                                 <option value="NGN">NGN</option>
                                 <option value="USD">USD</option>
                                 <option value="EUR">EUR</option>
                                 <option value="GBP">GBP</option>
                                 <option value="CAD">CAD</option>
                             </select>
-                            <input autocomplete="off" type="number" name="amount" [(ngModel)]="order.amount"  (keyup)="doCalculation()"/>
+                            <input type="number" name="myAmount" [(ngModel)]="order.myAmount"  (keyup)="doCalculation()"/>
                         </div>
                     </div>
             
@@ -29,15 +29,15 @@
                 <div class="second-line">
                     Market Rate
                     <!-- condition toggler -->
-                    <div class="card-list" *ngIf="order.fromCurrency=='NGN'">
-                        <div class="cards">
-                        <div style="position: relative">
-                            <img src="assets/listing/usd.svg" />
-                            <span class="country">GBP</span>
-                        </div>
+                    <div class="card-list" *ngIf="order.myCurrency=='NGN'">
+                        <div class="cards" (click)="toggelePrefferdCurrency('USD')" id="usd" style="border: 1px solid #26474E;">
+                            <div style="position: relative">
+                                <img src="assets/listing/usd.svg" />
+                                <span class="country">USD</span>
+                            </div>
                             <div class="d-flex" style="margin-top: 20px;">
                                 <div class="amount">
-                                    $0.00
+                                    $ 0.00
                                 </div>
                                 <div class="chart">
                                     <div>
@@ -51,12 +51,12 @@
                             </div>
                         </div>
             
-                        <div class="cards">
+                        <div class="cards" (click)="toggelePrefferdCurrency('CAD')" id="cad">
                             <img src="assets/listing/cad.svg" />
                             <span class="country">CAD</span>
                             <div class="d-flex" style="margin-top: 20px;">
                                 <div class="amount">
-                                    $0.00
+                                    C$ 0.00
                                 </div>
                                 <div class="chart">
                                     <div>
@@ -70,12 +70,13 @@
                             </div>
                         </div>
             
-                        <div class="cards">
+                        <div class="cards" (click)="toggelePrefferdCurrency('GBP')" id="gbp">
                             <img src="assets/listing/gbp.svg" />
                             <span class="country">GBP</span>
                             <div class="d-flex" style="margin-top: 20px;">
                                 <div class="amount">
-                                    $0.00
+                                   <img src="assets/listing/gbp_.svg" alt="">
+                                    0.00
                                 </div>
                                 <div class="chart">
                                     <div>
@@ -89,12 +90,13 @@
                             </div>
                         </div>
             
-                        <div class="cards">
+                        <div class="cards" (click)="toggelePrefferdCurrency('EUR')" id="eur">
                             <img src="assets/listing/jpy.svg" />
                             <span class="country">EUR</span>
                             <div class="d-flex" style="margin-top: 20px;">
                                 <div class="amount">
-                                    $0.00
+                                    <img src="assets/listing/euro.svg" alt="">
+                                    0.00
                                 </div>
                                 <div class="chart">
                                     <div>
@@ -110,7 +112,7 @@
                     </div>
 
                     <!-- condition toggler -->
-                    <div class="single-card-list d-flex" *ngIf="order.fromCurrency!='NGN'">
+                    <div class="single-card-list d-flex" *ngIf="order.myCurrency!='NGN'">
                         <img src="assets/listing/ngn.svg" alt="">
                         <div class="flex2">
                             <div>NGN</div>
@@ -134,17 +136,17 @@
                             <!-- <div class="box">{{order.fromCurrency}}</div> -->
                             <div class="box">Rate</div>
                             <!-- <img src="assets/listing/swap.svg"  style="margin-right: 11px"/> -->
-                            <input autocomplete="off" type="number" [(ngModel)]="order.preferedRate" name="preferedRate"  (keyup)="doCalculation()"/>
+                            <input type="number" [(ngModel)]="order.rate" name="rate"  (keyup)="doCalculation()"/>
                         </div>
                         <div class="w-50 input-section">
-                            <select [(ngModel)]="order.totalAmountCurrency" name="totalAmountCurrency" (change)="doCalculation()">
+                            <select [(ngModel)]="order.convertedCurrency" name="convertedCurrency" (change)="doCalculation()">
                                 <option value="USD">USD</option>
                                 <option value="NGN">NGN</option>
                                 <option value="EUR">EUR</option>
                                 <option value="GBP">GBP</option>
                                 <option value="CAD">CAD</option>
                             </select>
-                            <input autocomplete="off" type="number" readonly [(ngModel)]="order.totalAmount" name="totalAmount"/>
+                            <input type="number" readonly [(ngModel)]="order.convertedAmount" name="convertedAmount"/>
                         </div>
             
                     </div>
@@ -157,7 +159,7 @@
             <div class="last-box row">
                 <div class="col-6" >
                     <label for="bank">Bank</label><br />
-                    <select id="bank" [(ngModel)]="order.bank" name="bank" class="col-12">
+                    <select id="bank" [(ngModel)]="order.myBankName" name="myBankName" class="col-12">
                         <option value="access_bank">Access Bank</option>
                         <option>Access Bank</option>
                         <option>Access Bank</option>
@@ -166,19 +168,28 @@
 
                 <div class="col-6" >
                     <label for="bank" id="account_no" >Account Number</label><br />
-                    <input autocomplete="off" type="number" id="account_no"  [(ngModel)]="order.accountNumber" name="accountNumber" class="col-12" />
+                    <input type="number" id="account_no"  [(ngModel)]="order.myAccountNumber" name="myAccountNumber" class="col-12" />
                 </div>
                 
                 <div class="col-6" style="margin-top: 19.69px">
                     <label for="routing_no">Routing Number</label><br />
-                    <input autocomplete="off" type="number" id="routing_no" name="routingNumber" [(ngModel)]="order.routingNumber" class="col-12" />
+                    <input type="number" id="routing_no" name="bankRouteNo" [(ngModel)]="order.bankRouteNo" class="col-12" />
                 </div>
 
             </div>
 
             <div class="btn-section d-flex">
-                <button mat-button  class="ml-auto">Publish</button>
-                <button mat-button (click)="findMatch()">Find A Match</button>
+                <button mat-button  class="ml-auto" (click)="checkIfAllInput('publish')" *ngIf="!loading.publish">Publish</button>
+                <button mat-button class="ml-auto" *ngIf="loading.publish" style="padding: 7px 110px;">
+                    <img src="assets/auth/loader.gif" width="30" height="30" alt="">
+                </button> 
+
+                <button mat-button (click)="checkIfAllInput('findMatch')" *ngIf="!loading.findMach">
+                    Find A Match
+                </button>
+                <button mat-button *ngIf="loading.findMach" style="padding: 7px 110px;">
+                    <img src="assets/auth/loader.gif" width="30" height="30" alt="">
+                </button>   
             </div>
         </div>
 
@@ -192,3 +203,5 @@
         </div>
     </div>
 </div>
+
+<app-response [data] = "matchFound" *ngIf="showResponse"></app-response>

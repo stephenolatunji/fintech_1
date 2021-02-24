@@ -1,0 +1,86 @@
+<app-header></app-header>
+<div class="body">
+
+    <div class="first">
+        <div class="text1">Payment Information</div>
+        <div class="text2 text-right"><span style="color: black">Swap</span> {{paymentSummary?.myCurrency}} {{paymentSummary?.myAmount}}</div>
+
+        <div class="box">
+            <div class="text3">Select Payment Option</div>
+            <div class="d-flex mt-4">
+                <button mat-button class="pay-with-card" id="card" (click)="paymentType('card')">
+                    <img src="assets/payment/mastercard.svg" alt="">
+                    Pay with Card
+                </button>
+
+                <button mat-button class="pay-with-card pay-with-bank ml-auto" id="bank" (click)="paymentType('bank')">
+                    <img src="assets/payment/bank_.svg" *ngIf="!bank">
+                    <img src="assets/payment/bank.svg" *ngIf="bank">
+                    Pay with Bank
+                </button>
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="form-group1">
+                <label for="">Card Number</label><br />
+                <input type="number" >
+            </div>
+
+            <div class="form-group2">
+                <label for="">Expiry Date</label><br />
+                <input type="month" >
+            </div>
+
+            <div class="form-group3">
+                <label for="">CVV</label><br />
+                <input type="number" >
+            </div>
+
+        </div>
+        <div class="btn-section">
+            <button mat-button class="ml-auto">Pay</button>
+        </div>
+    </div>
+    
+    <div class="second">
+
+        <div class="group2">
+            <div class="text4">
+                Order Summary
+            </div>
+            <div class="line">
+                <div class="text5 mr-auto">To swap</div>
+                <div class="text3">{{paymentSummary?.myCurrency}} {{paymentSummary?.myAmount}}</div>
+            </div>
+            <div class="line">
+                <div class="text5 mr-auto">Rate </div>
+                <div class="text3">₦ {{paymentSummary?.rate}}</div>
+            </div>
+            <div class="line">
+                <div class="text5 mr-auto">Subtotal </div>
+                <div class="text3">{{paymentSummary?.convertedCurrency}} {{paymentSummary?.convertedAmount}}</div>
+            </div>
+            <div class="line">
+                <div class="text5 mr-auto">Proessing Fee </div>
+                <div class="text3">{{paymentSummary?.convertedCurrency}} {{paymentSummary?.transactionFee}}</div>
+            </div>
+            <div class="line" style="border-bottom: 0px;">
+                <div class="text5 mr-auto">Total </div>
+                <div class="text3">{{paymentSummary?.convertedCurrency}} {{ paymentSummary?.convertedAmount + paymentSummary?.transactionFee}}</div>
+            </div>
+
+            <div class="notice d-flex">
+                <div class="mr-1"><img src="assets/listing/notice.svg" alt=""></div>
+                <div>Publsh your order if you do not find suitable match</div>              
+            </div>
+         
+        </div>
+    
+        
+        <div class="group mt-3">
+            <img src="assets/listing/group.svg" />
+        </div>
+    </div>
+
+</div>

@@ -1,9 +1,9 @@
 .body {
-    padding: 19px 48px; background-color: #fff;
-    min-height: 99vh;
+     background-color: #fff;
+    /* min-height: 99vh; */
 }
 .success {
-    margin-top: 12px 0px 0 0px;
+    margin-top: 2px 0px 0 0px;
 }
 .text1 {
     font-weight: bold;
@@ -19,7 +19,7 @@
     line-height: 17px;
     text-align: center;
     letter-spacing: 0.002em;
-    margin-bottom: 36px;
+    margin-bottom: 26px;
     color: #4D4D4D;
 }   
 .box {
@@ -28,7 +28,7 @@
     border-radius: 15px;
     padding: 37px 34px;
     margin-bottom: 34px;
-    width: 40%;
+    width: 80%;
     display: flex; justify-content: space-between;
 }
 .box .d-flex div div:first-child, .box .d-flex div div:last-child, .non-flex div:first-child, .non-flex div:last-child {
@@ -58,13 +58,13 @@
 .btn-section {
     display: flex;
     justify-content: center;
-    margin: 40px 0px 86px 0px;
+    margin: 40px 30px;
 }
 .btn-section button  {
     /* width: 40%; */
     border: 1px solid #F27348;
     border-radius: 15px;
-    padding: 14px 84px;
+    padding: 14px;
     font-weight: bold;
     font-size: 18px;
     line-height: 22px;width: 50%;
