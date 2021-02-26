@@ -27,13 +27,14 @@ export class LoginComponent implements OnInit {
       if(data.isSuccess) {
         localStorage.setItem('token', data.token.accessToken);
         localStorage.setItem('customerId', data.entity.customerId);
+        localStorage.setItem('user', data.entity.userName);
         this.openSnackBar('Login Successful!');
-        this.rout.navigate(['dashboard'])
+        this.rout.navigate(['dashboard']);
         console.log(data.entity)
       }
       else {
-        this.err = data.message;
-        this.openSnackBar(`Sorry, ${data.message}`)
+        this.err = 'Please fill in the boxes correctly';
+        this.openSnackBar(this.err)
       }
     }, error => this.handleError(error))
   };

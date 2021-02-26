@@ -14,7 +14,7 @@
                             I want to swap
                         </div>
                         <div class="input-section">
-                            <select name="myCurrency" [(ngModel)]="order.myCurrency" (change)="doCalculation()">
+                            <select name="myCurrency" class="select" [(ngModel)]="order.myCurrency" (change)="doCalculation()">
                                 <option value="NGN">NGN</option>
                                 <option value="USD">USD</option>
                                 <option value="EUR">EUR</option>
@@ -32,7 +32,7 @@
                     <!-- condition toggler -->
                     <div class="card-list" *ngIf="order.myCurrency=='NGN'">
                         <div class="cards" (click)="toggelePrefferdCurrency('USD')" id="usd" style="border: 1px solid #26474E;">
-                            <div style="position: relative">
+                            <div style="">
                                 <img src="assets/listing/usd.svg" />
                                 <span class="country">USD</span>
                             </div>
@@ -76,7 +76,7 @@
                             <span class="country">GBP</span>
                             <div class="d-flex" style="margin-top: 20px;">
                                 <div class="amount">
-                                   <img src="assets/listing/gbp_.svg" alt="">
+                                    £
                                     0.00
                                 </div>
                                 <div class="chart">
@@ -96,7 +96,7 @@
                             <span class="country">EUR</span>
                             <div class="d-flex" style="margin-top: 20px;">
                                 <div class="amount">
-                                    <img src="assets/listing/euro.svg" alt="">
+                                    €
                                     0.00
                                 </div>
                                 <div class="chart">
@@ -140,7 +140,7 @@
                             <input type="number" [(ngModel)]="order.rate" name="rate"  (keyup)="doCalculation()"/>
                         </div>
                         <div class="w-50 input-section">
-                            <select [(ngModel)]="order.convertedCurrency" name="convertedCurrency" (change)="doCalculation()">
+                            <select [(ngModel)]="order.convertedCurrency" class="select" name="convertedCurrency" (change)="doCalculation()">
                                 <option value="USD">USD</option>
                                 <option value="NGN">NGN</option>
                                 <option value="EUR">EUR</option>
@@ -180,26 +180,26 @@
             </div>
 
             <div class="btn-section d-flex">
-                <button mat-button  class="ml-auto" (click)="checkIfAllInput('publish')" *ngIf="!loading.publish">Publish</button>
-                <button mat-button class="ml-auto" *ngIf="loading.publish" style="padding: 7px 110px;">
-                    <img src="assets/auth/loader.gif" width="30" height="30" alt="">
-                </button> 
 
-                <button mat-button (click)="checkIfAllInput('findMatch')" *ngIf="!loading.findMach">
-                    Find A Match
+                <button type='submit' class="ml-auto" mat-button (click)="loading? '' : checkIfAllInput('publish')">
+                    <span *ngIf="!loading.publish">Publish</span> 
+                    <img *ngIf="loading.publish" src="assets/auth/loader.gif" width="20" height="20" alt="">
                 </button>
-                <button mat-button *ngIf="loading.findMach" style="padding: 7px 110px;">
-                    <img src="assets/auth/loader.gif" width="30" height="30" alt="">
-                </button>   
+              
+                <button type='submit' mat-button (click)="loading? '' : checkIfAllInput('findMatch')">
+                    <span *ngIf="!loading.findMach">Find A Match</span> 
+                    <img *ngIf="loading.findMach" src="assets/auth/loader.gif" width="20" height="20" alt="">
+                </button>
+               
             </div>
         </div>
 
-        <div class="segment2">
+        <div class="segment2" >
             <div class="group1">
-                <img src="assets/listing/smallcard.svg" />
+                <img src="assets/listing/smallcard.svg" width="" />
             </div>
             <div class="group2">
-                <img src="assets/listing/group.svg" />
+                <img src="assets/listing/group.svg" width="" />
             </div>
         </div>
     </div>

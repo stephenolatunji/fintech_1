@@ -4,7 +4,7 @@
 }
 .text1 {
     font-weight: 600;
-    font-size: 30px;
+    font-size: 26px;
     line-height: 37px;
     align-items: center;
     text-align: center;
@@ -12,16 +12,16 @@
     color: #26474E;
 }
 .text2 {
-    margin: 12px 0px 38px 0px;
+    margin: 10px 0px 34px 0px;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 17px;
     text-align: center;
     color: #26474E;
 }
 .text3 {
     font-weight: 600;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 29px;
     align-items: center;
     text-align: center;
@@ -30,27 +30,27 @@
 }
 .left {
     background-color: #F0F4F5;
-    width: 50%; min-height: 99vh;
+    width: 50%;
 }
 .frame {
     display: flex;
     justify-content: center;
 }
 .right {
-    padding: 66px 100px 253px 85px;
+    padding: 40px 100px 53px 85px;
     width: 50%
 }
 
 h5 {
    font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 29px;
     letter-spacing: -0.02em;
     color: #254750;
 }
 h6 {
    font-weight: normal;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 22px;
     letter-spacing: -0.02em;
     color: #000000;
@@ -58,24 +58,25 @@ h6 {
 }
 label {
     font-weight: normal;
-    font-size: 16px;
+    font-size: 13px;
     line-height: 20px;
     color: #254750;
     margin-bottom: 7px;
 }
+
 .input-box, select, #mobile {
     border: 1px solid #254750;
-    border-radius: 15px;
-    padding: 9px 12px;
+    border-radius: 12px;
+    padding: 5px 12px;
     
 }
 .form {
-    margin-top: 25px;
+    margin-top: 20px;
 }
 input {
     width: 96%;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 20px;
     color: #254750;
     outline: none;
@@ -106,11 +107,12 @@ select {
     margin-right: 5px;
 }
 button {
-    margin: 15px 0px 12px 0px;
+    margin: 12px 0px;
     background-color: #26474E;
     color: white;
     border-radius: 15px;
-    padding: 14px;
+    padding: 8px;
+    font-size: 12px;
     width: 100%;
 }
 button:hover {
@@ -119,7 +121,7 @@ button:hover {
 .last-text {
     text-align: center;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 17px;
     color: #254750;
     display: flex;
@@ -127,21 +129,21 @@ button:hover {
 }
 .last-text a {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 17px;
     color: #254750;
     margin-left: 7px;
 }
 option, select {
     font-weight: normal;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 20px;
     color: #254750;
 }
 option {
-    padding: 19px;
+    padding: 14px;
 }
 .pwdErr {
     color: rgb(218, 63, 63);
-    font-size: 12px;
+    font-size: 10px;
 }

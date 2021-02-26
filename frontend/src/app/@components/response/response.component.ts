@@ -36,8 +36,8 @@ export class ResponseComponent implements OnInit {
   payNow() {
     this.server.pendingOrders = this.data;
     console.log(this.data)
-    this.server.matchOrder(this.data).subscribe(dat=>{
-
+    this.server.createAndMatchOrder(this.data).subscribe(dat=>{
+      
     })
   }
 

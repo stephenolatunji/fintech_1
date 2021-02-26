@@ -1,10 +1,10 @@
-<div class="body">
+<div class="body" *ngIf="!success">
     <div>
         <div class="envelop">
             <img src="assets/auth/envelop.svg" />
         </div>
         <div class="text1">
-        OTP Authentication
+            OTP Authentication
         </div>
         <div class="text2">
             Enter the OTP sent to your mail
@@ -13,7 +13,7 @@
             Confirm the verification information sent to your email to complete your login process.
         </div>
         <div class="input text-center">
-            <div class="box " id="box1">
+            <div class="box " id="box1" #box1>
                 <input type="number" name="one" [(ngModel)]="input.one" #one autofocus (keyup)="inputFunc($event, 1)">
             </div>
             <div class="box" id="box2">
@@ -25,9 +25,17 @@
             <div class="box" style="margin-right: 0px" id="box4" >
                 <input type="number" name="four" [(ngModel)]="input.four" #four (keyup)="inputFunc($event, 4)">
             </div>
-        <div>   
+        </div>   
     </div>
 </div>
+<div class="text-center text-danger" style="font-size: 12px;" *ngIf="!success">{{err}}</div>
+<div class="text3" *ngIf="!success">Resend OTP?</div>
+<div style="display: flex; justify-content: center;" *ngIf="!success">
+    <button type='submit' (click)="loading? '' : handleSubmit()">
+        <span *ngIf="!loading" >Verify</span> 
+        <img *ngIf="loading" src="assets/auth/loader.gif" width="20" height="20" alt="">
+    </button>
+</div>
 
-<div class="text3">Resend OTP?</div>
-<button mat-button>Verify</button>
+
+<app-verification-success *ngIf="success"></app-verification-success>

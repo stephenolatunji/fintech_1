@@ -76,9 +76,20 @@ export class ListingComponent implements OnInit {
       this.loading.publish = false;
       this.server.findMatch(this.order).subscribe(data=>{
         this.loading.findMach = false;
-        if(data.succeeded) {
+        if(data.succeeded && data.entity!==null) {
           this.openSnackBar('Finding Match...');
-          this.matchFound = data;
+          data.entity.myAccountNumber = this.order.myAccountNumber.toString();
+          data.entity.myBankName = this.order.myBankName;
+          data.entity.bankRouteNo = this.order.bankRouteNo;
+          data.entity.convertedAmount = parseFloat(data.entity.convertedAmount);
+          data.entity.findMatchResult = {
+            orderId: data.entity.id,
+            orderNo: data.entity.orderNo,
+            transactionFee: data.entity.transactionFee,
+            orderStatus: data.entity.orderStatus
+          }
+
+          this.matchFound = data.entity;
           this.showResponse = true
         }
         else {

@@ -34,7 +34,7 @@ export class ServerService {
     return this.http.get<any>(`${environment.url}/api/orders/gettop10orderlistings`)
   }
 
-  matchOrder(matchDetails) {
+  createAndMatchOrder(matchDetails) {
     return this.http.post<any>(`${environment.url}/api/orders/createandmatchorder`, matchDetails)
   }
   getTransactions() {

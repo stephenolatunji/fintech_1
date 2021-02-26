@@ -5,27 +5,49 @@
 
             <div class="rect1">
                 <div class="text">
-                    <div class="one">
+                    <!-- When u have no pending order -->
+                    <div class="one" *ngIf="pendingOrders==undefined">
                         Publish your orders to get<br /> swapped
                     </div>
-                    <div class="two">
+                    <!-- When u have a pending order -->
+                    <div class="one d-flex" *ngIf="pendingOrders!==undefined && timeCount.status">
+                        You have a pending order<br /> that needs to be completed 
+                        <div class="timer">
+                            Time Left {{timeCount.hours}}hrs {{timeCount.minutes}}mins {{timeCount.seconds}}sec  
+                        </div>
+                        
+                    </div>
+                    <div class="one" *ngIf="pendingOrders!==undefined && !timeCount.status">
+                        Your order was cancelled after <br />the 12 hours time bound elapse,<br /> edit to find new match
+                    </div>
+
+                    <div class="two" *ngIf="timeCount.status">
                         The best platform to exchange currencies.
                     </div>
-                    <button mat-button (click)="createOrder()">
+                     <!-- When u have no pending order -->
+                    <button mat-button (click)="createOrder()" *ngIf="pendingOrders==undefined ">
                         Create a new order
                     </button>
+                    <!-- When u have a pending order -->
+                    <button mat-button  *ngIf="pendingOrders!==undefined && timeCount.status">
+                        Pending order
+                    </button>
+                    <!-- When u have a an unfulfiled order -->
+                    <button mat-button class="mt-3"  *ngIf="pendingOrders!==undefined && !timeCount.status">
+                        Unfulfilled Order
+                    </button>
                 </div>
-                <div class="">
+                <div>
                     <img src="assets/listing/publish-listing.svg" />
                 </div>
             </div>
 
             <div class="rect2">
-                <div class="head">
+                <div class="head mb-2">
                     <div>Top listings</div>
-                    <div><a href="" >View more</a></div>
+                    <div><a href="javascript:void(0)" (click)="viewMore()" >{{buttonText}}</a></div>
                 </div>
-                <table class="table table-hover" >
+                <table class="table" >
                     <thead class="thead" >
                         <tr>
                             <th>To Swap</th>
@@ -37,15 +59,23 @@
                         </tr>
                     </thead>
                     <tbody >
-                        <tr *ngFor="let list of top10">
-                            <td>{{list.myCurrency}} {{list.myAmount}}</td>
-                            <td>USD($)</td>
-                            <td>N {{list.rate}}/{{list.convertedCurrency}}1</td>
-                            <td>@Oluchi</td>
-                            <td>Published</td>
-                            <td>
-                                <button class="button" style="margin-right: 10px" mat-button (click)="view(list)">View </button>
-                                <button class="button" mat-button (click)="swap(list)">Swap</button>
+                        <tr *ngFor="let list of top10; let i = index">
+                            <td *ngIf="i < top10Index">{{list?.order.myCurrency}} {{list?.order.myAmount}}</td>
+                            <td *ngIf="i < top10Index">
+                                <img *ngIf="list?.order.convertedCurrency.toUpperCase()=='USD'" src="assets/listing/usd.svg" width="20" height="25" alt="">
+                                <img *ngIf="list?.order.convertedCurrency.toUpperCase()=='EUR'" src="assets/listing/euro.svg" width="20" height="25" alt="">
+                                <img *ngIf="list?.order.convertedCurrency.toUpperCase()=='CAD'" src="assets/listing/cad.svg" width="20" height="25" alt="">
+                                <img *ngIf="list?.order.convertedCurrency.toUpperCase()=='NGN'" src="assets/listing/ngn.svg" width="20" height="25" alt="">
+                                <img *ngIf="list?.order.convertedCurrency.toUpperCase()=='JPY'" src="assets/listing/jpy.svg" width="20" height="25" alt="">
+                                <img *ngIf="list?.order.convertedCurrency.toUpperCase()=='GBP'" src="assets/listing/gbp.svg" width="20" height="25" alt="">
+                                {{list?.order.convertedCurrency}}
+                            </td>
+                            <td *ngIf="i < top10Index">{{list?.order.myCurrency}} {{list?.preferredRate}}/{{list?.order.convertedCurrency}}</td>
+                            <td *ngIf="i < top10Index">@Oluchi</td>
+                            <td *ngIf="i < top10Index">Published</td>
+                            <td *ngIf="i < top10Index" class="td-button">
+                                <button class="button" style="margin-right: 10px" mat-button (click)="view(list.order)">View </button>
+                                <button class="button" mat-button (click)="swap(list.order)">Swap</button>
                             </td>
                         </tr>
                     </tbody>
@@ -61,8 +91,11 @@
         <div class="group">
 
             <div class="group1" *ngIf="pendingOrders!==undefined">
-                <div class="text1">
+                <div class="text1" *ngIf="timeCount.status">
                     Pending Order Summary
+                </div>
+                <div class="text1" *ngIf="!timeCount.status">
+                    Unfulfilled Order Summary
                 </div>
                 <div class="line">
                     <div class="text2">To swap </div>
@@ -89,13 +122,20 @@
                     <div>
                         <img src="assets/listing/notice.svg" alt="" style="margin-right: 5.43px">
                     </div>
-                    <div class="notice">
+                    <div class="notice" *ngIf="timeCount.status">
                         You wont be able to create a new<br /> order until you have fulfilled your<br /> pending order.
                     </div>
+                    <div class="notice"  *ngIf="!timeCount.status">
+                        You can edit your order to <br />find a new match.
+                    </div>
+                    
                 </div>
 
-                <button class="pay-now" (click)="paynow()">
+                <button class="pay-now" (click)="paynow()" *ngIf="timeCount.status">
                     Pay Now
+                </button>
+                <button class="pay-now" *ngIf="!timeCount.status" (click)="editPendingOrderAfterExpiration()">
+                    Edit
                 </button>
             </div>
 
