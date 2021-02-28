@@ -1,0 +1,39 @@
+.modal-dialog {
+    background-color: #fff;  padding: 25px 25px 80px 25px; max-height: 100%;
+}
+.modal-content {
+    border: 0px; 
+}
+.text1 {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    color: #26474E;
+}
+.img {
+    display: flex; justify-content: center; margin-top: 15px;
+}
+.img div {
+    display: flex; align-items: flex-end; margin-left: -13px;; cursor: pointer;
+}
+input, select {
+    border: 1px solid #26474E;
+    border-radius: 15px;
+    padding: 7px;
+    width: 100%;
+}
+select {
+    width: 25%;
+}
+button {
+    background-color: #F27348;
+    padding: 5px 55px;
+    color: white;
+    border-radius: 15px;
+}
+button:hover {
+    opacity: .7;
+}
+.text2 {
+    margin: 2px 0px 2px 32px; font-size: 13px;
+}

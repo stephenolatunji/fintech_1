@@ -17,6 +17,8 @@ import {
   AuthGuardService as AuthGuard 
 } from './@auth/guard/auth-guard.service';
 import { PaymentPlatformComponent } from './@components/payment-platform/payment-platform.component';
+import { SettingsComponent } from './@theme/components/settings/settings.component';
+import { ProfileComponent } from './@theme/components/profile/profile.component';
 
 const routes: Routes = [
   { path: "", component: ComingSoonComponent },

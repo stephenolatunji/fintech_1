@@ -14,12 +14,12 @@ export class VerificationSuccessComponent implements OnInit {
   ngOnInit(): void {
     $('#successMsg').modal({backdrop: 'static', keyboard: false}) ;
 
-    $('#btn').click(()=>{
-      alert()
-    })
+    // $('#btn').click(()=>{
+    //   this.rout.navigate
+    // })
   }
 
-  closeModal() {alert()
+  closeModal() {
     $('#successMsg').modal('hide'); this.rout.navigate(['login'])
   }
 

@@ -6,7 +6,7 @@ import { environment } from "../../../environments/environment";
 })
 export class ServerService {
 
-  public userDetails; matchFound; pendingOrders;
+  public userDetails; matchFound; pendingOrders; userInformations;
  
   constructor(private http: HttpClient) { }
 
@@ -37,6 +37,36 @@ export class ServerService {
   createAndMatchOrder(matchDetails) {
     return this.http.post<any>(`${environment.url}/api/orders/createandmatchorder`, matchDetails)
   }
+
+  getUserDeytailsWithCustomerId(customerId) {
+    return this.http.post<any>(`${environment.url}/api/Customers/getbyid/${customerId}`, {})
+  }
+
+  updateUserProfile(data) {
+    console.log(data)
+    return this.http.put<any>(`${environment.url}/api/Customers/update/${data.customerId}`, data)
+  }
+
+  changePassword(data) {
+    return this.http.post<any>(`${environment.url}/api/Authentication/changePassword`, data)
+  }
+
+  updateUserDocument(data) {
+    return this.http.post<any>(`${environment.url}/api/Authentication/`, data)
+  }
+
+  confirmPassword(data) {
+    return this.http.post<any>(`${environment.url}/api/Authentication/`, data)
+  }
+
+  updateProfilePicture(data) {
+    const newData = {
+      customerId: data.customerId,
+      uploadImage: data.uploadImage.split(",")[1]
+    }
+    return this.http.post<any>(`${environment.url}/api/Customers/uploadimage`, newData)
+  }
+
   getTransactions() {
     // return this.http.get<any>(`${environment.url}/api/orders/gettop10orderlistings`)
   }

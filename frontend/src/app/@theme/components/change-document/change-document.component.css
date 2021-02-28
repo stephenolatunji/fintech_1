@@ -1,0 +1,84 @@
+.modal-dialog {
+    background-color: #fff;  padding: 25px 25px 250px 25px; max-height: 100%;
+}
+.settings {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    color: #26474E;
+    margin: 10px 4px;
+}
+.box {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(152, 157, 179, 0.3);
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 12px 15px;
+    /* display: flex; */
+    margin-top: 16px;
+}
+.box .text1 {
+    margin-left: 15px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 3.5px;
+    color: #262C31;
+}
+.modal-content {
+    border: 0px; 
+}
+img, .box {
+    cursor: pointer;
+}
+.text2 {
+    margin: 7px 0px 7px 32px; font-size: 13px;
+}
+.text2 div {
+    padding: 7px;
+}
+
+button {
+    background-color: #F27348;
+    padding: 8px 55px;
+    color: white;
+    border-radius: 15px;
+}
+button:hover {
+    opacity: .7;
+}
+
+.drag-drop {
+    border: 1.5px dashed #4D4D4D;
+    padding: 25px 50px; margin: 0px 0px 25px 0px;
+    /* display: flex; */
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+.files-list {
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    margin: 5px auto 0px auto;
+    color: #1c8adb;
+}
+
+
+input {
+    border: 1px solid #26474E;
+    border-radius: 15px;
+    padding: 7px;
+    width: 100%;
+}
+
+.drag-drop span {
+    color: #F27348;
+    cursor: pointer;
+}
+.drag-drop span:hover {
+    text-decoration: underline
+}
+.drag-drop img {
+    margin-bottom: 8px;
+}

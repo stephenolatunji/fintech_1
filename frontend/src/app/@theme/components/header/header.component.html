@@ -25,16 +25,16 @@
             <!-- <div class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div> -->
             <div id="dropdownMenuButton" class="d-flex" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div>
-                    <img class="avatar" src="assets/header/avatar.jpg" />
+                    <img id="profilePic_"  style="border-radius: 50px;" height="40" width="35" alt="">
                 </div>
                 <div class="name"> {{username}}</div>
             </div>
            
-            <div class="dropdown-menu mt-4" aria-labelledby="dropdownMenuButton" >
-                <li style="font-size: 13px;" class="d-flex p-2">
+            <div class="dropdown-menu mt-4 animate_animated animate__fadeIn" aria-labelledby="dropdownMenuButton" >
+                <li style="font-size: 13px;" class="d-flex p-2" (click)="open('profile')">
                     <img src="assets/header/user.svg" class="mr-4" alt=""> Profile
                 </li>
-                <li style="font-size: 13px;" class="d-flex p-2">
+                <li style="font-size: 13px;" class="d-flex p-2" (click)="open('settings')">
                     <img src="assets/header/settings.svg" class="mr-4" alt=""> Settings
                 </li>
                 <li style="font-size: 13px;" class="d-flex p-2" (click)="logout()">
@@ -43,4 +43,8 @@
             </div>
         </div>
     </div>
+    
 </div>
+
+<app-settings *ngIf="settings"></app-settings>
+<app-profile *ngIf="profile"></app-profile>

@@ -12,6 +12,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatButtonModule} from '@angular/material/button';
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -36,6 +37,12 @@ import { NgxImageCompressService } from 'ngx-image-compress';
 import { ActivityTwoComponent } from './@components/activity-two/activity-two.component';
 import { PaymentPlatformComponent } from './@components/payment-platform/payment-platform.component';
 import { VerificationSuccessComponent } from './@theme/components/verification-success/verification-success.component';
+import { SettingsComponent } from './@theme/components/settings/settings.component';
+import { ProfileComponent } from './@theme/components/profile/profile.component';
+import { ChangePasswordComponent } from './@theme/components/change-password/change-password.component';
+import { ChangeDocumentComponent } from './@theme/components/change-document/change-document.component';
+import { EditProfileComponent } from './@theme/components/edit-profile/edit-profile.component';
+
 
 @NgModule({
   declarations: [
@@ -60,7 +67,12 @@ import { VerificationSuccessComponent } from './@theme/components/verification-s
     ActivityComponent,
     ActivityTwoComponent,
     PaymentPlatformComponent,
-    VerificationSuccessComponent
+    VerificationSuccessComponent,
+    SettingsComponent,
+    ProfileComponent,
+    ChangePasswordComponent,
+    ChangeDocumentComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -70,6 +82,7 @@ import { VerificationSuccessComponent } from './@theme/components/verification-s
     HttpClientModule,
     MatCheckboxModule,
     MatExpansionModule,
+    MatSlideToggleModule,
     MatButtonModule,MatRadioModule, MatSnackBarModule
   ],
   providers: [NgxImageCompressService,  { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },, JwtHelperService],

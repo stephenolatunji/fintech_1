@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<!-- put ngIf loading later -->
+<router-outlet *ngIf="!loading"></router-outlet>
+<div class="spinner" *ngIf="loading">
+    <img *ngIf="loading" src="assets/auth/loader.gif" width="20" height="20" alt="">
+</div>
+<!-- put loader here -->
