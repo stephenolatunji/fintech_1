@@ -16,7 +16,7 @@ export class ListingComponent implements OnInit {
     myCurrency: 'NGN', 
     rate: null, 
     myAccountNumber: null,
-    myBankName: 'access_bank',
+    myBankName: 'Access Bank',
     bankRouteNo: null,
     convertedCurrency: 'USD',
     convertedAmount: null
@@ -83,11 +83,14 @@ export class ListingComponent implements OnInit {
           data.entity.bankRouteNo = this.order.bankRouteNo;
           data.entity.convertedAmount = parseFloat(data.entity.convertedAmount);
           data.entity.findMatchResult = {
+            customerId: data.entity.customerId,
             orderId: data.entity.id,
             orderNo: data.entity.orderNo,
             transactionFee: data.entity.transactionFee,
             orderStatus: data.entity.orderStatus
           }
+
+          console.log(data.entity)
 
           this.matchFound = data.entity;
           this.showResponse = true

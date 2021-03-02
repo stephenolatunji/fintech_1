@@ -1,0 +1,25 @@
+.navigation {
+    min-height: 100%;
+    background-color: #26474E;
+    padding: 15px 15px 15px 0px;
+    width: 17%; position: fixed;
+}
+.brand {
+    margin: 0px 0px 80px 15px;
+}
+.nav-text {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FFFFFF;
+    margin-bottom: 45px;
+    cursor: pointer;
+    padding-left: 15px;
+}
+.nav-text:hover {
+    opacity: .7;
+    border-left: 4px solid white;
+}
+img {
+    margin-right: 3px;
+}

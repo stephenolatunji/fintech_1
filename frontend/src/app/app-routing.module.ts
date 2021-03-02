@@ -19,6 +19,12 @@ import {
 import { PaymentPlatformComponent } from './@components/payment-platform/payment-platform.component';
 import { SettingsComponent } from './@theme/components/settings/settings.component';
 import { ProfileComponent } from './@theme/components/profile/profile.component';
+import { UsersComponent } from './super-admin/@components/users/users.component';
+
+import { SuperDashboardComponent } from './super-admin/@components/super-dashboard/super-dashboard.component';
+import { ReportsComponent } from './super-admin/@components/reports/reports.component';
+import { ConfigurationComponent } from './super-admin/@components/configuration/configuration.component';
+import { SupportComponent } from './super-admin/@components/support/support.component';
 
 const routes: Routes = [
   { path: "", component: ComingSoonComponent },
@@ -32,7 +38,15 @@ const routes: Routes = [
   { path: 'notify', component: EmailNotificationComponent, canActivate: [AuthGuard]  },
   { path: 'activity', component: ActivityComponent, canActivate: [AuthGuard]  },
   { path: 'transaction-summary', component: ActivityTwoComponent, canActivate: [AuthGuard]  },
-  { path: 'payment-gateway', component: PaymentPlatformComponent,  canActivate: [AuthGuard] }
+  { path: 'payment-gateway', component: PaymentPlatformComponent,  canActivate: [AuthGuard] },
+
+  // super-admin
+  // { path: 'super-admin', component: LoginComponent },
+  { path: 'super-admin/dashboard', component: SuperDashboardComponent },
+  { path: 'super-admin/user', component: UsersComponent },
+  { path: 'super-admin/reports', component: ReportsComponent },
+  { path: 'super-admin/configuration', component: ConfigurationComponent },
+  { path: 'super-admin/support', component: SupportComponent }
 ];
 
 @NgModule({

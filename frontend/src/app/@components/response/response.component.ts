@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ServerService } from 'src/app/@theme/services/server.service';
 declare var $: any;
@@ -9,10 +10,10 @@ declare var $: any;
 })
 
 export class ResponseComponent implements OnInit {
-  @Input() data;
+  @Input() data; loading: boolean = false;
   success: boolean = false;
   
-  constructor(private server: ServerService, private rout: Router) { }
+  constructor(private server: ServerService, private rout: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     if(this.data == 'No Match Found') {
@@ -34,15 +35,32 @@ export class ResponseComponent implements OnInit {
   }
 
   payNow() {
+    this.data.customerId = localStorage.getItem('customerId');
     this.server.pendingOrders = this.data;
     console.log(this.data)
+    this.loading = true;
     this.server.createAndMatchOrder(this.data).subscribe(dat=>{
-      
-    })
+      this.loading = false;
+      if(dat.succeeded && dat.entity!==null) {
+        this.server.pendingOrders = dat.entity;
+        this.close();
+        this.rout.navigate(['payment-gateway'])
+      }
+      else {
+        this.openSnackBar('Error while proccessing your request!')
+      }
+        console.log(dat)
+    }, err => this.openSnackBar('Error while proccessing your request!'))
   }
 
   payLater() {
     this.rout.navigate(['dashboard']);
+  }
+
+  openSnackBar(msg) {
+    this._snackBar.open(msg, '', {
+      duration: 2500,
+    });
   }
 
 }

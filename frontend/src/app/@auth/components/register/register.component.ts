@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServerService } from './../../../@theme/services/server.service';
 
@@ -6,6 +6,9 @@ import { ServerService } from './../../../@theme/services/server.service';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
+})
+@Injectable({
+  providedIn: "root"
 })
 export class RegisterComponent implements OnInit {
 

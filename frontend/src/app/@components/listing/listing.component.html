@@ -1,7 +1,7 @@
 
 <div class="parent">
     <app-header ></app-header>
-    <div class="body animate__animated animate__slideInRight">
+    <div class="body animate__animated animate__fadeIn">
         <div class="segment1">
 
             <!-- create order -->
@@ -161,7 +161,7 @@
                 <div class="col-6" >
                     <label for="bank">Bank</label><br />
                     <select id="bank" [(ngModel)]="order.myBankName" name="myBankName" class="col-12">
-                        <option value="access_bank">Access Bank</option>
+                        <option value="Access Bank">Access Bank</option>
                         <option>Access Bank</option>
                         <option>Access Bank</option>
                     </select>
@@ -181,12 +181,12 @@
 
             <div class="btn-section d-flex">
 
-                <button type='submit' class="ml-auto" mat-button (click)="loading? '' : checkIfAllInput('publish')">
+                <button type='submit' class="ml-auto" mat-button (click)="loading.publish? '' : checkIfAllInput('publish')">
                     <span *ngIf="!loading.publish">Publish</span> 
                     <img *ngIf="loading.publish" src="assets/auth/loader.gif" width="20" height="20" alt="">
                 </button>
               
-                <button type='submit' mat-button (click)="loading? '' : checkIfAllInput('findMatch')">
+                <button type='submit' mat-button (click)="loading.findMach? '' : checkIfAllInput('findMatch')">
                     <span *ngIf="!loading.findMach">Find A Match</span> 
                     <img *ngIf="loading.findMach" src="assets/auth/loader.gif" width="20" height="20" alt="">
                 </button>

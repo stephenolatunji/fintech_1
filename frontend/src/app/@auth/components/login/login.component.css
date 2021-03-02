@@ -1,6 +1,5 @@
-
 .body {
-    display: flex;
+    display: flex; min-height: 100%;
 }
 
 .left {
@@ -11,7 +10,8 @@
 
 .right {
     padding: 79px 100px 53px 85px;
-    width: 50%
+    width: 50%;
+    background-color: #fff;
 }
 h5 {
    font-weight: 600;
@@ -38,7 +38,7 @@ label {
 .input-box, select, #mobile {
     border: 1px solid #254750;
     border-radius: 15px;
-    padding: 9px 12px;
+    padding: 11px 12px;
     
 }
 .form {
@@ -55,7 +55,7 @@ input {
 }
  
 .password {
-    display: flex;
+    display: flex; padding: 8px 12px;
 }
 
 button {
@@ -63,7 +63,7 @@ button {
     background-color: #26474E;
     color: white;
     border-radius: 15px;
-    padding: 8px;
+    padding: 11px;
     width: 100%;
     font-size: 14px;
 }
@@ -93,6 +93,5 @@ button:hover {
     font-size: 12px;
     line-height: 17px;
     text-align: right;
-
     color: #254750;
 }

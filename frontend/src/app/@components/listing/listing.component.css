@@ -153,7 +153,7 @@ label {
 .btn-section button:first-child, .btn-section button:last-child {
     border: 1px solid #F27348;
     border-radius: 15px;
-    padding: 19px 94px;
+    padding: 14px 94px;
     font-weight: bold;
     font-size: 18px;
     line-height: 22px;
@@ -164,7 +164,7 @@ label {
 
 .btn-section button:last-child {
     background-color: #F27348;
-    padding: 19px 66.75px;
+    padding: 14px 66.75px;
     color: #fff;
     margin-left: 15.25px;
 }

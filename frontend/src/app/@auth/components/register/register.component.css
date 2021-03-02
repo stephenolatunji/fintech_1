@@ -1,6 +1,5 @@
-
 .body {
-    display: flex;
+    display: flex; min-height: 100%;
 }
 .text1 {
     font-weight: 600;
@@ -38,7 +37,8 @@
 }
 .right {
     padding: 40px 100px 53px 85px;
-    width: 50%
+    width: 50%;
+    background-color: #fff;
 }
 
 h5 {
@@ -67,7 +67,7 @@ label {
 .input-box, select, #mobile {
     border: 1px solid #254750;
     border-radius: 12px;
-    padding: 5px 12px;
+    padding: 8px 12px;
     
 }
 .form {
@@ -111,7 +111,7 @@ button {
     background-color: #26474E;
     color: white;
     border-radius: 15px;
-    padding: 8px;
+    padding: 11px;
     font-size: 12px;
     width: 100%;
 }

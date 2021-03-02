@@ -20,7 +20,16 @@ export class DocUploadComponent implements OnInit {
 
   public user_ = { documentImage: '', documentType: "1", bvn: '', documentNumber: '', documentExpiryDate: '' };
 
-  constructor(private reg: RegisterComponent, private auth: AuthService, private server: ServerService, private rout: Router, private helper: HelperService, private imageCompress: NgxImageCompressService, private _snackBar: MatSnackBar) { }
+  constructor(
+    private reg: RegisterComponent, 
+    private auth: AuthService, 
+    private server: ServerService, 
+    private rout: Router, 
+    private helper: HelperService, 
+    private imageCompress: NgxImageCompressService, 
+    private _snackBar: MatSnackBar,
+    private regFunc: RegisterComponent
+    ) { }
 
   ngOnInit(): void {
 
@@ -100,5 +109,9 @@ export class DocUploadComponent implements OnInit {
     this._snackBar.open(msg, '', {
       duration: 2500,
     });
+  }
+
+  goBack() {
+    this.regFunc.docUpload = false;
   }
 }

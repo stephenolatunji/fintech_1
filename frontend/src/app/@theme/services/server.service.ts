@@ -5,8 +5,8 @@ import { environment } from "../../../environments/environment";
   providedIn: 'root'
 })
 export class ServerService {
-
-  public userDetails; matchFound; pendingOrders; userInformations;
+  // pending order is used for holding the data when match is found to be used in payment stuff
+  public userDetails; matchFound; pendingOrders; userInformations; ;
  
   constructor(private http: HttpClient) { }
 
