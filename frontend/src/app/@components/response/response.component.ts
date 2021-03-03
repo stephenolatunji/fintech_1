@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ServerService } from 'src/app/@theme/services/server.service';
@@ -9,17 +9,21 @@ declare var $: any;
   styleUrls: ['./response.component.css']
 })
 
+@Injectable({providedIn: "root"})
+
 export class ResponseComponent implements OnInit {
-  @Input() data; loading: boolean = false;
+  @Input() data; loading: boolean = false;  paymentHandler:any = null; paymentSuccessful: boolean = false
   success: boolean = false;
   
   constructor(private server: ServerService, private rout: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    $('#payment-success').modal('hide')
     if(this.data == 'No Match Found') {
       this.success = false
     }
     else {
+      this.invokeStripe();
       this.success = true;
     }
     $('#myModal').modal('show')
@@ -44,7 +48,7 @@ export class ResponseComponent implements OnInit {
       if(dat.succeeded && dat.entity!==null) {
         this.server.pendingOrders = dat.entity;
         this.close();
-        this.rout.navigate(['payment-gateway'])
+        this.handlePayment(dat.entity.myAmount + dat.entity.transactionFee);
       }
       else {
         this.openSnackBar('Error while proccessing your request!')
@@ -62,5 +66,42 @@ export class ResponseComponent implements OnInit {
       duration: 2500,
     });
   }
+  
+  handlePayment(amount) {
+    const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB',
+      locale: 'auto',
+      token:  (stripeToken: any) => {
+        console.log(stripeToken)
+        console.log(this.server.pendingOrders)
+        $('#payment-success').modal('show')
+      }
+    });
+  
+    paymentHandler.open({
+      name: 'Anelloh',
+      description: 'Payment',
+      amount: amount * 100
+    });
+  }
+
+  invokeStripe() {
+    if(!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement("script");
+      script.id = "stripe-script";
+      script.type = "text/javascript";
+      script.src = "https://checkout.stripe.com/checkout.js";
+      script.onload = () => {
+        this.paymentHandler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB',
+          locale: 'auto',
+          token:  (stripeToken: any) =>{
+            console.log(stripeToken)
+          }
+        });
+      }
+        
+      window.document.body.appendChild(script);
+  }}
 
 }

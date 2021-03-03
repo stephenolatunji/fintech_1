@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServerService } from 'src/app/@theme/services/server.service';
+import { ResponseComponent } from '../response/response.component';
 
 @Component({
   selector: 'app-payment-platform',
@@ -8,7 +9,10 @@ import { ServerService } from 'src/app/@theme/services/server.service';
   styleUrls: ['./payment-platform.component.css']
 })
 export class PaymentPlatformComponent implements OnInit {
-  paymentSummary; bank: boolean = false;
+  paymentSummary; bank: boolean = false; paymentHandler:any = null;
+  paymentDetails = {
+    cardNumber: '', expiryDate: '', cvv: ''
+  }
   constructor(private server: ServerService, private rout: Router) { }
 
   ngOnInit(): void {
@@ -37,5 +41,8 @@ export class PaymentPlatformComponent implements OnInit {
     }
   }
 
+  handlePayment(amount) {
+  
+  }
   
 }

@@ -1,4 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
+import { SuperServiceService } from 'src/app/@super-admin/@theme/service/super-service.service';
 
 @Component({
   selector: 'app-users',
@@ -7,11 +8,17 @@ import { Component, Injectable, OnInit } from '@angular/core';
 })
 @Injectable({providedIn: "root"})
 export class UsersComponent implements OnInit {
-  users = [{status: 1}, {status: 0}, {status: 1}, {status: 1}, {status: 0}]
+  allCutomers;
   addUserClicked: boolean = false;
-  constructor() { }
+  constructor(private server: SuperServiceService) { }
 
   ngOnInit(): void {
+    this.allCutomers = this.server.allCustomers;
+    if(this.allCutomers == undefined) {
+      this.server.getAllCustomers().subscribe(dat=>{console.log(dat)
+        this.allCutomers = dat.entity;
+      })
+    }
   }
 
   toggleAddUser() {

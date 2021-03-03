@@ -3,13 +3,13 @@
 <!-- !successful -->
 
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTittle" aria-hidden="true">
+<div class="modal fade"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTittle" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
-            <div class="modal-header">
+            <!-- <div class="modal-header">
               <i class="fa fa-arrow-left" aria-hidden="true" (click)="close()"></i>
-            </div>
+            </div> -->
       
             <div class="body modal-body" *ngIf="success">
                 <div class="d-flex"><img src="assets/listing/close.svg" class="ml-auto" alt=""></div>
@@ -71,4 +71,14 @@
             
         </div>
     </div>
-  </div>
+</div>
+
+
+<div class="modal fade animate__animated animate__fadeIn" id="payment-success"  >
+    <div class="modal-dialog" role="document">
+        <div class="modal-content payment-success">
+            <img src="assets/payment/mark.svg" alt="">
+            <div class="success-text">Successful!</div>
+        </div>
+    </div>
+</div>

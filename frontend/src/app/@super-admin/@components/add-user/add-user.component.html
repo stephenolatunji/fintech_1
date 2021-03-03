@@ -1,5 +1,5 @@
 
-<div class="body animate__animated animate__fadeIn">
+<form class="body animate__animated animate__fadeIn">
     <div class="one">
         <div>Add User <span (click)="goBack()">or go Back</span></div>
         <img class="userAvatar" src="assets/header/avatar.jpg" alt="">
@@ -13,33 +13,33 @@
         <div class="d-flex">
             <div class="form-group mr-4">
                 <label for="firstName">First name</label><br />
-                <input type="text">
+                <input type="text" [(ngModel)]="newUser.firstName" name="firstName">
             </div>
             <div class="form-group">
                 <label for="middleName">Middle name</label><br />
-                <input type="text">
+                <input type="text" [(ngModel)]="newUser.middleName" name="middleName">
             </div>
         </div>
 
         <div class="d-flex">
             <div class="form-group mr-4">
                 <label for="lastName">Last name</label><br />
-                <input type="text">
+                <input type="text" [(ngModel)]="newUser.lastName" name="lastName">
             </div>
             <div class="form-group">
                 <label for="gender">Gender</label><br />
-                <input type="text">
+                <input type="text" [(ngModel)]="newUser.gender" name="gender">
             </div>
         </div>
 
         <div class="d-flex">
             <div class="form-group mr-4">
                 <label for="email">Email</label><br />
-                <input type="text">
+                <input type="text" [(ngModel)]="newUser.email" name="email">
             </div>
             <div class="form-group">
                 <label for="phoneNumber">Phone Number</label><br />
-                <input type="text">
+                <input type="text" [(ngModel)]="newUser.phoneNumber" name="phoneNumber">
             </div>
         </div>
 
@@ -52,29 +52,29 @@
         <div class="d-flex">
             <div class="form-group mr-4">
                 <label for="firstName">Department</label><br />
-                <input type="text">
+                <input type="text" [(ngModel)]="newUser.department" name="department">
             </div>
             <div class="form-group">
                 <label for="middleName">Supervisor</label><br />
-                <input type="text">
+                <input type="text" [(ngModel)]="newUser.supervisor" name="supervisor">
             </div>
         </div>
 
         <div class="d-flex">
             <div class="form-group mr-4">
                 <label for="lastName">Role</label><br />
-                <input type="text">
+                <input type="text" [(ngModel)]="newUser.role" name="role">
             </div>
             <div class="form-group">
                 <label for="gender">Staff Code</label><br />
-                <input type="text">
+                <input type="text" [(ngModel)]="newUser.staffCode" name="staffCode">
             </div>
         </div>
 
         <div class="d-flex">
             <div class="form-group mr-4">
                 <label for="email">Access Level</label><br />
-                <select name="" id="" class="p-2">
+                <select name="accessLevel" [(ngModel)]="newUser.accessLevel" id="" class="p-2">
                     <option value="">Super Admin</option>
                     <option value="">Admin</option>
                     <option value="">Customer Service</option>
@@ -91,4 +91,4 @@
     <div class="d-flex">
         <button mat-btton class="ml-auto add-user-button">Add User</button>
     </div>
-</div>
+</form>

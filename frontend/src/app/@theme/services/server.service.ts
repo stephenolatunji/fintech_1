@@ -6,7 +6,7 @@ import { environment } from "../../../environments/environment";
 })
 export class ServerService {
   // pending order is used for holding the data when match is found to be used in payment stuff
-  public userDetails; matchFound; pendingOrders; userInformations; ;
+  public userDetails; matchFound; pendingOrders; userInformations; unfullfilledOrder;
  
   constructor(private http: HttpClient) { }
 
@@ -37,6 +37,11 @@ export class ServerService {
   createAndMatchOrder(matchDetails) {
     return this.http.post<any>(`${environment.url}/api/orders/createandmatchorder`, matchDetails)
   }
+
+  editUnfulfilledOrder(data) {
+    return this.http.put<any>(`${environment.url}/api/orders/createandmatchorder`, data)
+  } 
+
 
   getUserDeytailsWithCustomerId(customerId) {
     return this.http.post<any>(`${environment.url}/api/Customers/getbyid/${customerId}`, {})

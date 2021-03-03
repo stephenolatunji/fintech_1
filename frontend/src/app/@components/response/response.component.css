@@ -92,3 +92,27 @@
     border-radius: 15px;
     outline: none;
 }
+
+.payment-success {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    padding: 40px 150px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #254750;
+}
+
+.success-text {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #254750;
+    margin-top: 30px;
+}

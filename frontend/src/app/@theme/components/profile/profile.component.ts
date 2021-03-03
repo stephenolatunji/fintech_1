@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
     this.user = this.server.userInformations;
     this.user.id = this.server.userInformations.customerId;
   
-    profilePic.setAttribute('src', this.user.customerImageFileLocation==undefined? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.user.customerImageFileLocation}`);
+    profilePic.setAttribute('src', this.user.customerImageFileLocation==(undefined || '')? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.user.customerImageFileLocation}`);
    
   }
 

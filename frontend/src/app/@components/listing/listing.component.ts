@@ -21,7 +21,7 @@ export class ListingComponent implements OnInit {
     convertedCurrency: 'USD',
     convertedAmount: null
    }; 
-
+   unfullfilledOrder;
    loading = {
     findMach: false, publish: null
    }
@@ -29,7 +29,10 @@ export class ListingComponent implements OnInit {
   
    constructor(private server: ServerService, private _snackBar: MatSnackBar, private rout: Router) { }
 
-    ngOnInit(): void {  }
+    ngOnInit(): void { 
+      // check if we are coming from edit of unfullfilled order
+      this.comingFromEditPage()
+    }
 
     doCalculation() {
       (this.order.myCurrency=='NGN')?
@@ -121,4 +124,28 @@ export class ListingComponent implements OnInit {
       });
     }
 
+    comingFromEditPage() {
+      this.unfullfilledOrder = this.server.unfullfilledOrder;
+      if(this.unfullfilledOrder!==undefined && this.unfullfilledOrder.status) {
+        this.order = { 
+          customerId: localStorage.getItem('customerId'),
+          myAmount: this.unfullfilledOrder.myAmount, 
+          myCurrency: this.unfullfilledOrder.myCurrency.toUpperCase(), 
+          rate: this.unfullfilledOrder.rate, 
+          myAccountNumber: this.unfullfilledOrder.myAccountNumber,
+          myBankName: this.unfullfilledOrder.myBankName,
+          bankRouteNo: this.unfullfilledOrder.bankRouteNo,
+          convertedCurrency: this.unfullfilledOrder.convertedCurrency.toUpperCase(),
+          convertedAmount: this.unfullfilledOrder.convertedAmount
+         }; 
+      }
+    }
+
+    editOrderHandler() {
+      this.loading.findMach = true;
+      this.server.editUnfulfilledOrder(this.order).subscribe(data=>{
+        this.loading.findMach = false;
+        console.log(data)
+      })
+    }
 }

@@ -19,6 +19,7 @@ input, .select {
     border-radius: 15px;
     padding: 7px;
     width: 100%;
+    cursor: pointer;
 }
 select {
     width: 25%;

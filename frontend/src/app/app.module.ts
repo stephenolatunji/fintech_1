@@ -42,15 +42,15 @@ import { ProfileComponent } from './@theme/components/profile/profile.component'
 import { ChangePasswordComponent } from './@theme/components/change-password/change-password.component';
 import { ChangeDocumentComponent } from './@theme/components/change-document/change-document.component';
 import { EditProfileComponent } from './@theme/components/edit-profile/edit-profile.component';
-import { UsersComponent } from './super-admin/@components/users/users.component';
-import { SideNavComponent } from './super-admin/@theme/side-nav/side-nav.component';
-import { AdminHeaderComponent } from './super-admin/@theme/admin-header/admin-header.component';
+import { UsersComponent } from './@super-admin/@components/users/users.component';
+import { SideNavComponent } from './@super-admin/@theme/side-nav/side-nav.component';
+import { AdminHeaderComponent } from './@super-admin/@theme/admin-header/admin-header.component';
 
-import { ReportsComponent } from './super-admin/@components/reports/reports.component';
-import { ConfigurationComponent } from './super-admin/@components/configuration/configuration.component';
-import { SupportComponent } from './super-admin/@components/support/support.component';
-import { SuperDashboardComponent } from './super-admin/@components/super-dashboard/super-dashboard.component';
-import { AddUserComponent } from './super-admin/@components/add-user/add-user.component';
+import { ReportsComponent } from './@super-admin/@components/reports/reports.component';
+import { ConfigurationComponent } from './@super-admin/@components/configuration/configuration.component';
+import { SupportComponent } from './@super-admin/@components/support/support.component';
+import { SuperDashboardComponent } from './@super-admin/@components/super-dashboard/super-dashboard.component';
+import { AddUserComponent } from './@super-admin/@components/add-user/add-user.component';
 
 
 @NgModule({

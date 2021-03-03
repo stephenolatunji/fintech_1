@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 // import { timeCount } from 'rxjs';
 import { HelperService } from 'src/app/@theme/services/helper.service';
 import { ServerService } from 'src/app/@theme/services/server.service';
-
+declare var $: any;
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  public top10; pendingOrders; top10Index = 4; buttonText = 'View more'; 
+  public top10; pendingOrders; top10Index = 4; buttonText = 'View more'; paymentHandler:any = null; paymentSuccessful: boolean = true;
   timeCount = {
     status: true,
     days: null, 
@@ -21,12 +22,15 @@ export class DashboardComponent implements OnInit {
   constructor(
     private rout: Router, 
     private server: ServerService,
-    private helper: HelperService
+    private helper: HelperService,
+    private _snackBar: MatSnackBar
     ) { }
 
   ngOnInit(): void {
+    // $('#payment-success').modal('hide')
     this.fetchPendingOrders();
     this.fetchTop10()
+    this.invokeStripe();  
   }
 
   createOrder() {
@@ -34,7 +38,7 @@ export class DashboardComponent implements OnInit {
   }
 
   fetchPendingOrders() {
-    this.server.getPendingOrders().subscribe(data=>{
+    this.server.getPendingOrders().subscribe(data=>{console.log(data.entity)
       if(data.entity.length > 0) {
         this.pendingOrders = data.entity[0].order;
         // counter
@@ -46,9 +50,12 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  paynow(){
+  paynow(amount){
     this.server.pendingOrders = this.pendingOrders;
-    this.rout.navigate(['payment-gateway'])
+    this.openSnackBar(`You will be redirected to our payment platform soon`);
+    setTimeout(() => {
+      this.handlePayment(amount)  
+    }, 2000);
   }
 
   fetchTop10() {
@@ -79,7 +86,11 @@ export class DashboardComponent implements OnInit {
   }
 
   editPendingOrderAfterExpiration() {
-
+    this.server.unfullfilledOrder = this.pendingOrders;
+    // set staus that we are coming from onclick unfulfil
+    this.server.unfullfilledOrder.status = true;
+    this.rout.navigate(['listing'])
+    console.log(this.pendingOrders)
   }
 
 
@@ -116,6 +127,56 @@ export class DashboardComponent implements OnInit {
       }
       
       }, 1000);
+  }
+
+  handlePayment(amount) {
+    const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB',
+      locale: 'auto',
+      token:  (stripeToken: any) => {
+        console.log(stripeToken)
+        console.log(this.pendingOrders)
+        $('#payment-success').modal('show')
+      }
+    });
+  
+    paymentHandler.open({
+      name: 'Anelloh',
+      description: 'Payment',
+      amount: amount * 100
+    });
+  }
+
+  invokeStripe() {
+    if(!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement("script");
+      script.id = "stripe-script";
+      script.type = "text/javascript";
+      script.src = "https://checkout.stripe.com/checkout.js";
+      script.onload = () => {
+        this.paymentHandler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB',
+          locale: 'auto',
+          token:  (stripeToken: any) =>{
+            console.log(stripeToken)
+          }
+        });
+      }
+        
+      window.document.body.appendChild(script);
+  }}
+
+  openSnackBar(msg) {
+    this._snackBar.open(msg, '', {
+      duration: 2500,
+    });
+  }
+
+  seePendingOrder() {
+    document.getElementById('summaryClass').style.display = 'none';
+    setTimeout(() => {
+      document.getElementById('summaryClass').style.display = 'block';
+    }, 100);
   }
 
 }
