@@ -114,14 +114,14 @@
 
                     <!-- condition toggler -->
                     <div class="single-card-list d-flex" *ngIf="order.myCurrency!='NGN'">
-                        <img src="assets/listing/ngn.svg" height="200" alt="">
+                        <img src="assets/listing/ngn.svg" height="100" alt="">
                         <div class="flex2">
                             <div>NGN</div>
                             <div>₦ 0.00/$ 0.00</div>
                         </div>
                         <div class="flex3 ml-auto">
                             <img src="assets/listing/chart.svg" alt=""> <br />
-                            <img src="assets/listing/arrow-down.svg" alt="" height="100"> $0.00
+                            <img src="assets/listing/arrow-down.svg" alt="" height="50"> $0.00
                         </div>
                     </div>
 
@@ -161,9 +161,7 @@
                 <div class="col-6" >
                     <label for="bank">Bank</label><br />
                     <select id="bank" [(ngModel)]="order.myBankName" name="myBankName" class="col-12">
-                        <option value="Access Bank">Access Bank</option>
-                        <option>Access Bank</option>
-                        <option>Access Bank</option>
+                        <option *ngFor="let bank of allBanks" [value]="bank?.name"> {{bank?.name}} </option>
                     </select>
                 </div>
 
@@ -172,7 +170,7 @@
                     <input type="number" id="account_no"  [(ngModel)]="order.myAccountNumber" name="myAccountNumber" class="col-12" />
                 </div>
                 
-                <div class="col-6" style="margin-top: 19.69px">
+                <div class="col-6" style="margin-top: 19.69px" *ngIf="order?.myCurrency!=='NGN'">
                     <label for="routing_no">Routing Number</label><br />
                     <input type="number" id="routing_no" name="bankRouteNo" [(ngModel)]="order.bankRouteNo" class="col-12" />
                 </div>

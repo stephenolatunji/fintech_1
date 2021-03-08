@@ -1,6 +1,7 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ServerService } from 'src/app/@theme/services/server.service';
 
 import { environment } from 'src/environments/environment';
@@ -26,10 +27,19 @@ export class DashboardComponent implements OnInit {
   constructor(
     private rout: Router, 
     private server: ServerService,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private actRout: ActivatedRoute
     ) { }
     
   ngOnInit(): void {
+
+    // checkIfAmRoutedFromPaymentPlatform
+    this.actRout.queryParams.subscribe(params => {
+        if(params.reference!==undefined) {
+          // handle send reference and order detais to backend
+          this.handlePayStackReference(params.reference);
+        }
+    }) 
 
     $('#payment-success').modal('hide')
     this.fetchPendingOrders();
@@ -56,14 +66,15 @@ export class DashboardComponent implements OnInit {
   paynow(amount){
     this.server.pendingOrders = this.pendingOrders;
     this.openSnackBar(`Please wait...`);
-    this.getSessionId()
+    this.loading = true;
+    (this.pendingOrders.myCurrency == 'NGN') ? this.usePayStack() :  this.useStripe()
     // setTimeout(() => {
     //   this.handlePayment(amount)  
     // }, 2000);
   }
 
-  getSessionId() {
-    this.loading = true;
+  useStripe() {
+    
     console.log(this.pendingOrders)
     this.server.createCardPayment(this.pendingOrders).subscribe(data=>{
       console.log(data)
@@ -76,6 +87,15 @@ export class DashboardComponent implements OnInit {
           this.loading = false;
         }
     })
+  }
+
+  usePayStack() {
+    this.server.handlePayStack().subscribe((dat: any)=>{
+      this.loading = false
+      if(dat.status) {
+        window.location.href = dat.data.authorization_url;
+      }
+    }, err => this.openSnackBar('Error initializing your payment'))
   }
 
   fetchTop10() {
@@ -158,6 +178,16 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
       document.getElementById('summaryClass').style.display = 'block';
     }, 100);
+  }
+
+  handlePayStackReference(ref) {
+    this.server.payStackReference(ref).subscribe(dat=>{
+      // if() {
+        // remember to uncomment ds...used 
+      this.rout.navigate(['dashboard'])
+      // }
+      console.log(dat)
+    })
   }
 
 }

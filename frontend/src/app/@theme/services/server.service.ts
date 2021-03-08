@@ -6,7 +6,7 @@ import { environment } from "../../../environments/environment";
 })
 export class ServerService {
   // pending order is used for holding the data when match is found to be used in payment stuff
-  public userDetails; matchFound; pendingOrders; userInformations; unfullfilledOrder;
+  public userDetails; matchFound; pendingOrders; userInformations; unfullfilledOrder; allBanks;
  
   constructor(private http: HttpClient) { }
 
@@ -84,7 +84,24 @@ export class ServerService {
     return this.http.post<any>(`${environment.url}/api/Stripe/createcardpayment`, sanitizedData)
   }
 
+  handlePayStack() {
+    const params = JSON.stringify({
+      "email": this.userInformations.email,
+      "amount": this.pendingOrders?.myAmount + this.pendingOrders?.transactionFee
+    })
+    const headers = {
+      Authorization: `Bearer ${environment.payStackToken}`,
+      'Content-Type': 'application/json'
+    }
+    return this.http.post(`https://api.paystack.co:443/transaction/initialize`, params, {headers: headers})
+  }
+
   getTransactions() {
     // return this.http.get<any>(`${environment.url}/api/orders/gettop10orderlistings`)
   }
+
+  payStackReference(ref) {
+    return this.http.post(`${environment.url}/api/Paystack/verifypayment/${ref}`, {})
+  }
+
 }

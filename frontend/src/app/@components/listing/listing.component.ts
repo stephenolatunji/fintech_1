@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -18,7 +19,7 @@ export class ListingComponent implements OnInit {
     myAccountNumber: null,
     myBankName: 'Access Bank',
     bankRouteNo: null,
-    convertedCurrency: null,
+    convertedCurrency: 'USD',
     convertedAmount: null,
     orderId: null,
     myPaymentChannelId: null,
@@ -33,13 +34,15 @@ export class ListingComponent implements OnInit {
    loading = {
     findMach: false, publish: null
    }
-   showResponse: boolean = false; matchFound;
+   showResponse: boolean = false; matchFound; allBanks;
   
-   constructor(private server: ServerService, private _snackBar: MatSnackBar, private rout: Router) { }
+   constructor(private server: ServerService, private _snackBar: MatSnackBar, private rout: Router, private http: HttpClient) { }
 
     ngOnInit(): void { 
       // check if we are coming from edit of unfullfilled order
       this.comingFromEditPage()
+      // getAllBanksFromServer
+      this.allBanks = this.server.allBanks.data;      
     }
 
     doCalculation() {
@@ -102,7 +105,7 @@ export class ListingComponent implements OnInit {
           }
 
           console.log(data.entity)
-
+          
           this.matchFound = data.entity;
           this.showResponse = true
         }

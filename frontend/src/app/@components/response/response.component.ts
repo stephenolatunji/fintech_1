@@ -52,14 +52,13 @@ export class ResponseComponent implements OnInit {
       if(dat.succeeded && dat.entity!==null) {
         this.server.pendingOrders = dat.entity;
         this.close();
-        // retreive session id
-        this.getSessionId()
-        // this.handlePayment(dat.entity.myAmount + dat.entity.transactionFee);
+        // Use if statement to know if using paystack or Stripe
+        (dat.entity.myCurrency == 'NGN') ? this.usePayStack() :  this.useStripe(dat.entity)
       }
       else {
         this.openSnackBar('Error while proccessing your request!')
       }
-        console.log(dat)
+      
     }, err => this.openSnackBar('Error while proccessing your request!'))
   }
 
@@ -111,10 +110,9 @@ export class ResponseComponent implements OnInit {
   //     window.document.body.appendChild(script);
   // }}
 
-  getSessionId() {
-    this.loading = true;
-    console.log(this.data)
-    this.server.createCardPayment(this.data).subscribe(data=>{
+  useStripe(pendingOrders) {
+    
+    this.server.createCardPayment(pendingOrders).subscribe(data=>{
       console.log(data)
         if(data.succeeded) {
           this.stripe = Stripe(`${environment.stripeToken}`);
@@ -125,6 +123,15 @@ export class ResponseComponent implements OnInit {
           this.loading = false;
         }
     })
+  }
+
+  usePayStack() {
+    this.server.handlePayStack().subscribe((dat: any)=>{
+      this.loading = false
+      if(dat.status) {
+        window.location.href = dat.data.authorization_url;
+      }
+    }, err => this.openSnackBar('Error initializing your payment'))
   }
 
 }
