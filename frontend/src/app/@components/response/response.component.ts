@@ -2,7 +2,10 @@ import { Component, Injectable, Input, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ServerService } from 'src/app/@theme/services/server.service';
+import { environment } from 'src/environments/environment';
 declare var $: any;
+declare var Stripe;
+
 @Component({
   selector: 'app-response',
   templateUrl: './response.component.html',
@@ -12,6 +15,7 @@ declare var $: any;
 @Injectable({providedIn: "root"})
 
 export class ResponseComponent implements OnInit {
+  stripe;
   @Input() data; loading: boolean = false;  paymentHandler:any = null; paymentSuccessful: boolean = false
   success: boolean = false;
   
@@ -23,7 +27,7 @@ export class ResponseComponent implements OnInit {
       this.success = false
     }
     else {
-      this.invokeStripe();
+      // this.invokeStripe();
       this.success = true;
     }
     $('#myModal').modal('show')
@@ -41,14 +45,16 @@ export class ResponseComponent implements OnInit {
   payNow() {
     this.data.customerId = localStorage.getItem('customerId');
     this.server.pendingOrders = this.data;
-    console.log(this.data)
+  
     this.loading = true;
     this.server.createAndMatchOrder(this.data).subscribe(dat=>{
       this.loading = false;
       if(dat.succeeded && dat.entity!==null) {
         this.server.pendingOrders = dat.entity;
         this.close();
-        this.handlePayment(dat.entity.myAmount + dat.entity.transactionFee);
+        // retreive session id
+        this.getSessionId()
+        // this.handlePayment(dat.entity.myAmount + dat.entity.transactionFee);
       }
       else {
         this.openSnackBar('Error while proccessing your request!')
@@ -67,41 +73,58 @@ export class ResponseComponent implements OnInit {
     });
   }
   
-  handlePayment(amount) {
-    const paymentHandler = (<any>window).StripeCheckout.configure({
-      key: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB',
-      locale: 'auto',
-      token:  (stripeToken: any) => {
-        console.log(stripeToken)
-        console.log(this.server.pendingOrders)
-        $('#payment-success').modal('show')
-      }
-    });
-  
-    paymentHandler.open({
-      name: 'Anelloh',
-      description: 'Payment',
-      amount: amount * 100
-    });
-  }
-
-  invokeStripe() {
-    if(!window.document.getElementById('stripe-script')) {
-      const script = window.document.createElement("script");
-      script.id = "stripe-script";
-      script.type = "text/javascript";
-      script.src = "https://checkout.stripe.com/checkout.js";
-      script.onload = () => {
-        this.paymentHandler = (<any>window).StripeCheckout.configure({
-          key: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB',
-          locale: 'auto',
-          token:  (stripeToken: any) =>{
-            console.log(stripeToken)
-          }
-        });
-      }
+  // handlePayment(amount) {
+  //   const paymentHandler = (<any>window).StripeCheckout.configure({
+  //     key: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB',
+  //     locale: 'auto',
+  //     token:  (stripeToken: any) => {
         
-      window.document.body.appendChild(script);
-  }}
+  //       console.log(stripeToken)
+  //       console.log(this.server.pendingOrders)
+  //       $('#payment-success').modal('show')
+  //     }
+  //   });
+  
+  //   paymentHandler.open({
+  //     name: 'Anelloh',
+  //     description: 'Payment',
+  //     amount: amount * 100
+  //   });
+  // }
+
+  // invokeStripe() {
+  //   if(!window.document.getElementById('stripe-script')) {
+  //     const script = window.document.createElement("script");
+  //     script.id = "stripe-script";
+  //     script.type = "text/javascript";
+  //     script.src = "https://checkout.stripe.com/checkout.js";
+  //     script.onload = () => {
+  //       this.paymentHandler = (<any>window).StripeCheckout.configure({
+  //         key: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB',
+  //         locale: 'auto',
+  //         token:  (stripeToken: any) =>{
+  //           console.log(stripeToken)
+  //         }
+  //       });
+  //     }
+        
+  //     window.document.body.appendChild(script);
+  // }}
+
+  getSessionId() {
+    this.loading = true;
+    console.log(this.data)
+    this.server.createCardPayment(this.data).subscribe(data=>{
+      console.log(data)
+        if(data.succeeded) {
+          this.stripe = Stripe(`${environment.stripeToken}`);
+          this.stripe.redirectToCheckout({ sessionId: data.entity });
+          this.loading = false;
+        }
+        else {
+          this.loading = false;
+        }
+    })
+  }
 
 }

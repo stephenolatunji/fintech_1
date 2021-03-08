@@ -39,7 +39,7 @@ export class ServerService {
   }
 
   editUnfulfilledOrder(data) {
-    return this.http.put<any>(`${environment.url}/api/orders/createandmatchorder`, data)
+    return this.http.put<any>(`${environment.url}/api/orders/update/${localStorage.getItem('customerId')}`, data)
   } 
 
 
@@ -70,6 +70,18 @@ export class ServerService {
       uploadImage: data.uploadImage.split(",")[1]
     }
     return this.http.post<any>(`${environment.url}/api/Customers/uploadimage`, newData)
+  }
+
+  createCardPayment(data) {
+    const sanitizedData = {
+      customerId: data.customerId,
+      orderNo: data.orderNo,
+      amount: data.myAmount,
+      currencyCode: data.myCurrency,
+      transactionFee: data.transactionFee
+    }
+    console.log(sanitizedData)
+    return this.http.post<any>(`${environment.url}/api/Stripe/createcardpayment`, sanitizedData)
   }
 
   getTransactions() {

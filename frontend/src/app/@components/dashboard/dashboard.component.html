@@ -1,4 +1,4 @@
-<div class="parent">
+<div class="parent" *ngIf="!loading">
     <app-header></app-header>
     <div class="body animate__animated animate__fadeIn">
         <div class="rect">
@@ -147,11 +147,15 @@
 </div>
 
 <!-- modal for succesful payment -->
-<div class="modal fade animate__animated animate__fadeIn" id="payment-success"  >
+<div class="modal fade animate__animated animate__fadeIn" id="payment-success"  *ngIf="!loading">
     <div class="modal-dialog" role="document">
         <div class="modal-content payment-success">
             <img src="assets/payment/mark.svg" alt="">
             <div class="success-text">Successful!</div>
         </div>
     </div>
+</div>
+
+<div class="spinner" *ngIf="loading">
+    <img *ngIf="loading" src="assets/auth/loader.gif" width="20" height="20" alt="">
 </div>

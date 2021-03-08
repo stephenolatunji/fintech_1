@@ -10,6 +10,16 @@ import { ConfigurationComponent } from './@components/configuration/configuratio
 import { SupportComponent } from './@components/support/support.component';
 import { SuperDashboardComponent } from './@components/super-dashboard/super-dashboard.component';
 import { AddUserComponent } from './@components/add-user/add-user.component';
+import { PaymentChannelComponent } from './@components/payment-channel/payment-channel.component';
+import { AddPaymentChannelComponent } from './@components/add-payment-channel/add-payment-channel.component';
+import { FaqComponent } from './@components/faq/faq.component';
+import { UserRoleComponent } from './@components/user-role/user-role.component';
+import { AddUserRoleComponent } from './@components/add-user-role/add-user-role.component';
+import { CustomerComponent } from './@components/customer/customer.component';
+import { TransactionReportComponent } from './@components/transaction-report/transaction-report.component';
+import { ViewReportComponent } from './@components/view-report/view-report.component';
+import { LoginComponent } from './@theme/login/login.component';
+import { AuthComponent } from './@theme/@auth/guard/auth/auth.component';
 
 
 @NgModule({
@@ -21,7 +31,17 @@ import { AddUserComponent } from './@components/add-user/add-user.component';
     ConfigurationComponent,
     SupportComponent,
     SuperDashboardComponent,
-    AddUserComponent
+    AddUserComponent,
+    PaymentChannelComponent,
+    AddPaymentChannelComponent,
+    FaqComponent,
+    UserRoleComponent,
+    AddUserRoleComponent,
+    CustomerComponent,
+    TransactionReportComponent,
+    ViewReportComponent,
+    LoginComponent,
+    AuthComponent
   ],
   imports: [
     CommonModule

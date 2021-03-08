@@ -76,38 +76,7 @@
     </div>
 
     <!-- tab2 -->
-    <div class="form-box pt-3 animate__animated animate__fadeIn" *ngIf="tab2">
-        <div class="paymentText1">
-            These are the available payment channels
-        </div>
-        <div class="d-flex">
-            <div class="paymentBox" id="stripe">
-                <img src="assets/super-admin/configuration/stripe.svg" alt="">
-                Stripe
-            </div>
-            <img src="assets/super-admin/configuration/bin.svg" class="bin" alt="">
-            
-            <div class="paymentBox" id="flutter">
-                <img src="assets/super-admin/configuration/flutter.svg" alt="">
-                Flutterwave
-            </div>
-            <img src="assets/super-admin/configuration/bin.svg" class="bin" alt="">
-        </div>
-
-        <div class="d-flex">
-            <div class="paymentBox" id="stack">
-                <img src="assets/super-admin/configuration/paystack.svg" alt="">
-                PayStack
-            </div>
-            <img src="assets/super-admin/configuration/bin.svg" class="bin" alt="">
-            
-            <!-- <div class="paymentBox">
-                <img src="assets/super-admin/configuration/flutter.svg" alt="">
-                Flutterwave
-            </div>
-            <img src="assets/super-admin/configuration/bin.svg" class="bin" alt=""> -->
-        </div>
-    </div>
+    <app-payment-channel *ngIf="tab2"></app-payment-channel>
 </div>
 
 <app-admin-header></app-admin-header>

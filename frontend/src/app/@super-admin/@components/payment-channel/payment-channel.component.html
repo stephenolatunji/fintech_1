@@ -1,0 +1,57 @@
+<div class="form-box pt-3 animate__animated animate__fadeIn" *ngIf="!addPaymentChannel">
+    <div class="paymentText1">
+        These are the available payment channels
+    </div>
+
+
+    <div class="paymentBox d-flex" id="stripe">
+        <div class="d-flex" style="align-items: center;">
+            <img src="assets/super-admin/configuration/stripe.svg" width="50" height="50" alt="">
+            <div style="font-size: 18px; margin-left: 10px;">
+                Stripe
+                <div style="font-weight: normal; font-size: 14px; white-space: nowrap">Transaction Fee: 5%</div>
+            </div>
+        </div>
+
+        <div>
+            <img src="assets/super-admin/configuration/edit.svg" class="bin" alt="">
+            <img src="assets/super-admin/configuration/bin.svg" class="bin" alt="">
+        </div>
+    </div>
+
+    <div class="paymentBox d-flex" id="flutter">
+        <div class="d-flex" style="align-items: center;">
+            <img src="assets/super-admin/configuration/flutter.svg" width="50" height="50" alt="">
+            <div style="font-size: 18px; margin-left: 10px;">
+                Flutterwave
+                <div style="font-weight: normal; font-size: 14px; white-space: nowrap">Transaction Fee: 5%</div>
+            </div>
+        </div>
+
+        <div>
+            <img src="assets/super-admin/configuration/edit.svg" class="bin" alt="">
+            <img src="assets/super-admin/configuration/bin.svg" class="bin" alt="">
+        </div>
+    </div>
+
+    <div class="paymentBox d-flex" id="flutter">
+        <div class="d-flex" style="align-items: center;">
+            <img src="assets/super-admin/configuration/paystack.svg" width="50" height="50" alt="">
+            <div style="font-size: 18px; margin-left: 10px;">
+                PayStack
+                <div style="font-weight: normal; font-size: 14px; white-space: nowrap">Transaction Fee: 5%</div>
+            </div>
+        </div>
+
+        <div>
+            <img src="assets/super-admin/configuration/edit.svg" class="bin" alt="">
+            <img src="assets/super-admin/configuration/bin.svg" class="bin" alt="">
+        </div>
+    </div>
+
+    <button mat-button class="add-channel"> 
+        Add Channel
+    </button>
+</div>
+
+<app-add-payment-channel *ngIf="addPaymentChannel"></app-add-payment-channel>

@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     var profilePic_ = document.getElementById('profilePic_');
     this.username = this.server.userInformations.userName;
-    console.log(this.server.userInformations.customerImageFileLocation)
+
     profilePic_.setAttribute('src', this.server.userInformations.customerImageFileLocation==(undefined || '')? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.server.userInformations.customerImageFileLocation}`);
   }
 

@@ -1,0 +1,45 @@
+<div class="body animate__animated animate__fadeIn" *ngIf="!addUserRoleClicked">
+    <div class="one">
+        <div>User Role</div>
+        <button mat-button (click)="toggleAddUser()">+ Add Role</button>
+    </div>
+
+    <div class="two">
+        <div class="search-box">
+            <img src="assets/header/search.svg" />
+            <input type="search" placeholder="Search users"   />
+        </div>
+
+        <table class="table">
+            <thead class="thead" >
+                <tr>
+                    <th>Role</th>
+                    <th>Access Level </th>
+                    <th>Permissions </th>
+                    <th>Status </th>
+                    <th>Action </th>
+                </tr>
+            </thead>
+        
+            <tbody >
+                <tr *ngFor="let user of allUserRoles; let i = index">
+                    <td> {{user?.role.name}} </td>
+                    <td>{{user?.accessLevel}}</td>
+                    <td> {{user?.role.rolePermission.name}}</td>
+                    <td>
+                        <span style="padding: 4px 8px" [style.color]="user?.role.status==1? '#76CDCD':'#F27348' " [style.background-color]=" user?.role.status==1? 'rgba(118, 205, 205, 0.1)':'rgba(242, 115, 72, 0.1)' ">Active</span> 
+                    </td>
+                    <td class="td-button" (click)="action()">
+                        <img src="assets/super-admin/user/ellypsis.svg" alt="">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<app-admin-header></app-admin-header>
+<app-side-nav></app-side-nav>
+
+
+<app-add-user-role *ngIf="addUserRoleClicked"></app-add-user-role>

@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  url: 'https://dev-app-ip.eastus.cloudapp.azure.com:44312'
+  url: 'https://dev-app-ip.eastus.cloudapp.azure.com:44312',
+  url2: 'https://dev-app-ip.eastus.cloudapp.azure.com:44310',
+  stripeToken: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB'
 };
 
 /*

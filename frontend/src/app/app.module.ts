@@ -47,11 +47,21 @@ import { SideNavComponent } from './@super-admin/@theme/side-nav/side-nav.compon
 import { AdminHeaderComponent } from './@super-admin/@theme/admin-header/admin-header.component';
 
 import { ReportsComponent } from './@super-admin/@components/reports/reports.component';
+import { LoginComponent as SuperLogin } from './@super-admin/@auth/login/login.component';
 import { ConfigurationComponent } from './@super-admin/@components/configuration/configuration.component';
 import { SupportComponent } from './@super-admin/@components/support/support.component';
 import { SuperDashboardComponent } from './@super-admin/@components/super-dashboard/super-dashboard.component';
 import { AddUserComponent } from './@super-admin/@components/add-user/add-user.component';
+import { PaymentChannelComponent } from './@super-admin/@components/payment-channel/payment-channel.component';
+import { AddPaymentChannelComponent } from './@super-admin/@components/add-payment-channel/add-payment-channel.component';
+import { FaqComponent } from './@super-admin/@components/faq/faq.component';
+import { UserRoleComponent } from './@super-admin/@components/user-role/user-role.component';
+import { AddUserRoleComponent } from './@super-admin/@components/add-user-role/add-user-role.component';
+import { CustomerComponent } from './@super-admin/@components/customer/customer.component';
+import { TransactionReportComponent } from './@super-admin/@components/transaction-report/transaction-report.component';
+import { ViewReportComponent } from './@super-admin/@components/view-report/view-report.component';
 
+import { NgxStripeModule } from "ngx-stripe";
 
 @NgModule({
   declarations: [
@@ -89,7 +99,16 @@ import { AddUserComponent } from './@super-admin/@components/add-user/add-user.c
     ConfigurationComponent,
     SupportComponent,
     SuperDashboardComponent,
-    AddUserComponent
+    AddUserComponent,
+    PaymentChannelComponent,
+    AddPaymentChannelComponent,
+    FaqComponent, 
+    UserRoleComponent,
+    AddUserRoleComponent,
+    CustomerComponent,
+    TransactionReportComponent,
+    ViewReportComponent,
+    SuperLogin
   ],
   imports: [
     BrowserModule,
@@ -100,7 +119,8 @@ import { AddUserComponent } from './@super-admin/@components/add-user/add-user.c
     MatCheckboxModule,
     MatExpansionModule,
     MatSlideToggleModule,
-    MatButtonModule,MatRadioModule, MatSnackBarModule
+    MatButtonModule,MatRadioModule, MatSnackBarModule,
+    NgxStripeModule.forRoot('pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB')
   ],
   providers: [NgxImageCompressService,  { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },, JwtHelperService],
   bootstrap: [AppComponent]

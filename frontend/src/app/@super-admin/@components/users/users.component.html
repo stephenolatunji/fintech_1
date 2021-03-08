@@ -21,33 +21,30 @@
                     <th>Action </th>
                 </tr>
             </thead>
-            <tbody >
-                <tr *ngFor="let user of allCutomers; let i = index">
-                    <td> 3456789021 </td>
-                    <td>
-                        <img src="assets/header/avatar.jpg" width="25" height="25" alt="">
-                        Oluchukwu Adumije
-                    </td>
-                    <td>oluchukwu@gmail.com</td>
-                    <td>Admin</td>
-                    <td>
-                        <span style="padding: 4px 8px" [style.color]=" user.status==1? '#76CDCD':'#F27348' " [style.background-color]=" user.status==1? 'rgba(118, 205, 205, 0.1)':'rgba(242, 115, 72, 0.1)' ">Active</span> 
-                    </td>
-                    <td class="td-button">
-                        <img src="assets/super-admin/user/ellypsis.svg" alt="">
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        
-        <table>
-            <thead>
-                <tr>
-                   
-                </tr>
-            </thead>
         </table>
 
+        <div style="max-height: 50vh; overflow: auto;">
+            <table>    
+                <tbody >
+                    <tr *ngFor="let user of allCutomers; let i = index">
+                        <td> 3456789021 </td>
+                        <td>
+                            <img src="assets/header/avatar.jpg" width="25" height="25" alt="">
+                            Oluchukwu Adumije
+                        </td>
+                        <td>oluchukwu@gmail.com</td>
+                        <td>Admin</td>
+                        <td>
+                            <span style="padding: 4px 8px" [style.color]=" user.status==1? '#76CDCD':'#F27348' " [style.background-color]=" user.status==1? 'rgba(118, 205, 205, 0.1)':'rgba(242, 115, 72, 0.1)' ">Active</span> 
+                        </td>
+                        <td class="td-button">
+                            <img src="assets/super-admin/user/ellypsis.svg" alt="">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
     </div>
 
 </div>

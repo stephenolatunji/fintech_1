@@ -19,12 +19,19 @@ import {
 import { PaymentPlatformComponent } from './@components/payment-platform/payment-platform.component';
 import { SettingsComponent } from './@theme/components/settings/settings.component';
 import { ProfileComponent } from './@theme/components/profile/profile.component';
-import { UsersComponent } from './@super-admin/@components/users/users.component';
 
+import { LoginComponent as SuperLogin } from "./@super-admin/@auth/login/login.component";
+import { UsersComponent } from './@super-admin/@components/users/users.component';
 import { SuperDashboardComponent } from './@super-admin/@components/super-dashboard/super-dashboard.component';
 import { ReportsComponent } from './@super-admin/@components/reports/reports.component';
 import { ConfigurationComponent } from './@super-admin/@components/configuration/configuration.component';
 import { SupportComponent } from './@super-admin/@components/support/support.component';
+import { AddPaymentChannelComponent } from './@super-admin/@components/add-payment-channel/add-payment-channel.component';
+import { PaymentChannelComponent } from './@super-admin/@components/payment-channel/payment-channel.component';
+import { FaqComponent } from './@super-admin/@components/faq/faq.component';
+import { UserRoleComponent } from './@super-admin/@components/user-role/user-role.component';
+import { CustomerComponent } from './@super-admin/@components/customer/customer.component';
+import { TransactionReportComponent } from './@super-admin/@components/transaction-report/transaction-report.component';
 
 const routes: Routes = [
   { path: "", component: ComingSoonComponent },
@@ -42,11 +49,15 @@ const routes: Routes = [
 
   // @super-admin
   // { path: '@super-admin', component: LoginComponent },
+  { path: 'super-admin', component: SuperLogin },
   { path: 'super-admin/dashboard', component: SuperDashboardComponent },
   { path: 'super-admin/user', component: UsersComponent },
   { path: 'super-admin/reports', component: ReportsComponent },
   { path: 'super-admin/configuration', component: ConfigurationComponent },
-  { path: 'super-admin/support', component: SupportComponent }
+  { path: 'super-admin/support', component: FaqComponent },
+  { path: 'super-admin/user-role', component: UserRoleComponent },
+  { path: 'super-admin/customers', component: CustomerComponent },
+  { path: 'super-admin/transaction-reports', component: TransactionReportComponent },
 ];
 
 @NgModule({

@@ -22,7 +22,7 @@ input, select , button{
 }
 select{ cursor: pointer;}
 *::-webkit-scrollbar {
-  width: .5em;
+  width: .3em;
   height: .3em;
 }
 

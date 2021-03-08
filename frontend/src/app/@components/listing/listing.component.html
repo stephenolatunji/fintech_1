@@ -181,12 +181,12 @@
 
             <div class="btn-section d-flex">
 
-                <button type='submit' *ngIf="!unfullfilledOrder.status" class="ml-auto" mat-button (click)="loading.publish? '' : checkIfAllInput('publish')">
+                <button type='submit' *ngIf="!unfullfilledOrder?.status" class="ml-auto" mat-button (click)="loading.publish? '' : checkIfAllInput('publish')">
                     <span *ngIf="!loading.publish">Publish</span> 
                     <img *ngIf="loading.publish" src="assets/auth/loader.gif" width="20" height="20" alt="">
                 </button>
               
-                <button type='submit' mat-button (click)="loading.findMach? '' : unfullfilledOrder.status? editOrderHandler() : checkIfAllInput('findMatch')">
+                <button type='submit' mat-button (click)="loading.findMach? '' : (unfullfilledOrder?.status)? editOrderHandler() : checkIfAllInput('findMatch')">
                     <span *ngIf="!loading.findMach">Find A Match</span> 
                     <img *ngIf="loading.findMach" src="assets/auth/loader.gif" width="20" height="20" alt="">
                 </button>

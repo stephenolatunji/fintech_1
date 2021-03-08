@@ -1,16 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-// import { timeCount } from 'rxjs';
-import { HelperService } from 'src/app/@theme/services/helper.service';
 import { ServerService } from 'src/app/@theme/services/server.service';
+
+import { environment } from 'src/environments/environment';
 declare var $: any;
+declare var Stripe;
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  stripe;
   public top10; pendingOrders; top10Index = 4; buttonText = 'View more'; paymentHandler:any = null; paymentSuccessful: boolean = true;
   timeCount = {
     status: true,
@@ -18,19 +21,19 @@ export class DashboardComponent implements OnInit {
     hours: null,
     minutes: null,
     seconds: null
-  }
+  }; loading: boolean = false;
+
   constructor(
     private rout: Router, 
     private server: ServerService,
-    private helper: HelperService,
     private _snackBar: MatSnackBar
     ) { }
-
+    
   ngOnInit(): void {
-    // $('#payment-success').modal('hide')
+
+    $('#payment-success').modal('hide')
     this.fetchPendingOrders();
-    this.fetchTop10()
-    this.invokeStripe();  
+    this.fetchTop10() 
   }
 
   createOrder() {
@@ -52,10 +55,27 @@ export class DashboardComponent implements OnInit {
 
   paynow(amount){
     this.server.pendingOrders = this.pendingOrders;
-    this.openSnackBar(`You will be redirected to our payment platform soon`);
-    setTimeout(() => {
-      this.handlePayment(amount)  
-    }, 2000);
+    this.openSnackBar(`Please wait...`);
+    this.getSessionId()
+    // setTimeout(() => {
+    //   this.handlePayment(amount)  
+    // }, 2000);
+  }
+
+  getSessionId() {
+    this.loading = true;
+    console.log(this.pendingOrders)
+    this.server.createCardPayment(this.pendingOrders).subscribe(data=>{
+      console.log(data)
+        if(data.succeeded) {
+          this.stripe = Stripe(`${environment.stripeToken}`);
+          this.stripe.redirectToCheckout({ sessionId: data.entity });
+          this.loading = false;
+        }
+        else {
+          this.loading = false;
+        }
+    })
   }
 
   fetchTop10() {
@@ -90,9 +110,7 @@ export class DashboardComponent implements OnInit {
     // set staus that we are coming from onclick unfulfil
     this.server.unfullfilledOrder.status = true;
     this.rout.navigate(['listing'])
-    console.log(this.pendingOrders)
   }
-
 
   countDown() {
       // refereceTime = date we re counting to
@@ -128,43 +146,6 @@ export class DashboardComponent implements OnInit {
       
       }, 1000);
   }
-
-  handlePayment(amount) {
-    const paymentHandler = (<any>window).StripeCheckout.configure({
-      key: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB',
-      locale: 'auto',
-      token:  (stripeToken: any) => {
-        console.log(stripeToken)
-        console.log(this.pendingOrders)
-        $('#payment-success').modal('show')
-      }
-    });
-  
-    paymentHandler.open({
-      name: 'Anelloh',
-      description: 'Payment',
-      amount: amount * 100
-    });
-  }
-
-  invokeStripe() {
-    if(!window.document.getElementById('stripe-script')) {
-      const script = window.document.createElement("script");
-      script.id = "stripe-script";
-      script.type = "text/javascript";
-      script.src = "https://checkout.stripe.com/checkout.js";
-      script.onload = () => {
-        this.paymentHandler = (<any>window).StripeCheckout.configure({
-          key: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB',
-          locale: 'auto',
-          token:  (stripeToken: any) =>{
-            console.log(stripeToken)
-          }
-        });
-      }
-        
-      window.document.body.appendChild(script);
-  }}
 
   openSnackBar(msg) {
     this._snackBar.open(msg, '', {

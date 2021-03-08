@@ -1,0 +1,68 @@
+<div class="body animate__animated animate__fadeIn" >
+    <div class="one">
+        <div>Customers</div>
+    </div>
+
+    <div class="tab">
+        <button id="tab1" (click)="switchTab(1)" mat-button>
+            All Customers
+        </button>
+        <button id="tab2" (click)="switchTab(2)" mat-button>
+            Blocked Customers
+        </button>
+        <button id="tab3" (click)="switchTab(3)" mat-button>
+            Disabled Customers
+        </button>
+    </div>
+
+    <div class="two">
+        <div class="search-box">
+            <img src="assets/header/search.svg" />
+            <input type="search" placeholder="Search users"   />
+        </div>
+
+        <table class="table">
+            <thead class="thead" >
+                <tr>
+                    <th>Name </th>
+                    <th>Username </th>
+                    <th>Email Address</th>
+                    <th>phone Number </th>
+                    <th>Transaction </th>
+                    <th>Status </th>
+                    <th>Action </th>
+                </tr>
+            </thead>
+        </table>
+
+        <div style="max-height: 50vh; overflow: auto;">
+            <table>
+                <tbody >
+                    <tr *ngFor="let customer of allCustomers; let i = index">
+                        <td>
+                            <img src="assets/header/avatar.jpg" width="25" height="25" alt="">
+                            {{ customer?.lastName }}
+                            {{ customer?.firstName }}
+                        </td>
+                        <td>@{{ customer?.userName }}</td>
+                        <td>{{ customer?.email }}</td>
+                        <td>{{ customer?.phoneNumber }}</td>
+                        <td>null</td>
+                        <td>
+                            <span style="padding: 4px 8px" [style.color]=" customer?.status==1? '#76CDCD':'#F27348' " [style.background-color]=" customer?.status==1? 'rgba(118, 205, 205, 0.1)':'rgba(242, 115, 72, 0.1)' ">Active</span> 
+                        </td>
+                        <td class="td-button">
+                            <img src="assets/super-admin/user/ellypsis.svg" alt="">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+  
+
+    </div>
+
+</div>
+<app-admin-header></app-admin-header>
+<app-side-nav></app-side-nav>
+

@@ -18,9 +18,17 @@ export class ListingComponent implements OnInit {
     myAccountNumber: null,
     myBankName: 'Access Bank',
     bankRouteNo: null,
-    convertedCurrency: 'USD',
-    convertedAmount: null
+    convertedCurrency: null,
+    convertedAmount: null,
+    orderId: null,
+    myPaymentChannelId: null,
+    transactionFee: null,
+    paymentReference: null,
+    paymentStatus: null
    }; 
+
+  public editedOrder: any;
+
    unfullfilledOrder;
    loading = {
     findMach: false, publish: null
@@ -129,23 +137,50 @@ export class ListingComponent implements OnInit {
       if(this.unfullfilledOrder!==undefined && this.unfullfilledOrder.status) {
         this.order = { 
           customerId: localStorage.getItem('customerId'),
+          orderId: this.unfullfilledOrder.id,
           myAmount: this.unfullfilledOrder.myAmount, 
           myCurrency: this.unfullfilledOrder.myCurrency.toUpperCase(), 
+          convertedCurrency: this.unfullfilledOrder.convertedCurrency.toUpperCase(),
+          convertedAmount: this.unfullfilledOrder.convertedAmount,
           rate: this.unfullfilledOrder.rate, 
           myAccountNumber: this.unfullfilledOrder.myAccountNumber,
           myBankName: this.unfullfilledOrder.myBankName,
           bankRouteNo: this.unfullfilledOrder.bankRouteNo,
-          convertedCurrency: this.unfullfilledOrder.convertedCurrency.toUpperCase(),
-          convertedAmount: this.unfullfilledOrder.convertedAmount
-         }; 
+          myPaymentChannelId: this.unfullfilledOrder.myPaymentChannelId,
+          transactionFee: this.unfullfilledOrder.transactionFee,
+          paymentReference: this.unfullfilledOrder.myPaymentReferenceNo,
+          paymentStatus: this.unfullfilledOrder.paymentStatus
+        }; 
       }
     }
 
     editOrderHandler() {
-      this.loading.findMach = true;
+      this.loading.findMach = true
       this.server.editUnfulfilledOrder(this.order).subscribe(data=>{
         this.loading.findMach = false;
+        if(data.succeeded) {
+          this.openSnackBar('Order updated!');
+          data.entity.myAccountNumber = this.order.myAccountNumber.toString();
+          data.entity.myBankName = this.order.myBankName;
+          data.entity.bankRouteNo = this.order.bankRouteNo;
+          data.entity.convertedAmount = parseFloat(data.entity.convertedAmount);
+          data.entity.findMatchResult = {
+            customerId: data.entity.customerId,
+            orderId: data.entity.id,
+            orderNo: data.entity.orderNo,
+            transactionFee: data.entity.transactionFee,
+            orderStatus: data.entity.orderStatus
+          }
+
+          console.log(data.entity)
+
+          this.matchFound = data.entity;
+          this.showResponse = true
+        }
+        else {
+          this.openSnackBar('Error updating your order!')
+        }
         console.log(data)
-      })
+      },err=>{this.loading.findMach = false; this.openSnackBar('Error updating your order!')})
     }
 }
