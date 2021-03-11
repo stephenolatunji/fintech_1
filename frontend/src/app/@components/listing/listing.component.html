@@ -15,7 +15,7 @@
                         </div>
                         <div class="input-section">
                             <select name="myCurrency" class="select" [(ngModel)]="order.myCurrency" (change)="doCalculation()">
-                                <option value="NGN">NGN</option>
+                                <option value="NGN" *ngIf="order.convertedCurrency!=='NGN'">NGN</option>
                                 <option value="USD">USD</option>
                                 <option value="EUR">EUR</option>
                                 <option value="GBP">GBP</option>
@@ -140,7 +140,7 @@
                             <input type="number" [(ngModel)]="order.rate" name="rate"  (keyup)="doCalculation()"/>
                         </div>
                         <div class="w-50 input-section">
-                            <select [(ngModel)]="order.convertedCurrency" class="select" name="convertedCurrency" (change)="doCalculation()">
+                            <select [(ngModel)]="order.convertedCurrency" class="select" name="convertedCurrency" (change)="doCalculation()" id="convertedCurrency">
                                 <option value="USD">USD</option>
                                 <option value="NGN">NGN</option>
                                 <option value="EUR">EUR</option>
@@ -170,7 +170,7 @@
                     <input type="number" id="account_no"  [(ngModel)]="order.myAccountNumber" name="myAccountNumber" class="col-12" />
                 </div>
                 
-                <div class="col-6" style="margin-top: 19.69px" *ngIf="order?.myCurrency!=='NGN'">
+                <div class="col-6" style="margin-top: 19.69px" *ngIf="order?.myCurrency=='NGN'">
                     <label for="routing_no">Routing Number</label><br />
                     <input type="number" id="routing_no" name="bankRouteNo" [(ngModel)]="order.bankRouteNo" class="col-12" />
                 </div>

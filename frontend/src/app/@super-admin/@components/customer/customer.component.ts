@@ -8,12 +8,13 @@ import { SuperServiceService } from '../../@theme/service/super-service.service'
 })
 export class CustomerComponent implements OnInit {
   tab1: boolean = true; tab2: boolean = false; tab3: boolean = false;
-  allCustomers;
+  allCustomers;  filter: string; viewCustomerProfile: boolean = true;
 
   constructor(private server: SuperServiceService) { }
 
   ngOnInit(): void {
     this.allCustomers = this.server.allCustomers;
+    this.handleFilter('all');
     if(this.allCustomers == undefined) {
       this.server.getAllCustomers().subscribe(dat=>{
         this.allCustomers = dat.entity;
@@ -43,6 +44,28 @@ export class CustomerComponent implements OnInit {
     document.getElementById('tab1').style.backgroundColor = '#fff';
     document.getElementById('tab2').style.backgroundColor = '#fff';
     document.getElementById('tab3').style.backgroundColor = '#fff';
+  }
+
+  handleFilter(x) {
+    document.getElementById('all').style.backgroundColor = 'transparent';
+    document.getElementById('blocked').style.backgroundColor = 'transparent';
+    document.getElementById('disabled').style.backgroundColor = 'transparent';
+    if(x=='all') {
+      this.filter = 'All Customers'
+      document.getElementById('all').style.backgroundColor = '#E9EDED';
+    }
+    else if(x=='blocked') {
+      this.filter = 'Blocked Customers'
+      document.getElementById('blocked').style.backgroundColor = '#E9EDED';
+    }
+    else if(x=='disabled') {
+      this.filter = 'Disabled Customers'
+      document.getElementById('disabled').style.backgroundColor = '#E9EDED';
+    }
+  }
+
+  back() {
+    this.viewCustomerProfile = false;
   }
 
 }

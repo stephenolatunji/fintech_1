@@ -30,7 +30,7 @@ button:hover {
     opacity: .7;
 }
 .userAvatar {
-    width: 100px; border-radius: 160px; margin: 16px 10px 25px 0px;
+    width: 100px; border-radius: 160px; margin: 1px 10px 18px 0px;
 }
 .bio-data {
     background-color: #FFFFFF;
@@ -57,11 +57,19 @@ input, select {
 }
 .add-user-button {
     margin-top: 30px;
-    background: #26474E;
+    background-color: #F27348;
     border-radius: 10px;
     padding: 8px 16px;
     font-weight: bold;
     font-size: 12px;
     line-height: 17px;
     color: #FFFFFF;
+}
+.img {
+    display: flex; margin-top: 15px; cursor: pointer;
+}
+.img div {
+    margin-left: -36px;
+    margin-top: 70px;
+    /* display: flex; align-items: flex-end; margin-left: -23px; margin-top: -20px; cursor: pointer; */
 }

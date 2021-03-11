@@ -1,0 +1,119 @@
+.box  {
+    display: flex;
+}
+.box1 {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(152, 157, 179, 0.4);
+    border-radius: 15px;
+    padding: 30px;
+    width: 75%;
+}
+
+.body {
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 85px;
+}
+.box2 {
+    background-color: #FFFFFF;
+    box-shadow: 2px 8px 15px rgba(78, 147, 147, 0.1);
+    border-radius: 15px;
+    min-height: 93vh;
+    width: 25%;
+}
+.text1 {
+    padding: 32px 0px 18px 20px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 29px;
+    color: #26474E;
+    box-shadow: 2px 8px 15px rgba(78, 147, 147, 0.1);
+    border-radius: 15px 15px 0 0;
+    margin-bottom: 3px;
+}
+.lines {
+    border-bottom: 1px solid rgba(152, 157, 179, 0.4);
+    padding: 12px 12px;
+    background: #FBFEFF;
+    box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+}
+.transaction-history-header {
+    font-size: 16px; font-weight: 600;
+    margin: 10px 10px 0px 10px;
+}
+.d-flex {
+    align-items: center;
+}
+.text2 {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 15px;
+    color: #262C31;
+    margin: 0px 29px 8px 0px;
+    padding-top: 3px;
+}
+.text3 {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 15px;
+    color: #848484;
+}
+.text4 {
+    font-weight: bold;
+    font-size: 16px;
+    /* line-height: 22px; */
+    color: #F27348;
+}
+.text5 {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 15px;
+    color: #848484;
+    /* text-align: right; */
+}
+.match {
+    color: #262C31;;
+}
+.status {
+    background-color: rgba(242, 115, 72, 0.1);
+    border-radius: 4px;
+    color: #F27348;
+    padding: 5px;
+}
+.day {
+    color: #848484;
+    padding: 4px 0px;
+}
+.par1 {
+    display: flex;
+    align-items: center;
+}
+.par1 img {
+    border-radius: 50px;
+}
+.transaction, .ratings {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 27px;
+    color: #254750;
+    text-align: center;
+    margin: 0px 50px;
+}
+.ratings {
+    font-size: 13px;
+}
+.group {
+    display: flex;
+    margin-top: 35px;
+}
+label {
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 17px;
+}
+.subgroup div {
+    font-size: 14px;
+    font-weight: 500;
+}

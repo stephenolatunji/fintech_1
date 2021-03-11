@@ -15,7 +15,7 @@ import { AuthService } from '../../guard/auth.service';
 export class DocUploadComponent implements OnInit {
   @ViewChild("fileDropRef", { static: false }) fileDropEl: ElementRef;
   files: any[] = []; err; loading: boolean = false;
-
+  otp: boolean = false;
   @Input() user;
 
   public user_ = { documentImage: '', documentType: "1", bvn: '', documentNumber: '', documentExpiryDate: '' };
@@ -61,7 +61,7 @@ export class DocUploadComponent implements OnInit {
           this.loading = false;
           if(dat.succeeded) {
             this.openSnackBar('Successful!');
-            this.rout.navigate(['otp-auth']);
+            this.otp = true;
             console.log(dat.entity)
           }
           else {

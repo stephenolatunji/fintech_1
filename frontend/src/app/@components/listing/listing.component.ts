@@ -46,9 +46,15 @@ export class ListingComponent implements OnInit {
     }
 
     doCalculation() {
-      (this.order.myCurrency=='NGN')?
-      this.order.convertedAmount = this.order.myAmount / this.order.rate :
-      this.order.convertedAmount = this.order.myAmount * this.order.rate 
+      if(this.order.myCurrency=='NGN') {
+        this.order.convertedAmount = this.order.myAmount / this.order.rate
+      }
+      else {
+        setTimeout(() => {
+          this.order.convertedCurrency = 'NGN';
+          this.order.convertedAmount = this.order.myAmount * this.order.rate 
+        }, 50);
+      }
     }
 
     checkIfAllInput(x) {

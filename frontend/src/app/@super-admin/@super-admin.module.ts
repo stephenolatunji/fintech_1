@@ -20,6 +20,10 @@ import { TransactionReportComponent } from './@components/transaction-report/tra
 import { ViewReportComponent } from './@components/view-report/view-report.component';
 import { LoginComponent } from './@theme/login/login.component';
 import { AuthComponent } from './@theme/@auth/guard/auth/auth.component';
+import { CustomerProfileComponent } from './@components/customer-profile/customer-profile.component';
+import { MarketRateComponent } from './@components/market-rate/market-rate.component';
+import { TransactionConfigComponent } from './@components/transaction-config/transaction-config.component';
+import { EditPaymentChannelComponent } from './@components/edit-payment-channel/edit-payment-channel.component';
 
 
 @NgModule({
@@ -41,7 +45,11 @@ import { AuthComponent } from './@theme/@auth/guard/auth/auth.component';
     TransactionReportComponent,
     ViewReportComponent,
     LoginComponent,
-    AuthComponent
+    AuthComponent,
+    CustomerProfileComponent,
+    MarketRateComponent,
+    TransactionConfigComponent,
+    EditPaymentChannelComponent
   ],
   imports: [
     CommonModule

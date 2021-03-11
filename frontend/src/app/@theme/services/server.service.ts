@@ -7,7 +7,8 @@ import { environment } from "../../../environments/environment";
 export class ServerService {
   // pending order is used for holding the data when match is found to be used in payment stuff
   public userDetails; matchFound; pendingOrders; userInformations; unfullfilledOrder; allBanks;
- 
+  comingFromStripe: boolean = false;
+
   constructor(private http: HttpClient) { }
 
   newUser(user) {
@@ -42,9 +43,11 @@ export class ServerService {
     return this.http.put<any>(`${environment.url}/api/orders/update/${localStorage.getItem('customerId')}`, data)
   } 
 
-
   getUserDeytailsWithCustomerId(customerId) {
-    return this.http.post<any>(`${environment.url}/api/Customers/getbyid/${customerId}`, {})
+    const headers = {
+      'Bearer': localStorage.getItem('token')
+    }
+    return this.http.post<any>(`${environment.url}/api/Customers/getbyid/${customerId}`, {}, {headers: headers})
   }
 
   updateUserProfile(data) {
@@ -102,6 +105,16 @@ export class ServerService {
 
   payStackReference(ref) {
     return this.http.post(`${environment.url}/api/Paystack/verifypayment/${ref}`, {})
+  }
+
+  handleGetPaymentIntent(data) {console.log(data)
+    const sanitizedData = {
+      customerId: data.customerId,
+      amount: data.myAmount,
+      orderNo: data.orderNo,
+      sessionId: data.sessionId
+    }
+    return this.http.post(`${environment.url}/api/Stripe/getpaymentintentstatus`, sanitizedData)
   }
 
 }

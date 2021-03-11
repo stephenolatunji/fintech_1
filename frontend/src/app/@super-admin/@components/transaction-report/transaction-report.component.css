@@ -1,11 +1,10 @@
 
 .body {
-    margin-top: 100px; padding: 0px 20px 20px 19%; position: absolute; width: 100%; 
-    
+    margin-top: 80px; padding: 0px 20px 20px 19%; position: absolute; width: 100%;  
 }
 .one {
     display: flex;
-    margin-bottom: 35px;
+    margin-bottom: 0px;
 }
 .one div {
     font-weight: 600;
@@ -66,10 +65,11 @@ button:hover {
     min-width: 100%;
     height: 100%;
     padding: 1px 0px;
+    margin-top: 15px;
     /* max-height: 90vh; ; */
 }
-.search-box {
-    margin: 20px;
+.search-box, .dropdown-tog {
+    margin: 20px 0px 10px 0px;
     background-color: #FFFFFF;
     padding: 0px 8px 2px 12px;
     width: 360px;
@@ -124,5 +124,20 @@ tr {
     cursor: pointer;
 }
 .view:hover {
+    color: #F27348;
+}
+.dropdown-tog {
+    padding: 2px 8px;
+    width: 100px;
+    margin-left: 10px;
+    margin-right: 20px;
+    border: 1px solid #254750;
+    font-size: 10px;
+    cursor: pointer;
+}
+li {
+    cursor: pointer;
+}
+li:hover {
     color: #F27348;
 }

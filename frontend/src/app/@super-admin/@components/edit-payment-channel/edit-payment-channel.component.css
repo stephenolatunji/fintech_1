@@ -1,7 +1,7 @@
 .body {
     background-color: #FFFFFF;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 30px; color: #26474E;
+    padding: 20px 30px; color: #26474E;
 }
 .group {
     display: flex;

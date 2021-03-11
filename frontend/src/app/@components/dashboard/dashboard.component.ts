@@ -39,6 +39,9 @@ export class DashboardComponent implements OnInit {
           // handle send reference and order detais to backend
           this.handlePayStackReference(params.reference);
         }
+        else if(this.server.comingFromStripe) {
+          this.handleGetPaymentIntent()
+        }
     }) 
 
     $('#payment-success').modal('hide')
@@ -77,9 +80,10 @@ export class DashboardComponent implements OnInit {
     
     console.log(this.pendingOrders)
     this.server.createCardPayment(this.pendingOrders).subscribe(data=>{
-      console.log(data)
+      this.pendingOrders.sessionId = data.entity;
         if(data.succeeded) {
           this.stripe = Stripe(`${environment.stripeToken}`);
+          this.server.comingFromStripe = true;
           this.stripe.redirectToCheckout({ sessionId: data.entity });
           this.loading = false;
         }
@@ -187,6 +191,20 @@ export class DashboardComponent implements OnInit {
       this.rout.navigate(['dashboard'])
       // }
       console.log(dat)
+    })
+  }
+
+  handleGetPaymentIntent() {
+    this.server.handleGetPaymentIntent(this.pendingOrders).subscribe((dat:any)=>{
+      if(dat.succeeded ) {
+        // set coming from stripe back to false
+        this.server.comingFromStripe = false;
+        $('#payment-success').modal('show')
+      }
+      else {
+        $('#payment-success').modal('hide')
+        this.openSnackBar("Error validating your payment")
+      }
     })
   }
 

@@ -32,7 +32,6 @@ export class AppComponent {
         // getAllBanks
         this.http.get<any>(`https://api.paystack.co/bank`).subscribe((dat)=>{this.server.allBanks = dat; this.loading = false});
       }, err=>this.snackBar('Network Error'));
-
     }
   }
   

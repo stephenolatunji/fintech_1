@@ -1,9 +1,12 @@
 <div class="body animate__animated animate__fadeIn" >
-    <div class="one">
+    <div class="one" *ngIf="!viewCustomerProfile">
         <div>Customers</div>
     </div>
+    <div class="one" *ngIf="viewCustomerProfile">
+        <div>Customer's Profle <span (click)='back()'>or go back</span></div>
+    </div>
 
-    <div class="tab">
+    <!-- <div class="tab">
         <button id="tab1" (click)="switchTab(1)" mat-button>
             All Customers
         </button>
@@ -13,12 +16,36 @@
         <button id="tab3" (click)="switchTab(3)" mat-button>
             Disabled Customers
         </button>
-    </div>
+    </div> -->
 
-    <div class="two">
-        <div class="search-box">
-            <img src="assets/header/search.svg" />
-            <input type="search" placeholder="Search users"   />
+    <div class="two" *ngIf="!viewCustomerProfile">
+        <div class="d-flex d-flex1">
+            <div class="text2 mr-auto">Customers List</div>
+            <div class="search-box">
+                <img src="assets/header/search.svg" />
+                <input type="search" placeholder="Search users"   />
+            </div>
+            <div class="filters dropdown"  >
+                <div class="dropdown-tog" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="d-flex">
+                        <div class="mt-1">{{filter}}</div>
+                        <img class="ml-auto" src="assets/super-admin/user/path.svg" alt="">
+                    </div>
+                </div>
+         
+                <div class="dropdown-menu mt-2 animate_animated animate__fadeIn" aria-labelledby="dropdownMenuButton" >
+                    <li style="font-size: 13px;" class="d-flex p-2" id="all" (click)="handleFilter('all')">
+                        <!-- <img src="assets/header/user.svg" class="mr-4" alt=""> Profile -->
+                        All Customers
+                    </li>
+                    <li style="font-size: 13px;" class="d-flex p-2" id="blocked" (click)="handleFilter('blocked')">
+                        Blocked Customers
+                    </li>
+                    <li style="font-size: 13px;" class="d-flex p-2" id="disabled" (click)="handleFilter('disabled')">
+                        Disabled Cusmomers
+                    </li>
+                </div>
+            </div>
         </div>
 
         <table class="table">
@@ -61,6 +88,8 @@
   
 
     </div>
+
+    <app-customer-profile *ngIf="viewCustomerProfile"></app-customer-profile>
 
 </div>
 <app-admin-header></app-admin-header>

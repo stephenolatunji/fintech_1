@@ -116,6 +116,7 @@ export class ResponseComponent implements OnInit {
       console.log(data)
         if(data.succeeded) {
           this.stripe = Stripe(`${environment.stripeToken}`);
+          this.server.comingFromStripe = true;
           this.stripe.redirectToCheckout({ sessionId: data.entity });
           this.loading = false;
         }

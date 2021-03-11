@@ -52,14 +52,20 @@ import { ConfigurationComponent } from './@super-admin/@components/configuration
 import { SupportComponent } from './@super-admin/@components/support/support.component';
 import { SuperDashboardComponent } from './@super-admin/@components/super-dashboard/super-dashboard.component';
 import { AddUserComponent } from './@super-admin/@components/add-user/add-user.component';
-import { PaymentChannelComponent } from './@super-admin/@components/payment-channel/payment-channel.component';
+
 import { AddPaymentChannelComponent } from './@super-admin/@components/add-payment-channel/add-payment-channel.component';
 import { FaqComponent } from './@super-admin/@components/faq/faq.component';
 import { UserRoleComponent } from './@super-admin/@components/user-role/user-role.component';
 import { AddUserRoleComponent } from './@super-admin/@components/add-user-role/add-user-role.component';
 import { CustomerComponent } from './@super-admin/@components/customer/customer.component';
+import { CustomerProfileComponent } from './@super-admin/@components/customer-profile/customer-profile.component';
 import { TransactionReportComponent } from './@super-admin/@components/transaction-report/transaction-report.component';
 import { ViewReportComponent } from './@super-admin/@components/view-report/view-report.component';
+
+import { MarketRateComponent } from './@super-admin/@components/market-rate/market-rate.component';
+import { PaymentChannelComponent } from './@super-admin/@components/payment-channel/payment-channel.component';
+import { TransactionConfigComponent } from './@super-admin/@components/transaction-config/transaction-config.component';
+import { EditPaymentChannelComponent } from './@super-admin/@components/edit-payment-channel/edit-payment-channel.component';
 
 import { NgxStripeModule } from "ngx-stripe";
 
@@ -108,7 +114,11 @@ import { NgxStripeModule } from "ngx-stripe";
     CustomerComponent,
     TransactionReportComponent,
     ViewReportComponent,
-    SuperLogin
+    SuperLogin,
+    CustomerProfileComponent,
+    MarketRateComponent,
+    TransactionConfigComponent,
+    EditPaymentChannelComponent
   ],
   imports: [
     BrowserModule,

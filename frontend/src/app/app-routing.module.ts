@@ -24,7 +24,6 @@ import { LoginComponent as SuperLogin } from "./@super-admin/@auth/login/login.c
 import { UsersComponent } from './@super-admin/@components/users/users.component';
 import { SuperDashboardComponent } from './@super-admin/@components/super-dashboard/super-dashboard.component';
 import { ReportsComponent } from './@super-admin/@components/reports/reports.component';
-import { ConfigurationComponent } from './@super-admin/@components/configuration/configuration.component';
 import { SupportComponent } from './@super-admin/@components/support/support.component';
 import { AddPaymentChannelComponent } from './@super-admin/@components/add-payment-channel/add-payment-channel.component';
 import { PaymentChannelComponent } from './@super-admin/@components/payment-channel/payment-channel.component';
@@ -32,13 +31,14 @@ import { FaqComponent } from './@super-admin/@components/faq/faq.component';
 import { UserRoleComponent } from './@super-admin/@components/user-role/user-role.component';
 import { CustomerComponent } from './@super-admin/@components/customer/customer.component';
 import { TransactionReportComponent } from './@super-admin/@components/transaction-report/transaction-report.component';
+import { MarketRateComponent } from './@super-admin/@components/market-rate/market-rate.component';
+import { TransactionConfigComponent } from './@super-admin/@components/transaction-config/transaction-config.component';
 
 const routes: Routes = [
   { path: "", component: ComingSoonComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
   { path: "forgot-password", component: ForgotPasswordComponent },
-  { path: "otp-auth", component: OtpComponent, canActivate: [AuthGuard]  },
   { path: "listing", component: ListingComponent, canActivate: [AuthGuard] },
   { path: "summary", component: PaymentSummaryComponent, canActivate: [AuthGuard]  },
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
@@ -52,12 +52,15 @@ const routes: Routes = [
   { path: 'super-admin', component: SuperLogin },
   { path: 'super-admin/dashboard', component: SuperDashboardComponent },
   { path: 'super-admin/user', component: UsersComponent },
-  { path: 'super-admin/reports', component: ReportsComponent },
-  { path: 'super-admin/configuration', component: ConfigurationComponent },
+  { path: 'super-admin/reports', component: TransactionReportComponent },
   { path: 'super-admin/support', component: FaqComponent },
   { path: 'super-admin/user-role', component: UserRoleComponent },
   { path: 'super-admin/customers', component: CustomerComponent },
   { path: 'super-admin/transaction-reports', component: TransactionReportComponent },
+
+  { path: 'super-admin/market-rate', component: MarketRateComponent },
+  { path: 'super-admin/payment-channel', component: PaymentChannelComponent },
+  { path: 'super-admin/transaction', component: TransactionConfigComponent },
 ];
 
 @NgModule({

@@ -10,7 +10,7 @@ label {
 .input-box, .date-input {
     border: 1px solid #254750;
     border-radius: 12px;
-    padding: 8px 12px;
+    padding: 8px;
     margin: 2px 0px 30px 0px;
 }
 

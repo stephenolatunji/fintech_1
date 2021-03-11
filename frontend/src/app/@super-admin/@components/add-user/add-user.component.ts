@@ -35,4 +35,28 @@ export class AddUserComponent implements OnInit {
     }
 
   }
+
+
+  editProfilePic(ev) {
+    const element = ev[0];
+    // this.user.uploadImage = element.name;
+    // this.newProfilePictureUploaded = true;
+    this.prepareImage(element)     
+  }
+
+  prepareImage(image) {
+    var reader = new FileReader();
+    reader.onloadend = () => {
+      // compress image
+      this.compressFile(reader.result);
+      reader.result.toString();
+    }
+    return reader.readAsDataURL(image);
+  }
+
+  compressFile(image) {
+    // this.imageCompress.compressFile(image, -1, 50, 50).then(result=> {     
+    //   this.user.uploadImage = result; 
+    // })
+  }
 }

@@ -9,12 +9,24 @@
         
     </div>
 
-    <div class="nav-text" (click)="routerLink('user')">
+    <div class="nav-text" (click)="toggleUserTab()">
         <img src="assets/super-admin/side-nav/user.svg" id="user" alt="">
         <span id="userText">
             User
         </span>
+        <div class="userText offset-2 animate__animated animate__fadeIn" *ngIf="subUser">
+            <div class="subText" (click)="routerLink('user')">Users List</div>
+            <div class="subText" (click)="routerLink('user-role')">Users Role</div>
+        </div>
     </div>
+
+    <div class="nav-text" (click)="routerLink('customers')">
+        <img src="assets/super-admin/side-nav/people.svg" id="customer" alt="">
+        <span id="customerText">
+            Customer
+        </span>
+    </div>
+
 
     <div class="nav-text" (click)="routerLink('reports')">
         <img src="assets/super-admin/side-nav/reports.svg" id="reports" alt="">
@@ -23,11 +35,16 @@
         </span>
     </div>
 
-    <div class="nav-text" (click)="routerLink('configuration')">
+    <div class="nav-text" >
         <img src="assets/super-admin/side-nav/configuration.svg" id="configuration" alt="">
-        <span id="configurationText">
+        <span id="configurationText" (click)="toggleCustomerTab()">
             Configuration
         </span>
+        <div class="userText offset-2 animate__animated animate__fadeIn" *ngIf="subCustomer">
+            <div class="subText" (click)="routerLink('market-rate')">Market Rate</div>
+            <div class="subText" (click)="routerLink('payment-channel')">Payment Channel</div>
+            <div class="subText" (click)="routerLink('transaction')">Transaction</div>
+        </div>
     </div>
 
     <div class="nav-text" (click)="routerLink('support')">

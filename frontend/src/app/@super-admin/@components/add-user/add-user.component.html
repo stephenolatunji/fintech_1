@@ -2,9 +2,15 @@
 <form class="body animate__animated animate__fadeIn">
     <div class="one">
         <div>Add User <span (click)="goBack()">or go Back</span></div>
-        <img class="userAvatar" src="assets/header/avatar.jpg" alt="">
-        <button mat-button>Upload</button>
-        <button mat-button>Remove</button>
+        <div class="img"  (click)="profilePic.click()">
+            <img class="userAvatar" src="assets/header/avatar.jpg" alt="">
+            <div>
+                <input type="file" hidden #profilePic (change)="editProfilePic($event.target.files)">
+                <img src="assets/header/edit.svg" style=" background-color: #fff; padding: .5px; border-radius: 50px" alt="">
+            </div>
+            <!-- <button mat-button>Upload</button>
+            <button mat-button>Remove</button> -->
+        </div>
     </div>
 
     <div class="bio-data">

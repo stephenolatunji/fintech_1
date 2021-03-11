@@ -1,21 +1,25 @@
 
 .body {
     margin-top: 100px; padding: 0px 20px 20px 19%; position: absolute; width: 100%; 
-    
 }
-.one {
-    display: flex;
-    margin-bottom: 35px;
-}
-.one div {
+
+.text1, .text2 {
     font-weight: 600;
-    font-size: 20px;
-    line-height: 29px;
+    font-size: 18px;
+    line-height: 25px;
     color: #26474E;
 }
-.one button {
-    margin-left: 24px;
-    padding: 7px 15px;
+.text2 {
+    font-size: 13px;
+    line-height: 20px;
+}
+.two .d-flex1 {
+    padding: 20px 20px 0px 20px;
+    margin-bottom: 8px;
+}
+.btnText {
+    margin-bottom: 6px;
+    padding: 5px 15px;
     font-weight: bold;
     font-size: 14px;
     line-height: 17px;
@@ -36,8 +40,8 @@ button:hover {
     padding: 1px 0px;
     /* max-height: 90vh; ; */
 }
-.search-box {
-    margin: 20px;
+.search-box, .dropdown-tog {
+    /* margin: 20px; */
     background-color: #FFFFFF;
     padding: 0px 8px 2px 12px;
     width: 360px;
@@ -79,4 +83,18 @@ th {
 
 tr {
     border-bottom: 1px solid #E8E8E8;
+}
+.dropdown-tog {
+    padding: 2px 8px;
+    width: 100px;
+    margin-left: 15px;
+    border: 1px solid #254750;
+    font-size: 10px;
+    cursor: pointer;
+}
+li {
+    cursor: pointer;
+}
+li:hover {
+    color: #F27348;
 }

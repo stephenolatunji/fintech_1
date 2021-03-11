@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PaymentChannelComponent implements OnInit {
   
   addPaymentChannel: boolean = false;
+  editPaymentChannel: boolean = true;
 
   constructor() { }
 

@@ -5,21 +5,26 @@
     width: 17%; position: fixed;
 }
 .brand {
-    margin: 0px 0px 80px 15px;
+    margin: 0px 0px 60px 10px;
 }
 .nav-text {
     font-weight: 600;
     font-size: 14px;
     line-height: 17px;
     color: #FFFFFF;
-    margin-bottom: 45px;
+    margin-bottom: 42px;
     cursor: pointer;
     padding-left: 15px;
 }
-.nav-text:hover {
+/* .nav-text:hover {
     opacity: .7;
     border-left: 4px solid white;
-}
+} */
 img {
     margin-right: 3px;
+}
+.subText {
+    color: #F27348;
+    margin-top: 20px;
+    font-size: 12px;
 }
