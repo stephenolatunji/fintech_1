@@ -33,7 +33,7 @@ export class DashboardComponent implements OnInit {
     private actRout: ActivatedRoute
     ) { }
     
-    ngOnInit(): void {this.usePayStack()
+    ngOnInit(): void {
 
     // checkIfAmRoutedFromPaymentPlatform
     this.actRout.queryParams.subscribe(params => {
@@ -101,7 +101,7 @@ export class DashboardComponent implements OnInit {
     this.server.handlePayStack().subscribe((dat: any)=>{
       console.log(dat);      
       this.loading = false
-      if(dat.status) {
+      if(dat.status) {console.log(dat);
         window.location.href = dat.data.authorization_url;
       }
     }, err => this.openSnackBar('Error initializing your payment'))
@@ -191,27 +191,33 @@ export class DashboardComponent implements OnInit {
   }
 
   handlePayStackReference(ref) {
-    this.server.payStackReference(ref).subscribe(dat=>{
-      // if() {
-        console.log(dat)
+    this.server.payStackReference(ref).subscribe((dat:any)=>{
+      console.log(dat)
+      if(dat.succeeded) {
+        this.rout.navigate(['dashboard']);
+        $('#payment-success').modal('show')
         // remember to uncomment ds...used 
-      this.rout.navigate(['dashboard'])
-      // }
+      }
+      else {
+        $('#payment-success').modal('hide')
+        this.openSnackBar("Error while verifying your payment")
+        // this.rout.navigate(['dashboard'])
+      }
     })
   }
 
   handleGetPaymentIntent() {
     this.server.handleGetPaymentIntent(this.pendingOrders).subscribe((dat:any)=>{
       console.log(dat)
-      // if(dat.succeeded && dat.) {
-      //   // set coming from stripe back to false
-      //   this.server.comingFromStripe = false;
-      //   $('#payment-success').modal('show')
-      // }
-      // else {
-      //   $('#payment-success').modal('hide')
-      //   this.openSnackBar("Error validating your payment")
-      // }
+      if(dat.succeeded) {
+        // set coming from stripe back to false
+        this.server.comingFromStripe = false;
+        $('#payment-success').modal('show')
+      }
+      else {
+        $('#payment-success').modal('hide')
+        this.openSnackBar("Error validating your payment")
+      }
     })
   }
 

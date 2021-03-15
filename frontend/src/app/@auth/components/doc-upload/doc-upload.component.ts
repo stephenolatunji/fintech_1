@@ -61,7 +61,7 @@ export class DocUploadComponent implements OnInit {
           this.loading = false;
           if(dat.succeeded) {
             this.openSnackBar('Successful!');
-            this.otp = true;
+            this.rout.navigate(['otp']);
             console.log(dat.entity)
           }
           else {

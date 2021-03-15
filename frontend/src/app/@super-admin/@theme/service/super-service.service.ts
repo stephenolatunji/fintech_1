@@ -19,7 +19,7 @@ export class SuperServiceService {
   }
 
   getAllUser(data) {
-    return this.http.post<any>(`${environment.url}/api/Customers/getall`, data);
+    return this.http.post<any>(`${environment.url}/api/Staffs/getall`, data);
   }
 
   addNewUser(data) {
