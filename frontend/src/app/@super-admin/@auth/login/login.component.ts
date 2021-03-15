@@ -3,6 +3,7 @@ import { ServerService } from './../../../@theme/services/server.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { AuthService } from '../../@auth/guard/auth.service';
 import { Router } from '@angular/router';
+import { SuperServiceService } from '../../@theme/service/super-service.service';
 
 @Component({
   selector: 'app-super-login',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   public user = { email: null, password: null }; loading: boolean = false; type: string = 'password'; err;
-  constructor(private server: ServerService, private _snackBar: MatSnackBar, private auth: AuthService, private rout: Router) { }
+  constructor(private server: SuperServiceService, private _snackBar: MatSnackBar, private auth: AuthService, private rout: Router) { }
 
   ngOnInit(): void {
     if(this.auth.isAuthenticated() && localStorage.getItem('userId')!==null) {
@@ -25,12 +26,12 @@ export class LoginComponent implements OnInit {
     this.server.logIn(this.user).subscribe(data => {
       this.loading = false;
       if(data.isSuccess) {console.log(data)
-        localStorage.setItem('token', data.token.accessToken);
-        localStorage.setItem('userId', data.entity.customerId);
+        localStorage.setItem('token_', data.token.accessToken);
+        localStorage.setItem('userId',this.user.email);
         this.openSnackBar('Login Successful!');
         this.rout.navigate(['super-admin/dashboard'])
 
-        this.server.userInformations = data.entity;
+        // this.server.userInformations = data.entity;
       }
       else {
         this.err = 'Please fill in the boxes correctly';

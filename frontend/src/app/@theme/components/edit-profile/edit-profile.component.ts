@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { ServerService } from '../../services/server.service';
+import { HeaderComponent } from '../header/header.component';
 import { SettingsComponent } from '../settings/settings.component';
 declare var $: any;
 
@@ -13,8 +14,8 @@ declare var $: any;
 export class EditProfileComponent implements OnInit {
 
   user = { firstName: '', lastName: null, userName: '', email: '', countryCode: '+234', phoneNumber: '', customerId: '', id: '', uploadImage: '', customerImageFileLocation: 'assets/header/avatar.jpg' }
-  err; loading: boolean = false; msg = ''; newProfilePictureUploaded: boolean = false;
-  constructor(private settings_: SettingsComponent, private server: ServerService, private _snackBar: MatSnackBar, private imageCompress: NgxImageCompressService) { }
+  err; loading: boolean = false; msg = ''; newProfilePictureUploaded: boolean = false; profilePic;
+  constructor(private settings_: SettingsComponent, private server: ServerService, private _snackBar: MatSnackBar, private imageCompress: NgxImageCompressService, private header: HeaderComponent) { }
 
   ngOnInit(): void {
     // $('#profile').modal('show');
@@ -22,7 +23,7 @@ export class EditProfileComponent implements OnInit {
     // get data from bE
     this.user = this.server.userInformations;
     this.user.id = this.server.userInformations.customerId;
-    profilePic.setAttribute('src', this.user.customerImageFileLocation==undefined? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.user.customerImageFileLocation}`);
+    profilePic.setAttribute('src', this.user.customerImageFileLocation==(undefined || '' || null)? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.user.customerImageFileLocation}`);
 
   }
 
@@ -78,7 +79,7 @@ export class EditProfileComponent implements OnInit {
     this.newProfilePictureUploaded = true;
     this.prepareImage(element)     
   }
-
+  
   prepareImage(image) {
     var reader = new FileReader();
     reader.onloadend = () => {
@@ -88,10 +89,12 @@ export class EditProfileComponent implements OnInit {
     }
     return reader.readAsDataURL(image);
   }
-
+  
   compressFile(image) {
     this.imageCompress.compressFile(image, -1, 50, 50).then(result=> {     
       this.user.uploadImage = result; 
+      document.getElementById('profilePic').setAttribute('src', result);
+      this.header.profilePic_ = result;
     })
   }
 }

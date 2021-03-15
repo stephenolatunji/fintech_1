@@ -1,18 +1,18 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServerService } from 'src/app/@theme/services/server.service';
-
 import { environment } from 'src/environments/environment';
 declare var $: any;
 declare var Stripe;
+
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
   stripe;
   public top10; pendingOrders; top10Index = 4; buttonText = 'View more'; paymentHandler:any = null; paymentSuccessful: boolean = true;
@@ -22,8 +22,10 @@ export class DashboardComponent implements OnInit {
     hours: null,
     minutes: null,
     seconds: null
-  }; loading: boolean = false;
-
+  }; 
+  
+  loading: boolean = false;
+  
   constructor(
     private rout: Router, 
     private server: ServerService,
@@ -31,7 +33,7 @@ export class DashboardComponent implements OnInit {
     private actRout: ActivatedRoute
     ) { }
     
-  ngOnInit(): void {
+    ngOnInit(): void {this.usePayStack()
 
     // checkIfAmRoutedFromPaymentPlatform
     this.actRout.queryParams.subscribe(params => {
@@ -44,9 +46,11 @@ export class DashboardComponent implements OnInit {
         }
     }) 
 
-    $('#payment-success').modal('hide')
-    this.fetchPendingOrders();
-    this.fetchTop10() 
+    $('#payment-success').modal('hide');
+    
+    this.server.getPendingOrders_  == undefined?  this.fetchPendingOrders() : (this.pendingOrders = this.server.getPendingOrders_ , this.countDown() )
+    this.server.getTop10Listing_ == undefined? this.fetchTop10() : this.top10 = this.server.getTop10Listing_
+    
   }
 
   createOrder() {
@@ -56,6 +60,7 @@ export class DashboardComponent implements OnInit {
   fetchPendingOrders() {
     this.server.getPendingOrders().subscribe(data=>{console.log(data.entity)
       if(data.entity.length > 0) {
+        this.server.getPendingOrders_ = data.entity[0].order;
         this.pendingOrders = data.entity[0].order;
         // counter
         this.countDown()
@@ -70,14 +75,13 @@ export class DashboardComponent implements OnInit {
     this.server.pendingOrders = this.pendingOrders;
     this.openSnackBar(`Please wait...`);
     this.loading = true;
-    (this.pendingOrders.myCurrency == 'NGN') ? this.usePayStack() :  this.useStripe()
+    (this.pendingOrders.myCurrency == 'NGN') ?   this.usePayStack() : this.usePayStack() 
     // setTimeout(() => {
     //   this.handlePayment(amount)  
     // }, 2000);
   }
 
   useStripe() {
-    
     console.log(this.pendingOrders)
     this.server.createCardPayment(this.pendingOrders).subscribe(data=>{
       this.pendingOrders.sessionId = data.entity;
@@ -95,6 +99,7 @@ export class DashboardComponent implements OnInit {
 
   usePayStack() {
     this.server.handlePayStack().subscribe((dat: any)=>{
+      console.log(dat);      
       this.loading = false
       if(dat.status) {
         window.location.href = dat.data.authorization_url;
@@ -104,6 +109,7 @@ export class DashboardComponent implements OnInit {
 
   fetchTop10() {
     this.server.getTop10Listing().subscribe(data=>{
+      this.server.getTop10Listing_ = data.entity;
       this.top10 = data.entity;
     })
   }
@@ -187,24 +193,25 @@ export class DashboardComponent implements OnInit {
   handlePayStackReference(ref) {
     this.server.payStackReference(ref).subscribe(dat=>{
       // if() {
+        console.log(dat)
         // remember to uncomment ds...used 
       this.rout.navigate(['dashboard'])
       // }
-      console.log(dat)
     })
   }
 
   handleGetPaymentIntent() {
     this.server.handleGetPaymentIntent(this.pendingOrders).subscribe((dat:any)=>{
-      if(dat.succeeded ) {
-        // set coming from stripe back to false
-        this.server.comingFromStripe = false;
-        $('#payment-success').modal('show')
-      }
-      else {
-        $('#payment-success').modal('hide')
-        this.openSnackBar("Error validating your payment")
-      }
+      console.log(dat)
+      // if(dat.succeeded && dat.) {
+      //   // set coming from stripe back to false
+      //   this.server.comingFromStripe = false;
+      //   $('#payment-success').modal('show')
+      // }
+      // else {
+      //   $('#payment-success').modal('hide')
+      //   this.openSnackBar("Error validating your payment")
+      // }
     })
   }
 

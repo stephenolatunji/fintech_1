@@ -14,12 +14,12 @@ export class ListingComponent implements OnInit {
   public order = { 
     customerId: localStorage.getItem('customerId'),
     myAmount: null, 
-    myCurrency: 'NGN', 
+    myCurrency: 1, 
     rate: null, 
     myAccountNumber: null,
     myBankName: 'Access Bank',
     bankRouteNo: null,
-    convertedCurrency: 'USD',
+    convertedCurrency: 2,
     convertedAmount: null,
     orderId: null,
     myPaymentChannelId: null,
@@ -46,12 +46,12 @@ export class ListingComponent implements OnInit {
     }
 
     doCalculation() {
-      if(this.order.myCurrency=='NGN') {
+      if(this.order.myCurrency==1) {
         this.order.convertedAmount = this.order.myAmount / this.order.rate
       }
       else {
         setTimeout(() => {
-          this.order.convertedCurrency = 'NGN';
+          this.order.convertedCurrency = 1;
           this.order.convertedAmount = this.order.myAmount * this.order.rate 
         }, 50);
       }
@@ -59,9 +59,8 @@ export class ListingComponent implements OnInit {
 
     checkIfAllInput(x) {
       this.showResponse = false;
-      if(this.order.myAmount!==null && this.order.rate!==null && this.order.myAccountNumber!==null && this.order.bankRouteNo!==null) {
+      if(this.order.myAmount!==null && this.order.rate!==null && this.order.myAccountNumber!==null ) {
         this.order.myAccountNumber = this.order.myAccountNumber.toString();
-        this.order.bankRouteNo = this.order.bankRouteNo.toString();
 
         x=='findMatch'? this.findMatch() : this.handlePublish()
       }
@@ -76,13 +75,11 @@ export class ListingComponent implements OnInit {
       this.server.createOrder(this.order).subscribe(data=>{
         this.loading.publish = false;
         if(data.succeeded) {
-          this.openSnackBar('Finding Match...');
-          this.matchFound = data;
-          this.showResponse = true
+          this.openSnackBar('Your Order has been published');
+          this.rout.navigate(['dashboard'])
         }
         else {
-          this.matchFound = 'No Match Found';
-          this.showResponse = true;
+          this.matchFound = 'We could not publish your order';
           this.openSnackBar(data.messages[0]);
         }
       }, err => {
@@ -110,7 +107,6 @@ export class ListingComponent implements OnInit {
             orderStatus: data.entity.orderStatus
           }
 
-          console.log(data.entity)
           
           this.matchFound = data.entity;
           this.showResponse = true
@@ -118,7 +114,7 @@ export class ListingComponent implements OnInit {
         else {
           this.matchFound = 'No Match Found';
           this.showResponse = true;
-          this.openSnackBar(data.messages[0]);
+          // this.openSnackBar(data?.messages[0]);
         }
       }, err => {
         this.loading.findMach = false;
@@ -148,8 +144,20 @@ export class ListingComponent implements OnInit {
           customerId: localStorage.getItem('customerId'),
           orderId: this.unfullfilledOrder.id,
           myAmount: this.unfullfilledOrder.myAmount, 
-          myCurrency: this.unfullfilledOrder.myCurrency.toUpperCase(), 
-          convertedCurrency: this.unfullfilledOrder.convertedCurrency.toUpperCase(),
+          myCurrency: 
+            this.unfullfilledOrder.myCurrency.toUpperCase() == 'NGN' ? 1 :
+            this.unfullfilledOrder.myCurrency.toUpperCase() == 'USD' ? 2 : 
+            this.unfullfilledOrder.myCurrency.toUpperCase() == 'GBP' ? 3 : 
+            this.unfullfilledOrder.myCurrency.toUpperCase() == 'EUR' ? 4 : 
+            this.unfullfilledOrder.myCurrency.toUpperCase() == 'CAD' ? 5 : 1, 
+
+          convertedCurrency: 
+            this.unfullfilledOrder.convertedCurrency.toUpperCase() == 'NGN' ? 1 :
+            this.unfullfilledOrder.convertedCurrency.toUpperCase() == 'USD' ? 2 : 
+            this.unfullfilledOrder.convertedCurrency.toUpperCase() == 'GBP' ? 3 : 
+            this.unfullfilledOrder.convertedCurrency.toUpperCase() == 'EUR' ? 4 : 
+            this.unfullfilledOrder.convertedCurrency.toUpperCase() == 'CAD' ? 5 : 2, 
+
           convertedAmount: this.unfullfilledOrder.convertedAmount,
           rate: this.unfullfilledOrder.rate, 
           myAccountNumber: this.unfullfilledOrder.myAccountNumber,

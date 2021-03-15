@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/@auth/guard/auth.service';
@@ -11,15 +11,15 @@ import { SettingsComponent } from '../settings/settings.component';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+@Injectable({providedIn: "root"})
+
 export class HeaderComponent implements OnInit {
-  username: string; settings: boolean = false; profile:  boolean = false
+  username: string; settings: boolean = false; profile:  boolean = false; profilePic_
   constructor(private rout: Router, private auth: AuthService, private _snackBar: MatSnackBar, private settingsFunc: SettingsComponent, private server: ServerService, private profileFunc: ProfileComponent) { }
 
   ngOnInit(): void {
-    var profilePic_ = document.getElementById('profilePic_');
     this.username = this.server.userInformations.userName;
-
-    profilePic_.setAttribute('src', this.server.userInformations.customerImageFileLocation==(undefined || '')? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.server.userInformations.customerImageFileLocation}`);
+    this.profilePic_ = this.server.userInformations.customerImageFileLocation==(undefined || '' || null)? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.server.userInformations.customerImageFileLocation}`;
   }
 
   goTo(route) {

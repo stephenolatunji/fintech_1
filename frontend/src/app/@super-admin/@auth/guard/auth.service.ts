@@ -10,7 +10,7 @@ export class AuthService {
   constructor(public jwtHelper: JwtHelperService, private http: HttpClient) { }
 
   public isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token_');
     // Check whether the token is expired and return
     // true or false
     if(token!==('null' || undefined) ) {
@@ -19,6 +19,6 @@ export class AuthService {
   }
 
   public logout() {
-    return this.http.post<any>(`${environment.url}/api/authentication/logout`, {email: localStorage.getItem('userId')})
+    return this.http.post<any>(`${environment.url2}/api/authentication/logout`, {email: localStorage.getItem('userId')})
   }
 }

@@ -20,4 +20,8 @@ export class PaymentSummaryComponent implements OnInit {
     }
   }
 
+  handleRout() {
+    this.rout.navigate(['dashboard'])
+  }
+
 }

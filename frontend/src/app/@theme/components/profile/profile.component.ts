@@ -16,17 +16,17 @@ declare var $: any;
 
 export class ProfileComponent implements OnInit {
   user = { firstName: '', lastName: null, userName: '', email: '', countryCode: '+234', phoneNumber: '', customerId: '', id: '', customerImageFileLocation: '' }
-  err; loading: boolean = false; msg = '';
+  err; loading: boolean = false; msg = ''; profilePic;
   constructor(private settings_: SettingsComponent, private server: ServerService, private _snackBar: MatSnackBar) { }
 
   async ngOnInit() {
     $('#profile').modal('show');
-    var profilePic = document.getElementById('profilePic');
+    // var profilePic = document.getElementById('profilePic');
     // get data from bE
     this.user = this.server.userInformations;
     this.user.id = this.server.userInformations.customerId;
   
-    profilePic.setAttribute('src', this.user.customerImageFileLocation==(undefined || '')? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.user.customerImageFileLocation}`);
+    this.profilePic = this.user.customerImageFileLocation==(undefined || '' || null)? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.user.customerImageFileLocation}`;
    
   }
 

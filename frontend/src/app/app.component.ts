@@ -18,20 +18,20 @@ export class AppComponent {
 
   ngOnInit(): void {
     const x =  localStorage.getItem('customerId');
-    if(!this.auth.isAuthenticated() && x!=='null') {
-      this.loading = false;
-      this.snackBar('Your Session has expired!')
-    }
-    else {
+    if(this.auth.isAuthenticated() &&  x!=='null' && x!==null) {
       // fetch data and save inside userInformation
       this.loading = true;
       this.server.getUserDeytailsWithCustomerId(x).subscribe(data=> {
         
         this.server.userInformations = data.entity
-
+        
         // getAllBanks
         this.http.get<any>(`https://api.paystack.co/bank`).subscribe((dat)=>{this.server.allBanks = dat; this.loading = false});
       }, err=>this.snackBar('Network Error'));
+    }
+    else {
+      this.loading = false;
+      this.snackBar('Your Session has expired!')
     }
   }
   

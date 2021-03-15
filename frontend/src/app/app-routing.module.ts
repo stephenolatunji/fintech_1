@@ -16,6 +16,10 @@ import { ActivityTwoComponent } from './@components/activity-two/activity-two.co
 import { 
   AuthGuardService as AuthGuard 
 } from './@auth/guard/auth-guard.service';
+
+import { AuthGuardService as AdminAuthGuard } from "./@super-admin/@auth/guard/auth-guard.service";
+import {  } from "./@super-admin/@auth/guard/auth-guard.service";
+
 import { PaymentPlatformComponent } from './@components/payment-platform/payment-platform.component';
 import { SettingsComponent } from './@theme/components/settings/settings.component';
 import { ProfileComponent } from './@theme/components/profile/profile.component';
@@ -41,7 +45,7 @@ const routes: Routes = [
   { path: "forgot-password", component: ForgotPasswordComponent },
   { path: "listing", component: ListingComponent, canActivate: [AuthGuard] },
   { path: "summary", component: PaymentSummaryComponent, canActivate: [AuthGuard]  },
-  { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: "dashboard", component: DashboardComponent,  },
   { path: 'notify', component: EmailNotificationComponent, canActivate: [AuthGuard]  },
   { path: 'activity', component: ActivityComponent, canActivate: [AuthGuard]  },
   { path: 'transaction-summary', component: ActivityTwoComponent, canActivate: [AuthGuard]  },
@@ -50,17 +54,17 @@ const routes: Routes = [
   // @super-admin
   // { path: '@super-admin', component: LoginComponent },
   { path: 'super-admin', component: SuperLogin },
-  { path: 'super-admin/dashboard', component: SuperDashboardComponent },
-  { path: 'super-admin/user', component: UsersComponent },
-  { path: 'super-admin/reports', component: TransactionReportComponent },
-  { path: 'super-admin/support', component: FaqComponent },
-  { path: 'super-admin/user-role', component: UserRoleComponent },
-  { path: 'super-admin/customers', component: CustomerComponent },
-  { path: 'super-admin/transaction-reports', component: TransactionReportComponent },
+  { path: 'super-admin/dashboard', component: SuperDashboardComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/user', component: UsersComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/reports', component: TransactionReportComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/support', component: FaqComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/user-role', component: UserRoleComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/customers', component: CustomerComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/transaction-reports', component: TransactionReportComponent, canActivate: [AdminAuthGuard] },
 
-  { path: 'super-admin/market-rate', component: MarketRateComponent },
-  { path: 'super-admin/payment-channel', component: PaymentChannelComponent },
-  { path: 'super-admin/transaction', component: TransactionConfigComponent },
+  { path: 'super-admin/market-rate', component: MarketRateComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/payment-channel', component: PaymentChannelComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/transaction', component: TransactionConfigComponent, canActivate: [AdminAuthGuard] },
 ];
 
 @NgModule({

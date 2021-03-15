@@ -12,7 +12,7 @@
             </div> -->
       
             <div class="body modal-body" *ngIf="success">
-                <div class="d-flex"><img src="assets/listing/close.svg" class="ml-auto" alt=""></div>
+                <div class="d-flex"><img src="assets/listing/close.svg" class="ml-auto" alt="" (click)="close()"></div>
                 <div class="success text-center">
                     <img src="assets/listing/success.svg" width="200" height="200" alt="">
                 </div>
@@ -46,7 +46,7 @@
                 </div>
             
                 <div class="btn-section">
-                    <button mat-button (click)="payLater()">Pay Later</button>
+                    <button mat-button (click)="close()">Pay Later</button>
                     <button type='submit' mat-button (click)="loading? '' : payNow()">
                         <span *ngIf="!loading">Pay Now</span> 
                         <img *ngIf="loading" src="assets/auth/loader.gif" width="20" height="20" alt="">
@@ -55,7 +55,7 @@
             </div>
             
             <!-- unsuccessful -->
-            <div class="body  modal-body" *ngIf="!success">
+            <div class="body modal-body" *ngIf="!success">
                 <div class="d-flex"><img src="assets/listing/close.svg" class="ml-auto" alt=""></div>
                 <div class="success text-center">
                     <img src="assets/listing/notSuccess.svg" alt="">

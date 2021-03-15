@@ -15,11 +15,11 @@
                         </div>
                         <div class="input-section">
                             <select name="myCurrency" class="select" [(ngModel)]="order.myCurrency" (change)="doCalculation()">
-                                <option value="NGN" *ngIf="order.convertedCurrency!=='NGN'">NGN</option>
-                                <option value="USD">USD</option>
-                                <option value="EUR">EUR</option>
-                                <option value="GBP">GBP</option>
-                                <option value="CAD">CAD</option>
+                                <option value=1 *ngIf="order.convertedCurrency!==1 ">NGN</option>
+                                <option value=2 >USD</option>
+                                <option value=4 >EUR</option>
+                                <option value=3 >GBP</option>
+                                <option value=5 >CAD</option>
                             </select>
                             <input type="number" name="myAmount" [(ngModel)]="order.myAmount"  (keyup)="doCalculation()"/>
                         </div>
@@ -30,8 +30,8 @@
                 <div class="second-line">
                     Market Rate
                     <!-- condition toggler -->
-                    <div class="card-list" *ngIf="order.myCurrency=='NGN'">
-                        <div class="cards" (click)="toggelePrefferdCurrency('USD')" id="usd" style="border: 1px solid #26474E;">
+                    <div class="card-list" *ngIf="order.myCurrency==1">
+                        <div class="cards" (click)="toggelePrefferdCurrency(2)" id="platform" style="border: 1px solid #26474E;">
                             <div >
                                 <img src="assets/listing/usd.svg" />
                                 <span class="country">USD</span>
@@ -52,7 +52,7 @@
                             </div>
                         </div>
             
-                        <div class="cards" (click)="toggelePrefferdCurrency('CAD')" id="cad">
+                        <div class="cards" (click)="toggelePrefferdCurrency(5)" id="cad">
                             <img src="assets/listing/cad.svg" />
                             <span class="country">CAD</span>
                             <div class="d-flex" style="margin-top: 20px;">
@@ -71,7 +71,7 @@
                             </div>
                         </div>
             
-                        <div class="cards" (click)="toggelePrefferdCurrency('GBP')" id="gbp">
+                        <div class="cards" (click)="toggelePrefferdCurrency(3)" id="gbp">
                             <img src="assets/listing/gbp.svg" />
                             <span class="country">GBP</span>
                             <div class="d-flex" style="margin-top: 20px;">
@@ -91,7 +91,7 @@
                             </div>
                         </div>
             
-                        <div class="cards" (click)="toggelePrefferdCurrency('EUR')" id="eur">
+                        <div class="cards" (click)="toggelePrefferdCurrency(4)" id="eur">
                             <img src="assets/listing/jpy.svg" />
                             <span class="country">EUR</span>
                             <div class="d-flex" style="margin-top: 20px;">
@@ -113,7 +113,7 @@
                     </div>
 
                     <!-- condition toggler -->
-                    <div class="single-card-list d-flex" *ngIf="order.myCurrency!='NGN'">
+                    <div class="single-card-list d-flex" *ngIf="order.myCurrency!==1">
                         <img src="assets/listing/ngn.svg" height="100" alt="">
                         <div class="flex2">
                             <div>NGN</div>
@@ -141,11 +141,11 @@
                         </div>
                         <div class="w-50 input-section">
                             <select [(ngModel)]="order.convertedCurrency" class="select" name="convertedCurrency" (change)="doCalculation()" id="convertedCurrency">
-                                <option value="USD">USD</option>
-                                <option value="NGN">NGN</option>
-                                <option value="EUR">EUR</option>
-                                <option value="GBP">GBP</option>
-                                <option value="CAD">CAD</option>
+                                <option value=2>USD</option>
+                                <option value=1>NGN</option>
+                                <option value=4>EUR</option>
+                                <option value=3>GBP</option>
+                                <option value=5>CAD</option>
                             </select>
                             <input type="number" readonly [(ngModel)]="order.convertedAmount" name="convertedAmount"/>
                         </div>
@@ -170,9 +170,9 @@
                     <input type="number" id="account_no"  [(ngModel)]="order.myAccountNumber" name="myAccountNumber" class="col-12" />
                 </div>
                 
-                <div class="col-6" style="margin-top: 19.69px" *ngIf="order?.myCurrency=='NGN'">
+                <div class="col-6" style="margin-top: 19.69px" *ngIf="order?.myCurrency==1">
                     <label for="routing_no">Routing Number</label><br />
-                    <input type="number" id="routing_no" name="bankRouteNo" [(ngModel)]="order.bankRouteNo" class="col-12" />
+                    <input type="text" id="routing_no" name="bankRouteNo" [(ngModel)]="order.bankRouteNo" class="col-12" />
                 </div>
 
             </div>

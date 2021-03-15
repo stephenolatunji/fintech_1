@@ -36,9 +36,11 @@ export class ResponseComponent implements OnInit {
 
   close() {
     $('#myModal').modal('hide')
+    this.rout.navigate(['dashboard']);
   }
 
   backToListing() {
+    $('#myModal').modal('hide')
     this.rout.navigate(['listing']);
   }
 
@@ -48,22 +50,19 @@ export class ResponseComponent implements OnInit {
   
     this.loading = true;
     this.server.createAndMatchOrder(this.data).subscribe(dat=>{
+      console.log(dat)
       this.loading = false;
       if(dat.succeeded && dat.entity!==null) {
         this.server.pendingOrders = dat.entity;
         this.close();
         // Use if statement to know if using paystack or Stripe
-        (dat.entity.myCurrency == 'NGN') ? this.usePayStack() :  this.useStripe(dat.entity)
+        (dat.entity.myCurrency == 'NGN') ? this.usePayStack() :  this.usePayStack()
       }
       else {
         this.openSnackBar('Error while proccessing your request!')
       }
       
     }, err => this.openSnackBar('Error while proccessing your request!'))
-  }
-
-  payLater() {
-    this.rout.navigate(['dashboard']);
   }
 
   openSnackBar(msg) {
@@ -127,7 +126,7 @@ export class ResponseComponent implements OnInit {
   }
 
   usePayStack() {
-    this.server.handlePayStack().subscribe((dat: any)=>{
+    this.server.handlePayStack().subscribe((dat: any)=>{console.log(dat)
       this.loading = false
       if(dat.status) {
         window.location.href = dat.data.authorization_url;

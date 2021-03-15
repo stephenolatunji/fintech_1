@@ -6,15 +6,19 @@ import { environment } from "../../../../environments/environment";
   providedIn: 'root'
 })
 export class SuperServiceService {
-  allCustomers;
+  allCustomers; 
   constructor(private http: HttpClient) { }
+
+  logIn(user) {
+    return this.http.post<any>(`${environment.url2}/api/authentication/login`, user)
+  }
 
   getAllCustomers() {
     this.allCustomers = this.http.post<any>(`${environment.url}/api/Customers/getall`, {});
     return this.allCustomers
   }
 
-getAllUser(data) {
+  getAllUser(data) {
     return this.http.post<any>(`${environment.url}/api/Customers/getall`, data);
   }
 
