@@ -7,12 +7,12 @@ import { SuperServiceService } from 'src/app/@super-admin/@theme/service/super-s
   styleUrls: ['./user-role.component.css']
 })
 export class UserRoleComponent implements OnInit {
-  allUserRoles;
+  allUserRoles; lastIndex = 0;
   addUserRoleClicked: boolean = false;
   constructor(private server: SuperServiceService) { }
 
   ngOnInit(): void {
-    this.allUserRoles = this.server.allCustomers;
+    this.allUserRoles = this.server.allRoles;
     if(this.allUserRoles == undefined) {
       this.server.getAllUserRole().subscribe(dat=>{
         this.allUserRoles = dat.roleLists;
@@ -24,8 +24,14 @@ export class UserRoleComponent implements OnInit {
     this.addUserRoleClicked = true;
   }
 
-  action() {
-    
+  action(index) {
+    this.allUserRoles[this.lastIndex].more = false;
+    this.allUserRoles[index].more = (index == this.lastIndex)? !this.allUserRoles[index].more : true;
+    this.lastIndex = index;
+  }
+
+  handleEdit(data) {
+
   }
 
 }

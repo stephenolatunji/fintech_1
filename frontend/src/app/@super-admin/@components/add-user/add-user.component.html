@@ -2,7 +2,8 @@
 <form class="body animate__animated animate__fadeIn">
     <div class="one">
         <div>Add User <span (click)="goBack()">or go Back</span></div>
-        <div class="img"  (click)="profilePic.click()">
+        <div class="img">
+            <!-- <div class="img"  (click)="profilePic.click()"> -->
             <img class="userAvatar" src="assets/header/avatar.jpg" alt="">
             <div>
                 <input type="file" hidden #profilePic (change)="editProfilePic($event.target.files)">
@@ -33,8 +34,8 @@
                 <input type="text" [(ngModel)]="newUser.lastName" name="lastName">
             </div>
             <div class="form-group">
-                <label for="gender">Gender</label><br />
-                <input type="text" [(ngModel)]="newUser.gender" name="gender">
+                <label for="gender">Password</label><br />
+                <input type="password" [(ngModel)]="newUser.password" name="password">
             </div>
         </div>
 
@@ -52,7 +53,7 @@
     </div>
 
     <!-- Official Info -->
-    <div class="bio-data mt-4">
+    <!-- <div class="bio-data mt-4">
         <div class="mb-3">Official Information</div>
 
         <div class="d-flex">
@@ -87,14 +88,15 @@
                 </select>
             </div>
             <div class="form-group">
-                <!-- <label for="phoneNumber">Phone Number</label><br />
-                <input type="text"> -->
+                 <label for="phoneNumber">Phone Number</label><br />
+                <input type="text"> 
             </div>
         </div>
 
-    </div>
+    </div> -->
 
     <div class="d-flex">
-        <button mat-btton class="ml-auto add-user-button">Add User</button>
+        <button mat-btton (click)="handleSubmitAndUpdate()" class="ml-auto add-user-button" *ngIf="!loading">{{data==undefined? 'Add User' : 'Update User'}}</button>
+        <button disabled mat-btton *ngIf="loading" class="ml-auto add-user-button">Please wait...</button>
     </div>
 </form>

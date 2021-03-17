@@ -65,11 +65,12 @@
         <div style="max-height: 50vh; overflow: auto;">
             <table>
                 <tbody >
-                    <tr *ngFor="let customer of allCustomers; let i = index">
+                    <tr *ngFor="let customer of allCustomers; let i = index" (click)="handleShowProfile(customer)">
                         <td>
                             <img src="assets/header/avatar.jpg" width="25" height="25" alt="">
                             {{ customer?.lastName }}
                             {{ customer?.firstName }}
+                            {{ customer?.middleName }}
                         </td>
                         <td>@{{ customer?.userName }}</td>
                         <td>{{ customer?.email }}</td>
@@ -81,6 +82,11 @@
                         <td class="td-button">
                             <img src="assets/super-admin/user/ellypsis.svg" alt="">
                         </td>
+                        <div class="pop animate__animated animate__bounceIn" *ngIf="staff?.more==true">
+                            <span (click)="handleSetCustomer('activate')">Activate</span>
+                            <span (click)="handleSetCustomer('disable')">Disable</span>
+                            <span (click)="handleSetCustomer('block')">Block</span>
+                        </div>
                     </tr>
                 </tbody>
             </table>
@@ -89,7 +95,7 @@
 
     </div>
 
-    <app-customer-profile *ngIf="viewCustomerProfile"></app-customer-profile>
+    <app-customer-profile *ngIf="viewCustomerProfile" [data]="profileOfCustomer"></app-customer-profile>
 
 </div>
 <app-admin-header></app-admin-header>

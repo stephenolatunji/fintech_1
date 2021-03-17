@@ -113,3 +113,15 @@ li {
 li:hover {
     background-color: #E9EDED !important;
 }
+.pop {
+    content: "";
+    position: absolute;
+    background-color: #fff;
+    margin-top: 35px;
+    margin-left: -68px;
+    padding: 4px 20px;
+    font-size: 12px;
+    /* font-weight: bold; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+}

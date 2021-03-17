@@ -11,8 +11,8 @@ export class AuthGuardService {
 
   canActivate(): boolean {
     if (!this.auth.isAuthenticated() || localStorage.getItem('userId') == null || localStorage.getItem('userId') == 'null') {
-      // this.router.navigate(['super-admin']);
       return true;
+      // this.router.navigate(['super-admin']);
     }
     return true;
   }

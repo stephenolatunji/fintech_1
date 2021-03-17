@@ -16,36 +16,36 @@
             <div class="group">
                 <div class="subgroup col-7">
                     <label for="">Name</label><br />
-                    <div>Uche Akinlabi Dauda</div>
+                    <div>{{ data?.lastName }} {{data?.firstName}} {{data?.middleName}}</div>
                 </div>
 
                 <div class="subgroup col-4">
                     <label for="">BVN Number</label><br />
-                    <div>35670289</div>
+                    <div>{{data?.bvn}}</div>
                 </div>
             </div>
 
             <div class="group">
                 <div class="subgroup col-7">
                     <label for="">User name</label><br />
-                    <div>@Dauda</div>
+                    <div>@{{data?.userName}}</div>
                 </div>
 
                 <div class="subgroup col-4">
                     <label for="">Passport Number</label><br />
-                    <div>35670289</div>
+                    <div>{{data?.passportNumber}}</div>
                 </div>
             </div>
 
             <div class="group">
                 <div class="subgroup col-7">
                     <label for="">Email</label><br />
-                    <div>@Dauda</div>
+                    <div>{{data?.email}}</div>
                 </div>
 
                 <div class="subgroup col-4">
                     <label for="">Phone Number</label><br />
-                    <div>35670289</div>
+                    <div>{{data?.phoneNumber}}</div>
                 </div>
             </div>
         </div>

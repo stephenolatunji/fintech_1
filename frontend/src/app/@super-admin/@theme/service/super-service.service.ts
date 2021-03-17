@@ -6,7 +6,7 @@ import { environment } from "../../../../environments/environment";
   providedIn: 'root'
 })
 export class SuperServiceService {
-  allCustomers; 
+  allCustomers; allStaffs; allRoles
   constructor(private http: HttpClient) { }
 
   logIn(user) {
@@ -18,12 +18,19 @@ export class SuperServiceService {
     return this.allCustomers
   }
 
-  getAllUser(data) {
-    return this.http.post<any>(`${environment.url}/api/Staffs/getall`, data);
+  // getAllStaffs == getAllUsers
+  getAllStaffs() {
+    this.allStaffs = this.http.get<any>(`${environment.url2}/api/Staffs/getall`);
+    return this.allStaffs
   }
 
   addNewUser(data) {
     return this.http.post<any>(`${environment.url}/api/Customers/getall`, data);
+  }
+
+  editUser(data) {
+    data.userId = localStorage.getItem('userId');
+    return this.http.put<any>(`${environment.url}/api/Staffs/update/${data.staffId}`, data);
   }
 
   getAllFaq() {
@@ -31,10 +38,10 @@ export class SuperServiceService {
   }
 
   addNewFaq(data) {
-    return this.http.post<any>(`${environment.url}/api/FAQs//api/FAQs/createfaq`, data);
+    return this.http.post<any>(`${environment.url}/api/FAQs/api/FAQs/createfaq`, data);
   }
 
   getAllUserRole() {
-    return this.http.get<any>(`${environment.url2}/api/Roles/getall`, {});
+    return this.http.get<any>(`${environment.url2}/api/Roles/getall`);
   }
 }

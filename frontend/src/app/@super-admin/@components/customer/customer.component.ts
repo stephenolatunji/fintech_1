@@ -8,7 +8,8 @@ import { SuperServiceService } from '../../@theme/service/super-service.service'
 })
 export class CustomerComponent implements OnInit {
   tab1: boolean = true; tab2: boolean = false; tab3: boolean = false;
-  allCustomers;  filter: string; viewCustomerProfile: boolean = true;
+  allCustomers;  filter: string; viewCustomerProfile: boolean = false;
+  profileOfCustomer; allCustomers_;
 
   constructor(private server: SuperServiceService) { }
 
@@ -18,6 +19,7 @@ export class CustomerComponent implements OnInit {
     if(this.allCustomers == undefined) {
       this.server.getAllCustomers().subscribe(dat=>{
         this.allCustomers = dat.entity;
+        this.allCustomers_ = dat.entity;
       })
     }
   }
@@ -52,20 +54,33 @@ export class CustomerComponent implements OnInit {
     document.getElementById('disabled').style.backgroundColor = 'transparent';
     if(x=='all') {
       this.filter = 'All Customers'
+      this.allCustomers = this.allCustomers_;
       document.getElementById('all').style.backgroundColor = '#E9EDED';
+
     }
     else if(x=='blocked') {
       this.filter = 'Blocked Customers'
+      this.allCustomers = this.allCustomers_.filter(dat=>dat.status == 0);
       document.getElementById('blocked').style.backgroundColor = '#E9EDED';
     }
     else if(x=='disabled') {
       this.filter = 'Disabled Customers'
+      this.allCustomers = this.allCustomers_.filter(dat=>dat.status == 0);
       document.getElementById('disabled').style.backgroundColor = '#E9EDED';
     }
   }
 
   back() {
     this.viewCustomerProfile = false;
+  }
+
+  handleShowProfile(customer) {
+    this.profileOfCustomer = customer;
+    this.viewCustomerProfile = true;
+  }
+
+  handleSetCustomer(x) {
+    
   }
 
 }
