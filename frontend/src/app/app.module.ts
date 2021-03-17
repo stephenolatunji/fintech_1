@@ -57,6 +57,7 @@ import { AddPaymentChannelComponent } from './@super-admin/@components/add-payme
 import { FaqComponent } from './@super-admin/@components/faq/faq.component';
 import { UserRoleComponent } from './@super-admin/@components/user-role/user-role.component';
 import { AddUserRoleComponent } from './@super-admin/@components/add-user-role/add-user-role.component';
+import { EditUserComponent } from './@super-admin/@components/edit-user/edit-user.component';
 import { CustomerComponent } from './@super-admin/@components/customer/customer.component';
 import { CustomerProfileComponent } from './@super-admin/@components/customer-profile/customer-profile.component';
 import { TransactionReportComponent } from './@super-admin/@components/transaction-report/transaction-report.component';
@@ -118,7 +119,8 @@ import { NgxStripeModule } from "ngx-stripe";
     CustomerProfileComponent,
     MarketRateComponent,
     TransactionConfigComponent,
-    EditPaymentChannelComponent
+    EditPaymentChannelComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,

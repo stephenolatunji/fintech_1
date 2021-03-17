@@ -56,7 +56,7 @@ const routes: Routes = [
   // { path: '@super-admin', component: LoginComponent },
   { path: 'super-admin', component: SuperLogin },
   { path: 'super-admin/dashboard', component: SuperDashboardComponent, canActivate: [AdminAuthGuard] },
-  { path: 'super-admin/user', component: UsersComponent },
+  { path: 'super-admin/user', component: UsersComponent, canActivate: [AdminAuthGuard] },
   { path: 'super-admin/reports', component: TransactionReportComponent, canActivate: [AdminAuthGuard] },
   { path: 'super-admin/support', component: FaqComponent, canActivate: [AdminAuthGuard] },
   { path: 'super-admin/user-role', component: UserRoleComponent, canActivate: [AdminAuthGuard] },

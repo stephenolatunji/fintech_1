@@ -38,12 +38,22 @@
                         <!-- <img src="assets/header/user.svg" class="mr-4" alt=""> Profile -->
                         All Customers
                     </li>
+                    <li style="font-size: 13px;" class="d-flex p-2" id="active" (click)="handleFilter('active')">
+                        Active Cusmomers
+                    </li>
+                    <li style="font-size: 13px;" class="d-flex p-2" id="inactive" (click)="handleFilter('inactive')">
+                        Inactive Cusmomers
+                    </li>
                     <li style="font-size: 13px;" class="d-flex p-2" id="blocked" (click)="handleFilter('blocked')">
                         Blocked Customers
                     </li>
-                    <li style="font-size: 13px;" class="d-flex p-2" id="disabled" (click)="handleFilter('disabled')">
-                        Disabled Cusmomers
+                    <li style="font-size: 13px;" class="d-flex p-2" id="deleted" (click)="handleFilter('deleted')">
+                        Deleted Cusmomers
                     </li>
+                    <li style="font-size: 13px;" class="d-flex p-2" id="deactivated" (click)="handleFilter('deactivated')">
+                        Deactivated Customers
+                    </li>
+                 
                 </div>
             </div>
         </div>
@@ -77,15 +87,30 @@
                         <td>{{ customer?.phoneNumber }}</td>
                         <td>null</td>
                         <td>
-                            <span style="padding: 4px 8px" [style.color]=" customer?.status==1? '#76CDCD':'#F27348' " [style.background-color]=" customer?.status==1? 'rgba(118, 205, 205, 0.1)':'rgba(242, 115, 72, 0.1)' ">Active</span> 
+                            <span style="padding: 4px 8px" [style.color]="customer?.status==1? '#76CDCD':'#F27348' " [style.background-color]=" customer?.status==1? 'rgba(118, 205, 205, 0.1)':'rgba(242, 115, 72, 0.1)' ">
+                            {{customer?.status == 1? 'Active' : customer?.status == 2 ? 'Inactive' : customer?.status==3? 'Deactivated' : customer?.status==4? 'Deleted' : 'Blocked' }}
+                            </span> 
                         </td>
-                        <td class="td-button">
+                        <td class="td-button" (click)="handleMore(i)">
                             <img src="assets/super-admin/user/ellypsis.svg" alt="">
                         </td>
-                        <div class="pop animate__animated animate__bounceIn" *ngIf="staff?.more==true">
-                            <span (click)="handleSetCustomer('activate')">Activate</span>
-                            <span (click)="handleSetCustomer('disable')">Disable</span>
-                            <span (click)="handleSetCustomer('block')">Block</span>
+                        <div class="pop animate__animated animate__bounceIn" *ngIf="customer?.more==true">
+                            <div (click)="handleSetCustomer('activate', customer)">
+                                <img src="" alt="">
+                                Activate
+                            </div>
+                            <div (click)="handleSetCustomer('disable', customer)">
+                                <img src="" alt="">
+                                Deactivate
+                            </div>
+                            <div (click)="handleSetCustomer('delete', customer)">
+                                <img src="" alt="">
+                                Delete
+                            </div>
+                            <div (click)="handleSetCustomer('block', customer)">
+                                <img src="" alt="">
+                                Block
+                            </div>
                         </div>
                     </tr>
                 </tbody>

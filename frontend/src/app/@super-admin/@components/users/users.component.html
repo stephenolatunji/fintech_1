@@ -1,4 +1,4 @@
-<div class="body animate__animated animate__fadeIn" *ngIf="!addUserClicked">
+<div class="body animate__animated animate__fadeIn" *ngIf="!addUserClicked && !editUserClicked">
  
     <div class="text1">Users</div>
     <div style="text-align: end;"><button class="btnText" mat-button (click)="toggleAddUser()">+ Add User</button></div>
@@ -19,15 +19,19 @@
                 </div>
          
                 <div class="dropdown-menu mt-2 animate_animated animate__fadeIn" aria-labelledby="dropdownMenuButton" >
-                    <li style="font-size: 13px;" class="d-flex p-2" >
+                    <li style="font-size: 13px;" class="d-flex p-2" (click)="handleFilter('all')">
                         <!-- <img src="assets/header/user.svg" class="mr-4" alt=""> Profile -->
-                        Filter 1
+                        All
                     </li>
-                    <li style="font-size: 13px;" class="d-flex p-2" >
-                        Filter 1
+                    <li style="font-size: 13px;" class="d-flex p-2" (click)="handleFilter('active')">
+                        <!-- <img src="assets/header/user.svg" class="mr-4" alt=""> Profile -->
+                        Active
                     </li>
-                    <li style="font-size: 13px;" class="d-flex p-2" >
-                        Filter 1
+                    <li style="font-size: 13px;" class="d-flex p-2"  (click)="handleFilter('inactive')">
+                        Inactive
+                    </li>
+                    <li style="font-size: 13px;" class="d-flex p-2"  (click)="handleFilter('deactivated')" >
+                        Deactivated
                     </li>
                 </div>
             </div>
@@ -52,17 +56,24 @@
                         {{staff?.lastName}} {{staff?.firstName}} 
                     </td>
                     <td>{{staff?.email}}</td>
-                    <td>{{staff?.roleId}}</td>
+                    <td>{{staff?.roleId==1? 'Super Admin' : staff?.roleId==2? 'Admin' : 'Customer Service'}}</td>
                     <td>
-                        <span style="padding: 4px 8px" [style.color]=" staff?.status==1? '#76CDCD':'#F27348' " [style.background-color]=" staff?.status==1? 'rgba(118, 205, 205, 0.1)':'rgba(242, 115, 72, 0.1)' ">
-                            {{staff?.status==1? 'Active' : 'Not Active'}}
+                        <span style="padding: 4px 8px" [style.color]=" staff?.status==0? '#76CDCD':'#F27348' " [style.background-color]=" staff?.status==0? 'rgba(118, 205, 205, 0.1)':'rgba(242, 115, 72, 0.1)' ">
+                            {{staff?.status==0? 'Active' : staff?.status==1?  'Inactive' : 'Deactivated'}}
                         </span> 
                     </td>
                     <td class="td-button" (click)="showMore(i)" style="cursor: pointer;">
                         <img src="assets/super-admin/user/ellypsis.svg" alt="">
                     </td>
                     <div class="pop animate__animated animate__bounceIn" *ngIf="staff?.more==true">
-                        <span (click)="handleEdit(staff)">Edit</span>
+                        <div (click)="handleEdit(staff)">
+                            <img src="" alt="">
+                            Edit
+                        </div>
+                        <div (click)="handleDeactivate(staff)">
+                            <img src="" alt="">
+                            Deactivate
+                        </div>
                     </div>
                 </tr>
             </tbody>
@@ -71,8 +82,10 @@
     </div>
 
 </div>
+<app-add-user *ngIf="addUserClicked" ></app-add-user>
+<app-edit-user *ngIf="editUserClicked" [data]="staffToEdit"></app-edit-user>
+
 <app-admin-header></app-admin-header>
 <app-side-nav></app-side-nav>
 
 
-<app-add-user *ngIf="addUserClicked || editUserClicked" [data]="staffToEdit" ></app-add-user>

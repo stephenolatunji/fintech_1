@@ -4,25 +4,29 @@ import { SuperServiceService } from '../../@theme/service/super-service.service'
 import { UsersComponent } from '../users/users.component';
 
 @Component({
-  selector: 'app-add-user',
-  templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.css']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.css']
 })
-export class AddUserComponent implements OnInit {
+
+export class EditUserComponent implements OnInit {
+  @Input() data;
 
   newUser = {
     userId: localStorage.getItem('userId'), staffId: '',
     firstName: '', middleName: '', lastName: '', gender: 0, email: '', phoneNumber: '', supervisorId: 0,
     roleId: 0, password: '', address: '', accessLevel: '', supervisor: '', staffCode: '', role: '', department: ''
-  }; err; loading:boolean = false;
-
+  };
+  err; loading:boolean = false;
   constructor(private userFunc: UsersComponent, private server: SuperServiceService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.data!==undefined?
+    this.newUser = this.data : null
   }
 
   goBack() {
-    this.userFunc.addUserClicked = false;
+    this.userFunc.editUserClicked = false;
   }
 
   handleSubmit() {
@@ -34,15 +38,15 @@ export class AddUserComponent implements OnInit {
     else {
       // handleNewUser
 
-        this.server.editUser(this.newUser).subscribe(dat=>{
+        this.server.addNewUser(this.newUser).subscribe(dat=>{
           if(dat.succeeded) {
             this.loading = false;
-            this.openSnackBar("New User Added Successfully!")
+            this.openSnackBar("User Updated Successfully!")
           }
           else {
-            this.openSnackBar("Error adding new user!")
+            this.openSnackBar("Error updating user!")
           }
-        }, err => this.openSnackBar("Error adding new user!"))
+        }, err => this.openSnackBar("Error updating user!"))
       
     }
 
@@ -54,27 +58,4 @@ export class AddUserComponent implements OnInit {
     });
   }
 
-
-  editProfilePic(ev) {
-    const element = ev[0];
-    // this.user.uploadImage = element.name;
-    // this.newProfilePictureUploaded = true;
-    this.prepareImage(element)     
-  }
-
-  prepareImage(image) {
-    var reader = new FileReader();
-    reader.onloadend = () => {
-      // compress image
-      this.compressFile(reader.result);
-      reader.result.toString();
-    }
-    return reader.readAsDataURL(image);
-  }
-
-  compressFile(image) {
-    // this.imageCompress.compressFile(image, -1, 50, 50).then(result=> {     
-    //   this.user.uploadImage = result; 
-    // })
-  }
 }

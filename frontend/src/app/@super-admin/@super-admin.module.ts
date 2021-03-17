@@ -24,6 +24,7 @@ import { CustomerProfileComponent } from './@components/customer-profile/custome
 import { MarketRateComponent } from './@components/market-rate/market-rate.component';
 import { TransactionConfigComponent } from './@components/transaction-config/transaction-config.component';
 import { EditPaymentChannelComponent } from './@components/edit-payment-channel/edit-payment-channel.component';
+import { EditUserComponent } from './@components/edit-user/edit-user.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { EditPaymentChannelComponent } from './@components/edit-payment-channel/
     CustomerProfileComponent,
     MarketRateComponent,
     TransactionConfigComponent,
-    EditPaymentChannelComponent
+    EditPaymentChannelComponent,
+    EditUserComponent
   ],
   imports: [
     CommonModule

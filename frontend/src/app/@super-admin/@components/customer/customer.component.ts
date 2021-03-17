@@ -9,19 +9,22 @@ import { SuperServiceService } from '../../@theme/service/super-service.service'
 export class CustomerComponent implements OnInit {
   tab1: boolean = true; tab2: boolean = false; tab3: boolean = false;
   allCustomers;  filter: string; viewCustomerProfile: boolean = false;
-  profileOfCustomer; allCustomers_;
+  profileOfCustomer; allCustomers_; lastIndex = 1;
 
   constructor(private server: SuperServiceService) { }
 
   ngOnInit(): void {
     this.allCustomers = this.server.allCustomers;
-    this.handleFilter('all');
-    if(this.allCustomers == undefined) {
-      this.server.getAllCustomers().subscribe(dat=>{
-        this.allCustomers = dat.entity;
-        this.allCustomers_ = dat.entity;
-      })
-    }
+    setTimeout(() => {
+      
+      this.handleFilter('all');
+      if(this.allCustomers == undefined) {
+        this.server.getAllCustomers().subscribe(dat=>{
+          this.allCustomers = dat.entity;
+          this.allCustomers_ = dat.entity;
+        })
+      }
+    }, 200);
   }
 
   
@@ -60,13 +63,28 @@ export class CustomerComponent implements OnInit {
     }
     else if(x=='blocked') {
       this.filter = 'Blocked Customers'
-      this.allCustomers = this.allCustomers_.filter(dat=>dat.status == 0);
+      this.allCustomers = this.allCustomers_.filter(dat=>dat.status == 5);
       document.getElementById('blocked').style.backgroundColor = '#E9EDED';
     }
-    else if(x=='disabled') {
-      this.filter = 'Disabled Customers'
-      this.allCustomers = this.allCustomers_.filter(dat=>dat.status == 0);
-      document.getElementById('disabled').style.backgroundColor = '#E9EDED';
+    else if(x=='deleted') {
+      this.filter = 'Deleted Customers'
+      this.allCustomers = this.allCustomers_.filter(dat=>dat.status == 4);
+      document.getElementById('deleted').style.backgroundColor = '#E9EDED';
+    }
+    else if(x=='deactivated') {
+      this.filter = 'Deactivated Customers'
+      this.allCustomers = this.allCustomers_.filter(dat=>dat.status == 3);
+      document.getElementById('deactivated').style.backgroundColor = '#E9EDED';
+    }
+    else if(x=='active') {
+      this.filter = 'Active Customers'
+      this.allCustomers = this.allCustomers_.filter(dat=>dat.status == 1);
+      document.getElementById('active').style.backgroundColor = '#E9EDED';
+    }
+    else if(x=='inactive') {
+      this.filter = 'Inactive Customers'
+      this.allCustomers = this.allCustomers_.filter(dat=>dat.status == 2);
+      document.getElementById('inactive').style.backgroundColor = '#E9EDED';
     }
   }
 
@@ -79,8 +97,19 @@ export class CustomerComponent implements OnInit {
     this.viewCustomerProfile = true;
   }
 
-  handleSetCustomer(x) {
-    
+  handleMore(index) {
+    if(index == this.lastIndex) {
+      this.allCustomers[index].more = !this.allCustomers[index].more
+    }
+    else {
+      this.allCustomers[this.lastIndex].more = false
+      this.allCustomers[index].more = true
+      this.lastIndex = index;
+    }
+  }
+
+  handleSetCustomer(index, customer) {
+
   }
 
 }
