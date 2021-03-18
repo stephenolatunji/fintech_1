@@ -45,33 +45,69 @@
                     <th>Actions </th>
                 </tr>
             </thead>
+            <tbody >
+                <tr *ngFor="let report of allReports; let i = index">
+                    <td *ngIf="i < top10Reports">
+                        {{report?.order.name}}
+                    </td>
+                    <td *ngIf="i < top10Reports">{{report?.order.orderNo}}</td>
+                    <td *ngIf="i < top10Reports">
+                        {{
+                            report?.order.myCurrency == 'NGN' ? '₦' :
+                            report?.order.myCurrency == 'USD' ? '$' :
+                            report?.order.myCurrency == 'CAD' ? 'C$' :
+                            report?.order.myCurrency == 'GBP' ? '£' : '€'
+                        }}
+                        {{report?.order.myAmount}}
+                    </td>
+                    <td *ngIf="i < top10Reports">
+                        {{
+                            report?.order.convertedCurrency == 'NGN' ? '₦' :
+                            report?.order.convertedCurrency == 'USD' ? '$' :
+                            report?.order.convertedCurrency == 'CAD' ? 'C$' :
+                            report?.order.convertedCurrency == 'GBP' ? '£' : '€'
+                        }} 
+                        {{report?.order.convertedAmount}}
+                    </td>
+                    <td *ngIf="i < top10Reports">
+                        {{
+                            report?.order.myCurrency == 'NGN' ? '₦' :
+                            report?.order.myCurrency == 'USD' ? '$' :
+                            report?.order.myCurrency == 'CAD' ? 'C$' :
+                            report?.order.myCurrency == 'GBP' ? '£' : '€'
+                        }}
+                        {{report?.order.rate}}/{{
+                            report?.order.convertedCurrency == 'NGN' ? '₦' :
+                            report?.order.convertedCurrency == 'USD' ? '$' :
+                            report?.order.convertedCurrency == 'CAD' ? 'C$' :
+                            report?.order.convertedCurrency == 'GBP' ? '£' : '€'
+                        }}1
+                    </td>
+                    <td *ngIf="i < top10Reports">
+                        {{
+                            report?.order.myCurrency == 'NGN' ? '₦' :
+                            report?.order.myCurrency == 'USD' ? '$' :
+                            report?.order.myCurrency == 'CAD' ? 'C$' :
+                            report?.order.myCurrency == 'GBP' ? '£' : '€'
+                        }}
+                        {{report?.order.transactionFee}}
+                    </td>
+                    <td *ngIf="i < top10Reports">{{report?.order.myAccountNumber}}</td>
+                    <td *ngIf="i < top10Reports">
+                        <span style="padding: 4px 8px" [style.color]=" report?.order.paymentStatus==1? '#76CDCD':'#F27348' " [style.background-color]=" report?.order.paymentStatus==1? 'rgba(118, 205, 205, 0.1)':'rgba(242, 115, 72, 0.1)' ">
+                            {{
+                                report?.order.status == 1 ? 'Active' : 'Inactive'
+                            }}
+                        </span> 
+                    </td>
+                    <td *ngIf="i < top10Reports" class="td-button">
+                        <img src="assets/super-admin/transaction/eye.svg" class="mr-3" alt="" (click)="visualize(report?.order)">
+                        <img src="assets/super-admin/transaction/edit.svg" alt="">
+                    </td>
+                </tr>
+            </tbody>
         </table>
 
-        <div style="max-height: 50vh; overflow: auto;">
-
-            <table>    
-                <tbody >
-                    <tr *ngFor="let report of allReports; let i = index">
-                        <td *ngIf="i < top10Reports">
-                            Oluchukwu Adumije
-                        </td>
-                        <td *ngIf="i < top10Reports">124467</td>
-                        <td *ngIf="i < top10Reports">#2000</td>
-                        <td *ngIf="i < top10Reports">$2000</td>
-                        <td *ngIf="i < top10Reports">N 400/$1</td>
-                        <td *ngIf="i < top10Reports">N45</td>
-                        <td *ngIf="i < top10Reports">24426626</td>
-                        <td *ngIf="i < top10Reports">
-                            <span style="padding: 4px 8px" [style.color]=" report?.status==1? '#76CDCD':'#F27348' " [style.background-color]=" report?.status==1? 'rgba(118, 205, 205, 0.1)':'rgba(242, 115, 72, 0.1)' ">Active</span> 
-                        </td>
-                        <td *ngIf="i < top10Reports" class="td-button">
-                            <img src="assets/super-admin/transaction/eye.svg" class="mr-3" alt="">
-                            <img src="assets/super-admin/transaction/edit.svg" alt="">
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
         <div class="text-center view mt-1" (click)="viewMore()" *ngIf="top10Reports == 10">View more</div>
         <div class="text-center view mt-1" (click)="viewLess()" *ngIf="top10Reports > 10">View Less</div>
         
@@ -80,7 +116,7 @@
 
 </div>
 
-<app-view-report *ngIf="viewReport"></app-view-report>
+<app-view-report *ngIf="viewReport" [data]="dataForViewReport"></app-view-report>
 
 <app-admin-header></app-admin-header>
 <app-side-nav></app-side-nav>

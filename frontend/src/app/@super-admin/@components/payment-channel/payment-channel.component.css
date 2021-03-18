@@ -121,3 +121,9 @@ select {
     border-radius: 15px;
     margin-top: 28px;
 }
+span {
+    color: #F27348;
+    font-size: 12px;
+    text-decoration: underline;
+    font-style: italic;
+}

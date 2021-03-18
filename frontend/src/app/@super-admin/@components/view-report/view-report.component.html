@@ -7,62 +7,102 @@
         <div class="form-section">
             <div class="col-9">
                 <label for="">Name</label> <br />
-                <div>Uju Obi</div>
+                <div>{{data?.name}}</div>
             </div>
             <div>
                 <label for="">Order No</label> <br />
-                <div>123saew</div>
+                <div>{{data?.orderNo}}</div>
             </div>
         </div>
 
         <div class="form-section">
             <div class="col-9">
                 <label for="">To swap</label> <br />
-                <div>$100,000</div>
+                <div>
+                    {{
+                        data?.myCurrency == 'NGN' ? '₦' :
+                        data?.myCurrency == 'USD' ? '$' :
+                        data?.myCurrency == 'CAD' ? 'C$' :
+                        data?.myCurrency == 'GBP' ? '£' : '€'
+                    }} {{data?.myAmount}}
+                </div>
             </div>
             <div>
                 <label for="">For</label> <br />
-                <div>N38, 115,000</div>
+                <div>
+                    {{
+                        data?.convertedCurrency == 'NGN' ? '₦' :
+                        data?.convertedCurrency == 'USD' ? '$' :
+                        data?.convertedCurrency == 'CAD' ? 'C$' :
+                        data?.convertedCurrency == 'GBP' ? '£' : '€'
+                    }} 
+                    {{data?.convertedAmount}}
+                </div>
             </div>
         </div>
 
         <div class="form-section">
             <div class="col-9">
                 <label for="">Rate</label> <br />
-                <div>N 445/$</div>
+                <div>
+                    {{
+                        data?.myCurrency == 'NGN' ? '₦' :
+                        data?.myCurrency == 'USD' ? '$' :
+                        data?.myCurrency == 'CAD' ? 'C$' :
+                        data?.myCurrency == 'GBP' ? '£' : '€'
+                    }}
+                    {{data?.rate}}/{{
+                        data?.convertedCurrency == 'NGN' ? '₦' :
+                        data?.convertedCurrency == 'USD' ? '$' :
+                        data?.convertedCurrency == 'CAD' ? 'C$' :
+                        data?.convertedCurrency == 'GBP' ? '£' : '€'
+                    }}1
+                </div>
             </div>
             <div>
                 <label for="">Transfer Fee</label> <br />
-                <div>N 45</div>
+                <div>
+                    {{
+                        data?.myCurrency == 'NGN' ? '₦' :
+                        data?.myCurrency == 'USD' ? '$' :
+                        data?.myCurrency == 'CAD' ? 'C$' :
+                        data?.myCurrency == 'GBP' ? '£' : '€'
+                    }}
+                    {{data?.transactionFee}}
+                </div>
             </div>
         </div>
 
         <div class="form-section">
             <div class="col-9">
                 <label for="">Destination Account</label> <br />
-                <div>235670289</div>
+                <div>{{data?.myAccountNumber}}</div>
             </div>
             <div>
                 <label for="">Bank</label> <br />
-                <div>GT Bank</div>
+                <div>{{data?.myBankName}}</div>
             </div>
         </div>
 
         <div class="form-section">
             <div class="col-9">
                 <label for="">Payment Channel</label> <br />
-                <div>Uju Obi</div>
+                <div>{{data?.myPaymentChannel}}</div>
             </div>
             <div>
-                <label for="">Payment Referance</label> <br />
-                <div>235670289</div>
+                <label for="">Payment Reference</label> <br />
+                <div>{{data?.myPaymentReferenceNo}}</div>
             </div>
         </div>
 
         <div class="form-section">
             <div class="col-9">
                 <label for="">Status</label> <br />
-                <div>Uju Obi</div>
+                <div>
+                    {{
+                        data?.paymentSummary == 1? 'Active' : 'Inactive'
+                    }}
+                </div>
             </div>
             <div>
                 <!-- <label for="">Payment Channel</label> <br />

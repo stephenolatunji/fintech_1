@@ -6,7 +6,7 @@ import { environment } from "../../../../environments/environment";
   providedIn: 'root'
 })
 export class SuperServiceService {
-  allCustomers; allStaffs; allRoles
+  allCustomers; allStaffs; allRoles; allTransaction; allPaaymentChannel;
   constructor(private http: HttpClient) { }
 
   logIn(user) {
@@ -43,5 +43,27 @@ export class SuperServiceService {
 
   getAllUserRole() {
     return this.http.get<any>(`${environment.url2}/api/Roles/getall`);
+  }
+
+  newMarketRate(data) {
+    return this.http.post<any>(`${environment.url}/api/Configurations/createmarketrateconfig`, data);
+  }
+
+  getAllTransactions() {
+    this.allTransaction = this.http.get<any>(`${environment.url}/api/Orders/getorderlistings`);
+    return this.allTransaction
+  }
+
+  getAllPaymentChannel() {
+    this.allPaaymentChannel = this.http.get<any>(`${environment.url}​/api​/PaymentChannels​/getAll`);
+    return this.allPaaymentChannel;
+  }
+
+  newPaymentChannel(data) {
+    return this.http.post<any>(`${environment.url}​/api​/PaymentChannels​/create`, data);
+  }
+
+  editPaymentChannel(data) {
+    return this.http.put<any>(`${environment.url}​/api​/PaymentChannels​/update/${data.id}`, data);
   }
 }

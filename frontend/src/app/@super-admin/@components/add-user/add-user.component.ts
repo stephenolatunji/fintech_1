@@ -34,7 +34,7 @@ export class AddUserComponent implements OnInit {
     else {
       // handleNewUser
 
-        this.server.editUser(this.newUser).subscribe(dat=>{
+        this.server.addNewUser(this.newUser).subscribe(dat=>{
           if(dat.succeeded) {
             this.loading = false;
             this.openSnackBar("New User Added Successfully!")

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TransactionReportComponent } from '../transaction-report/transaction-report.component';
 
 @Component({
@@ -7,7 +7,7 @@ import { TransactionReportComponent } from '../transaction-report/transaction-re
   styleUrls: ['./view-report.component.css']
 })
 export class ViewReportComponent implements OnInit {
-
+  @Input() data;
   constructor(private report: TransactionReportComponent) { }
 
   ngOnInit(): void {
