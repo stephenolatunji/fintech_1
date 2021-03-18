@@ -3,6 +3,7 @@ import { ServerService } from './../../../@theme/services/server.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { AuthService } from '../../@auth/guard/auth.service';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { SuperServiceService } from '../../@theme/service/super-service.service';
 
 @Component({
@@ -13,7 +14,7 @@ import { SuperServiceService } from '../../@theme/service/super-service.service'
 export class LoginComponent implements OnInit {
 
   public user = { email: null, password: null }; loading: boolean = false; type: string = 'password'; err;
-  constructor(private server: SuperServiceService, private _snackBar: MatSnackBar, private auth: AuthService, private rout: Router) { }
+  constructor(public jwtHelper: JwtHelperService, private server: SuperServiceService, private _snackBar: MatSnackBar, private auth: AuthService, private rout: Router) { }
 
   ngOnInit(): void {
     if(this.auth.isAuthenticated() && localStorage.getItem('userId')!==null) {
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
       this.loading = false;
       if(data.isSuccess) {console.log(data)
         localStorage.setItem('token_', data.token.accessToken);
-        localStorage.setItem('userId',this.user.email);
+        const decoded = JSON.parse(this.jwtHelper.decodeToken(data.token.accessToken).staffEntity);
+        localStorage.setItem('userId', decoded.staffId);
         this.openSnackBar('Login Successful!');
         this.rout.navigate(['super-admin/dashboard'])
 
