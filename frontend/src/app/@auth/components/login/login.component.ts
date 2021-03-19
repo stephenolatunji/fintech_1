@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from './../../../@theme/services/server.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -26,15 +25,18 @@ export class LoginComponent implements OnInit {
     this.server.logIn(this.user).subscribe(data => {
       this.loading = false;
       if (data.isSuccess) {
+        console.log(data)
         localStorage.setItem('token', data.token.accessToken);
         localStorage.setItem('customerId', data.entity.customerId);
+        localStorage.setItem('user', data.entity.userName);
         this.openSnackBar('Login Successful!');
-        this.rout.navigate(['dashboard'])
-        console.log(data.entity)
+        this.rout.navigate(['dashboard']);
+
+        this.server.userInformations = data.entity;
       }
       else {
-        this.err = data.message;
-        this.openSnackBar(`Sorry, ${data.message}`)
+        this.err = 'Please fill in the boxes correctly';
+        this.openSnackBar(this.err)
       }
     }, error => this.handleError(error))
   };
@@ -57,5 +59,4 @@ export class LoginComponent implements OnInit {
       duration: 2500,
     });
   }
-
 }

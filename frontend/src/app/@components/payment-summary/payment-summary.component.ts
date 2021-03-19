@@ -20,13 +20,8 @@ export class PaymentSummaryComponent implements OnInit {
     }
   }
 
-  swap(payment) {
-    this.server.pendingOrders = payment;
-    this.rout.navigate(['payment-gateway'])
-  }
-
-  back() {
-    window.history.back()
+  handleRout() {
+    this.rout.navigate(['dashboard'])
   }
 
 }

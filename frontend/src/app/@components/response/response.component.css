@@ -2,34 +2,31 @@
      background-color: #fff;
     /* min-height: 99vh; */
 }
-.success {
-    margin-top: 2px 0px 0 0px;
-}
 .text1 {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 22px;
     color: #26474E;
-    margin: 25.58px 0px 15px 0px;
+    margin-bottom: 10px;
     text-align: center;
 }
 .text2 {
     font-weight: normal;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 17px;
     text-align: center;
     letter-spacing: 0.002em;
-    margin-bottom: 26px;
+    margin-bottom: 8px;
     color: #4D4D4D;
 }   
 .box {
     background: #FFFFFF;
     box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.05);
     border-radius: 15px;
-    padding: 37px 34px;
-    margin-bottom: 34px;
+    padding: 22px 34px;
+    margin-bottom: 10px;
     width: 80%;
-    display: flex; justify-content: space-between;
+    display: flex; justify-content: space-between; align-items: center;
 }
 .box .d-flex div div:first-child, .box .d-flex div div:last-child, .non-flex div:first-child, .non-flex div:last-child {
     font-weight: 500;
@@ -40,7 +37,7 @@
 
 .box .d-flex div div:nth-child(2) {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 22px;
     color: #F27348;
     margin: 7px 0px 5px 0px;
@@ -49,7 +46,7 @@
 .notice {
     text-align: center;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 11px;
     line-height: 16px;
     letter-spacing: 0.002em;
     color: #4D4D4D;
@@ -58,15 +55,15 @@
 .btn-section {
     display: flex;
     justify-content: center;
-    margin: 40px 30px;
+    margin: 15px 30px;
 }
 .btn-section button  {
     /* width: 40%; */
     border: 1px solid #F27348;
     border-radius: 15px;
-    padding: 14px;
+    padding: 12px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 22px;width: 50%;
     text-align: center;
     background-color: #F27348;
@@ -84,14 +81,38 @@
    justify-content: center;
 }
 .not-success-btn {
-    padding: 14px 71px   !important;
-    margin-bottom: 108px  !important;
+    padding: 12px 71px   !important;
+    margin: 20px 0px 50px 0px  !important;
     background-color: #F27348;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 22px;
     text-align: center;
     color: #FFFFFF;
     border-radius: 15px;
     outline: none;
+}
+
+.payment-success {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    padding: 40px 150px;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #254750;
+}
+
+.success-text {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #254750;
+    margin-top: 30px;
 }

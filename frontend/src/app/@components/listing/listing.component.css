@@ -65,7 +65,7 @@ input {
     display: flex;
 }
 .single-card-list {
-    padding: 51px 31px;
+    padding: 36px 21px;
     background-color: #FFFFFF;
     box-shadow: 0px 4px 10px rgba(38, 71, 78, 0.1);
     border-radius: 15px;
@@ -90,7 +90,7 @@ input {
     background-color: #FFFFFF;
     box-shadow: 0px 4px 10px rgba(38, 71, 78, 0.1);
     border-radius: 15px;
-    padding: 30px 0px 30px 29px;
+    padding: 30px 5px 30px 15px;
     width: 25%;
     cursor: pointer;
     margin-right: 12px;
@@ -101,7 +101,7 @@ input {
 
 .amount {
     font-weight: 600;
-    font-size: 24px;
+    font-size: 22px;
     white-space: nowrap;
     line-height: 29px;
     margin-right: 14px;
@@ -136,6 +136,9 @@ input {
     margin-right: 9px;
     text-align: center;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 label {
     font-weight: 600;
@@ -150,7 +153,7 @@ label {
 .btn-section button:first-child, .btn-section button:last-child {
     border: 1px solid #F27348;
     border-radius: 15px;
-    padding: 19px 94px;
+    padding: 14px 94px;
     font-weight: bold;
     font-size: 18px;
     line-height: 22px;
@@ -161,7 +164,7 @@ label {
 
 .btn-section button:last-child {
     background-color: #F27348;
-    padding: 19px 66.75px;
+    padding: 14px 66.75px;
     color: #fff;
     margin-left: 15.25px;
 }
@@ -177,7 +180,7 @@ label {
     box-sizing: border-box;
     box-shadow: 2px 8px 20px rgba(152, 157, 179, 0.15);
     border-radius: 5px;
-    height: 53vh;
+    /* height: 53vh; */
 }
 .group1 {
     padding: 122px 24px 149px 25px;
@@ -188,4 +191,99 @@ label {
 }
 .segment2 { 
     margin-left: 30px;
+}
+
+@media screen and (min-width: 800px) {
+
+    .segment2 { 
+        margin-left: 30px;
+        /* width: 20%; */
+    }
+    .segment2 img {
+        width: 100%;
+    }
+    .group1 {
+        padding: 80px 24px 100px 25px;
+        background-color: #76CDCD;
+        box-shadow: 2px 8px 15px rgba(78, 147, 147, 0.1);
+        border-radius: 5px;
+        margin-bottom: 16px;
+    }
+    .segment1 {
+        box-shadow: 0px 4px 10px rgba(38, 71, 78, 0.1);
+        border-radius: 5px;
+        padding: 18px 36px;
+        width: 75%;
+    }
+    .second-line img {
+        width: 40%;
+    }
+    .amount {
+        font-weight: 600;
+        font-size: 18px;
+        white-space: nowrap;
+        line-height: 20px;
+        margin-right: 10px;
+        color: #262C31;
+    }
+    .small-amount {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 12px;
+        color: #848484;
+    }
+    .text1{
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 12px;
+        color: #26474E;
+    }
+    .text2 {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 12px;
+        color: #26474E;
+    }
+    label {
+        font-weight: 600;
+        font-size: 12px;
+        line-height: 12px;
+        margin-bottom: 19.69px;
+        color: #26474E;
+    }
+    .btn-section {
+        margin-top: 54px;
+    }
+    .btn-section button:first-child, .btn-section button:last-child {
+        border: 1px solid #F27348;
+        border-radius: 15px;
+        padding: 19px 94px;
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 22px;
+        text-align: center;
+        color: #F27348;
+        outline: none;
+    }
+    
+    .btn-section button:last-child {
+        background-color: #F27348;
+        padding: 19px 66.75px;
+        color: #fff;
+        margin-left: 15.25px;
+    }
+    
+    .btn-section button:last-child:hover, .btn-section button:first-child:hover , .group2:hover{
+        opacity: .7;
+    }
+    .country, .box {
+        font-size: 12px;
+    }
+    .group2:hover {
+        cursor: pointer;
+    }
+    .select {
+        font-size: 12px !important;
+    }
+    
 }

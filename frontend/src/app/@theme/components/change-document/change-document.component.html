@@ -1,0 +1,38 @@
+<form (submit)="handleSubmit()" class="modal-content animate__animated animate__fadeIn" >
+    <div class="header">
+        <img src="assets/auth/back.svg" (click)="back()" alt="">
+        <div class="settings">Change Passport ID  </div>
+    </div>
+ 
+    <div class="d-flex">
+        <div class="form-group mt-4" style="width: 75%">
+            <label for="passportNumebr" class="text2 ml-0">Passport Number</label> <br />
+            <input type="text" id="passportNumebr" [(ngModel)]="document.documentNumber" name="documentNumber">
+        </div>
+        <div class="form-group mt-4 ml-2">
+            <label for="date" class="text2 ml-0">Expiry Date</label> <br />
+            <input type="date" id="date" [(ngModel)]="document.documentExpiryDate" name="documentExpiryDate">
+        </div>
+    </div>
+
+    <div class="drag-drop uploadfilecontainer" style="margin-top: 10px;" appDnd (onFileDropped)="uploadFile($event)" >
+        <div>
+            <img src="assets/auth/share.svg" alt="">
+        </div>
+        <div>
+            <input type="file" #fileInput id="fileInput" hidden (change)="uploadFile($event.target.files)" >
+            Drag and drop your file here <br />
+            or <br /><span (click)="fileInput.click()"> browse</span>
+        </div>
+        <div  class="files-list" *ngFor="let file of files;let i= index">
+            <p> {{ file }} </p>
+         </div>
+ 
+    </div>
+    <div class="d-flex mt-4">
+        <button class="ml-auto" mat-button *ngIf="!loading">Save Changes</button>
+        <button class="ml-auto" mat-button disabled *ngIf="loading">Please wait...</button>
+    </div>
+<!-- end -->
+
+</form>

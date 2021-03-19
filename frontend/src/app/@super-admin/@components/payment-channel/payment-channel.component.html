@@ -1,0 +1,50 @@
+<div class="body">
+    <div class="text1">
+        Payment Channel Configuration
+    </div>
+    <div class="p1" *ngIf="!addPaymentChannel && !editPaymentChannel">
+        Payment Channels
+    </div>
+    <div class="p1" *ngIf="editPaymentChannel">
+        Edit Payment Channel <span (click)="back()">or go back</span>
+    </div>
+    <div class="p1" *ngIf="addPaymentChannel">
+        Add Payment Channel <span (click)="back()">or go back</span>
+    </div>
+
+    <div class="form-box pt-3 animate__animated animate__fadeIn" *ngIf="!addPaymentChannel && !editPaymentChannel">
+        <div class="paymentText1">
+            These are the available payment channels
+        </div>
+
+    
+        <div class="paymentBox d-flex" id="flutter" *ngFor="let channel of allPaymentChannel">
+            <div class="d-flex" style="align-items: center;">
+                <img src="assets/super-admin/configuration/flutter.svg" width="50" height="50" alt="">
+                <div style="font-size: 18px; margin-left: 10px;">
+                    {{channel?.name}}
+                    <div style="font-weight: normal; font-size: 14px; white-space: nowrap">Transaction Fee: 5%</div>
+                </div>
+            </div>
+    
+            <div>
+                <img src="assets/super-admin/configuration/edit.svg" class="bin" alt="" (click)="editChannel(channel)">
+                <img src="assets/super-admin/configuration/bin.svg" class="bin" alt="">
+            </div>
+        </div>
+        <!-- <img src="assets/super-admin/configuration/paystack.svg" width="50" height="50" alt=""> -->
+        <!-- <img src="assets/super-admin/configuration/stripe.svg" width="50" height="50" alt=""> -->
+  
+    
+        <button mat-button class="add-channel" (click)="addChannel()"> 
+            Add Channel
+        </button>
+    </div>
+
+    <app-add-payment-channel *ngIf="addPaymentChannel"></app-add-payment-channel>
+    <app-edit-payment-channel *ngIf="editPaymentChannel" [data]="channelToEdit"></app-edit-payment-channel>
+
+</div>
+
+<app-admin-header></app-admin-header>
+<app-side-nav></app-side-nav>

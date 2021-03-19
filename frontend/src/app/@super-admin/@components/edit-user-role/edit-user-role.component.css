@@ -1,0 +1,87 @@
+.body {
+    margin-top: 80px; padding: 0px 20px 20px 19%; position: absolute; width: 100%;
+}
+
+.one-text2 {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 29px;
+    color: #26474E;
+}
+.one-text1 {
+    font-size: 12px;
+    line-height: 17px;
+    color: #26474E;    
+}
+.one span {
+    font-size: 10px; color: #26474E; text-decoration: underline; margin-left: 10px; cursor: pointer;
+}
+.one span:hover {
+    color: #F27348;
+}
+.one {
+    margin-bottom: 45px;
+}
+.one button {
+    margin-left: 24px;
+    padding: 7px 15px;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    background-color: #F27348;
+    border-radius: 10px;
+}
+button:hover {
+    opacity: .7;
+}
+.userAvatar {
+    width: 100px; border-radius: 160px; margin: 16px 10px 25px 0px;
+}
+.bio-data {
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    color: #26474E;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    max-height: 70vh; overflow: auto;
+}
+.bio-data label {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+}
+input, select {
+    border: 1px solid #26474E;
+    border-radius: 10px;
+    padding: 5px;
+    width: 100%;
+}
+.form-group {
+    width: 50%;
+}
+.add-user-button {
+    margin-top: 30px;
+    background: #26474E;
+    border-radius: 10px;
+    padding: 8px 16px;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 17px;
+    color: #FFFFFF;
+}
+
+::ng-deep .mat-checkbox-checked.mat-primary .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #26474E;
+  }
+.checkboxes {
+    display: flex;
+    margin-bottom: 14px;
+}
+.box {
+    font-weight: normal;
+    font-size: 14px;
+}

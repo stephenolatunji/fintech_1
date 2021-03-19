@@ -1,0 +1,117 @@
+<div class="body animate__animated animate__fadeIn">
+    
+    <div class="middleSection">
+        <div class="one">
+            <div>View Customer Report <span (click)="back()">or go back</span></div>
+        </div>
+        <div class="form-section">
+            <div class="col-9">
+                <label for="">Name</label> <br />
+                <div>{{data?.name}}</div>
+            </div>
+            <div>
+                <label for="">Order No</label> <br />
+                <div>{{data?.orderNo}}</div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="col-9">
+                <label for="">To swap</label> <br />
+                <div>
+                    {{
+                        data?.myCurrency == 'NGN' ? '₦' :
+                        data?.myCurrency == 'USD' ? '$' :
+                        data?.myCurrency == 'CAD' ? 'C$' :
+                        data?.myCurrency == 'GBP' ? '£' : '€'
+                    }} {{data?.myAmount}}
+                </div>
+            </div>
+            <div>
+                <label for="">For</label> <br />
+                <div>
+                    {{
+                        data?.convertedCurrency == 'NGN' ? '₦' :
+                        data?.convertedCurrency == 'USD' ? '$' :
+                        data?.convertedCurrency == 'CAD' ? 'C$' :
+                        data?.convertedCurrency == 'GBP' ? '£' : '€'
+                    }} 
+                    {{data?.convertedAmount}}
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="col-9">
+                <label for="">Rate</label> <br />
+                <div>
+                    {{
+                        data?.myCurrency == 'NGN' ? '₦' :
+                        data?.myCurrency == 'USD' ? '$' :
+                        data?.myCurrency == 'CAD' ? 'C$' :
+                        data?.myCurrency == 'GBP' ? '£' : '€'
+                    }}
+                    {{data?.rate}}/{{
+                        data?.convertedCurrency == 'NGN' ? '₦' :
+                        data?.convertedCurrency == 'USD' ? '$' :
+                        data?.convertedCurrency == 'CAD' ? 'C$' :
+                        data?.convertedCurrency == 'GBP' ? '£' : '€'
+                    }}1
+                </div>
+            </div>
+            <div>
+                <label for="">Transfer Fee</label> <br />
+                <div>
+                    {{
+                        data?.myCurrency == 'NGN' ? '₦' :
+                        data?.myCurrency == 'USD' ? '$' :
+                        data?.myCurrency == 'CAD' ? 'C$' :
+                        data?.myCurrency == 'GBP' ? '£' : '€'
+                    }}
+                    {{data?.transactionFee}}
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="col-9">
+                <label for="">Destination Account</label> <br />
+                <div>{{data?.myAccountNumber}}</div>
+            </div>
+            <div>
+                <label for="">Bank</label> <br />
+                <div>{{data?.myBankName}}</div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="col-9">
+                <label for="">Payment Channel</label> <br />
+                <div>{{data?.myPaymentChannel}}</div>
+            </div>
+            <div>
+                <label for="">Payment Reference</label> <br />
+                <div>{{data?.myPaymentReferenceNo}}</div>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <div class="col-9">
+                <label for="">Status</label> <br />
+                <div>
+                    {{
+                        data?.paymentSummary == 1? 'Active' : 'Inactive'
+                    }}
+                </div>
+            </div>
+            <div>
+                <!-- <label for="">Payment Channel</label> <br />
+                <div>235670289</div> -->
+            </div>
+        </div>
+    </div>
+
+    <div class="lastSection">
+        <img src="assets/super-admin/transaction/group.svg" alt="" style="width: 100%;">
+    </div>
+</div>

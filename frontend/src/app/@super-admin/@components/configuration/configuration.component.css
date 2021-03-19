@@ -1,0 +1,117 @@
+.body {
+    margin-top: 100px; padding: 0px 20px 20px 19%;
+    color: #26474E; width: 100%; position: absolute;
+}
+.text1 {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    margin-bottom: 30px;
+}
+.tab {
+    
+    font-size: 16px;
+    line-height: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+#tab1 {
+    font-weight: 600;
+    background-color: #F0F4F5;
+    border: 1px solid #26474E;
+    border-radius: 15px 0px 0px 15px;
+    min-width: 30%;
+    padding: 2px 0;
+}
+#tab2 {
+    font-weight: 600;
+    background-color: #ffffff;
+    border: 1px solid #26474E;
+    width: 30%;
+    padding: 2px 0;
+}
+#tab3 {
+    font-weight: 600;
+    background-color: #FFFFFF;
+    border: 1px solid #26474E;
+    box-sizing: border-box;
+    border-radius: 0px 15px 15px 0px;
+    width: 30%;
+    padding: 2px 0;
+}
+
+.form-box {
+    margin-top: 15px;
+    padding: 55px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+input, select {
+    border: 1px solid rgba(152, 157, 179, 0.8);
+    padding: 8px 6px;
+    border-radius: 10px;
+    width: 75%;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+}
+select {
+    width: 20%;
+    margin-right: 8px;
+}
+.btn-section {
+    display:  flex;
+    margin-top: 30px;
+}
+.btn-section button:first-child {
+    background-color: #F27348;
+    border-radius: 15px;
+    padding: 10px 40px;
+    color: #FFFFFF;
+}
+.btn-section button:nth-child(2) {
+    background-color: #FFFFFF;
+    border-radius: 15px;
+    padding: 10px 35px;
+    color: #F27348;
+    border: 1px solid #F27348;
+    margin-left: 12px;
+}
+
+.btn-section button:hover {
+    opacity: .75;
+}
+.paymentText1 {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+.paymentBox {
+    background-color: #FFFFFF;
+    padding: 15px 0px 15px 0px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #C4C4C4;
+}
+.bin {
+    cursor: pointer;
+}
+.bin:hover {
+    opacity: .74;
+}
+.add-channel {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 14px 25px;
+    background-color: #F27348;
+    border-radius: 15px;
+    margin-top: 28px;
+}

@@ -125,6 +125,7 @@
   },
   "defaultProject": "frontend",
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "defaultCollection": "@ngrx/schematics"
   }
 }

@@ -16,21 +16,56 @@ import { ActivityTwoComponent } from './@components/activity-two/activity-two.co
 import {
   AuthGuardService as AuthGuard
 } from './@auth/guard/auth-guard.service';
+
+import { AuthGuardService as AdminAuthGuard } from "./@super-admin/@auth/guard/auth-guard.service";
+import { } from "./@super-admin/@auth/guard/auth-guard.service";
+
 import { PaymentPlatformComponent } from './@components/payment-platform/payment-platform.component';
+import { SettingsComponent } from './@theme/components/settings/settings.component';
+import { ProfileComponent } from './@theme/components/profile/profile.component';
+
+import { LoginComponent as SuperLogin } from "./@super-admin/@auth/login/login.component";
+import { UsersComponent } from './@super-admin/@components/users/users.component';
+import { SuperDashboardComponent } from './@super-admin/@components/super-dashboard/super-dashboard.component';
+import { ReportsComponent } from './@super-admin/@components/reports/reports.component';
+import { SupportComponent } from './@super-admin/@components/support/support.component';
+import { AddPaymentChannelComponent } from './@super-admin/@components/add-payment-channel/add-payment-channel.component';
+import { PaymentChannelComponent } from './@super-admin/@components/payment-channel/payment-channel.component';
+import { FaqComponent } from './@super-admin/@components/faq/faq.component';
+import { UserRoleComponent } from './@super-admin/@components/user-role/user-role.component';
+import { CustomerComponent } from './@super-admin/@components/customer/customer.component';
+import { TransactionReportComponent } from './@super-admin/@components/transaction-report/transaction-report.component';
+import { MarketRateComponent } from './@super-admin/@components/market-rate/market-rate.component';
+import { TransactionConfigComponent } from './@super-admin/@components/transaction-config/transaction-config.component';
 
 const routes: Routes = [
   { path: "", component: ComingSoonComponent },
   { path: "register", component: RegisterComponent },
   { path: "login", component: LoginComponent },
-  { path: "otp-auth", component: OtpComponent, canActivate: [AuthGuard] },
   { path: "forgot-password", component: ForgotPasswordComponent },
+  { path: "otp", component: OtpComponent },
   { path: "listing", component: ListingComponent, canActivate: [AuthGuard] },
   { path: "summary", component: PaymentSummaryComponent, canActivate: [AuthGuard] },
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'notify', component: EmailNotificationComponent, canActivate: [AuthGuard] },
   { path: 'activity', component: ActivityComponent, canActivate: [AuthGuard] },
   { path: 'transaction-summary', component: ActivityTwoComponent, canActivate: [AuthGuard] },
-  { path: 'payment-gateway', component: PaymentPlatformComponent, canActivate: [AuthGuard] }
+  { path: 'payment-gateway', component: PaymentPlatformComponent, canActivate: [AuthGuard] },
+
+  // @super-admin
+  // { path: '@super-admin', component: LoginComponent },
+  { path: 'super-admin', component: SuperLogin },
+  { path: 'super-admin/dashboard', component: SuperDashboardComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/user', component: UsersComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/reports', component: TransactionReportComponent, },
+  { path: 'super-admin/support', component: FaqComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/user-role', component: UserRoleComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/customers', component: CustomerComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/transaction-reports', component: TransactionReportComponent, },
+
+  { path: 'super-admin/market-rate', component: MarketRateComponent, },
+  { path: 'super-admin/payment-channel', component: PaymentChannelComponent, },
+  { path: 'super-admin/transaction', component: TransactionConfigComponent, },
 ];
 
 @NgModule({

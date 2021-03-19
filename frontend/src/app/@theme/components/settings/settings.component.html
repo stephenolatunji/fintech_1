@@ -1,0 +1,80 @@
+<div class="modal fade" id="settings" tabindex="-1" role="dialog" aria-labelledby="settingsTitle" data-keyboard="false" data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content animate__animated animate__fadeIn" *ngIf="!stuffs.changePassword && !stuffs.profile  && !stuffs.changeDocument">
+
+            <div class="header">
+                <img src="assets/auth/back.svg" (click)="back()" alt="">
+                <div class="settings">Settings</div>
+            </div>
+            
+            <div class="box">
+                <div class="d-flex" (click)="open(1)">
+                    <img src="assets/header/settings.svg" alt="">   
+                    <div class="text1">General Settings</div> 
+                </div>
+    
+                <div class="text2 animate__animated animate__zoomIn" *ngIf="stuffs.one">
+                    <div class="d-flex pb-0" (click)="open('sub1')">
+                        Profile
+                        <div class="ml-auto"><img src="assets/settings/path.svg" alt=""></div>
+                    </div>
+                    <div class="d-flex pt-0">
+                        Sound
+                        <mat-slide-toggle color="primary" class="ml-auto" [(ngModel)]="set.sound" name="sound" (change)="act()"></mat-slide-toggle>
+                    </div>
+                    <div class="d-flex">
+                        Notification
+                        <mat-slide-toggle color="primary" class="ml-auto" [(ngModel)]="set.notification" name="notification" (change)="act()"></mat-slide-toggle>
+                    </div>
+                </div>
+              
+            </div>
+    
+            <div class="box">
+                <div class="d-flex" (click)="open(2)">
+                    <img src="assets/settings/lock.svg" alt="">   
+                     <div class="text1">Security Settings</div> 
+                </div>
+                
+                <div  class="d-flex text2 animate__animated animate__zoomIn" *ngIf="stuffs.two" (click)="open('sub2')">
+                    <div>Change Password</div>
+                    <div class="ml-auto"><img src="assets/settings/path.svg" alt=""></div>
+                </div>
+            </div>
+    
+            <div class="box">
+                <div class="d-flex" (click)="open(3)">
+                    <img src="assets/settings/contact-book.svg" alt="">   
+                    <div class="text1">Identity Details</div> 
+                </div>
+                <div  class="d-flex text2 animate__animated animate__zoomIn" *ngIf="stuffs.three" (click)="open('sub3')">
+                    <div>Change Passport ID</div>
+                    <div class="ml-auto"><img src="assets/settings/path.svg" alt=""></div>
+                </div>
+                <div class="text-sm text-danger text-center">{{err}}</div>
+                <form (submit)="confirmPassword()"  class="text2 animate__animated animate__zoomIn" *ngIf="stuffs.sub_three">
+                    <div class="form-group">
+                        <label for="password" class="text2 ml-1">Confirm password</label> <br />
+                        <input type="password" id="password" class="p-2" [(ngModel)]="password" name="password">
+                    </div>
+                    <div style="display: flex; justify-content: center;">
+                        <button mat-button type="submit" *ngIf="!loading">Save Changes</button>
+                        <button mat-button type="submit" *ngIf="loading" disabled>Save Changes</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        
+
+
+        <!-- change password -->
+        <app-change-password  *ngIf="stuffs.changePassword"></app-change-password>
+
+        <!-- change Document -->
+        <app-change-document *ngIf="stuffs.changeDocument"></app-change-document>
+
+        <!-- profile -->
+        <app-edit-profile *ngIf="stuffs.profile"></app-edit-profile>
+    </div>
+  </div>

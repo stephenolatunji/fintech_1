@@ -6,9 +6,9 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./otp.component.css']
 })
 export class OtpComponent implements OnInit {
-  confirmViaEmail: boolean = false;
+  confirmViaEmail: boolean = false; loading: boolean = false; success: boolean = false; err;
   input = {
-    one: null, two: null, three: null, four: null
+    one: '', two: '', three: '', four: ''
   }
 
   @ViewChild('one') one: ElementRef;
@@ -19,7 +19,9 @@ export class OtpComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    document.getElementById('box1').style.border = '4px solid #26474E'
+    setTimeout(() => {
+      this.success ? null : document.getElementById('box1').style.border = '4px solid #26474E'
+    }, 400);
   }
 
   inputFunc(event, x) {
@@ -87,6 +89,21 @@ export class OtpComponent implements OnInit {
     document.getElementById('box2').style.border = '1px solid #26474E'
     document.getElementById('box3').style.border = '1px solid #26474E'
     document.getElementById('box4').style.border = '1px solid #26474E'
+  }
+
+  handleSubmit() {
+    if (this.input.one == '' || this.input.two == '' || this.input.three == '' || this.input.four == '') {
+      this.err = 'Please fill in the OTP received'
+      this.one.nativeElement.focus();
+    }
+    else {
+      this.err = ''
+      this.loading = true;
+      setTimeout(() => {
+        this.loading = false;
+        this.success = true;
+      }, 3000);
+    }
   }
 
 }

@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -13,35 +14,53 @@ export class ListingComponent implements OnInit {
   public order = {
     customerId: localStorage.getItem('customerId'),
     myAmount: null,
-    myCurrency: 'NGN',
+    myCurrency: 1,
     rate: null,
     myAccountNumber: null,
-    myBankName: 'access_bank',
+    myBankName: 'Access Bank',
     bankRouteNo: null,
-    convertedCurrency: 'USD',
-    convertedAmount: null
+    convertedCurrency: 2,
+    convertedAmount: null,
+    orderId: null,
+    myPaymentChannelId: null,
+    transactionFee: null,
+    paymentReference: null,
+    paymentStatus: null
   };
 
+  public editedOrder: any;
+
+  unfullfilledOrder;
   loading = {
     findMach: false, publish: null
   }
-  showResponse: boolean = false; matchFound;
+  showResponse: boolean = false; matchFound; allBanks;
 
-  constructor(private server: ServerService, private _snackBar: MatSnackBar, private rout: Router) { }
+  constructor(private server: ServerService, private _snackBar: MatSnackBar, private rout: Router, private http: HttpClient) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    // check if we are coming from edit of unfullfilled order
+    this.comingFromEditPage()
+    // getAllBanksFromServer
+    this.allBanks = this.server?.allBanks?.data;
+  }
 
   doCalculation() {
-    (this.order.myCurrency == 'NGN') ?
-      this.order.convertedAmount = this.order.myAmount / this.order.rate :
-      this.order.convertedAmount = this.order.myAmount * this.order.rate
+    if (this.order.myCurrency == 1) {
+      this.order.convertedAmount = this.order.myAmount / this.order.rate
+    }
+    else {
+      setTimeout(() => {
+        this.order.convertedCurrency = 1;
+        this.order.convertedAmount = this.order.myAmount * this.order.rate
+      }, 50);
+    }
   }
 
   checkIfAllInput(x) {
     this.showResponse = false;
-    if (this.order.myAmount !== null && this.order.rate !== null && this.order.myAccountNumber !== null && this.order.bankRouteNo !== null) {
+    if (this.order.myAmount !== null && this.order.rate !== null && this.order.myAccountNumber !== null) {
       this.order.myAccountNumber = this.order.myAccountNumber.toString();
-      this.order.bankRouteNo = this.order.bankRouteNo.toString();
 
       x == 'findMatch' ? this.findMatch() : this.handlePublish()
     }
@@ -56,13 +75,11 @@ export class ListingComponent implements OnInit {
     this.server.createOrder(this.order).subscribe(data => {
       this.loading.publish = false;
       if (data.succeeded) {
-        this.openSnackBar('Finding Match...');
-        this.matchFound = data;
-        this.showResponse = true
+        this.openSnackBar('Your Order has been published');
+        this.rout.navigate(['dashboard'])
       }
       else {
-        this.matchFound = 'No Match Found';
-        this.showResponse = true;
+        this.matchFound = 'We could not publish your order';
         this.openSnackBar(data.messages[0]);
       }
     }, err => {
@@ -76,15 +93,28 @@ export class ListingComponent implements OnInit {
     this.loading.publish = false;
     this.server.findMatch(this.order).subscribe(data => {
       this.loading.findMach = false;
-      if (data.succeeded) {
+      if (data.succeeded && data.entity !== null) {
         this.openSnackBar('Finding Match...');
-        this.matchFound = data;
+        data.entity.myAccountNumber = this.order.myAccountNumber.toString();
+        data.entity.myBankName = this.order.myBankName;
+        data.entity.bankRouteNo = this.order.bankRouteNo;
+        data.entity.convertedAmount = parseFloat(data.entity.convertedAmount);
+        data.entity.findMatchResult = {
+          customerId: data.entity.customerId,
+          orderId: data.entity.id,
+          orderNo: data.entity.orderNo,
+          transactionFee: data.entity.transactionFee,
+          orderStatus: data.entity.orderStatus
+        }
+
+
+        this.matchFound = data.entity;
         this.showResponse = true
       }
       else {
         this.matchFound = 'No Match Found';
         this.showResponse = true;
-        this.openSnackBar(data.messages[0]);
+        // this.openSnackBar(data?.messages[0]);
       }
     }, err => {
       this.loading.findMach = false;
@@ -92,8 +122,8 @@ export class ListingComponent implements OnInit {
     })
   }
 
-  toggelePrefferdCurrency(currency) {
-    this.order.convertedCurrency = currency;
+  toggelePrefferdCurrency(identity, currency) {
+    this.order.convertedCurrency = identity;
     document.getElementById('usd').style.border = '0px'
     document.getElementById('cad').style.border = '0px'
     document.getElementById('eur').style.border = '0px'
@@ -107,4 +137,67 @@ export class ListingComponent implements OnInit {
     });
   }
 
+  comingFromEditPage() {
+    this.unfullfilledOrder = this.server.unfullfilledOrder;
+    if (this.unfullfilledOrder !== undefined && this.unfullfilledOrder.status) {
+      this.order = {
+        customerId: localStorage.getItem('customerId'),
+        orderId: this.unfullfilledOrder.id,
+        myAmount: this.unfullfilledOrder.myAmount,
+        myCurrency:
+          this.unfullfilledOrder.myCurrency.toUpperCase() == 'NGN' ? 1 :
+            this.unfullfilledOrder.myCurrency.toUpperCase() == 'USD' ? 2 :
+              this.unfullfilledOrder.myCurrency.toUpperCase() == 'GBP' ? 3 :
+                this.unfullfilledOrder.myCurrency.toUpperCase() == 'EUR' ? 4 :
+                  this.unfullfilledOrder.myCurrency.toUpperCase() == 'CAD' ? 5 : 1,
+
+        convertedCurrency:
+          this.unfullfilledOrder.convertedCurrency.toUpperCase() == 'NGN' ? 1 :
+            this.unfullfilledOrder.convertedCurrency.toUpperCase() == 'USD' ? 2 :
+              this.unfullfilledOrder.convertedCurrency.toUpperCase() == 'GBP' ? 3 :
+                this.unfullfilledOrder.convertedCurrency.toUpperCase() == 'EUR' ? 4 :
+                  this.unfullfilledOrder.convertedCurrency.toUpperCase() == 'CAD' ? 5 : 2,
+
+        convertedAmount: this.unfullfilledOrder.convertedAmount,
+        rate: this.unfullfilledOrder.rate,
+        myAccountNumber: this.unfullfilledOrder.myAccountNumber,
+        myBankName: this.unfullfilledOrder.myBankName,
+        bankRouteNo: this.unfullfilledOrder.bankRouteNo,
+        myPaymentChannelId: this.unfullfilledOrder.myPaymentChannelId,
+        transactionFee: this.unfullfilledOrder.transactionFee,
+        paymentReference: this.unfullfilledOrder.myPaymentReferenceNo,
+        paymentStatus: this.unfullfilledOrder.paymentStatus
+      };
+    }
+  }
+
+  editOrderHandler() {
+    this.loading.findMach = true
+    this.server.editUnfulfilledOrder(this.order).subscribe(data => {
+      this.loading.findMach = false;
+      if (data.succeeded) {
+        this.openSnackBar('Order updated!');
+        data.entity.myAccountNumber = this.order.myAccountNumber.toString();
+        data.entity.myBankName = this.order.myBankName;
+        data.entity.bankRouteNo = this.order.bankRouteNo;
+        data.entity.convertedAmount = parseFloat(data.entity.convertedAmount);
+        data.entity.findMatchResult = {
+          customerId: data.entity.customerId,
+          orderId: data.entity.id,
+          orderNo: data.entity.orderNo,
+          transactionFee: data.entity.transactionFee,
+          orderStatus: data.entity.orderStatus
+        }
+
+        console.log(data.entity)
+
+        this.matchFound = data.entity;
+        this.showResponse = true
+      }
+      else {
+        this.openSnackBar('Error updating your order!')
+      }
+      console.log(data)
+    }, err => { this.loading.findMach = false; this.openSnackBar('Error updating your order!') })
+  }
 }

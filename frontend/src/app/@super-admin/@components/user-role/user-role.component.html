@@ -1,0 +1,73 @@
+<div class="body animate__animated animate__fadeIn" *ngIf="!addUserRoleClicked && !editUserRoleClicked">
+    <div class="text1">User Role</div>
+    <div style="text-align: end;"><button class="btnText" mat-button (click)="toggleAddUser()">+ Add Role</button></div>
+
+    <div class="two">
+        <div class="d-flex">
+            <div class="search-box ml-auto">
+                <img src="assets/header/search.svg" />
+                <input type="search" placeholder="Search users"   />
+            </div>
+            <div class="filters dropdown"  >
+                <div class="dropdown-tog" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="d-flex">
+                        <div class="mt-1">Filter</div>
+                        <img class="ml-auto" src="assets/super-admin/user/path.svg" alt="">
+                    </div>
+                </div>
+         
+                <div class="dropdown-menu mt-2 animate_animated animate__fadeIn" aria-labelledby="dropdownMenuButton" >
+                    <li style="font-size: 13px;" class="d-flex p-2" >
+                        <!-- <img src="assets/header/user.svg" class="mr-4" alt=""> Profile -->
+                        Filter 1
+                    </li>
+                    <li style="font-size: 13px;" class="d-flex p-2" >
+                        Filter 1
+                    </li>
+                    <li style="font-size: 13px;" class="d-flex p-2" >
+                        Filter 1
+                    </li>
+                </div>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead class="thead" >
+                <tr>
+                    <th>Role</th>
+                    <th>Access Level </th>
+                    <th>Permissions </th>
+                    <th>Status </th>
+                    <th>Action </th>
+                </tr>
+            </thead>
+        
+            <tbody >
+                <tr *ngFor="let user of allUserRoles; let i = index">
+                    <td> {{user?.name}} </td>
+                    <td>{{user?.accessLevel}}</td>
+                    <td> {{user?.roleId}}</td>
+                    <td>
+                        <span style="padding: 4px 8px" [style.color]="user?.status==1? '#76CDCD':'#F27348' " [style.background-color]="user?.status==1? 'rgba(118, 205, 205, 0.1)':'rgba(242, 115, 72, 0.1)' ">
+                            {{
+                                user?.status==1 ? 'Active' : 'Inactive'
+                            }}
+                        </span> 
+                    </td>
+                    <td class="td-button" (click)="action(i)">
+                        <img src="assets/super-admin/user/ellypsis.svg" alt="">
+                    </td>
+                    <div class="pop animate__animated animate__bounceIn" *ngIf="user?.more==true">
+                        <span (click)="handleEdit(user)">Edit</span>
+                    </div>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<app-add-user-role *ngIf="addUserRoleClicked"></app-add-user-role>
+<app-edit-user-role *ngIf="editUserRoleClicked" [data]="roleToEdit"></app-edit-user-role>
+<app-admin-header></app-admin-header>
+<app-side-nav></app-side-nav>
+

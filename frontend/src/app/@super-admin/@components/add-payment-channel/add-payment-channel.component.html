@@ -1,0 +1,66 @@
+<div class="body">
+    <img src="assets/super-admin/configuration/stripe.svg" class="mb-1" width="50" height="50" alt="">
+    <div class="group">
+        <div class="sub-group">
+            <label for="">Payment Channel</label><br/>
+            <input type="text" [(ngModel)]="paymentChannel.name" name="name">
+        </div>
+        <div class="sub-group ml-3">
+            <label for="">Currency Code</label>
+            <select name="currencyCode" [(ngModel)]="paymentChannel.currencyCode" id="">
+                <option value="1">NGN</option>
+                <option value="2">USD</option>
+                <option value="5">CAD</option>
+                <option value="3">GBP</option>
+                <option value="4">EUR</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="group mt-2">
+        <div class="sub-group">
+            <label for="">Fee Type</label><br/>
+            <select name="feeType" [(ngModel)]="paymentChannel.feeType" id="">
+                <option value="1">Variable</option>
+                <option value="2">Fixed</option>
+                <option value="3">Mixed</option>
+                <option value="4">Range</option>
+            </select>
+        </div>
+        <div class="sub-group ml-3">
+            <label for="">Fee Rate</label>
+            <input type="number" [(ngModel)]="paymentChannel.feeRate" name="feeRate">
+        </div>
+    </div>
+
+    <div class="group mt-2">
+        <div class="sub-group">
+            <label for="">Minimum Transaction Fee</label><br/>
+            <input type="number" [(ngModel)]="paymentChannel.minTransactionFee" name="minTransactionFee">
+        </div>
+        <div class="sub-group ml-3">
+            <label for="">Maximum Transaction Fee</label>
+            <input type="number" [(ngModel)]="paymentChannel.maxTransactionFee" name="maxTransactionFee">
+        </div>
+    </div>
+
+    <div class="allow mt-3">
+        <div class="mr-4">Allow Auto-Reversal</div>  
+        <mat-slide-toggle color="primary" [(ngModel)]="paymentChannel.allowAutoReveresal" name="allowAutoReveresal"></mat-slide-toggle>
+    </div>
+
+    <div class="group mt-2">
+        <div class="sub-group">
+            <label for="">Reversal Fee Rate</label><br/>
+            <input type="number" [(ngModel)]="paymentChannel.reversalFeeRate" name="reversalFeeRate">
+        </div>
+        <div class="sub-group ml-3">
+            <label for="">Reversal Transaction Fee</label>
+            <input type="text"  [(ngModel)]="paymentChannel.reversalTransactionFee" name="reversalTransactionFee">
+        </div>
+    </div>
+
+    <div class="d-flex">
+        <button class="ml-auto" mat-button (click)="handleSubmit()">Save</button>
+    </div>
+</div>

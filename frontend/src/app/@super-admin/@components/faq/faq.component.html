@@ -1,0 +1,67 @@
+<div class="body row ">
+    <div class="first animate__animated animate__fadeIn" *ngIf="!addFaq">
+        <div class="d-flex">
+            <div class="text1">
+                Frequently Asked Questions
+            </div>
+            <button mat-button class="faq-button" (click)="handleOpenAddFaq()">+ Add FAQ</button>
+        </div>
+    
+        <div class="faqs animate__animated animate__fadeIn">
+            <mat-expansion-panel *ngFor="let faq of faqs" >
+                <mat-expansion-panel-header>
+                    <div  class="mr-4" (click)="handleMore()">
+                        <img src="assets/super-admin/user/ellypsis.svg" alt="">
+                    </div>
+                    <mat-panel-title>
+                        {{faq?.question}}
+                    </mat-panel-title>
+
+                </mat-expansion-panel-header>                
+                {{faq?.answer}}
+            </mat-expansion-panel>
+        </div>
+    </div>
+
+    <div *ngIf="addFaq" class="addFaq animate__animated animate__fadeIn">
+        <div class="text1">
+            Frequently Asked Questions <span (click)="back()">back to faq</span>
+        </div>
+        <div class="header">Question</div>
+
+        <div class="box d-flex">
+            <input type="text" placeholder="Type a response..." [(ngModel)]="newFaq.question" name="question">
+            <img src="assets/super-admin/faq/face.svg" alt="" class="ml-auto">
+            <img src="assets/super-admin/faq/gallery.svg" alt="" class="mr-2 ml-2">
+            <img src="assets/super-admin/faq/send.svg" alt="">
+        </div>
+
+        <!-- textarea -->
+        <div class="header">Answer</div>
+
+        <div class="box d-flex">
+            <textarea name="" id="" cols="90" rows="10" [(ngModel)]="newFaq.answer" name="answer"></textarea>
+            <img src="assets/super-admin/faq/face.svg" alt="" class="ml-auto">
+            <img src="assets/super-admin/faq/gallery.svg" alt="" class="mr-2 ml-2">
+            <img src="assets/super-admin/faq/send.svg" alt="">
+        </div>
+        <!-- end textare -->
+
+        <button mat-button class="post-button" (click)="handleAddFaq()">Post</button>
+    </div>
+
+
+
+    <div class="col-3">
+        <div class="faq-draw">
+            <img src="assets/super-admin/faq/faq.svg" alt="" style="width: 100%;">
+        </div>
+
+        <div class="faq-draw2">
+            <img src="assets/super-admin/faq/faq2.svg" alt="" style="width: 100%;">
+        </div>
+    </div>
+</div>
+
+<app-admin-header></app-admin-header>
+<app-side-nav></app-side-nav>

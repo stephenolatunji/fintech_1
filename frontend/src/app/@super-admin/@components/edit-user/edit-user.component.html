@@ -1,0 +1,111 @@
+<form class="body animate__animated animate__fadeIn">
+    <div class="one">
+        <div>Edit User <span (click)="goBack()">or go Back</span></div>
+        <!-- <div class="img">
+     
+            <img class="userAvatar" src="assets/header/avatar.jpg" alt="">
+            <div>
+                <input type="file" hidden #profilePic (change)="editProfilePic($event.target.files)">
+                <img src="assets/header/edit.svg" style=" background-color: #fff; padding: .5px; border-radius: 50px" alt="">
+            </div>
+        
+        </div> -->
+    </div>
+
+    <div class="bio-data">
+        <div class="mb-3">Biodata</div>
+
+        <div class="d-flex">
+            <div class="form-group mr-4">
+                <label for="firstName">First name</label><br />
+                <input type="text" [(ngModel)]="newUser.firstName" name="firstName">
+            </div>
+            <div class="form-group">
+                <label for="middleName">Middle name</label><br />
+                <input type="text" [(ngModel)]="newUser.middleName" name="middleName">
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="form-group mr-4">
+                <label for="lastName">Last name</label><br />
+                <input type="text" [(ngModel)]="newUser.lastName" name="lastName">
+            </div>
+            <div class="form-group">
+                <label for="gender">Password</label><br />
+                <input type="password" [(ngModel)]="newUser.password" name="password">
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="form-group mr-4">
+                <label for="email">Email</label><br />
+                <input type="text" [(ngModel)]="newUser.email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number</label><br />
+                <input type="text" [(ngModel)]="newUser.phoneNumber" name="phoneNumber">
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="form-group">
+                <label for="phoneNumber">Address</label><br />
+                <input type="text" [(ngModel)]="newUser.address" name="address">
+            </div>
+            <div class="form-group mr-4">
+                <!-- <label for="email">Email</label><br />
+                <input type="text" [(ngModel)]="newUser.email" name="email"> -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Official Info -->
+    <div class="bio-data mt-4">
+        <div class="mb-3">Official Information</div>
+
+        <div class="d-flex">
+            <div class="form-group mr-4">
+                <label for="firstName">Department</label><br />
+                <input type="text" [(ngModel)]="newUser.department" name="department">
+            </div>
+            <div class="form-group">
+                <label for="middleName">Supervisor</label><br />
+                <input type="text" [(ngModel)]="newUser.supervisor" name="supervisor">
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="form-group mr-4">
+                <label for="lastName">Role</label><br />
+                <input type="text" [(ngModel)]="newUser.role" name="role">
+            </div>
+            <div class="form-group">
+                <label for="gender">Staff Code</label><br />
+                <input type="text" [(ngModel)]="newUser.staffCode" name="staffCode">
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="form-group mr-4">
+                <label for="email">Access Level</label><br />
+                <select name="accessLevel" [(ngModel)]="newUser.accessLevel" id="" class="p-2">
+                    <option value="">Super Admin</option>
+                    <option value="">Admin</option>
+                    <option value="">Customer Service</option>
+                </select>
+            </div>
+            <div class="form-group">
+                 <!-- <label for="phoneNumber">Phone Number</label><br />
+                <input type="text">  -->
+            </div>
+        </div>
+
+    </div>
+
+    <div class="d-flex">
+        <button mat-btton (click)="handleSubmit()" class="ml-auto add-user-button" *ngIf="!loading">Edit User</button>
+        <button disabled mat-btton *ngIf="loading" class="ml-auto add-user-button">Please wait...</button>
+    </div>
+</form>

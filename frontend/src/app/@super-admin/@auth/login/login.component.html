@@ -1,0 +1,45 @@
+<div class="body animate__animated animate__pulse">  
+
+    <div class="left">
+      <app-frame></app-frame>
+    </div>
+      <div class="right">
+        <div class="text">
+          <h5>Welcome Back!</h5>
+          <h6>Log in as an Admin to continue.</h6>
+          <div style="font-size: 13px; margin-top: 5px; color: red;">{{err}}</div>
+        </div>
+        <form class="form" (submit)="handleSubmit()">
+            <div class="form-group" style="margin-bottom: 15px">
+                <label for="email"> Email address</label>
+                <div class="input-box">
+                  <input type="email" name="email" [(ngModel)]="user.email" />
+                </div>
+            </div>
+            <div class="form-group " style="margin-bottom: 15px">
+                <label for="password">Password</label>
+                <div class="input-box password">
+                  <input type="password" name="password" id="password" [(ngModel)]="user.password" />
+                    <div (click)="togglePasswordType()" style="cursor: pointer">
+                      <img src="assets/auth/eye.svg" *ngIf="type=='text'" />
+                      <img src="assets/auth/eye2.svg" *ngIf="type=='password'"/>
+                    </div>
+                </div>
+            </div>
+            <div class="forgot-password">
+                Forgot Password?
+            </div>
+          
+            
+    
+            <div>
+              <button type='submit' >
+                <span *ngIf="!loading">Log In</span> 
+                <img *ngIf="loading" src="assets/auth/loader.gif" width="20" height="20" alt="">
+              </button>
+            </div>
+            
+        </form>
+      </div>
+    </div>
+    

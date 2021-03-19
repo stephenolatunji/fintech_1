@@ -36,6 +36,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     if (this.server.userDetails !== undefined) {
       this.user = this.server.userDetails
+      console.log(this.user)
     }
   }
 
@@ -72,4 +73,5 @@ export class RegisterComponent implements OnInit {
       this.messages.pwdErr = true
     }
   }
+
 }

@@ -1,10 +1,10 @@
-  <div class="whole animate__animated animate__slideInRight">
+  <div class="whole animate__animated animate__fadeIn">
     <!-- <div class="top">
         <img src="assets/auth/back.svg" alt="" (click)="goBack()" class="pointer">
     </div> -->
     <form (submit)="handleSubmit()" class="body">
         <div class="text1">
-            Complete your profile
+            Complete your profile <span (click)="goBack()">or go Back</span>
         </div>
         <div class="text2">
             You are required to provide necessary documents to complete registration.
@@ -12,7 +12,7 @@
         <div style="font-size: 13px; margin-top: 5px; color: red;">{{err}}</div>
         <div class="form-group">
             <label for="password">Bank Verification Number</label>
-            <div class="input-box edit">
+            <div class="input-box ">
               <input type="number" id="edit" [(ngModel)]="user_.bvn" name="bvn"/>
             <!-- <div style="cursor: pointer" class="ml-auto">
                 <img src="assets/auth/edit.svg" />
@@ -36,24 +36,22 @@
             <!-- Nin -->
             <div class=""  *ngIf="user_.documentType=='2'">
                 <label for="edit">Serial Number</label>
-                <div class="input-box edit" style="margin-bottom: 0px;">
+                <div class="input-box " style="margin-bottom: 0px;">
                     <input type="text" name="documentNumber" [(ngModel)]="user_.documentNumber" />
                 </div>
             </div>
 
             <!-- IntPassport -->
-            <div class="edit" *ngIf="user_.documentType=='1'"> 
-                <div style="width: 65%; margin-right: 10px;" >
+            <div class="edit" *ngIf="user_.documentType=='1'" > 
+                <div style="width: 80%; margin-right: 10px;" >
                     <label for="edit">Passport Number</label>
-                    <div class="input-box edit" style="margin-bottom: 0px;">
+                    <div class="input-box mb-0 ">
                         <input type="text" name="documentNumber" [(ngModel)]="user_.documentNumber" />
                     </div>
                 </div>
-                <div style="width: 35%;">
+                <div>
                     <label for="edit">Expiry Date</label>
-                    <div class="input-box" style="margin-bottom: 0px;">
-                        <input type="date" name="documentExpiryDate" [(ngModel)]="user_.documentExpiryDate" />
-                    </div>
+                    <input class="date-input mb-0" type="date" name="documentExpiryDate" [(ngModel)]="user_.documentExpiryDate" />
                 </div>
             </div>
             
@@ -73,13 +71,11 @@
          
             </div>
 
-
-            <button mat-button type="submit" (click)="handleSubmit()" *ngIf="!loading">
-                Create Account
+            <button type='submit' mat-button (click)="loading? '' : handleSubmit()">
+                <span *ngIf="!loading">Create Account</span> 
+                <img *ngIf="loading" src="assets/auth/loader.gif" width="20" height="20" alt="">
             </button>
-            <button mat-button *ngIf="loading" style="padding: 7px 0px;">
-                <img src="assets/auth/loader.gif" width="30" height="30" alt="">
-              </button>
+
         </div>
     </form>
-  </div> 
+  </div>  

@@ -1,0 +1,49 @@
+.body {
+    margin-top: 80px; padding: 0px 20px 20px 19%; position: absolute; width: 100%; display: flex;
+}
+.one {
+    display: flex;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 29px;
+    color: #26474E;
+}
+.middleSection {
+    width: 75%;
+    box-shadow: 0px 4px 10px rgba(152, 157, 179, 0.1);
+    border-radius: 5px;
+    padding: 10px 40px;
+}
+.lastSection {
+    background: #FFFFFF;
+    border: 1px solid rgba(152, 157, 179, 0.3);
+    box-sizing: border-box;
+    box-shadow: 2px 8px 20px rgba(152, 157, 179, 0.15);
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 30px;
+    max-height: 70vh;
+    display: flex; align-items: center;
+}
+.form-section {
+    background-color: #FFFFFF;
+    display: flex;
+    color: #262C31;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 24px;
+    padding: 20px 0px;
+    border-bottom: 1px solid #EFEFEF;
+}
+label {
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 17px;
+}
+.one span {
+    color: #F27348; font-size: 10px; font-weight: bold; cursor: pointer; margin-left: 8px; text-decoration: underline;
+}
+.one span:hover {
+    color: #262C31;
+}

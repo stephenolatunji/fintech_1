@@ -1,25 +1,17 @@
-.text1 {
-    margin-bottom: 20px;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 24px;
-
-    color: #26474E;
-}
 .whole {
     padding: 20px 100px;
 }
 label {
     font-weight: 500;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 22px;
     color: #26474E;
 }
-.input-box {
+.input-box, .date-input {
     border: 1px solid #254750;
-    border-radius: 15px;
-    padding: 14px 24px;
-    margin: 8px 0px 40px 0px;
+    border-radius: 12px;
+    padding: 8px;
+    margin: 2px 0px 30px 0px;
 }
 
 .form-group {
@@ -27,12 +19,12 @@ label {
 }
  
 .edit {
-    display: flex;
+    display: flex; justify-content: center;
 }
 #edit {
     width: 90%;
     font-weight: 500;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 22px;
     color: #262C31;
     background-color: #E5E5E5;
@@ -40,16 +32,22 @@ label {
     border: 0px;
 }
 .text1 {
-    margin: 36px 0px 20px 0px;
+    margin: 36px 0px 18px 0px;
     font-style: normal;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 24px;
     color: #26474E; 
 }
+.text1 span {
+    font-size: 10px; color: #F27348; text-decoration: underline; margin-left: 10px; cursor: pointer;
+}
+.text1 span:hover {
+    color: #254750;
+}
 .text2 {
     font-weight: normal;
-    font-size: 16px;
+    font-size: 13px;
     line-height: 20px;
     color: #254750;
 }
@@ -62,7 +60,7 @@ mat-radio-group {
 }
 .choice-selection span {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 14px;
     /* line-height: 50px; */
     color: #254750;
     margin-left: 16px;
@@ -85,10 +83,10 @@ mat-radio-group {
 
 button {
     background-color: #26474E;
-    padding: 14px 94px;
+    padding: 11px 94px;
     border-radius: 15px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 22px;
     color: #FFFFFF;
     border: 0px;

@@ -1,0 +1,85 @@
+<form class="body animate__animated animate__fadeIn" (submit)="handleSubmit()">
+    <div class="one">
+        <div class="one-text2">Add Role <span (click)="goBack()">or go back</span></div>
+        <div class="one-text1">Fill with necessary role information .</div>
+    </div>
+
+    <div class="bio-data">
+
+        <div class="d-flex mb-3">
+            <div class="form-group mr-4">
+                <label for="firstName">User Role</label><br />
+                <input type="text" [(ngModel)]="newRole.name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="middleName">Access Level</label><br />
+                <input type="number" [(ngModel)]="newRole.accessLevel" name="accessLevel">
+            </div>
+        </div>
+
+        <div class="one">
+            <div class="one-text2">Role Permission</div>
+            <div class="one-text1">Tick permissions you want this role to have .</div>
+        </div>
+
+        <div class="checkboxes">
+            <div class="box col-6">
+                <mat-checkbox color="primary" checked  ></mat-checkbox>
+                <span class="ml-4">Block, Disable, Blacklist Customer.</span>
+            </div>
+
+            <div class="box">
+                <mat-checkbox color="primary" checked  ></mat-checkbox>
+                <span class="ml-4">Post Help/FAQs.</span>
+            </div>
+        </div>
+
+        <div class="checkboxes">
+            <div class="box col-6">
+                <mat-checkbox color="primary" checked  ></mat-checkbox>
+                <span class="ml-4">Edit Help/FAQs.</span>
+            </div>
+
+            <div class="box">
+                <mat-checkbox color="primary" checked  ></mat-checkbox>
+                <span class="ml-4">Respond to Live Chat.</span>
+            </div>
+        </div>
+
+        <div class="checkboxes">
+            <div class="box col-6">
+                <mat-checkbox color="accent" checked  ></mat-checkbox>
+                <span class="ml-4">View “Contact Us” Request.</span>
+            </div>
+
+            <div class="box">
+                <mat-checkbox color="accent" checked  ></mat-checkbox>
+                <span class="ml-4">Post and Edit Market Rate.</span>
+            </div>
+        </div>
+
+        <div class="checkboxes">
+            <div class="box col-6">
+                <mat-checkbox color="accent" checked  ></mat-checkbox>
+                <span class="ml-4">Edit Currency Configuration.</span>
+            </div>
+
+            <div class="box">
+                <mat-checkbox color="accent" checked  ></mat-checkbox>
+                <span class="ml-4">Add, edit and deactivate Customers.</span>
+            </div>
+        </div>
+
+        <div class="checkboxes">
+            <div class="box col-6">
+                <mat-checkbox color="accent" checked  ></mat-checkbox>
+                <span class="ml-4">Refund Customer.</span>
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <button mat-btton class="ml-auto add-user-button">Add Role</button>
+        </div>
+    </div>
+
+</form>

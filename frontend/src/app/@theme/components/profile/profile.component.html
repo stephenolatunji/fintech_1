@@ -1,0 +1,65 @@
+<div class="modal fade" id="profile" tabindex="-1" role="dialog" aria-labelledby="settingsTitle" data-keyboard="false" data-backdrop="static" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content animate__animated animate__fadeIn" >
+
+            <div class="header d-flex" style="cursor: pointer;">
+                <img class="ml-auto" src="assets/profile/close.svg" (click)="back()" alt="">
+            </div>
+            <div class="text1">Profile</div>
+            <div class="text-danger text-sm">{{err}}</div>
+            <div class="img">
+                <img [src]="profilePic"  style="border-radius: 50px;" height="65" width="50" alt="">
+            </div>
+
+            <div>
+              
+        
+                    <div class="form-group mt-2">
+                        <label for="firstname" class="text2 ml-0">First name</label> <br />
+                        <input type="text" id="firstname" [(ngModel)]="user.firstName" name="firstName" readonly>
+                    </div>
+        
+                    <div class="form-group">
+                        <label for="surname" class="text2 ml-0">Surname</label> <br />
+                        <input type="text" id="surname" [(ngModel)]="user.lastName" name="lastName" readonly>
+                    </div>
+        
+                    <div class="d-flex">
+                        <div class="form-group">
+                            <label for="username" class="text2 ml-0">User name</label> <br />
+                            <input type="text" id="username" [(ngModel)]="user.userName" name="userName" readonly>
+                        </div>
+                        <div class="form-group ml-2">
+                            <label for="email" class="text2 ml-0">Email</label> <br />
+                            <input type="text" id="email" [(ngModel)]="user.email" name="email" readonly>
+                        </div>
+                    </div>
+
+                    <div class="form-group"> 
+                        <div class="form-group">
+                            <label for="mobile" class="text2 ml-0">Phone Number</label> <br />
+                            <div class="d-flex">
+                                <div class="select mr-2" style="width: 25%;">{{user.countryCode}}</div>
+                                 <input type="text" [(ngModel)]="user.phoneNumber" name="phoneNumber" readonly>
+                            </div>
+                        </div>  
+                      </div>
+        
+                      
+                    <!-- <div class="d-flex mt-4">
+                        <button type='submit' mat-button class="ml-auto mt-4" >
+                            <span *ngIf="!loading">Save Changes</span> 
+                            <span *ngIf="loading" >Please wait...</span>
+                        </button>
+                    </div> -->
+
+                    <div class="text-center text-sm text-info" *ngIf="msg!==''">
+                        {{msg}}
+                    </div>
+                
+                </div>
+
+
+        </div>
+    </div>
+</div>

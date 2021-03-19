@@ -1,0 +1,127 @@
+<div class="body animate__animated animate__fadeIn" >
+    <div class="one" *ngIf="!viewCustomerProfile">
+        <div>Customers</div>
+    </div>
+    <div class="one" *ngIf="viewCustomerProfile">
+        <div>Customer's Profle <span (click)='back()'>or go back</span></div>
+    </div>
+
+    <!-- <div class="tab">
+        <button id="tab1" (click)="switchTab(1)" mat-button>
+            All Customers
+        </button>
+        <button id="tab2" (click)="switchTab(2)" mat-button>
+            Blocked Customers
+        </button>
+        <button id="tab3" (click)="switchTab(3)" mat-button>
+            Disabled Customers
+        </button>
+    </div> -->
+
+    <div class="two" *ngIf="!viewCustomerProfile">
+        <div class="d-flex d-flex1">
+            <div class="text2 mr-auto">Customers List</div>
+            <div class="search-box">
+                <img src="assets/header/search.svg" />
+                <input type="search" placeholder="Search users"   />
+            </div>
+            <div class="filters dropdown"  >
+                <div class="dropdown-tog" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="d-flex">
+                        <div class="mt-1">{{filter}}</div>
+                        <img class="ml-auto" src="assets/super-admin/user/path.svg" alt="">
+                    </div>
+                </div>
+         
+                <div class="dropdown-menu mt-2 animate_animated animate__fadeIn" aria-labelledby="dropdownMenuButton" >
+                    <li style="font-size: 13px;" class="d-flex p-2" id="all" (click)="handleFilter('all')">
+                        <!-- <img src="assets/header/user.svg" class="mr-4" alt=""> Profile -->
+                        All Customers
+                    </li>
+                    <li style="font-size: 13px;" class="d-flex p-2" id="active" (click)="handleFilter('active')">
+                        Active Cusmomers
+                    </li>
+                    <li style="font-size: 13px;" class="d-flex p-2" id="inactive" (click)="handleFilter('inactive')">
+                        Inactive Cusmomers
+                    </li>
+                    <li style="font-size: 13px;" class="d-flex p-2" id="blocked" (click)="handleFilter('blocked')">
+                        Blocked Customers
+                    </li>
+                    <li style="font-size: 13px;" class="d-flex p-2" id="deleted" (click)="handleFilter('deleted')">
+                        Deleted Cusmomers
+                    </li>
+                    <li style="font-size: 13px;" class="d-flex p-2" id="deactivated" (click)="handleFilter('deactivated')">
+                        Deactivated Customers
+                    </li>
+                 
+                </div>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead class="thead" >
+                <tr>
+                    <th>Name </th>
+                    <th>Username </th>
+                    <th>Email Address</th>
+                    <th>phone Number </th>
+                    <th>Transaction </th>
+                    <th>Status </th>
+                    <th>Action </th>
+                </tr>
+            </thead>
+        </table>
+
+        <div style="max-height: 50vh; overflow: auto;">
+            <table>
+                <tbody >
+                    <tr *ngFor="let customer of allCustomers; let i = index" (click)="handleShowProfile(customer)">
+                        <td>
+                            <img src="assets/header/avatar.jpg" width="25" height="25" alt="">
+                            {{ customer?.lastName }}
+                            {{ customer?.firstName }}
+                            {{ customer?.middleName }}
+                        </td>
+                        <td>@{{ customer?.userName }}</td>
+                        <td>{{ customer?.email }}</td>
+                        <td>{{ customer?.phoneNumber }}</td>
+                        <td>null</td>
+                        <td>
+                            <span style="padding: 4px 8px" [style.color]="customer?.status==1? '#76CDCD':'#F27348' " [style.background-color]=" customer?.status==1? 'rgba(118, 205, 205, 0.1)':'rgba(242, 115, 72, 0.1)' ">
+                            {{customer?.status == 1? 'Active' : customer?.status == 2 ? 'Inactive' : customer?.status==3? 'Deactivated' : customer?.status==4? 'Deleted' : 'Blocked' }}
+                            </span> 
+                        </td>
+                        <td class="td-button" (click)="handleMore(i)">
+                            <img src="assets/super-admin/user/ellypsis.svg" alt="">
+                        </td>
+                        <div class="pop animate__animated animate__bounceIn" *ngIf="customer?.more==true">
+                            <div (click)="handleSetCustomer('activate', customer)">
+                                <img src="" alt="">
+                                Activate
+                            </div>
+                            <div (click)="handleSetCustomer('disable', customer)">
+                                <img src="" alt="">
+                                Deactivate
+                            </div>
+                            <div (click)="handleSetCustomer('delete', customer)">
+                                <img src="" alt="">
+                                Delete
+                            </div>
+                            <div (click)="handleSetCustomer('block', customer)">
+                                <img src="" alt="">
+                                Block
+                            </div>
+                        </div>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+  
+
+    </div>
+
+    <app-customer-profile *ngIf="viewCustomerProfile" [data]="profileOfCustomer"></app-customer-profile>
+
+</div>
+<app-admin-header></app-admin-header>
+<app-side-nav></app-side-nav>

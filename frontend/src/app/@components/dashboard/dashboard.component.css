@@ -21,37 +21,48 @@
 }
 .rect1 .text .one {
     font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 29px;
     color: #26474E;
 }
 .rect1 .text .two {
     margin: 10px 0px 16px 0px;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 17px;
     color: #262C31;
 }
 .group2, .group1 {
-    margin: 15px 0px 15px 30px;
+    margin: 15px 0px 25px 30px;
     padding: 55px 34px;
     background-color: #FFFFFF;
     border: 1px solid rgba(152, 157, 179, 0.3);
     box-sizing: border-box;
     box-shadow: 2px 8px 20px rgba(152, 157, 179, 0.15);
     border-radius: 5px;
-    height: 53vh;
+}
+.group2 {
+    margin-top: 0px;
 }
 .rect1 .text button {
     background: #F27348;
     border-radius: 15px;
-    padding: 14px 45px;
+    padding: 12px 45px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 22px;
     text-align: center;
     color: #FFFFFF;
-    border: 0px
+    border: 0px;
+    text-justify: auto;
+}
+.timer {
+    margin-top: 6px;
+    margin-left: 100px;
+    font-weight: normal;
+    font-size: 12.5px;
+    line-height: 17px;
+    color: #262C31;
 }
 .rect2 {
     margin: 40px 0px;
@@ -62,8 +73,9 @@
     justify-content: space-between;
     margin-bottom: 15px;
 }
+
 .rect2 .head div:first-child {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 29px;display: flex;
     align-items: flex-end;
     color: #26474E;
@@ -71,7 +83,7 @@
 }
 .rect2 .head div:nth-child(2) a {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 21px;
     display: flex;
     align-items: center;
@@ -81,13 +93,14 @@
 }
 td {
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 40px;
     letter-spacing: 0.002em;
     color: #254750;
-    min-width: 160px;
+    /* min-width: 160px; */
 }
 th {
+    font-size: 12px;
     padding: 20px 0 14px 25px;
 }
 td {
@@ -98,10 +111,10 @@ tr {
 }
 .button {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 17px;
     color: #FFFFFF;
-    padding: 11px 30px;
+    padding: 10px 30px;
     background-color: #F27348;
     border-radius: 15px;
     border: 0px
@@ -132,7 +145,7 @@ table th:first-child{
 }
 .group1 .text1 {
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 22px;
     color: #254750;
     margin-bottom: 23px;
@@ -145,20 +158,20 @@ table th:first-child{
 }
 .text2 {
     font-weight: 600;
-    font-size: 12px;
+    font-size: 11px;
     line-height: 15px;
     color: #262C31;  
-    width: 40%;  
+    width: 50%;  
 }
 .text3{
     font-weight: bold;
-    font-size: 18px;
+    font-size: 14px;
     line-height: 22px;
     color: #254750;
 }
 .notice {
     font-weight: normal;
-    font-size: 12px;
+    font-size: 10px;
     line-height: 15px;
     color: #4D4D4D;
 }
@@ -166,10 +179,49 @@ table th:first-child{
     background-color: #F27348;
     border-radius: 15px;
     outline: none;
-    padding: 14px 88px;
+    padding: 10px 0px;
     font-weight: bold;
     border: 0px;
     margin-top: 19px;
+    font-size: 14px;
+    line-height: 22px;
+    width: 100%;
+}
+.pay-now:hover,  button:hover, .group2:hover {
+    opacity: .6;
+}
+.group2 img {
+    width: 100%;
+}
+.group2 {
+    cursor: pointer;
+}
+.td-button {
+    display: flex;
+}
+.payment-success {
+    display: flex;
+    justify-content: center;
+    background-color: #fff;
+    padding: 40px 150px;
+    font-weight: bold;
     font-size: 18px;
     line-height: 22px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #254750;
+}
+
+.success-text {
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #254750;
+    margin-top: 30px;
+}
+.spinner {
+    position: absolute; top: 50%; left: 50%
 }

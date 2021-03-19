@@ -1,3 +1,4 @@
+/* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 h1, h2, h5, h3, h6, h4 {
     padding: 0px;
@@ -12,7 +13,7 @@ body {
   background-color: #E5E5E5;
 }
 html, body { height: 100%; }
-body { margin: 0; font-family: Montserrat, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Montserrat, "Helvetica Neue", sans-serif; height: 100%; }
 input, select , button{
   background: transparent; outline: none !important; border: 0px;
 }

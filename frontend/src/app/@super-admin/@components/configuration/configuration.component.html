@@ -1,0 +1,83 @@
+<div class="body">
+    <div class="text1">
+        Configuration
+    </div>
+
+    <div class="tab">
+        <button id="tab1" (click)="switchTab(1)" mat-button>
+            Market Rate
+        </button>
+        <button id="tab2" (click)="switchTab(2)" mat-button>
+            Currency
+        </button>
+        <button id="tab3" (click)="switchTab(3)" mat-button>
+            Payment
+        </button>
+    </div>
+
+    <!-- tab1 -->
+    <div class="form-box animate__animated animate__fadeIn" *ngIf="tab1">
+        <div class="d-flex">
+            <select name="firstInput" [(ngModel)]="marketRate.firstInput" id="">
+                <option value="NGN">NGN </option>
+                <option value="GBP">GBP </option>
+                <option value="USD">USD </option>
+                <option value="CAD">CAD </option>
+                <option value="EUR">EUR </option>
+            </select>
+            <input type="number" class="mr-5" placeholder="0.00">
+   
+            <select name="secondInput" [(ngModel)]="marketRate.secondInput" id="">
+                <option value="NGN">NGN </option>
+                <option value="GBP">GBP </option>
+                <option value="USD">USD </option>
+                <option value="CAD">CAD </option>
+                <option value="EUR">EUR </option>
+            </select>
+            <input type="number" placeholder="0.00">
+        </div>
+
+        <div class="d-flex" style="margin: 20px 0px">
+            <select name="firstInput" [(ngModel)]="marketRate.firstInput" id="">
+                <option value="NGN">NGN </option>
+                <option value="GBP">GBP </option>
+                <option value="USD">USD </option>
+                <option value="CAD">CAD </option>
+                <option value="EUR">EUR </option>
+            </select>
+            <input type="number" class="mr-5" placeholder="0.00">
+   
+            <select name="secondInput" [(ngModel)]="marketRate.secondInput" id="">
+                <option value="NGN">NGN </option>
+                <option value="GBP">GBP </option>
+                <option value="USD">USD </option>
+                <option value="CAD">CAD </option>
+                <option value="EUR">EUR </option>
+            </select>
+            <input type="number" placeholder="0.00">
+        </div>
+
+        <div class="d-flex" style="width: 53%;">
+            <select name="firstInput" [(ngModel)]="marketRate.firstInput" id="" style="width: 21%;">
+                <option value="NGN">NGN </option>
+                <option value="GBP">GBP </option>
+                <option value="USD">USD </option>
+                <option value="CAD">CAD </option>
+                <option value="EUR">EUR </option>
+            </select>
+            <input type="number" class="mr-5" placeholder="0.00">
+        </div>
+
+        <div class="btn-section">
+            <button>Save</button>
+            <button>Cancel</button>
+        </div>
+        
+    </div>
+
+    <!-- tab2 -->
+    <app-payment-channel *ngIf="tab2"></app-payment-channel>
+</div>
+
+<app-admin-header></app-admin-header>
+<app-side-nav></app-side-nav>

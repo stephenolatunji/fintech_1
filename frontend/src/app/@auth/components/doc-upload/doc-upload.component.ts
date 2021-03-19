@@ -1,3 +1,4 @@
+
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { ServerService } from 'src/app/@theme/services/server.service';
 import { HelperService } from 'src/app/@theme/services/helper.service';
@@ -5,6 +6,7 @@ import { NgxImageCompressService } from 'ngx-image-compress';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RegisterComponent } from '../register/register.component';
+import { AuthService } from '../../guard/auth.service';
 
 @Component({
   selector: 'app-doc-upload',
@@ -14,12 +16,21 @@ import { RegisterComponent } from '../register/register.component';
 export class DocUploadComponent implements OnInit {
   @ViewChild("fileDropRef", { static: false }) fileDropEl: ElementRef;
   files: any[] = []; err; loading: boolean = false;
-
+  otp: boolean = false;
   @Input() user;
 
   public user_ = { documentImage: '', documentType: "1", bvn: '', documentNumber: '', documentExpiryDate: '' };
 
-  constructor(private reg: RegisterComponent, private server: ServerService, private rout: Router, private helper: HelperService, private imageCompress: NgxImageCompressService, private _snackBar: MatSnackBar) { }
+  constructor(
+    private reg: RegisterComponent,
+    private auth: AuthService,
+    private server: ServerService,
+    private rout: Router,
+    private helper: HelperService,
+    private imageCompress: NgxImageCompressService,
+    private _snackBar: MatSnackBar,
+    private regFunc: RegisterComponent
+  ) { }
 
   ngOnInit(): void {
 
@@ -44,14 +55,14 @@ export class DocUploadComponent implements OnInit {
         this.user.documentExpiryDate = this.user_.documentExpiryDate.toString();
 
         this.loading = true;
-        // user
+        //logout user
+        this.auth.logout();
 
         this.server.newUser(this.user).subscribe(dat => {
           this.loading = false;
           if (dat.succeeded) {
-            localStorage.setItem('customerId', null)
             this.openSnackBar('Successful!');
-            this.rout.navigate(['login']);
+            this.rout.navigate(['otp']);
             console.log(dat.entity)
           }
           else {
@@ -99,5 +110,9 @@ export class DocUploadComponent implements OnInit {
     this._snackBar.open(msg, '', {
       duration: 2500,
     });
+  }
+
+  goBack() {
+    this.regFunc.docUpload = false;
   }
 }
