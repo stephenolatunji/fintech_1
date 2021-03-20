@@ -25,12 +25,12 @@ export class SuperServiceService {
   }
 
   addNewUser(data) {
-    return this.http.post<any>(`${environment.url}/api/Customers/getall`, data);
+    return this.http.post<any>(`${environment.url2}/api/Customers/getall`, data);
   }
 
   editUser(data) {
     data.userId = localStorage.getItem('userId');
-    return this.http.put<any>(`${environment.url}/api/Staffs/update/${data.staffId}`, data);
+    return this.http.put<any>(`${environment.url2}/api/Staffs/update/${data.staffId}`, data);
   }
 
   getAllFaq() {
