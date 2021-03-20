@@ -18,8 +18,8 @@ import { AddUserRoleComponent } from './@components/add-user-role/add-user-role.
 import { CustomerComponent } from './@components/customer/customer.component';
 import { TransactionReportComponent } from './@components/transaction-report/transaction-report.component';
 import { ViewReportComponent } from './@components/view-report/view-report.component';
-import { LoginComponent } from './@theme/login/login.component';
-import { AuthComponent } from './@theme/@auth/guard/auth/auth.component';
+// import { LoginComponent } from './@theme/login/login.component';
+// import { AuthComponent } from './@theme/@auth/guard/auth/auth.component';
 import { CustomerProfileComponent } from './@components/customer-profile/customer-profile.component';
 import { MarketRateComponent } from './@components/market-rate/market-rate.component';
 import { TransactionConfigComponent } from './@components/transaction-config/transaction-config.component';
@@ -45,8 +45,8 @@ import { EditUserComponent } from './@components/edit-user/edit-user.component';
     CustomerComponent,
     TransactionReportComponent,
     ViewReportComponent,
-    LoginComponent,
-    AuthComponent,
+    // LoginComponent,
+    // AuthComponent,
     CustomerProfileComponent,
     MarketRateComponent,
     TransactionConfigComponent,

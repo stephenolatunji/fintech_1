@@ -66,4 +66,8 @@ export class SuperServiceService {
   editPaymentChannel(data) {
     return this.http.put<any>(`${environment.url}​/api​/PaymentChannels​/update/${data.id}`, data);
   }
+
+  createtransactionlimit(data) {
+    return this.http.post<any>(`${environment.url}​/api​/Configurations​/createtransactionlimit`, data);
+  }
 }
