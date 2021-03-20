@@ -12,7 +12,11 @@ export class PaymentSummaryComponent implements OnInit {
   constructor(private server: ServerService, private rout: Router) { }
 
   ngOnInit(): void {
+<<<<<<< HEAD
     if(this.server.pendingOrders!==undefined) {
+=======
+    if (this.server.pendingOrders !== undefined) {
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       this.paymentSummary = this.server.pendingOrders;
     }
     else {
@@ -24,4 +28,8 @@ export class PaymentSummaryComponent implements OnInit {
     this.rout.navigate(['dashboard'])
   }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

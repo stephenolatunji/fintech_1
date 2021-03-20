@@ -19,11 +19,19 @@ export class ConfigurationComponent implements OnInit {
 
   switchTab(tab) {
     this.setTabsId();
+<<<<<<< HEAD
     if(tab == 3) {
       document.getElementById('tab3').style.backgroundColor = '#F0F4F5'
       this.tab3 = true;
     }
     else if(tab == 2) {
+=======
+    if (tab == 3) {
+      document.getElementById('tab3').style.backgroundColor = '#F0F4F5'
+      this.tab3 = true;
+    }
+    else if (tab == 2) {
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       this.tab2 = true;
       document.getElementById('tab2').style.backgroundColor = '#F0F4F5'
     }
@@ -40,4 +48,8 @@ export class ConfigurationComponent implements OnInit {
     document.getElementById('tab3').style.backgroundColor = '#fff';
   }
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

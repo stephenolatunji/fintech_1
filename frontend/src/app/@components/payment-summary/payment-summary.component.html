@@ -17,17 +17,53 @@
 
                 <div class="text-group">
                     <div class="text3">Currency</div>
+<<<<<<< HEAD
                     <div class="text4">United States Dollar</div>
+=======
+                    <div class="text4">
+                        {{paymentSummary?.myCurrency}}
+                    </div>
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
                 </div>
 
                 <div class="d-flex">
                     <div class=""> 
                         <div class="text3">Amount</div>
+<<<<<<< HEAD
                         <div class="text4">$100,000</div>
                     </div>
                     <div class="offset-5">
                         <div class="text3">Rate</div>
                         <div class="text4">N445/$</div>
+=======
+                        <div class="text4">
+                            {{
+                                paymentSummary?.myCurrency == 'NGN' ? '₦' :
+                                paymentSummary?.myCurrency == 'USD' ? '$' :
+                                paymentSummary?.myCurrency == 'CAD' ? 'C$' :
+                                paymentSummary?.myCurrency == 'GBP' ? '£' : '€'
+                            }}
+                            {{paymentSummary?.myAmount}}
+                        </div>
+                    </div>
+                    <div class="offset-5">
+                        <div class="text3">Rate</div>
+                        <div class="text4">
+                            {{
+                                paymentSummary?.myCurrency == 'NGN' ? '₦' :
+                                paymentSummary?.myCurrency == 'USD' ? '$' :
+                                paymentSummary?.myCurrency == 'CAD' ? 'C$' :
+                                paymentSummary?.myCurrency == 'GBP' ? '£' : '€'
+                            }}
+                            {{paymentSummary?.rate}}/
+                            {{
+                                paymentSummary?.convertedCurrency == 'NGN' ? '₦' :
+                                paymentSummary?.convertedCurrency == 'USD' ? '$' :
+                                paymentSummary?.convertedCurrency == 'CAD' ? 'C$' :
+                                paymentSummary?.convertedCurrency == 'GBP' ? '£' : '€'
+                            }}
+                        </div>
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
                     </div>
                 </div>
 
@@ -77,5 +113,9 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 </div>
 
+=======
+</div>
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

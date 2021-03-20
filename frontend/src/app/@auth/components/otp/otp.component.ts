@@ -81,7 +81,11 @@ export class OtpComponent implements OnInit {
       this.setDefault();
       document.getElementById('box3').style.border = '4px solid #26474E'
     }
+<<<<<<< HEAD
    
+=======
+
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   }
 
   setDefault() {
@@ -90,9 +94,15 @@ export class OtpComponent implements OnInit {
     document.getElementById('box3').style.border = '1px solid #26474E'
     document.getElementById('box4').style.border = '1px solid #26474E'
   }
+<<<<<<< HEAD
   
   handleSubmit() {
     if(this.input.one == '' || this.input.two=='' || this.input.three=='' || this.input.four =='') {
+=======
+
+  handleSubmit() {
+    if (this.input.one == '' || this.input.two == '' || this.input.three == '' || this.input.four == '') {
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       this.err = 'Please fill in the OTP received'
       this.one.nativeElement.focus();
     }

@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-
-<form class="body animate__animated animate__fadeIn">
-=======
-<form class="body animate__animated animate__fadeIn" (submit)="handleSubmit()">
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
+<form class="body animate__animated animate__fadeIn" (submit)="handleEdit()">
     <div class="one">
-        <div class="one-text2">Add Role <span (click)="goBack()">or go back</span></div>
-        <div class="one-text1">Fill with necessary role information .</div>
+        <div class="one-text2">Edit Role <span (click)="goBack()">or go back</span></div>
+
     </div>
 
     <div class="bio-data">
@@ -14,19 +9,11 @@
         <div class="d-flex mb-3">
             <div class="form-group mr-4">
                 <label for="firstName">User Role</label><br />
-<<<<<<< HEAD
-                <input type="text" [(ngModel)]="newRole.role" name="role">
-            </div>
-            <div class="form-group">
-                <label for="middleName">Access Level</label><br />
-                <input type="text" [(ngModel)]="newRole.accessLevel" name="accessLevel">
-=======
                 <input type="text" [(ngModel)]="newRole.name" name="name">
             </div>
             <div class="form-group">
                 <label for="middleName">Access Level</label><br />
                 <input type="number" [(ngModel)]="newRole.accessLevel" name="accessLevel">
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
             </div>
         </div>
 
@@ -91,7 +78,7 @@
         </div>
 
         <div class="d-flex">
-            <button mat-btton class="ml-auto add-user-button">Add Role</button>
+            <button mat-btton class="ml-auto add-user-button">Edit Role</button>
         </div>
     </div>
 

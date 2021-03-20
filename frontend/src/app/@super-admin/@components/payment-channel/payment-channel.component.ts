@@ -7,7 +7,11 @@ import { SuperServiceService } from '../../@theme/service/super-service.service'
   styleUrls: ['./payment-channel.component.css']
 })
 export class PaymentChannelComponent implements OnInit {
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   addPaymentChannel: boolean = false;
   editPaymentChannel: boolean = false;
   channelToEdit; allPaymentChannel;
@@ -16,13 +20,21 @@ export class PaymentChannelComponent implements OnInit {
 
   ngOnInit(): void {
     this.allPaymentChannel = this.server.allPaaymentChannel;
+<<<<<<< HEAD
     if(this.allPaymentChannel == undefined) {
+=======
+    if (this.allPaymentChannel == undefined) {
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       this.getData()
     }
   }
 
   getData() {
+<<<<<<< HEAD
     this.server.getAllPaymentChannel().subscribe(dat=>{
+=======
+    this.server.getAllPaymentChannel().subscribe(dat => {
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       this.allPaymentChannel = dat.entity;
     })
   }
@@ -42,4 +54,8 @@ export class PaymentChannelComponent implements OnInit {
   }
 
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

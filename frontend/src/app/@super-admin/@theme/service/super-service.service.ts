@@ -25,12 +25,21 @@ export class SuperServiceService {
   }
 
   addNewUser(data) {
+<<<<<<< HEAD
     return this.http.post<any>(`${environment.url2}/api/Customers/getall`, data);
+=======
+    return this.http.post<any>(`${environment.url2}/api/Staffs/create`, data);
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   }
 
   editUser(data) {
     data.userId = localStorage.getItem('userId');
+<<<<<<< HEAD
     return this.http.put<any>(`${environment.url2}/api/Staffs/update/${data.staffId}`, data);
+=======
+    console.log(data);
+    return this.http.post<any>(`${environment.url2}/api/Staffs/update/${data.staffId}`, data);
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   }
 
   getAllFaq() {
@@ -67,7 +76,19 @@ export class SuperServiceService {
     return this.http.put<any>(`${environment.url}​/api​/PaymentChannels​/update/${data.id}`, data);
   }
 
+<<<<<<< HEAD
   createtransactionlimit(data) {
     return this.http.post<any>(`${environment.url}​/api​/Configurations​/createtransactionlimit`, data);
+=======
+  editUserRole(data) {
+    data.userId = localStorage.getItem("userId");
+    console.log(data)
+    return this.http.post<any>(`https://dev-app-ip.eastus.cloudapp.azure.com:44310/api/Roles/update/${data.roleId}`, data);
+  }
+
+  newUserRole(data) {
+    console.log(data)
+    return this.http.post<any>(`https://dev-app-ip.eastus.cloudapp.azure.com:44310/api/Roles/create`, data);
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   }
 }

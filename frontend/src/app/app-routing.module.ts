@@ -13,12 +13,21 @@ import { DashboardComponent } from './@components/dashboard/dashboard.component'
 import { PaymentSummaryComponent } from './@components/payment-summary/payment-summary.component';
 import { ActivityComponent } from './@components/activity/activity.component';
 import { ActivityTwoComponent } from './@components/activity-two/activity-two.component';
+<<<<<<< HEAD
 import { 
   AuthGuardService as AuthGuard 
 } from './@auth/guard/auth-guard.service';
 
 import { AuthGuardService as AdminAuthGuard } from "./@super-admin/@auth/guard/auth-guard.service";
 import {  } from "./@super-admin/@auth/guard/auth-guard.service";
+=======
+import {
+  AuthGuardService as AuthGuard
+} from './@auth/guard/auth-guard.service';
+
+import { AuthGuardService as AdminAuthGuard } from "./@super-admin/@auth/guard/auth-guard.service";
+import { } from "./@super-admin/@auth/guard/auth-guard.service";
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
 
 import { PaymentPlatformComponent } from './@components/payment-platform/payment-platform.component';
 import { SettingsComponent } from './@theme/components/settings/settings.component';
@@ -45,18 +54,28 @@ const routes: Routes = [
   { path: "forgot-password", component: ForgotPasswordComponent },
   { path: "otp", component: OtpComponent },
   { path: "listing", component: ListingComponent, canActivate: [AuthGuard] },
+<<<<<<< HEAD
   { path: "summary", component: PaymentSummaryComponent, canActivate: [AuthGuard]  },
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'notify', component: EmailNotificationComponent, canActivate: [AuthGuard]  },
   { path: 'activity', component: ActivityComponent, canActivate: [AuthGuard]  },
   { path: 'transaction-summary', component: ActivityTwoComponent, canActivate: [AuthGuard]  },
   { path: 'payment-gateway', component: PaymentPlatformComponent,  canActivate: [AuthGuard] },
+=======
+  { path: "summary", component: PaymentSummaryComponent, canActivate: [AuthGuard] },
+  { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'notify', component: EmailNotificationComponent, canActivate: [AuthGuard] },
+  { path: 'activity', component: ActivityComponent, canActivate: [AuthGuard] },
+  { path: 'transaction-summary', component: ActivityTwoComponent, canActivate: [AuthGuard] },
+  { path: 'payment-gateway', component: PaymentPlatformComponent, canActivate: [AuthGuard] },
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
 
   // @super-admin
   // { path: '@super-admin', component: LoginComponent },
   { path: 'super-admin', component: SuperLogin },
   { path: 'super-admin/dashboard', component: SuperDashboardComponent, canActivate: [AdminAuthGuard] },
   { path: 'super-admin/user', component: UsersComponent, canActivate: [AdminAuthGuard] },
+<<<<<<< HEAD
   { path: 'super-admin/reports', component: TransactionReportComponent, canActivate: [AdminAuthGuard] },
   { path: 'super-admin/support', component: FaqComponent, canActivate: [AdminAuthGuard] },
   { path: 'super-admin/user-role', component: UserRoleComponent, canActivate: [AdminAuthGuard] },
@@ -66,11 +85,26 @@ const routes: Routes = [
   { path: 'super-admin/market-rate', component: MarketRateComponent, canActivate: [AdminAuthGuard] },
   { path: 'super-admin/payment-channel', component: PaymentChannelComponent, canActivate: [AdminAuthGuard] },
   { path: 'super-admin/transaction', component: TransactionConfigComponent, canActivate: [AdminAuthGuard] },
+=======
+  { path: 'super-admin/reports', component: TransactionReportComponent, },
+  { path: 'super-admin/support', component: FaqComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/user-role', component: UserRoleComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/customers', component: CustomerComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/transaction-reports', component: TransactionReportComponent, },
+
+  { path: 'super-admin/market-rate', component: MarketRateComponent, },
+  { path: 'super-admin/payment-channel', component: PaymentChannelComponent, },
+  { path: 'super-admin/transaction', component: TransactionConfigComponent, },
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+<<<<<<< HEAD
 export class AppRoutingModule { }
   
+=======
+export class AppRoutingModule { }
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

@@ -7,7 +7,11 @@ import { ServerService } from 'src/app/@theme/services/server.service';
   styleUrls: ['./activity-two.component.css']
 })
 export class ActivityTwoComponent implements OnInit {
+<<<<<<< HEAD
   transactions; selectedTransaction = {transaction: null, index: null};
+=======
+  transactions; selectedTransaction = { transaction: null, index: null };
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   constructor(private server: ServerService) { }
 
   ngOnInit(): void {
@@ -15,7 +19,11 @@ export class ActivityTwoComponent implements OnInit {
   }
 
   setTransaction(transaction, index) {
+<<<<<<< HEAD
     this.selectedTransaction = {transaction, index};
+=======
+    this.selectedTransaction = { transaction, index };
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   }
 
   // fetchTransactions() {
@@ -30,4 +38,8 @@ export class ActivityTwoComponent implements OnInit {
   //     }
   //   })
   // }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

@@ -13,12 +13,22 @@ export class AuthService {
     const token = localStorage.getItem('token');
     // Check whether the token is expired and return
     // true or false
+<<<<<<< HEAD
     if(token!==('null' || undefined) ) {
+=======
+    if (token !== ('null' || undefined)) {
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       return !this.jwtHelper.isTokenExpired(token)
     }
   }
 
   public logout() {
+<<<<<<< HEAD
     return this.http.post<any>(`${environment.url}/api/authentication/logout`, {email: localStorage.getItem('customerId')})
   }
 }
+=======
+    return this.http.post<any>(`${environment.url}/api/authentication/logout`, { email: localStorage.getItem('customerId') })
+  }
+}
+>>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
