@@ -6,11 +6,7 @@ import { SuperServiceService } from '../../@theme/service/super-service.service'
   templateUrl: './transaction-report.component.html',
   styleUrls: ['./transaction-report.component.css']
 })
-<<<<<<< HEAD
-@Injectable({providedIn: 'root'})
-=======
 @Injectable({ providedIn: 'root' })
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
 
 export class TransactionReportComponent implements OnInit {
   tab1: boolean = true; tab2: boolean = false; tab3: boolean = false; top10Reports = 10; viewReport: boolean = false;
@@ -32,11 +28,7 @@ export class TransactionReportComponent implements OnInit {
 
   getData() {
     this.loading = true;
-<<<<<<< HEAD
-    this.service.getAllTransactions().subscribe(dat=>{
-=======
     this.service.getAllTransactions().subscribe(dat => {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       this.loading = false;
       this.allReports = dat.entity;
     }, err => alert('I encountered an error'))
@@ -46,8 +38,4 @@ export class TransactionReportComponent implements OnInit {
     this.dataForViewReport = data;
     this.viewReport = true;
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

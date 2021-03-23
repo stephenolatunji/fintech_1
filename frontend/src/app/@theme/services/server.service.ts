@@ -23,69 +23,6 @@ export class ServerService {
   }
   // Publish
   createOrder(order) {
-<<<<<<< HEAD
-    return this.http.post<any>(`${environment.url}/api/orders/create`, order, {headers:  {'Authorization': `Bearer ${localStorage.getItem('token')}`}})
-  }
-
-  findMatch(order) {
-    return this.http.post<any>(`${environment.url}/api/orders/findmatch`, order, {headers:  {'Authorization': `Bearer ${localStorage.getItem('token')}`}})
-  }
-
-  getPendingOrders() {
-     return this.http.get<any>(`${environment.url}/api/orders/getcustomerpendingorders/${localStorage.getItem('customerId')}`, {headers:  {'Authorization': `Bearer ${localStorage.getItem('token')}`}})
-  }
-
-  getTop10Listing() {
-    return this.http.get<any>(`${environment.url}/api/orders/gettop10orderlistings`, {headers:  {'Authorization': `Bearer ${localStorage.getItem('token')}`}})
-  }
-
-  createAndMatchOrder(matchDetails) {
-    if(matchDetails.myCurrency.toUpperCase() == 'NGN') {
-      matchDetails.myCurrency = 1
-    }
-    else if(matchDetails.myCurrency.toUpperCase() == 'USD') {
-      matchDetails.myCurrency = 2
-    }
-    else if(matchDetails.myCurrency.toUpperCase() == 'GBP') {
-      matchDetails.myCurrency = 3
-    }
-    else if(matchDetails.myCurrency.toUpperCase() == 'EUR') {
-      matchDetails.myCurrency = 4 
-    }
-    else if(matchDetails.myCurrency.toUpperCase() == 'CAD') {
-      matchDetails.myCurrency = 5
-    }
-
-    if(matchDetails.convertedCurrency.toUpperCase() == 'NGN') {
-      matchDetails.convertedCurrency = 1
-    }
-    else if(matchDetails.convertedCurrency.toUpperCase() == 'USD') {
-      matchDetails.convertedCurrency = 2
-    }
-    else if(matchDetails.convertedCurrency.toUpperCase() == 'GBP') {
-      matchDetails.convertedCurrency = 3
-    }
-    else if(matchDetails.convertedCurrency.toUpperCase() == 'EUR') {
-      matchDetails.convertedCurrency = 4 
-    }
-    else if(matchDetails.convertedCurrency.toUpperCase() == 'CAD') {
-      matchDetails.convertedCurrency = 5
-    }
-    console.log(matchDetails)
-    return this.http.post<any>(`${environment.url}/api/orders/createandmatchorder`, matchDetails, {headers:  {'Authorization': `Bearer ${localStorage.getItem('token')}`}})
-  }
-
-  editUnfulfilledOrder(data) {
-    return this.http.put<any>(`${environment.url}/api/orders/update/${localStorage.getItem('customerId')}`, data, {headers:  {'Authorization': `Bearer ${localStorage.getItem('token')}`}})
-  } 
-
-  getUserDeytailsWithCustomerId(customerId) {
-    return this.http.post<any>(`${environment.url}/api/Customers/getbyid/${customerId}`, {}, {headers:  {'Authorization': `Bearer ${localStorage.getItem('token')}`}})
-  }
-
-  updateUserProfile(data) {
-    return this.http.put<any>(`${environment.url}/api/Customers/update/${data.customerId}`, data, {headers:  {'Authorization': `Bearer ${localStorage.getItem('token')}`}})
-=======
     return this.http.post<any>(`${environment.url}/api/orders/create`, order, { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } })
   }
 
@@ -147,7 +84,6 @@ export class ServerService {
 
   updateUserProfile(data) {
     return this.http.put<any>(`${environment.url}/api/Customers/update/${data.customerId}`, data, { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } })
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   }
 
   changePassword(data) {
@@ -155,11 +91,7 @@ export class ServerService {
   }
 
   updateUserDocument(data) {
-<<<<<<< HEAD
-    return this.http.post<any>(`${environment.url}/api/Authentication/`, data, {headers:  {'Authorization': `Bearer ${localStorage.getItem('token')}`}})
-=======
     return this.http.post<any>(`${environment.url}/api/Authentication/`, data, { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } })
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   }
 
   confirmPassword(data) {
@@ -171,11 +103,7 @@ export class ServerService {
       customerId: data.customerId,
       uploadImage: data.uploadImage.split(",")[1]
     }
-<<<<<<< HEAD
-    return this.http.post<any>(`${environment.url}/api/Customers/uploadimage`, newData, {headers:  {'Authorization': `Bearer ${localStorage.getItem('token')}`}})
-=======
     return this.http.post<any>(`${environment.url}/api/Customers/uploadimage`, newData, { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } })
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   }
 
   createCardPayment(data) {
@@ -183,19 +111,6 @@ export class ServerService {
       customerId: data.customerId,
       orderNo: data.orderNo,
       // amount: data.myAmount,
-<<<<<<< HEAD
-      currencyCode: data.myCurrency.toUpperCase()=='NGN'? 1 : data.myCurrency.toUpperCase()=='USD'? 2 :  data.myCurrency.toUpperCase()=='GBP'? 3:  data.myCurrency.toUpperCase()=='EUR' ? 4 : 5,
-      // transactionFee: data.transactionFee
-    }
-    console.log(sanitizedData)
-    return this.http.post<any>(`${environment.url}/api/Stripe/createcardpayment`, sanitizedData, {headers:  {'Authorization': `Bearer ${localStorage.getItem('token')}`}})
-  }
-
-  handlePayStack() {
-    const params =  {
-      email: 'stephenolatunji02@gmail.com',
-      amount:2000*100,
-=======
       currencyCode: data.myCurrency.toUpperCase() == 'NGN' ? 1 : data.myCurrency.toUpperCase() == 'USD' ? 2 : data.myCurrency.toUpperCase() == 'GBP' ? 3 : data.myCurrency.toUpperCase() == 'EUR' ? 4 : 5,
       // transactionFee: data.transactionFee
     }
@@ -207,7 +122,6 @@ export class ServerService {
     const params = {
       email: 'stephenolatunji02@gmail.com',
       amount: 2000 * 100,
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       callback_url: `${environment.app_url}/dashboard`
     }
     // callback: (response)=> {
@@ -218,11 +132,7 @@ export class ServerService {
       'Content-Type': 'application/json'
     }
 
-<<<<<<< HEAD
-    return this.http.post(`https://api.paystack.co:443/transaction/initialize`, params, {headers: headers})
-=======
     return this.http.post(`https://api.paystack.co:443/transaction/initialize`, params, { headers: headers })
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   }
 
   getTransactions() {
@@ -230,32 +140,18 @@ export class ServerService {
   }
 
   payStackReference(ref) {
-<<<<<<< HEAD
-    return this.http.post(`${environment.url}/api/Paystack/verifypayment/${ref}`, {}, {headers:  {'Authorization': `Bearer ${localStorage.getItem('token')}`}})
-  }
-
-  handleGetPaymentIntent(data) {console.log(data)
-=======
     return this.http.post(`${environment.url}/api/Paystack/verifypayment/${ref}`, {}, { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } })
   }
 
   handleGetPaymentIntent(data) {
     console.log(data)
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
     const sanitizedData = {
       customerId: data.customerId,
       amount: data.myAmount,
       orderNo: data.orderNo,
       sessionId: data.sessionId
     }
-<<<<<<< HEAD
-    return this.http.post(`${environment.url}/api/Stripe/getpaymentintentstatus`, sanitizedData, {headers:  {'Authorization': `Bearer ${localStorage.getItem('token')}`}})
-  }
-
-}
-=======
     return this.http.post(`${environment.url}/api/Stripe/getpaymentintentstatus`, sanitizedData, { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } })
   }
 
 }
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

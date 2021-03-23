@@ -25,15 +25,9 @@ export class ProfileComponent implements OnInit {
     // get data from bE
     this.user = this.server.userInformations;
     this.user.id = this.server.userInformations.customerId;
-<<<<<<< HEAD
-  
-    this.profilePic = this.user.customerImageFileLocation==(undefined || '' || null)? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.user.customerImageFileLocation}`;
-   
-=======
 
     this.profilePic = this.user.customerImageFileLocation == (undefined || '' || null) ? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.user.customerImageFileLocation}`;
 
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   }
 
   back() {
@@ -67,8 +61,4 @@ export class ProfileComponent implements OnInit {
   //     duration: 2500,
   //   });
   // }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

@@ -14,11 +14,7 @@ export class ChangeDocumentComponent implements OnInit {
 
   public document = { documentImage: '', documentType: "1", bvn: '', documentNumber: '', documentExpiryDate: '' };
   @ViewChild("fileDropRef", { static: false }) fileDropEl: ElementRef;
-<<<<<<< HEAD
-  files: any[] = [];  err; msg;
-=======
   files: any[] = []; err; msg;
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
 
   constructor(private imageCompress: NgxImageCompressService, private settings_: SettingsComponent, private server: ServerService) { }
 
@@ -29,13 +25,8 @@ export class ChangeDocumentComponent implements OnInit {
     for (let index = 0; index < event.length; index++) {
       const element = event[index];
       this.files[0] = element.name;
-<<<<<<< HEAD
-      this.prepareImage(element)     
-    }  
-=======
       this.prepareImage(element)
     }
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   }
 
   prepareImage(image) {
@@ -49,13 +40,8 @@ export class ChangeDocumentComponent implements OnInit {
   }
 
   compressFile(image) {
-<<<<<<< HEAD
-    this.imageCompress.compressFile(image, -1, 50, 50).then(result=> {     
-      this.document.documentImage = result; 
-=======
     this.imageCompress.compressFile(image, -1, 50, 50).then(result => {
       this.document.documentImage = result;
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
     })
   }
 
@@ -65,17 +51,10 @@ export class ChangeDocumentComponent implements OnInit {
 
   handleSubmit() {
     this.loading = true;
-<<<<<<< HEAD
-    this.server.updateUserDocument(document).subscribe(dat=>{
-      console.log(dat)
-      this.loading = false;
-      if(dat.succeeded) {
-=======
     this.server.updateUserDocument(document).subscribe(dat => {
       console.log(dat)
       this.loading = false;
       if (dat.succeeded) {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
         this.msg = 'Document Updated Successfully'
       }
       else {

@@ -18,8 +18,14 @@
 .content {
     background-color: #FFFFFF;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 15px 30px;
-    display: flex;
+    padding: 30px;
+    min-height: 90vh;
+}
+.content .content_ { 
+    width: 100%;
+    padding: 10px 20px 20px 20px;
+    border: 1px solid rgba(152, 157, 179, 0.4);
+    border-radius: 15px;
 }
 label {
     font-weight: 600;
@@ -31,12 +37,13 @@ span {
     font-weight: 600;
     font-size: 12px;
     line-height: 20px;
+    margin: 10px 35px 10px 0px;
 }
 input {
     border: 1px solid rgba(152, 157, 179, 0.3);
-    padding: 3px 10px;
+    padding: 12px 10px;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 14px;
     margin-left: 8px;
 }
 button {
@@ -52,8 +59,5 @@ button:nth-child(2) {
     color: white;
     background-color: #F27348;
     margin-left: 10px;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
+img {cursor: pointer;}

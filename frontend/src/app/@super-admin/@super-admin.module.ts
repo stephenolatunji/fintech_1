@@ -25,10 +25,7 @@ import { MarketRateComponent } from './@components/market-rate/market-rate.compo
 import { TransactionConfigComponent } from './@components/transaction-config/transaction-config.component';
 import { EditPaymentChannelComponent } from './@components/edit-payment-channel/edit-payment-channel.component';
 import { EditUserComponent } from './@components/edit-user/edit-user.component';
-<<<<<<< HEAD
-=======
 import { EditUserRoleComponent } from './@components/edit-user-role/edit-user-role.component';
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
 
 
 @NgModule({
@@ -55,19 +52,11 @@ import { EditUserRoleComponent } from './@components/edit-user-role/edit-user-ro
     MarketRateComponent,
     TransactionConfigComponent,
     EditPaymentChannelComponent,
-<<<<<<< HEAD
-    EditUserComponent
-=======
     EditUserComponent,
     EditUserRoleComponent
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   ],
   imports: [
     CommonModule
   ]
 })
-<<<<<<< HEAD
 export class @superAdminModule { }
-=======
-export class @superAdminModule { }
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

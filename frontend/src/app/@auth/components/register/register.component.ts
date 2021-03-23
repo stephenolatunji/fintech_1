@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { Component, Injectable, OnInit } from '@angular/core';
-=======
-import { Component, OnInit } from '@angular/core';
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
 import { Router } from '@angular/router';
 import { ServerService } from './../../../@theme/services/server.service';
 
@@ -31,19 +27,6 @@ export class RegisterComponent implements OnInit {
     gender: 1,
   };
   type: string = 'password'; docUpload: boolean = false;
-<<<<<<< HEAD
-
-  public messages = {
-    err: '',
-    loading: false,
-    pwdErr: false
-  }
-
-  constructor(private server: ServerService, private router: Router) { }
-
-  ngOnInit(): void {
-    if(this.server.userDetails!==undefined) {
-=======
 
   public messages = {
     err: '',
@@ -55,18 +38,13 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.server.userDetails !== undefined) {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       this.user = this.server.userDetails
       console.log(this.user)
     }
   }
 
   handleNext() {
-<<<<<<< HEAD
-    if(this.messages.pwdErr || this.user.firstName =='' || this.user.lastName == '' || this.user.userName == '' || this.user.email == '' || this.user.password == '' || this.user.phoneNumber == '' ) {
-=======
     if (this.messages.pwdErr || this.user.firstName == '' || this.user.lastName == '' || this.user.userName == '' || this.user.email == '' || this.user.password == '' || this.user.phoneNumber == '') {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       this.messages.err = 'Please fill all fields correctly'
     }
 
@@ -91,11 +69,7 @@ export class RegisterComponent implements OnInit {
     const res3 = this.user.password?.match(pattern3);
     const res4 = this.user.password?.match(pattern4);
 
-<<<<<<< HEAD
-    if( this.user.password.length >= 8 && res1?.length > 0 && res2?.length > 0 && res3.length > 0 && res4.length > 0) {
-=======
     if (this.user.password.length >= 8 && res1?.length > 0 && res2?.length > 0 && res3.length > 0 && res4.length > 0) {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       this.messages.pwdErr = false
     }
     else {
@@ -103,8 +77,4 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

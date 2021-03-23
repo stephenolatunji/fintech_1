@@ -22,11 +22,7 @@ input, select , button{
 }
 select{ cursor: pointer;}
 *::-webkit-scrollbar {
-<<<<<<< HEAD
-  width: .3em;
-=======
   width: .5em;
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   height: .3em;
 }
 
@@ -47,8 +43,4 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   border: 0px;
   transition: background-color 5000s ease-in-out 0s;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

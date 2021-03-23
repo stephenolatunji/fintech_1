@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<div class="body animate__animated animate__fadeIn" *ngIf="!addUserRoleClicked">
-=======
 <div class="body animate__animated animate__fadeIn" *ngIf="!addUserRoleClicked && !editUserRoleClicked">
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
     <div class="text1">User Role</div>
     <div style="text-align: end;"><button class="btnText" mat-button (click)="toggleAddUser()">+ Add Role</button></div>
 
@@ -49,21 +45,12 @@
             <tbody >
                 <tr *ngFor="let user of allUserRoles; let i = index">
                     <td> {{user?.name}} </td>
-<<<<<<< HEAD
-                    <td>{{user?.role?.accessLevel}}</td>
-                    <td> {{user?.role?.rolePermission?.name}}</td>
-                    <td>
-                        <span style="padding: 4px 8px" [style.color]="user?.role?.rolePermission?.status==1? '#76CDCD':'#F27348' " [style.background-color]="user?.role?.rolePermission?.status==1? 'rgba(118, 205, 205, 0.1)':'rgba(242, 115, 72, 0.1)' ">
-                            {{
-                                user?.role?.rolePermission?.status==1 ? 'Active' : 'Not Active'
-=======
                     <td>{{user?.accessLevel}}</td>
                     <td> {{user?.roleId}}</td>
                     <td>
                         <span style="padding: 4px 8px" [style.color]="user?.status==1? '#76CDCD':'#F27348' " [style.background-color]="user?.status==1? 'rgba(118, 205, 205, 0.1)':'rgba(242, 115, 72, 0.1)' ">
                             {{
                                 user?.status==1 ? 'Active' : 'Inactive'
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
                             }}
                         </span> 
                     </td>
@@ -71,11 +58,7 @@
                         <img src="assets/super-admin/user/ellypsis.svg" alt="">
                     </td>
                     <div class="pop animate__animated animate__bounceIn" *ngIf="user?.more==true">
-<<<<<<< HEAD
-                        <span (click)="handleEdit(staff)">Edit</span>
-=======
                         <span (click)="handleEdit(user)">Edit</span>
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
                     </div>
                 </tr>
             </tbody>
@@ -83,16 +66,8 @@
     </div>
 
 </div>
-<<<<<<< HEAD
-<app-admin-header></app-admin-header>
-<app-side-nav></app-side-nav>
-
-
-<app-add-user-role *ngIf="addUserRoleClicked"></app-add-user-role>
-=======
 <app-add-user-role *ngIf="addUserRoleClicked"></app-add-user-role>
 <app-edit-user-role *ngIf="editUserRoleClicked" [data]="roleToEdit"></app-edit-user-role>
 <app-admin-header></app-admin-header>
 <app-side-nav></app-side-nav>
 
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

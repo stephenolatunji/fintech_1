@@ -23,11 +23,7 @@ export class EditProfileComponent implements OnInit {
     // get data from bE
     this.user = this.server.userInformations;
     this.user.id = this.server.userInformations.customerId;
-<<<<<<< HEAD
-    profilePic.setAttribute('src', this.user.customerImageFileLocation==(undefined || '' || null)? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.user.customerImageFileLocation}`);
-=======
     profilePic.setAttribute('src', this.user.customerImageFileLocation == (undefined || '' || null) ? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.user.customerImageFileLocation}`);
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
 
   }
 
@@ -36,15 +32,6 @@ export class EditProfileComponent implements OnInit {
   }
 
   handleSubmit() {
-<<<<<<< HEAD
-    if(this.user.firstName!=='' && this.user.lastName!=='' && this.user.userName!=='' && this.user.phoneNumber!== '' && this.user.email!=='') {
-      this.loading = true;
-      if(this.newProfilePictureUploaded) {
-        this.server.updateProfilePicture(this.user).subscribe(dat=>{
-          this.newProfilePictureUploaded = false;
-          this.uploadUserInfo()
-        }, err=>this.msg = 'Error updating your profile')
-=======
     if (this.user.firstName !== '' && this.user.lastName !== '' && this.user.userName !== '' && this.user.phoneNumber !== '' && this.user.email !== '') {
       this.loading = true;
       if (this.newProfilePictureUploaded) {
@@ -52,17 +39,11 @@ export class EditProfileComponent implements OnInit {
           this.newProfilePictureUploaded = false;
           this.uploadUserInfo()
         }, err => this.msg = 'Error updating your profile')
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       }
 
       else {
         this.uploadUserInfo()
       }
-<<<<<<< HEAD
-      
-=======
-
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
     }
     else {
       this.loading = false
@@ -77,15 +58,9 @@ export class EditProfileComponent implements OnInit {
   }
 
   uploadUserInfo() {
-<<<<<<< HEAD
-    this.server.updateUserProfile(this.user).subscribe(dat=>{
-      this.loading = false;
-      if(dat.succeeded) {
-=======
     this.server.updateUserProfile(this.user).subscribe(dat => {
       this.loading = false;
       if (dat.succeeded) {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
         this.server.userInformations = dat.entity;
         this.msg = 'Profile Updated'
         this.openSnackBar(this.msg)
@@ -101,15 +76,9 @@ export class EditProfileComponent implements OnInit {
     const element = ev[0];
     this.user.uploadImage = element.name;
     this.newProfilePictureUploaded = true;
-<<<<<<< HEAD
-    this.prepareImage(element)     
-  }
-  
-=======
     this.prepareImage(element)
   }
 
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   prepareImage(image) {
     var reader = new FileReader();
     reader.onloadend = () => {
@@ -119,17 +88,10 @@ export class EditProfileComponent implements OnInit {
     }
     return reader.readAsDataURL(image);
   }
-<<<<<<< HEAD
-  
-  compressFile(image) {
-    this.imageCompress.compressFile(image, -1, 50, 50).then(result=> {     
-      this.user.uploadImage = result; 
-=======
 
   compressFile(image) {
     this.imageCompress.compressFile(image, -1, 50, 50).then(result => {
       this.user.uploadImage = result;
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       document.getElementById('profilePic').setAttribute('src', result);
       this.header.profilePic_ = result;
     })

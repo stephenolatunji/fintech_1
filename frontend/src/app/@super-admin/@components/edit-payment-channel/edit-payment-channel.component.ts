@@ -21,34 +21,19 @@ export class EditPaymentChannelComponent implements OnInit {
   ngOnInit(): void {
     this.paymentChannel = this.data;
     console.log(this.paymentChannel);
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   }
 
   handleSubmit() {
     this.loading = true;
-<<<<<<< HEAD
-    this.server.editPaymentChannel(this.paymentChannel).subscribe(dat=>{
-      this.loading = false;
-      if(dat.succeeded) {
-=======
     this.server.editPaymentChannel(this.paymentChannel).subscribe(dat => {
       this.loading = false;
       if (dat.succeeded) {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
         this.openSnackBar("Payment Channel Updated")
       }
       else {
         this.openSnackBar("Error while updating channel")
       }
-<<<<<<< HEAD
-    }, err=> {this.openSnackBar("Error while updating channel"); this.loading = false})
-=======
     }, err => { this.openSnackBar("Error while updating channel"); this.loading = false })
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   }
 
 
@@ -58,8 +43,4 @@ export class EditPaymentChannelComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

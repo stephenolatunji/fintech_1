@@ -17,8 +17,4 @@ export class ViewReportComponent implements OnInit {
     this.report.viewReport = false;
   }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

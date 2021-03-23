@@ -7,46 +7,37 @@
     </div>
 
     <div class="content">
-        <div class="col-6">
+        <div class="content_">
             <label for="">Base Currency</label><br />
-            <span class="mr-5">USD</span>
-            <span>$ 1</span><br /><br />
+            <div class="row">
+                <div class="col-6 mt-3" *ngFor="let item of data">
+                    <span>{{item?.baseCurrency}}</span>
+                    <span>
+                        {{
+                            item?.baseCurrency=='USD'? '$' :
+                            item?.baseCurrency=='CAD'? 'C$' :
+                            item?.baseCurrency=='GBP'? '£' :
+                            item?.baseCurrency=='EUR'? '€' :
+                            item?.baseCurrency
+                        }}
+                    1</span>
+                </div>
+            </div>
 
-            <span class="mr-5">GBP</span>
-            <span>$ 1</span><br /><br />
+        </div>
 
-            <span class="mr-5">CAD</span>
-            <span>C$ 1</span><br /><br />
-
-            <span class="mr-5">EUR</span>
-            <span>C$ 1</span><br /><br />
-
-            <div class="mt-2">
-                <button mat-button>Edit</button>
-                <button mat-button (click)="handleSubmit()" *ngIf="!loading">Save</button>
-                <button mat-button disabled *ngIf="loading">Please wait...</button>
+        <div class="content_ mt-4">
+            <label for="">Variable Currency</label><br />
+            <div class="row ">
+                <div class="col-6 mt-3" *ngFor="let marketRate of data; let i = index">
+                    <span>NGN</span>
+                    <input type="number" placeholder="N 0.00" [value]="marketRate?.marketRate"  name="usd" [id]=marketRate?.id #rate [disabled]=marketRate?.disabled />
+                    <img src="assets/super-admin/market-rate/edit.svg" alt="" (click)="handleEdit(i)">
+                    <img src="assets/super-admin/market-rate/bookmark.svg" alt="" (click)="handleSubmit(marketRate?.baseCurrency, rate.value, marketRate?.id)" >
+                </div>
+               
             </div>
         </div>
-
-        <div class="col-6">
-            <label for="">Variable Currency</label><br />
-            <span>NGN</span>
-            <input type="text" placeholder="N 0.00" [(ngModel)]="marketRate.usd" name="usd" />
-            <br /> <br />
-
-            <span>NGN</span>
-            <input type="text" placeholder="N 0.00" [(ngModel)]="marketRate.gbp" name="gbp"/>
-            <br /> <br />
-
-            <span>NGN</span>
-            <input type="text" placeholder="N 0.00" [(ngModel)]="marketRate.cad" name="cad"/>
-            <br /> <br />
-
-            <span>NGN</span>
-            <input type="text" placeholder="N 0.00" [(ngModel)]="marketRate.eur" name="eur"/>
-            <br /> <br />
-        </div>
-
     </div>
 
 </div>

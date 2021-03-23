@@ -15,11 +15,7 @@
                         </div>
                         <div class="input-section">
                             <select name="myCurrency" class="select" [(ngModel)]="order.myCurrency" (change)="doCalculation()">
-<<<<<<< HEAD
-                                <option value=1 *ngIf="order.convertedCurrency!==1 ">NGN</option>
-=======
                                 <option value=1 >NGN</option>
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
                                 <option value=2 >USD</option>
                                 <option value=4 >EUR</option>
                                 <option value=3 >GBP</option>
@@ -35,11 +31,7 @@
                     Market Rate
                     <!-- condition toggler -->
                     <div class="card-list" *ngIf="order.myCurrency==1">
-<<<<<<< HEAD
-                        <div class="cards" (click)="toggelePrefferdCurrency(2)" id="platform" style="border: 1px solid #26474E;">
-=======
                         <div class="cards" (click)="toggelePrefferdCurrency(2, 'USD')" id="usd" style="border: 1px solid #26474E;">
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
                             <div >
                                 <img src="assets/listing/usd.svg" />
                                 <span class="country">USD</span>
@@ -53,37 +45,18 @@
                                         <img src="assets/listing/down-trend.svg"  />
                                     </div>
                                     <div>
-<<<<<<< HEAD
-                                        <img src="assets/listing/arrow-down.svg"  />
-=======
                                         <img src="assets/listing/arrow-down.svg" height="15" />
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
                                         <span class="small-amount">$0.00</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-<<<<<<< HEAD
-            
-                        <div class="cards" (click)="toggelePrefferdCurrency(5)" id="cad">
-=======
 
                         <div class="cards" (click)="toggelePrefferdCurrency(5, 'CAD')" id="cad">
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
                             <img src="assets/listing/cad.svg" />
                             <span class="country">CAD</span>
                             <div class="d-flex" style="margin-top: 20px;">
                                 <div class="amount">
-<<<<<<< HEAD
-                                    C$ 0.00
-                                </div>
-                                <div class="chart">
-                                    <div>
-                                        <img src="assets/listing/up-trend.svg"  />
-                                    </div>
-                                    <div>
-                                        <img src="assets/listing/arrow-up.svg"  />
-=======
                                     C$
                                     0.00
                                 </div>
@@ -93,19 +66,14 @@
                                     </div>
                                     <div>
                                         <img height="15" src="assets/listing/arrow-down.svg"  />
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
                                         <span class="small-amount">$0.00</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
             
-<<<<<<< HEAD
-                        <div class="cards" (click)="toggelePrefferdCurrency(3)" id="gbp">
-=======
             
                         <div class="cards" (click)="toggelePrefferdCurrency(3, 'GBP')" id="gbp">
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
                             <img src="assets/listing/gbp.svg" />
                             <span class="country">GBP</span>
                             <div class="d-flex" style="margin-top: 20px;">
@@ -118,22 +86,14 @@
                                         <img src="assets/listing/down-trend.svg"  />
                                     </div>
                                     <div>
-<<<<<<< HEAD
-                                        <img src="assets/listing/arrow-down.svg"  />
-=======
                                         <img height="15" src="assets/listing/arrow-down.svg"  />
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
                                         <span class="small-amount">$0.00</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
             
-<<<<<<< HEAD
-                        <div class="cards" (click)="toggelePrefferdCurrency(4)" id="eur">
-=======
                         <div class="cards" (click)="toggelePrefferdCurrency(4, 'EUR')" id="eur">
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
                             <img src="assets/listing/jpy.svg" />
                             <span class="country">EUR</span>
                             <div class="d-flex" style="margin-top: 20px;">
@@ -146,11 +106,7 @@
                                         <img src="assets/listing/up-trend.svg"  />
                                     </div>
                                     <div>
-<<<<<<< HEAD
-                                        <img src="assets/listing/arrow-up.svg"  />
-=======
                                         <img height="15" src="assets/listing/arrow-up.svg"  />
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
                                         <span class="small-amount">$0.00</span>
                                     </div>
                                 </div>
@@ -249,8 +205,4 @@
     </div>
 </div>
 
-<<<<<<< HEAD
 <app-response [data] = "matchFound" *ngIf="showResponse"></app-response>
-=======
-<app-response [data] = "matchFound" *ngIf="showResponse"></app-response>
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

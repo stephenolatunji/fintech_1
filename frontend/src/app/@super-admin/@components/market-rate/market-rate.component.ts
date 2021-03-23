@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SuperServiceService } from '../../@theme/service/super-service.service';
 
@@ -8,23 +8,35 @@ import { SuperServiceService } from '../../@theme/service/super-service.service'
   styleUrls: ['./market-rate.component.css']
 })
 export class MarketRateComponent implements OnInit {
-  marketRate = {
-    usd: '', gbp: '', cad: '', eur: '', staffId: localStorage.getItem('userId')
-  }
+
+  @ViewChild('rate') marketRate: ElementRef;
+
   loading: boolean = false;
+  disable = {
+    usd: true, cad: true, eur: true, gbp: true
+  }; data;
   constructor(private server: SuperServiceService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.server.getAllMarketRateConfig().subscribe(dat=>{
+      this.data = dat.entity;
+      for (let index = 0; index < this.data.length; index++) {
+        this.data[index].disabled = true;
+      }
+    })
   }
 
-  handleSubmit() {
+  handleSubmit(baseCurrency, marketRate, id) {
     this.loading = true;
-    // this.server.newMarketRate(this.marketRate).subscribe(dat=>{
-    //   this.loading = false;
-    //   if(dat.succeeded) {
-    //     this.openSnackBar("Market Rate Added Successfully!")
-    //   }
-    // })
+    const val = {
+      baseCurrency, varibleCurrency: 1, marketRate, id
+    }
+    this.server.updateMarketRate(val).subscribe(dat=>{
+      this.loading = false;
+      if(dat.succeeded) {
+        this.openSnackBar("Market Rate Updated Successfully!")
+      }
+    })
   }
 
   openSnackBar(msg) {
@@ -33,8 +45,10 @@ export class MarketRateComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
+  handleEdit(index) {
+    this.data[index].disabled = false
+    setTimeout(() => {
+      this.marketRate.nativeElement.focus();
+    }, 200);
+  }
 }
-=======
-}
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

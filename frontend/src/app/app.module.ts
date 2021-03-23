@@ -7,16 +7,6 @@ import { AppComponent } from './app.component';
 
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 
-<<<<<<< HEAD
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatRadioModule} from '@angular/material/radio';
-import {MatButtonModule} from '@angular/material/button';
-import { MatExpansionModule } from "@angular/material/expansion";
-import { MatSnackBarModule } from "@angular/material/snack-bar";
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-=======
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
@@ -25,7 +15,6 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
 
 import { RegisterComponent } from './@auth/components/register/register.component';
 import { LoginComponent } from './@auth/components/login/login.component';
@@ -68,10 +57,7 @@ import { AddPaymentChannelComponent } from './@super-admin/@components/add-payme
 import { FaqComponent } from './@super-admin/@components/faq/faq.component';
 import { UserRoleComponent } from './@super-admin/@components/user-role/user-role.component';
 import { AddUserRoleComponent } from './@super-admin/@components/add-user-role/add-user-role.component';
-<<<<<<< HEAD
-=======
 import { EditUserRoleComponent } from './@super-admin/@components/edit-user-role/edit-user-role.component';
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
 import { EditUserComponent } from './@super-admin/@components/edit-user/edit-user.component';
 import { CustomerComponent } from './@super-admin/@components/customer/customer.component';
 import { CustomerProfileComponent } from './@super-admin/@components/customer-profile/customer-profile.component';
@@ -115,10 +101,7 @@ import { NgxStripeModule } from "ngx-stripe";
     ChangeDocumentComponent,
     EditProfileComponent,
     UsersComponent,
-<<<<<<< HEAD
-=======
     EditUserRoleComponent,
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
     SideNavComponent,
     AdminHeaderComponent,
     ReportsComponent,
@@ -128,11 +111,7 @@ import { NgxStripeModule } from "ngx-stripe";
     AddUserComponent,
     PaymentChannelComponent,
     AddPaymentChannelComponent,
-<<<<<<< HEAD
-    FaqComponent, 
-=======
     FaqComponent,
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
     UserRoleComponent,
     AddUserRoleComponent,
     CustomerComponent,
@@ -148,27 +127,16 @@ import { NgxStripeModule } from "ngx-stripe";
   imports: [
     BrowserModule,
     FormsModule,
-<<<<<<< HEAD
-    BrowserAnimationsModule, 
-=======
     BrowserAnimationsModule,
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
     AppRoutingModule,
     HttpClientModule,
     MatCheckboxModule,
     MatExpansionModule,
     MatSlideToggleModule,
-<<<<<<< HEAD
-    MatButtonModule,MatRadioModule, MatSnackBarModule,
-    NgxStripeModule.forRoot('pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB')
-  ],
-  providers: [NgxImageCompressService,  { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },, JwtHelperService],
-=======
     MatButtonModule, MatRadioModule, MatSnackBarModule,
     NgxStripeModule.forRoot('pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB')
   ],
   providers: [NgxImageCompressService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, , JwtHelperService],
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -21,25 +21,15 @@ export class AddPaymentChannelComponent implements OnInit {
 
   handleSubmit() {
     this.loading = true;
-<<<<<<< HEAD
-    this.server.newPaymentChannel(this.paymentChannel).subscribe(dat=>{
-      this.loading = false;
-      if(dat.succeeded) {
-=======
     this.server.newPaymentChannel(this.paymentChannel).subscribe(dat => {
       this.loading = false;
       if (dat.succeeded) {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
         this.openSnackBar("Payment Channel Added")
       }
       else {
         this.openSnackBar("Error while adding channel")
       }
-<<<<<<< HEAD
-    }, err=> {this.openSnackBar("Error while adding channel"); this.loading = false})
-=======
     }, err => { this.openSnackBar("Error while adding channel"); this.loading = false })
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   }
 
 
@@ -50,8 +40,3 @@ export class AddPaymentChannelComponent implements OnInit {
   }
 
 }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

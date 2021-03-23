@@ -23,18 +23,11 @@
     "@angular/router": "~10.0.11",
     "@auth0/angular-jwt": "^5.0.2",
     "@ngrx/store-devtools": "^11.0.1",
-<<<<<<< HEAD
-    "@types/stripe": "^8.0.417",
-    "https": "^1.0.0",
-    "ngx-image-compress": "^11.0.3",
-    "ngx-stripe": "^7.4.4",
-=======
     "@stripe/stripe-js": "^1.13.1",
     "@types/stripe": "^8.0.417",
     "https": "^1.0.0",
     "ngx-image-compress": "^11.0.3",
     "ngx-stripe": "^7.6.0",
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
     "path": "^0.12.7",
     "rxjs": "~6.5.5",
     "stripe": "^8.137.0",

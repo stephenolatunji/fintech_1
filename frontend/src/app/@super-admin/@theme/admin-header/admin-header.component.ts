@@ -17,11 +17,7 @@ export class AdminHeaderComponent implements OnInit {
 
   logout() {
     this.openSnackBar('Logging out');
-<<<<<<< HEAD
-    this.auth.logout().subscribe(()=>{
-=======
     this.auth.logout().subscribe(() => {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       localStorage.setItem('userId', null)
       localStorage.setItem('token_', null)
       this.openSnackBar('Logout Successful');
@@ -35,8 +31,4 @@ export class AdminHeaderComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

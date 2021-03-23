@@ -8,11 +8,7 @@ import { SuperServiceService } from '../../@theme/service/super-service.service'
 })
 export class CustomerComponent implements OnInit {
   tab1: boolean = true; tab2: boolean = false; tab3: boolean = false;
-<<<<<<< HEAD
-  allCustomers;  filter: string; viewCustomerProfile: boolean = false;
-=======
   allCustomers; filter: string; viewCustomerProfile: boolean = false;
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   profileOfCustomer; allCustomers_; lastIndex = 1;
 
   constructor(private server: SuperServiceService) { }
@@ -20,17 +16,10 @@ export class CustomerComponent implements OnInit {
   ngOnInit(): void {
     this.allCustomers = this.server.allCustomers;
     setTimeout(() => {
-<<<<<<< HEAD
-      
-      this.handleFilter('all');
-      if(this.allCustomers == undefined) {
-        this.server.getAllCustomers().subscribe(dat=>{
-=======
 
       this.handleFilter('all');
       if (this.allCustomers == undefined) {
         this.server.getAllCustomers().subscribe(dat => {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
           this.allCustomers = dat.entity;
           this.allCustomers_ = dat.entity;
         })
@@ -38,16 +27,6 @@ export class CustomerComponent implements OnInit {
     }, 200);
   }
 
-<<<<<<< HEAD
-  
-  switchTab(tab) {
-    this.setTabsId();
-    if(tab == 3) {
-      document.getElementById('tab3').style.backgroundColor = '#F0F4F5'
-      this.tab3 = true;
-    }
-    else if(tab == 2) {
-=======
 
   switchTab(tab) {
     this.setTabsId();
@@ -56,7 +35,6 @@ export class CustomerComponent implements OnInit {
       this.tab3 = true;
     }
     else if (tab == 2) {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       this.tab2 = true;
       document.getElementById('tab2').style.backgroundColor = '#F0F4F5'
     }
@@ -77,41 +55,12 @@ export class CustomerComponent implements OnInit {
     document.getElementById('all').style.backgroundColor = 'transparent';
     document.getElementById('blocked').style.backgroundColor = 'transparent';
     document.getElementById('disabled').style.backgroundColor = 'transparent';
-<<<<<<< HEAD
-    if(x=='all') {
-=======
     if (x == 'all') {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       this.filter = 'All Customers'
       this.allCustomers = this.allCustomers_;
       document.getElementById('all').style.backgroundColor = '#E9EDED';
 
     }
-<<<<<<< HEAD
-    else if(x=='blocked') {
-      this.filter = 'Blocked Customers'
-      this.allCustomers = this.allCustomers_.filter(dat=>dat.status == 5);
-      document.getElementById('blocked').style.backgroundColor = '#E9EDED';
-    }
-    else if(x=='deleted') {
-      this.filter = 'Deleted Customers'
-      this.allCustomers = this.allCustomers_.filter(dat=>dat.status == 4);
-      document.getElementById('deleted').style.backgroundColor = '#E9EDED';
-    }
-    else if(x=='deactivated') {
-      this.filter = 'Deactivated Customers'
-      this.allCustomers = this.allCustomers_.filter(dat=>dat.status == 3);
-      document.getElementById('deactivated').style.backgroundColor = '#E9EDED';
-    }
-    else if(x=='active') {
-      this.filter = 'Active Customers'
-      this.allCustomers = this.allCustomers_.filter(dat=>dat.status == 1);
-      document.getElementById('active').style.backgroundColor = '#E9EDED';
-    }
-    else if(x=='inactive') {
-      this.filter = 'Inactive Customers'
-      this.allCustomers = this.allCustomers_.filter(dat=>dat.status == 2);
-=======
     else if (x == 'blocked') {
       this.filter = 'Blocked Customers'
       this.allCustomers = this.allCustomers_.filter(dat => dat.status == 5);
@@ -135,7 +84,6 @@ export class CustomerComponent implements OnInit {
     else if (x == 'inactive') {
       this.filter = 'Inactive Customers'
       this.allCustomers = this.allCustomers_.filter(dat => dat.status == 2);
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       document.getElementById('inactive').style.backgroundColor = '#E9EDED';
     }
   }
@@ -150,11 +98,7 @@ export class CustomerComponent implements OnInit {
   }
 
   handleMore(index) {
-<<<<<<< HEAD
-    if(index == this.lastIndex) {
-=======
     if (index == this.lastIndex) {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       this.allCustomers[index].more = !this.allCustomers[index].more
     }
     else {
@@ -168,8 +112,4 @@ export class CustomerComponent implements OnInit {
 
   }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

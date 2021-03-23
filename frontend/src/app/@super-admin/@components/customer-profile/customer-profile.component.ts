@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -16,8 +12,4 @@ export class CustomerProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

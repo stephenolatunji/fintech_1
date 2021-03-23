@@ -17,30 +17,6 @@ export class SideNavComponent implements OnInit {
   }
 
   checkRout() {
-<<<<<<< HEAD
-    
-    if(this.router.url=='/super-admin/dashboard') {
-      document.getElementById('dashboard').setAttribute('src', 'assets/super-admin/side-nav/dashboardc.svg');
-      document.getElementById('dashboardText').style.color = '#F27348';
-    }
-    else if(this.router.url=='/super-admin/user' || this.router.url=='/super-admin/user-role') {
-      document.getElementById('user').setAttribute('src', 'assets/super-admin/side-nav/userc.svg');
-      document.getElementById('userText').style.color = '#F27348';
-    }
-    else if(this.router.url=='/super-admin/reports') {
-      document.getElementById('reports').setAttribute('src', 'assets/super-admin/side-nav/reportsc.svg');
-      document.getElementById('reportsText').style.color = '#F27348';
-    }
-    else if(this.router.url=='/super-admin/support') {
-      document.getElementById('support').setAttribute('src', 'assets/super-admin/side-nav/supportc.svg');
-      document.getElementById('supportText').style.color = '#F27348';
-    }    
-    else if(this.router.url=='/super-admin/market-rate' || this.router.url=='/super-admin/payment-channel' || this.router.url=='/super-admin/transaction') {
-      document.getElementById('configuration').setAttribute('src', 'assets/super-admin/side-nav/configurationc.svg');
-      document.getElementById('configurationText').style.color = '#F27348';
-    }
-    else if(this.router.url=='/super-admin/customers') {
-=======
 
     if (this.router.url == '/super-admin/dashboard') {
       document.getElementById('dashboard').setAttribute('src', 'assets/super-admin/side-nav/dashboardc.svg');
@@ -63,7 +39,6 @@ export class SideNavComponent implements OnInit {
       document.getElementById('configurationText').style.color = '#F27348';
     }
     else if (this.router.url == '/super-admin/customers') {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       document.getElementById('customer').setAttribute('src', 'assets/super-admin/side-nav/peoplec.svg');
       document.getElementById('customerText').style.color = '#F27348';
     }
@@ -82,8 +57,4 @@ export class SideNavComponent implements OnInit {
     this.router.navigate([`/super-admin/${x}`]);
   }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

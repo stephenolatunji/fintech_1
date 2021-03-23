@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SuperServiceService } from 'src/app/@super-admin/@theme/service/super-service.service';
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
 import { Component, OnInit } from '@angular/core';
 import { UserRoleComponent } from '../user-role/user-role.component';
 
@@ -13,15 +10,6 @@ import { UserRoleComponent } from '../user-role/user-role.component';
 })
 export class AddUserRoleComponent implements OnInit {
   newRole = {
-<<<<<<< HEAD
-    role: null, accessLevel: null
-  }
-  constructor(private userRoleFunc: UserRoleComponent) { }
-  
-  ngOnInit(): void {
-  }
-
-=======
     name: null, accessLevel: null, userId: localStorage.getItem('userId')
   }
   constructor(private userRoleFunc: UserRoleComponent, private server: SuperServiceService, private _snackBar: MatSnackBar) { }
@@ -48,13 +36,8 @@ export class AddUserRoleComponent implements OnInit {
     });
   }
 
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   goBack() {
     this.userRoleFunc.addUserRoleClicked = false;
   }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec

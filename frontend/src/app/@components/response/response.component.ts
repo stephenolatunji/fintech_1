@@ -12,15 +12,6 @@ declare var Stripe;
   styleUrls: ['./response.component.css']
 })
 
-<<<<<<< HEAD
-@Injectable({providedIn: "root"})
-
-export class ResponseComponent implements OnInit {
-  stripe;
-  @Input() data; loading: boolean = false;  paymentHandler:any = null; paymentSuccessful: boolean = false
-  success: boolean = false;
-  
-=======
 @Injectable({ providedIn: "root" })
 
 export class ResponseComponent implements OnInit {
@@ -28,16 +19,11 @@ export class ResponseComponent implements OnInit {
   @Input() data; loading: boolean = false; paymentHandler: any = null; paymentSuccessful: boolean = false
   success: boolean = false;
 
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   constructor(private server: ServerService, private rout: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     $('#payment-success').modal('hide')
-<<<<<<< HEAD
-    if(this.data == 'No Match Found') {
-=======
     if (this.data == 'No Match Found') {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       this.success = false
     }
     else {
@@ -61,18 +47,6 @@ export class ResponseComponent implements OnInit {
   payNow() {
     this.data.customerId = localStorage.getItem('customerId');
     this.server.pendingOrders = this.data;
-<<<<<<< HEAD
-  
-    this.loading = true;
-    this.server.createAndMatchOrder(this.data).subscribe(dat=>{
-      console.log(dat)
-      this.loading = false;
-      if(dat.succeeded && dat.entity!==null) {
-        this.server.pendingOrders = dat.entity;
-        this.close();
-        // Use if statement to know if using paystack or Stripe
-        (dat.entity.myCurrency == 'NGN') ? this.usePayStack() :  this.usePayStack()
-=======
 
     this.loading = true;
     this.server.createAndMatchOrder(this.data).subscribe(dat => {
@@ -83,16 +57,10 @@ export class ResponseComponent implements OnInit {
         this.close();
         // Use if statement to know if using paystack or Stripe
         (dat.entity.myCurrency == 'NGN') ? this.usePayStack() : this.usePayStack()
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
       }
       else {
         this.openSnackBar('Error while proccessing your request!')
       }
-<<<<<<< HEAD
-      
-=======
-
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
     }, err => this.openSnackBar('Error while proccessing your request!'))
   }
 
@@ -101,31 +69,16 @@ export class ResponseComponent implements OnInit {
       duration: 2500,
     });
   }
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   // handlePayment(amount) {
   //   const paymentHandler = (<any>window).StripeCheckout.configure({
   //     key: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB',
   //     locale: 'auto',
   //     token:  (stripeToken: any) => {
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   //       console.log(stripeToken)
   //       console.log(this.server.pendingOrders)
   //       $('#payment-success').modal('show')
   //     }
   //   });
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   //   paymentHandler.open({
   //     name: 'Anelloh',
   //     description: 'Payment',
@@ -148,29 +101,10 @@ export class ResponseComponent implements OnInit {
   //         }
   //       });
   //     }
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
   //     window.document.body.appendChild(script);
   // }}
 
   useStripe(pendingOrders) {
-<<<<<<< HEAD
-    
-    this.server.createCardPayment(pendingOrders).subscribe(data=>{
-      console.log(data)
-        if(data.succeeded) {
-          this.stripe = Stripe(`${environment.stripeToken}`);
-          this.server.comingFromStripe = true;
-          this.stripe.redirectToCheckout({ sessionId: data.entity });
-          this.loading = false;
-        }
-        else {
-          this.loading = false;
-        }
-=======
 
     this.server.createCardPayment(pendingOrders).subscribe(data => {
       console.log(data)
@@ -183,28 +117,17 @@ export class ResponseComponent implements OnInit {
       else {
         this.loading = false;
       }
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
     })
   }
 
   usePayStack() {
-<<<<<<< HEAD
-    this.server.handlePayStack().subscribe((dat: any)=>{console.log(dat)
-      this.loading = false
-      if(dat.status) {
-=======
     this.server.handlePayStack().subscribe((dat: any) => {
       console.log(dat)
       this.loading = false
       if (dat.status) {
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
         window.location.href = dat.data.authorization_url;
       }
     }, err => this.openSnackBar('Error initializing your payment'))
   }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> d44b2faf2995a26ba82439ed846788eb309054ec
