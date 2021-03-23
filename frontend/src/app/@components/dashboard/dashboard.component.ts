@@ -35,16 +35,6 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
-    // checkIfAmRoutedFromPaymentPlatform
-    this.actRout.queryParams.subscribe(params => {
-      if (params.reference !== undefined) {
-        // handle send reference and order detais to backend
-        this.handlePayStackReference(params.reference);
-      }
-      else if (this.server.comingFromStripe) {
-        this.handleGetPaymentIntent()
-      }
-    })
 
     $('#payment-success').modal('hide');
 
@@ -64,7 +54,10 @@ export class DashboardComponent implements OnInit {
         this.server.getPendingOrders_ = data.entity[0].order;
         this.pendingOrders = data.entity[0].order;
         // counter
-        this.countDown()
+        this.countDown();
+
+        // cehckIfDoneWithPayment
+        this.checkIfComingFromPaymentPlatform()
       }
       else {
         this.pendingOrders = undefined;
@@ -190,7 +183,7 @@ export class DashboardComponent implements OnInit {
   }
 
   handlePayStackReference(ref) {
-    this.server.payStackReference(ref).subscribe((dat: any) => {
+    this.server.payStackReference(ref, this.pendingOrders).subscribe((dat: any) => {
       console.log(dat)
       if (dat.succeeded) {
         this.rout.navigate(['dashboard']);
@@ -219,5 +212,20 @@ export class DashboardComponent implements OnInit {
       }
     })
   }
+
+  checkIfComingFromPaymentPlatform() {
+
+    // checkIfAmRoutedFromPaymentPlatform
+    this.actRout.queryParams.subscribe(params => {
+      if (params.reference !== undefined) {
+        // handle send reference and order detais to backend
+        this.handlePayStackReference(params.reference);
+      }
+      else if (this.server.comingFromStripe) {
+        this.handleGetPaymentIntent()
+      }
+    })
+  }
+
 
 }

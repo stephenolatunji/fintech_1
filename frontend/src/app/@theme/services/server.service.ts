@@ -139,8 +139,15 @@ export class ServerService {
     // return this.http.get<any>(`${environment.url}/api/orders/gettop10orderlistings`)
   }
 
-  payStackReference(ref) {
-    return this.http.post(`${environment.url}/api/Paystack/verifypayment/${ref}`, {}, { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } })
+  payStackReference(ref, pendingOrder) {
+    console.log(pendingOrder);
+    const data = {
+      sessionId: ref,
+      orderNo: pendingOrder.orderNo,
+      customerId: pendingOrder.customerId
+    }
+    console.log(data);    
+    return this.http.post(`${environment.url}/api/Paystack/verifypayment`, data, { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } })
   }
 
   handleGetPaymentIntent(data) {
