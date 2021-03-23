@@ -61,17 +61,19 @@
     /* width: 40%; */
     border: 1px solid #F27348;
     border-radius: 15px;
-    padding: 12px;
+    padding: 10px 12px;
     font-weight: bold;
     font-size: 14px;
     line-height: 22px;width: 50%;
     text-align: center;
-    background-color: #F27348;
-    color: #fff;
+    background-color: #fff;
+    color: #F27348;
     outline: none;
 }
 .btn-section button:last-child {
     margin-left: 16px;
+    background-color: #F27348;
+    color: #fff;
 }
 .btn-section button:hover {
     opacity: .7;

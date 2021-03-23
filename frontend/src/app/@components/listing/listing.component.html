@@ -182,7 +182,7 @@
             <div class="btn-section d-flex">
 
                 <button type='submit' *ngIf="!unfullfilledOrder?.status" class="ml-auto" mat-button (click)="loading.publish? '' : checkIfAllInput('publish')">
-                    <span *ngIf="!loading.publish">Publish</span> 
+                    <span *ngIf="!loading.publish">Post Order</span> 
                     <img *ngIf="loading.publish" src="assets/auth/loader.gif" width="20" height="20" alt="">
                 </button>
               

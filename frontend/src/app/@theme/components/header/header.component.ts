@@ -11,15 +11,15 @@ import { SettingsComponent } from '../settings/settings.component';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-@Injectable({ providedIn: "root" })
+@Injectable({providedIn: "root"})
 
 export class HeaderComponent implements OnInit {
-  username: string; settings: boolean = false; profile: boolean = false; profilePic_
+  username: string; settings: boolean = false; profile:  boolean = false; profilePic_
   constructor(private rout: Router, private auth: AuthService, private _snackBar: MatSnackBar, private settingsFunc: SettingsComponent, private server: ServerService, private profileFunc: ProfileComponent) { }
 
   ngOnInit(): void {
-    this.username = this.server.userInformations.userName;
-    this.profilePic_ = this.server.userInformations.customerImageFileLocation == (undefined || '' || null) ? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.server.userInformations.customerImageFileLocation}`;
+    this.username = this.server?.userInformations?.userName;
+    this.profilePic_ = this.server?.userInformations?.customerImageFileLocation==(undefined || '' || null)? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.server.userInformations.customerImageFileLocation}`;
   }
 
   goTo(route) {
@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.openSnackBar('Logging out');
-    this.auth.logout().subscribe(() => {
+    this.auth.logout().subscribe(()=>{
       localStorage.setItem('user', null)
       localStorage.setItem('customerId', null)
       localStorage.setItem('token', null)
@@ -44,12 +44,12 @@ export class HeaderComponent implements OnInit {
   }
 
   open(x) {
-    if (x == 'settings') {
+    if(x=='settings') {
       this.settingsFunc.ngOnInit()
       this.settings = true;
       this.profile = false
     }
-    if (x == 'profile') {
+    if(x=='profile') {
       this.settings = false;
       this.profileFunc.ngOnInit()
       this.profile = true

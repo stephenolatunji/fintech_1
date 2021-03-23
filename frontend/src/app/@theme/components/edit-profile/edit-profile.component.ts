@@ -21,8 +21,8 @@ export class EditProfileComponent implements OnInit {
     // $('#profile').modal('show');
     var profilePic = document.getElementById('profilePic');
     // get data from bE
-    this.user = this.server.userInformations;
-    this.user.id = this.server.userInformations.customerId;
+    this.user = this.server?.userInformations;
+    this.user.id = this.server?.userInformations?.customerId;
     profilePic.setAttribute('src', this.user.customerImageFileLocation == (undefined || '' || null) ? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.user.customerImageFileLocation}`);
 
   }

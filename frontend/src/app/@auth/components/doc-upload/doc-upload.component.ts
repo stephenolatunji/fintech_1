@@ -113,4 +113,11 @@ export class DocUploadComponent implements OnInit {
   goBack() {
     this.regFunc.docUpload = false;
   }
+
+  documentToggle() {
+    this.user_.documentExpiryDate = ''
+    this.user_.documentNumber = ''
+    this.user_.documentImage = null
+    this.files = []
+  }
 }

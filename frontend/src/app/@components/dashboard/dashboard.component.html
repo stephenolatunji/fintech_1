@@ -5,9 +5,12 @@
 
             <div class="rect1">
                 <div class="text">
+                    <div class="two" *ngIf="timeCount.status">
+                        The best platform to exchange currencies.
+                    </div>
                     <!-- When u have no pending order -->
                     <div class="one" *ngIf="pendingOrders==undefined">
-                        Publish your orders to get<br /> swapped
+                        Start here to swap currencies.
                     </div>
                     <!-- When u have a pending order -->
                     <div class="one d-flex" *ngIf="pendingOrders!==undefined && timeCount.status">
@@ -21,9 +24,6 @@
                         Your order was cancelled after <br />the 12 hours time bound elapse,<br /> edit to find new match
                     </div>
 
-                    <div class="two" *ngIf="timeCount.status">
-                        The best platform to exchange currencies.
-                    </div>
                      <!-- When u have no pending order -->
                     <button mat-button (click)="createOrder()" *ngIf="pendingOrders==undefined ">
                         Create a new order
@@ -50,7 +50,7 @@
                 <table class="table" >
                     <thead class="thead" >
                         <tr>
-                            <th>To Swap</th>
+                            <th>Swap Amount</th>
                             <th>For</th>
                             <th>Prefered Rate</th>
                             <th>By</th>
@@ -120,7 +120,7 @@
                     Unfulfilled Order Summary
                 </div>
                 <div class="line">
-                    <div class="text2">To swap </div>
+                    <div class="text2">Swap Amount</div>
                     <div class="text3">
                         {{
                             pendingOrder?.myCurrency.toUpperCase()=='NGN' ? '₦' :

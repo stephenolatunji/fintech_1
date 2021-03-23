@@ -58,14 +58,14 @@ const routes: Routes = [
   { path: 'super-admin/dashboard', component: SuperDashboardComponent, canActivate: [AdminAuthGuard] },
   { path: 'super-admin/user', component: UsersComponent, canActivate: [AdminAuthGuard] },
   { path: 'super-admin/reports', component: TransactionReportComponent, },
-  { path: 'super-admin/support', component: FaqComponent },
-  { path: 'super-admin/user-role', component: UserRoleComponent },
-  { path: 'super-admin/customers', component: CustomerComponent },
-  { path: 'super-admin/transaction-reports', component: TransactionReportComponent, },
+  { path: 'super-admin/support', component: FaqComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/user-role', component: UserRoleComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/customers', component: CustomerComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/transaction-reports', component: TransactionReportComponent, canActivate: [AdminAuthGuard] },
 
-  { path: 'super-admin/market-rate', component: MarketRateComponent, },
-  { path: 'super-admin/payment-channel', component: PaymentChannelComponent, },
-  { path: 'super-admin/transaction', component: TransactionConfigComponent, },
+  { path: 'super-admin/market-rate', component: MarketRateComponent,  canActivate: [AdminAuthGuard]},
+  { path: 'super-admin/payment-channel', component: PaymentChannelComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/transaction', component: TransactionConfigComponent, canActivate: [AdminAuthGuard] },
 ];
 
 @NgModule({

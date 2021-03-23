@@ -19,7 +19,7 @@ label {
 }
  
 .edit {
-    display: flex; justify-content: center;
+    display: flex; justify-content: space-between;
 }
 #edit {
     width: 90%;
