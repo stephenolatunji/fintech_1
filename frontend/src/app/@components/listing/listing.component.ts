@@ -98,7 +98,12 @@ export class ListingComponent implements OnInit {
         data.entity.myAccountNumber = this.order.myAccountNumber.toString();
         data.entity.myBankName = this.order.myBankName;
         data.entity.bankRouteNo = this.order.bankRouteNo;
-        data.entity.convertedAmount = parseFloat(data.entity.convertedAmount);
+        // important: we need to swap ds to match what it should be
+        data.entity.convertedAmount = parseFloat(data.entity.myAmount);
+        data.entity.myAmount = parseFloat(data.entity.convertedAmount);
+        data.entity.convertedCurrency = data.entity.myCurrency;
+        data.entity.myAmount = data.entity.convertedCurrency;
+
         data.entity.findMatchResult = {
           customerId: data.entity.customerId,
           orderId: data.entity.id,

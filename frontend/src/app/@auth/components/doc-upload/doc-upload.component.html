@@ -24,8 +24,8 @@
             <div class="choice-selection d-flex">
                     <!-- [(ngModel)]="user.completed" name="completed" -->
                 <mat-radio-group aria-label="Select an option" [(ngModel)]="user_.documentType" name="documentType">
-                    <mat-radio-button (change)="documentToggle()"  value="2" name="nin" color="primary"><span>NIN</span></mat-radio-button>
-                    <mat-radio-button (change)="documentToggle()" class="offset-5" value="1" [checked]="true" color="primary" ><span>Int’l Passport</span></mat-radio-button>
+                    <mat-radio-button (change)="documentToggle()"  value="1" name="nin" ><span>NIN</span></mat-radio-button>
+                    <mat-radio-button (change)="documentToggle()" class="offset-5" value="2" [checked]="true" ><span>Int’l Passport</span></mat-radio-button>
                 </mat-radio-group>
                 <!-- <div class="offset-2 chkbox">
                     <mat-checkbox class="mt-2" color="primary" checked [(ngModel)]="user.intPassport" name="intPassport" ></mat-checkbox>
@@ -34,7 +34,7 @@
             </div>
 
             <!-- Nin -->
-            <div class=""  *ngIf="user_.documentType=='2'">
+            <div class=""  *ngIf="user_.documentType=='1'">
                 <label for="edit">Serial Number</label>
                 <div class="input-box " style="margin-bottom: 0px;">
                     <input type="text" name="documentNumber" [(ngModel)]="user_.documentNumber" style="width: 100%;"/>
@@ -42,14 +42,14 @@
             </div>
 
             <!-- IntPassport -->
-            <div class="edit" *ngIf="user_.documentType=='1'" > 
-                <div style="width: 76%; " >
+            <div class="edit" *ngIf="user_.documentType=='2'" > 
+                <div style="width: 100%; margin-right: 10px;" >
                     <label for="edit">Passport Number</label>
                     <div class="input-box mb-0 ">
                         <input type="text" name="documentNumber" [(ngModel)]="user_.documentNumber" />
                     </div>
                 </div>
-                <div style="text-align: end;">
+                <div>
                     <label for="edit">Expiry Date</label>
                     <input class="date-input mb-0" type="date" name="documentExpiryDate" [(ngModel)]="user_.documentExpiryDate" />
                 </div>

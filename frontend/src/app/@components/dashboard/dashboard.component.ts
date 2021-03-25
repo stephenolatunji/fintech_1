@@ -115,8 +115,11 @@ export class DashboardComponent implements OnInit {
   }
 
   swap(payment) {
+    console.log(payment);
     this.server.pendingOrders = payment;
-    this.rout.navigate(['payment-gateway'])
+    this.openSnackBar('Please wait...')
+    this.loading = true;
+    (payment.myCurrency == 'NGN') ? this.usePayStack() : this.usePayStack()
   }
 
   viewMore() {

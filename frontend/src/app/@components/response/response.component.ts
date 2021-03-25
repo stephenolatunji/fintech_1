@@ -39,10 +39,10 @@ export class ResponseComponent implements OnInit {
     this.rout.navigate(['dashboard']);
   }
 
-  backToListing() {
-    $('#myModal').modal('hide')
-    this.rout.navigate(['listing']);
-  }
+  // backToListing() {
+  //   $('#myModal').modal('hide')
+  //   this.rout.navigate(['listing']);
+  // }
 
   payNow() {
     this.data.customerId = localStorage.getItem('customerId');

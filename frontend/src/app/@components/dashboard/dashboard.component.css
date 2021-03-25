@@ -186,6 +186,7 @@ table th:first-child{
     font-size: 14px;
     line-height: 22px;
     width: 100%;
+    color: white;
 }
 .pay-now:hover,  button:hover, .group2:hover {
     opacity: .6;

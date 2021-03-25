@@ -65,12 +65,19 @@ input {
     display: flex;
 }
 .single-card-list {
-    padding: 36px 21px;
+    padding: 36px 20px 36px 0px;
     background-color: #FFFFFF;
     box-shadow: 0px 4px 10px rgba(38, 71, 78, 0.1);
     border-radius: 15px;
+
+}
+.inside {
     display: flex;
     align-items: center;
+}
+.inside-bottom {
+    margin-top: 10px;
+    text-align: end;
 }
 .single-card-list .flex2 div:first-child {
     font-weight: 600;
@@ -78,13 +85,20 @@ input {
     line-height: 17px;
     color: #262C31;
 }
-.flex2 {
+/* .flex2 {
     margin-left: 40px;
-}
+} */
 .single-card-list .flex2 div:first-child {
-    font-weight: bold;
-    font-size: 24px;
+    font-weight: 600;
+    font-size: 20px;
     line-height: 29px;
+}
+.amount-ratio {
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 29px;
+    display: flex;
+    color: #262C31;
 }
 .cards {
     background-color: #FFFFFF;

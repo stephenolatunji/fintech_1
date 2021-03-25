@@ -26,7 +26,9 @@ export class AppComponent {
         this.server.userInformations = data.entity
 
         // getAllBanks
-        this.http.get<any>(`https://api.paystack.co/bank`).subscribe((dat) => { this.server.allBanks = dat; this.loading = false });
+        this.http.get<any>(`https://api.paystack.co/bank`).subscribe((dat) => { this.server.allBanks = dat; setTimeout(() => {
+          this.loading = false 
+        }, 500); });
       }, err => this.snackBar('Network Error'));
     }
     else {

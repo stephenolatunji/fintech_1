@@ -30,7 +30,7 @@
                 <div class="second-line">
                     Market Rate
                     <!-- condition toggler -->
-                    <div class="card-list" *ngIf="order.myCurrency==1">
+                    <div class="card-list" *ngIf="order.myCurrency==1 ">
                         <div class="cards" (click)="toggelePrefferdCurrency(2, 'USD')" id="usd" style="border: 1px solid #26474E;">
                             <div >
                                 <img src="assets/listing/usd.svg" />
@@ -115,18 +115,22 @@
                     </div>
 
                     <!-- condition toggler -->
-                    <div class="single-card-list d-flex" *ngIf="order.myCurrency!==1">
-                        <img src="assets/listing/ngn.svg" height="100" alt="">
-                        <div class="flex2">
-                            <div>NGN</div>
-                            <div>₦ 0.00/$ 0.00</div>
+                    <div class="single-card-list" *ngIf="order.myCurrency!=1 ">
+                        <div class="inside">
+                            <img src="assets/listing/ngn.svg" height="83" width="83" alt="" style="margin-left: -60px; margin-right: -60px;">
+                            <div>
+                                <div>NGN</div>
+                                <div class="amount-ratio">₦ 0.00/$ 0.00</div>
+                            </div>
+    
+                            <img class="ml-auto" src="assets/listing/chart.svg" alt=""> <br />              
                         </div>
-                        <div class="flex3 ml-auto">
-                            <img src="assets/listing/chart.svg" alt=""> <br />
-                            <img src="assets/listing/arrow-down.svg" alt="" height="50"> $0.00
+                        <div class="inside-bottom">
+                            $0.00
+                            <img alt="" src="assets/listing/arrow-down.svg" height="15" style="margin-left: -130px;margin-right: -130px;"> 
                         </div>
                     </div>
-
+                    
                 </div>
                 
                 <!-- Prefered Rate -->

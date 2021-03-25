@@ -44,14 +44,14 @@ export class DocUploadComponent implements OnInit {
   }
 
   handleSubmit() {
-    if (this.user_.documentImage !== '' && this.user_.documentNumber && this.user_.documentExpiryDate !== null) {
+    if (this.user_.documentImage !== '' && this.user_.documentNumber!=='' ) {
       if ((this.user.countryCode == '+234' && this.user_.bvn !== null) || (this.user.countryCode != '+234')) {
 
         this.user.documentType = parseInt(this.user_.documentType);
         this.user.bvn = this.user_.bvn;
         this.user.documentImage = this.user_.documentImage.split(",")[1];
         this.user.documentNumber = this.user_.documentNumber;
-        this.user.documentExpiryDate = this.user_.documentExpiryDate.toString();
+        this.user.documentExpiryDate = (this.user_.documentType.toString()=="1") ? '2030-01-01' : this.user_.documentExpiryDate.toString();
 
         this.loading = true;
         //logout user
