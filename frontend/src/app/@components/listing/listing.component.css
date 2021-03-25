@@ -2,9 +2,9 @@
     background-color: #E5E5EF;
 }
 .body {
-    padding: 40px 30px;
+    padding: 80px 30px;
     display: flex;
-    margin-top: 5%;
+    /* margin-top: 5%; */
     background-color: #FFFFFF;
 }
 .segment1 {
@@ -37,6 +37,7 @@
 .input-section {
     display: flex;
     margin-top: 21px;
+    width: 50%;
 }
 .input-section select {
     background: #FFFFFF;
@@ -47,15 +48,15 @@
     font-size: 14px;
     line-height: 17px;
     color: #262C31;
-    padding: 16px 9px;
+    padding: 16px 5px;
     margin-right: 9px;
-    width: 20%;
+    /* width: 20%; */
     outline: none;
 }
 .input-section input {
     border: 1px solid #26474E;
     border-radius: 15px;
-    width: 80%;
+    width: 100%;
     outline: none
 }
 input {
@@ -65,34 +66,38 @@ input {
     display: flex;
 }
 .single-card-list {
-    padding: 36px 20px 36px 0px;
+    padding: 36px 20px;
     background-color: #FFFFFF;
     box-shadow: 0px 4px 10px rgba(38, 71, 78, 0.1);
     border-radius: 15px;
-
+    display: flex;
+    justify-content: space-between;
 }
 .inside {
     display: flex;
-    align-items: center;
+    align-items: center
 }
 .inside-bottom {
     margin-top: 10px;
     text-align: end;
 }
-.single-card-list .flex2 div:first-child {
+.inside img {
+    margin-right: 30px;
+}
+/* .single-card-list .flex2 div:first-child {
     font-weight: 600;
     font-size: 14px;
     line-height: 17px;
     color: #262C31;
-}
+} */
 /* .flex2 {
     margin-left: 40px;
 } */
-.single-card-list .flex2 div:first-child {
+/* .single-card-list .flex2 div:first-child {
     font-weight: 600;
     font-size: 20px;
     line-height: 29px;
-}
+} */
 .amount-ratio {
     font-weight: bold;
     font-size: 20px;
@@ -127,12 +132,31 @@ input {
     line-height: 17px;
     color: #848484;
 }
-.country {
+.all-market-rate {
+    display: flex;
+    padding: 30px 0px;
+    overflow: auto;
+}
+.market-rate_ {
+    background: #FFFFFF;
+    box-shadow: 0px 4px 10px rgba(38, 71, 78, 0.1);
+    border-radius: 15px;
+    margin-right: 12px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    padding: 31px;
+}
+.countryCode {
+position: relative;
+}
+.myCode {
+    position: absolute; bottom: 0px;
+    left: 65px;
     font-weight: 600;
     font-size: 14px;
+    line-height: 17px;
     color: #262C31;
-    position: absolute;
-    line-height: 115px;
 }
 .last-box {
     border: 1px solid rgba(152, 157, 179, 0.4);
@@ -163,14 +187,17 @@ label {
 }
 .btn-section {
     margin-top: 54px;
+    width: 50%;
+    float: right;
 }
 .btn-section button:first-child, .btn-section button:last-child {
     border: 1px solid #F27348;
     border-radius: 15px;
-    padding: 14px 94px;
+    width: 50%;
+    padding: 8px 0px;
     font-weight: bold;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 10px;
+    /* line-height: 18px; */
     text-align: center;
     color: #F27348;
     outline: none;
@@ -178,7 +205,7 @@ label {
 
 .btn-section button:last-child {
     background-color: #F27348;
-    padding: 14px 66.75px;
+    /* padding: 14px 66.75px; */
     color: #fff;
     margin-left: 15.25px;
 }
@@ -205,6 +232,34 @@ label {
 }
 .segment2 { 
     margin-left: 30px;
+}
+
+.amount_and_down-trend {
+    display: flex;
+    margin-top: 20px;
+}
+.last-chart {
+    text-align: right;
+    /* margin-right: 40px; */
+}
+/* @media screen and (max-width: 1705px) {
+    .country {
+        padding-bottom: 200px;
+    }
+} */
+.second-line {
+    width: 100%;
+}
+.whole {
+    display: flex;
+}
+.currency-text {
+    margin-top: 50px;
+}
+@media screen and (max-width: 1193px) {
+    select {
+        min-width: 10%;
+    }
 }
 
 @media screen and (min-width: 800px) {
@@ -271,7 +326,7 @@ label {
     .btn-section button:first-child, .btn-section button:last-child {
         border: 1px solid #F27348;
         border-radius: 15px;
-        padding: 19px 94px;
+        padding: 19px 0px;
         font-weight: bold;
         font-size: 15px;
         line-height: 22px;
@@ -282,7 +337,7 @@ label {
     
     .btn-section button:last-child {
         background-color: #F27348;
-        padding: 19px 66.75px;
+        padding: 19px 0px;
         color: #fff;
         margin-left: 15.25px;
     }
@@ -300,4 +355,124 @@ label {
         font-size: 12px !important;
     }
     
+}
+
+@media screen and (max-width: 802px) {
+    .btn-section {
+        margin-top: 54px;
+        width: 100%;
+    }
+
+    .input-section select {
+        min-width: 22%;
+    }
+    .first-line {
+        width: 100%;
+    }
+
+    .segment2 {
+        display: none;
+    }
+    .square-box{
+        padding: 25px;
+    }
+
+    /* .segment1 {
+        width: 100%;
+        margin: 0;
+        padding: 25px 50px;
+    } */
+
+    .body {
+        padding: 80px 5px;
+    }
+    .segment1 {
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+    }
+    .input-section {
+        width: 100%;
+    }
+
+    .second-line {
+        width: 100%;
+    }
+
+    .whole {
+        display: block;
+    }
+
+    .last-box {
+        padding: 15px;
+    }
+
+}
+@media screen and (max-width: 660px) {
+    .imgChart {
+        width: 180px;
+    }
+}
+@media screen and (max-width: 555px) {
+    .imgChart {
+        width: 160px;
+    }
+}
+@media screen and (max-width: 538px) {
+    .imgChart {
+        /* width: 140px; */
+    }
+    .amount-ratio {
+        font-size: 16px !important;
+    }
+    .inside img {
+        margin-right: 10px;
+    }
+}
+@media screen and (max-width: 490px) {
+    .imgChart {
+        width: 140px;
+    }
+    .amount-ratio {
+        font-size: 16px !important;
+    }
+    .inside img {
+        margin-right: 5px;
+    }
+}
+@media screen and (max-width: 470px) {
+    .imgChart {
+        width: 120px;
+    }
+    .amount-ratio {
+        font-size: 14px !important;
+    }
+    .inside img {
+        margin-right: 5px;
+    }
+}
+@media screen and (max-width: 440px) {
+    .imgChart {
+        width: 120px;
+    }
+    .amount-ratio {
+        font-size: 12px !important;
+    }
+    .inside img {
+        margin-right: 5px;
+        height: 40px; width: 50px;
+    }
+    .ngn {
+        font-size: 10px;
+    }
+    .currency-text {
+        margin-top: 0px;
+    }
+
+}
+
+@media screen and (max-width: 390px) {
+ .chat-section {
+     display: none;
+ }
 }

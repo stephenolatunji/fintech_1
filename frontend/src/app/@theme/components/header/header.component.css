@@ -4,9 +4,12 @@
     width: 100%;
     top: 0px;
     z-index: 1;
-    padding: 14px 31px;
+    padding: 10px 31px;
     background-color: #FFFFFF;
     box-shadow: 2px 8px 15px rgba(85, 85, 85, 0.05);
+}
+.icon {
+    display: none;
 }
 .nav-brand {
     line-height: 44px; cursor: pointer;
@@ -14,10 +17,11 @@
 .search-box {
     background-color: #FFFFFF;
     border: 1px solid #848484;
-    box-sizing: border-box;
     border-radius: 15px;
-    padding: 10px 0px 10px 44px;
     width: 360px;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
 }
 .search-box img {
     margin-right: 16px;
@@ -25,13 +29,12 @@
 input {
     border: 0px;
     outline: none;
-    width: 80%
+    width: 100%
 }
 .lastChild {
     display: flex;
     justify-content: space-between;
     line-height: 44px;
-    padding-right: 49px;
 }
 .lastChild div {
     cursor: pointer;
@@ -50,4 +53,27 @@ input {
 }
 li:hover {
     background-color:#f5f5f5;
+}
+@media screen and (max-width: 875px) {
+    .search-box {
+        width: 250px;
+    }
+}
+@media screen and (max-width: 750px) {
+    .search-box, .lastChild {
+        display: none
+    };
+
+    .lastChild {
+        padding-right: 20px;
+    }
+    .lastChild div {
+        margin-right: 10px;
+    }
+    .icon {
+        display: flex; align-items: center;
+    }
+    .head {
+        padding: 10px;
+    }
 }

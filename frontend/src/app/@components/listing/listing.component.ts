@@ -133,7 +133,7 @@ export class ListingComponent implements OnInit {
     document.getElementById('cad').style.border = '0px'
     document.getElementById('eur').style.border = '0px'
     document.getElementById('gbp').style.border = '0px'
-    document.getElementById(currency.toLowerCase()).style.border = '1px solid #26474E'
+    document.getElementById(currency.toLowerCase()).style.border = '0.5px solid rgba(38, 71, 78, 0.4)'
   }
 
   openSnackBar(msg) {

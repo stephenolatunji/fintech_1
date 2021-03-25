@@ -2,10 +2,11 @@
     background-color: #E5E5EF;
 }
 .body {
-    padding: 30px 30px;
+    padding: 80px 30px;
     display: flex;
-    margin-top: 5%;
+    /* margin-top: 5%; */
     background-color: #FFFFFF;
+    height: 99vh;
 }
 .rect {
     display: block;
@@ -101,10 +102,7 @@ td {
 }
 th {
     font-size: 12px;
-    padding: 20px 0 14px 25px;
-}
-td {
-    padding-left: 25px;
+    /* padding: 20px 0 14px 25px; */
 }
 tr {
     border-bottom: 1px solid #E8E8E8;
@@ -228,3 +226,85 @@ table th:first-child{
 .spinner {
     position: absolute; top: 50%; left: 50%
 }
+
+@media screen and (max-width: 880px) {
+    .group {
+        display: none;
+    }
+    .rect {
+        width: 100%;
+    }
+    .rect2 {
+        max-width: 100% !important; overflow: auto !important;
+    }
+    th, td {
+        white-space: nowrap;
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 528px) {
+  .rect1 {
+    padding: 23px 15px;
+  }
+}
+@media screen and (max-width: 528px) {
+    .rect1 {
+      padding: 23px 15px;
+    }
+    .img_div {
+        width: 100%;
+    }
+    .rect1 img {
+        height: 160px;
+    }
+
+  }
+  @media screen and (max-width: 476px) {
+    .rect1 {
+      padding: 23px 15px;
+    }
+    .img_div {
+        width: 100%;
+    }
+    .rect1 img {
+        height: 140px;
+    }
+
+
+  }
+  @media screen and (max-width: 446px) {
+    .rect1 {
+      padding: 23px 15px;
+    }
+    .img_div {
+        width: 100%;
+    }
+    .rect1 img {
+        height: 120px;
+    }
+ 
+    .body {
+        padding: 80px 15px;
+      }
+  }
+  @media screen and (max-width: 429px) {
+
+    .rect1 img {
+        height: 120px;
+    }
+
+  }
+  @media screen and (max-width: 385px) {
+
+    .rect1 img {
+        height: 150px;
+        width: 100px;
+    }
+  }
+  @media screen and (max-width: 345px) {
+
+    .rect1 img {
+        display: none;
+    }
+  }

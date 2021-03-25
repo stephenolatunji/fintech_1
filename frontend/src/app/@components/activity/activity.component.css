@@ -1,8 +1,9 @@
 .body {
-    padding: 24px;
+    padding: 90px 24px;
     display: flex;
     justify-content: space-between;
-    margin-top: 85px;
+    /* margin-top: 85px; */
+    background-color: #fff;
 }
 .box1 {
     background-color: #FFFFFF;
@@ -23,7 +24,7 @@
 }
 .lines {
     border-bottom: 1px solid rgba(152, 157, 179, 0.4);
-    padding: 12px 12px;
+    padding: 18px 12px;
     background: #FBFEFF;
     box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.05);
     border-radius: 15px;
@@ -100,6 +101,7 @@
     box-shadow: 2px 8px 15px rgba(78, 147, 147, 0.1);
     border-radius: 5px;
     margin-bottom: 16px;
+    width: 100%;
 }
 .segment2 { 
     width: 25%;
@@ -136,4 +138,39 @@ button {
     display: flex;
     margin-top: 4px;
     justify-content: flex-end;
+}
+.box3 {
+    width: 25%;
+}
+@media screen and (max-width: 971px) {
+    .box1 {
+        width: 40%;
+    }
+}
+@media screen and (max-width: 804px) {
+    .box3 {
+       display: none;
+    }
+    .box1 {
+        width: 40%
+    }
+    .box2 {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 624px) {
+    .box1 {
+        width: 50%
+    }
+    .box2 {
+        width: 50%;
+    }
+}
+@media screen and (max-width: 514px) {
+    .box2 {
+        display: none;
+    }
+    .box1 {
+        width: 100%;
+    }
 }

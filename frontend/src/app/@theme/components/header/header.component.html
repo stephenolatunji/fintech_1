@@ -5,10 +5,10 @@
 
     <div class="ml-auto mr-auto search-box">
         <img src="assets/header/search.svg" />
-        <input type="search" placeholder="Search listings"   />
+        <input type="search" placeholder="Search listings" />
     </div>
 
-    <div class="lastChild">
+    <div class="lastChild ml-auto">
         <div style="margin-right: 42px" (click)="goTo('transaction-summary')">
             <img src="assets/header/activity.svg" />
         </div>
@@ -25,7 +25,35 @@
             <!-- <div class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div> -->
             <div id="dropdownMenuButton" class="d-flex" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <div>
-                    <img [src]="profilePic_"  style="border-radius: 50px;" height="40" width="35" alt="">
+                    <img [src]="profilePic_"  style="border-radius: 50px;" height="35" width="35" alt="">
+                </div>
+                <div class="name"> {{username}}</div>
+            </div>
+           
+            <div class="dropdown-menu mt-4 animate_animated animate__fadeIn" aria-labelledby="dropdownMenuButton" >
+                <li style="font-size: 13px;" class="d-flex p-2" (click)="open('profile')">
+                    <img src="assets/header/user.svg" class="mr-4" alt=""> Profile
+                </li>
+                <li style="font-size: 13px;" class="d-flex p-2" (click)="open('settings')">
+                    <img src="assets/header/settings.svg" class="mr-4" alt=""> Settings
+                </li>
+                <li style="font-size: 13px;" class="d-flex p-2" (click)="logout()">
+                    <img src="assets/header/power.svg" class="mr-4" alt=""> Log Out
+                </li>
+            </div>
+        </div>
+    </div>
+
+    <div class="icon ml-auto">
+        <div style="margin-right: 31px">
+            <img src="assets/header/notification.svg" />
+        </div>
+        
+        <div class="filters dropdown"  >
+            <!-- <div class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></div> -->
+            <div id="dropdownMenuButton" class="d-flex" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div>
+                    <img [src]="profilePic_"  style="border-radius: 50px;" height="35" width="35" alt="">
                 </div>
                 <div class="name"> {{username}}</div>
             </div>

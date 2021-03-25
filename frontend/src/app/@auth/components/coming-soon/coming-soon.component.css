@@ -31,3 +31,10 @@
 .ml-auto img {
     height: 85vh;
 }
+@media screen and (max-width: 1032px) {
+    .section-two {
+        display: block;
+        text-align: center;
+        justify-content: center;
+    }
+}   

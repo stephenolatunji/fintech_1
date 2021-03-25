@@ -24,7 +24,7 @@
 .input {
     display: flex;
     justify-content: center;
-    margin-bottom: 40px;
+    margin: 0px 20px 40px 20px;
 }
 .box {
     border: 1px solid #26474E;
@@ -57,9 +57,10 @@ input {
 }
 button {
     background: #26474E;
-    margin-top: 34px;
+    margin: 34px 20px;
     border-radius: 15px;
-    padding: 14px 200px;
+    width: 525px;
+    padding: 14px 0px;
     color: white;
     font-weight: bold;
     font-size: 14px;

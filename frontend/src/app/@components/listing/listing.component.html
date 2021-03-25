@@ -9,7 +9,7 @@
             <div class="square-box ">
                 <div class="first-line">
             
-                    <div class="w-50">
+                    <div class="second-line" >
                         <div class="text2">
                             I want to swap
                         </div>
@@ -21,131 +21,122 @@
                                 <option value=3 >GBP</option>
                                 <option value=5 >CAD</option>
                             </select>
-                            <input type="number" name="myAmount" [(ngModel)]="order.myAmount"  (keyup)="doCalculation()"/>
+                            <input type="number" class="firstInput" name="myAmount" [(ngModel)]="order.myAmount"  (keyup)="doCalculation()"/>
                         </div>
                     </div>
             
                 </div>
                 <!-- Market Rate -->
-                <div class="second-line">
-                    Market Rate
-                    <!-- condition toggler -->
-                    <div class="card-list" *ngIf="order.myCurrency==1 ">
-                        <div class="cards" (click)="toggelePrefferdCurrency(2, 'USD')" id="usd" style="border: 1px solid #26474E;">
-                            <div >
-                                <img src="assets/listing/usd.svg" />
-                                <span class="country">USD</span>
-                            </div>
-                            <div class="d-flex" style="margin-top: 20px;">
-                                <div class="amount">
-                                    $ 0.00
-                                </div>
-                                <div class="chart">
-                                    <div>
-                                        <img src="assets/listing/down-trend.svg"  />
-                                    </div>
-                                    <div>
-                                        <img src="assets/listing/arrow-down.svg" height="15" />
-                                        <span class="small-amount">$0.00</span>
-                                    </div>
-                                </div>
-                            </div>
+                Market Rate
+                <div class="all-market-rate"  *ngIf="order.myCurrency==1 ">
+                    <div class="market-rate_" (click)="toggelePrefferdCurrency(2, 'USD')" id="usd" style="border: 0.5px solid rgba(38, 71, 78, 0.4);">
+                        <div class="countryCode">
+                            <img src="assets/listing/usd.svg" /><br />
+                            <div class="myCode">USD</div>
                         </div>
 
-                        <div class="cards" (click)="toggelePrefferdCurrency(5, 'CAD')" id="cad">
-                            <img src="assets/listing/cad.svg" />
-                            <span class="country">CAD</span>
-                            <div class="d-flex" style="margin-top: 20px;">
-                                <div class="amount">
-                                    C$
-                                    0.00
-                                </div>
-                                <div class="chart">
-                                    <div>
-                                        <img src="assets/listing/down-trend.svg"  />
-                                    </div>
-                                    <div>
-                                        <img height="15" src="assets/listing/arrow-down.svg"  />
-                                        <span class="small-amount">$0.00</span>
-                                    </div>
-                                </div>
+                        <div class="amount_and_down-trend">
+                            <div class="amount">
+                                $ 0.00
                             </div>
+                            <img src="assets/listing/down-trend.svg" alt="">
                         </div>
-            
-            
-                        <div class="cards" (click)="toggelePrefferdCurrency(3, 'GBP')" id="gbp">
-                            <img src="assets/listing/gbp.svg" />
-                            <span class="country">GBP</span>
-                            <div class="d-flex" style="margin-top: 20px;">
-                                <div class="amount">
-                                    £
-                                    0.00
-                                </div>
-                                <div class="chart">
-                                    <div>
-                                        <img src="assets/listing/down-trend.svg"  />
-                                    </div>
-                                    <div>
-                                        <img height="15" src="assets/listing/arrow-down.svg"  />
-                                        <span class="small-amount">$0.00</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-            
-                        <div class="cards" (click)="toggelePrefferdCurrency(4, 'EUR')" id="eur">
-                            <img src="assets/listing/jpy.svg" />
-                            <span class="country">EUR</span>
-                            <div class="d-flex" style="margin-top: 20px;">
-                                <div class="amount">
-                                    €
-                                    0.00
-                                </div>
-                                <div class="chart">
-                                    <div>
-                                        <img src="assets/listing/up-trend.svg"  />
-                                    </div>
-                                    <div>
-                                        <img height="15" src="assets/listing/arrow-up.svg"  />
-                                        <span class="small-amount">$0.00</span>
-                                    </div>
-                                </div>
-                            </div>
+
+                        <div class="last-chart">
+                            <img src="assets/listing/arrow-down.svg" alt="">
+                            $0.00
                         </div>
                     </div>
 
-                    <!-- condition toggler -->
-                    <div class="single-card-list" *ngIf="order.myCurrency!=1 ">
-                        <div class="inside">
-                            <img src="assets/listing/ngn.svg" height="83" width="83" alt="" style="margin-left: -60px; margin-right: -60px;">
-                            <div>
-                                <div>NGN</div>
-                                <div class="amount-ratio">₦ 0.00/$ 0.00</div>
-                            </div>
-    
-                            <img class="ml-auto" src="assets/listing/chart.svg" alt=""> <br />              
+                    <div class="market-rate_"  (click)="toggelePrefferdCurrency(5, 'CAD')" id="cad">
+                        <div class="countryCode">
+                            <img src="assets/listing/cad.svg" /><br />
+                            <div class="myCode">CAD</div>
                         </div>
+
+                        <div class="amount_and_down-trend">
+                            <div class="amount">
+                                $ 0.00
+                            </div>
+                            <img src="assets/listing/down-trend.svg" alt="">
+                        </div>
+
+                        <div class="last-chart">
+                            <img src="assets/listing/arrow-down.svg" alt="">
+                            $0.00
+                        </div>
+                    </div>
+
+                    <div class="market-rate_" (click)="toggelePrefferdCurrency(3, 'GBP')" id="gbp">
+                        <div class="countryCode">
+                            <img src="assets/listing/gbp.svg" /><br />
+                            <div class="myCode">GBP</div>
+                        </div>
+
+                        <div class="amount_and_down-trend">
+                            <div class="amount">
+                                $ 0.00
+                            </div>
+                            <img src="assets/listing/down-trend.svg" alt="">
+                        </div>
+
+                        <div class="last-chart">
+                            <img src="assets/listing/arrow-down.svg" alt="">
+                            $0.00
+                        </div>
+                    </div>
+
+                    <div class="market-rate_" (click)="toggelePrefferdCurrency(4, 'EUR')" id="eur">
+                        <div class="countryCode">
+                            <img src="assets/listing/jpy.svg" /><br />
+                            <div class="myCode">EUR</div>
+                        </div>
+
+                        <div class="amount_and_down-trend">
+                            <div class="amount">
+                                $ 0.00
+                            </div>
+                            <img src="assets/listing/down-trend.svg" alt="">
+                        </div>
+
+                        <div class="last-chart">
+                            <img src="assets/listing/arrow-down.svg" alt="">
+                            $0.00
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="single-card-list" *ngIf="order.myCurrency!=1 ">
+                    <div class="inside">
+                        <img src="assets/listing/ngn.svg" height="83" width="83" alt="">
+                        <div class="currency-text">
+                            <div class="ngn">NGN</div>
+                            <div class="amount-ratio">₦ 0.00/$ 0.00</div>
+                        </div>
+                    </div>
+
+                    <div class="chat-section">
+                        <img class="ml-auto" src="assets/listing/chart.svg" alt="" class="imgChart"> <br />              
                         <div class="inside-bottom">
                             $0.00
-                            <img alt="" src="assets/listing/arrow-down.svg" height="15" style="margin-left: -130px;margin-right: -130px;"> 
+                            <img alt="" src="assets/listing/arrow-down.svg" height="15" > 
                         </div>
                     </div>
-                    
                 </div>
                 
                 <!-- Prefered Rate -->
                 <div class="third-line" style="margin-top: 35px">
                     My preferred rate
-                    <div class="d-flex">
+                    <div class="whole">
             
-                        <div class="w-50 input-section" style="margin-right: 21px">
+                        <div class="input-section" style="margin-right: 21px">
                           
                             <!-- <div class="box">{{order.fromCurrency}}</div> -->
                             <div class="box">Rate</div>
                             <!-- <img src="assets/listing/swap.svg"  style="margin-right: 11px"/> -->
                             <input type="number" [(ngModel)]="order.rate" name="rate"  (keyup)="doCalculation()"/>
                         </div>
-                        <div class="w-50 input-section">
+                        <div class="input-section">
                             <select [(ngModel)]="order.convertedCurrency" class="select" name="convertedCurrency" (change)="doCalculation()" id="convertedCurrency">
                                 <option value=2>USD</option>
                                 <option value=1>NGN</option>
@@ -164,19 +155,19 @@
 
             <!-- destination account details -->
             <div class="last-box row">
-                <div class="col-6" >
+                <div class="col-12 col-md-6" >
                     <label for="bank">Bank</label><br />
                     <select id="bank" [(ngModel)]="order.myBankName" name="myBankName" class="col-12">
                         <option *ngFor="let bank of allBanks" [value]="bank?.name"> {{bank?.name}} </option>
                     </select>
                 </div>
 
-                <div class="col-6" >
+                <div class="col-12 col-md-6 mt-4 mt-md-0 " >
                     <label for="bank" id="account_no" >Account Number</label><br />
                     <input type="number" id="account_no"  [(ngModel)]="order.myAccountNumber" name="myAccountNumber" class="col-12" />
                 </div>
                 
-                <div class="col-6" style="margin-top: 19.69px" *ngIf="order?.myCurrency==1">
+                <div class="col-12 col-md-6" style="margin-top: 19.69px" *ngIf="order?.myCurrency==1">
                     <label for="routing_no">Routing Number</label><br />
                     <input type="text" id="routing_no" name="bankRouteNo" [(ngModel)]="order.bankRouteNo" class="col-12" />
                 </div>

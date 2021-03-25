@@ -150,3 +150,97 @@ option {
     color: rgb(218, 63, 63);
     font-size: 10px;
 }
+@media screen and (max-width: 1221px) {
+    .right {
+        padding: 79px 50px 53px 50px;
+        width: 50%;
+        background-color: #fff;
+    }
+}
+@media screen and (max-width: 812px) {
+    .left {
+       display: none;
+    }
+    .right {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 451px) {
+    select {
+        width: 40%;
+    }
+    .mobile {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 405px) {
+    .left {
+       display: none;
+    }
+    .right {
+        width: 100%;
+    }
+    .right {
+        padding: 79px 30px 53px 30px;
+    }
+}
+@media screen and (max-width: 312px) {
+
+    .right {
+        padding: 79px 20px 53px 20px;
+    }
+    h5 {
+         font-size: 18px;
+         line-height: 18px;
+     }
+     h6 {
+         font-size: 14px;
+         line-height: 16px;
+     }
+     label {
+         font-size: 11px;
+         line-height: 18px;
+     }
+     .last-text {
+        font-size: 10px;
+        line-height: 17px;
+    }
+    .last-text a {
+        font-size: 10px;
+        line-height: 14px;
+    }
+    .forgot-password{
+        font-size: 10px;
+        line-height: 14px;
+    }
+}
+
+@media screen and (max-width: 220px) {
+    select {
+        width: 50%;
+    }
+    .mobile {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 205px) {
+    .last-text {
+        font-size: 8px;
+        white-space: nowrap;
+    }
+    .last-text a {
+        font-size: 8px;
+        white-space: nowrap;
+    }
+    .forgot-password{
+        font-size: 8px;
+        white-space: nowrap;
+    }
+    .right {
+        padding: 79px 5px 53px 5px;
+    }
+}
+
+
+

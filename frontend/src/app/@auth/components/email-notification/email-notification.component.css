@@ -1,5 +1,5 @@
 .head {
-    padding: 42px 226px;
+    padding: 42px 0px;
     background-color: #26474E;
     text-align: center;
     
@@ -27,7 +27,7 @@ button {
     background-color: #F9968B;
     box-shadow: 1.17222px 4.68889px 11.7222px rgba(249, 150, 139, 0.05);
     border-radius: 8.79167px;
-    margin: 76px 0px 60px 0px;
+    margin: 76px 0px 60px 40px;
     padding: 12.69px 46px;
     font-weight: bold;
     font-size: 12px;
@@ -35,7 +35,6 @@ button {
     letter-spacing: 0.001em;
     border: 0px;
     color: #FFFFFF;
-    margin-left: 40px;
 }
 button:hover {
     opacity: 0.8;
@@ -60,4 +59,14 @@ button:hover {
 
     color: #26474E;
     margin-top: 16px;
+}
+@media screen and (max-width: 432px) {
+    button {
+        margin: 56px 0px 60px 40px;
+    }
+}
+@media screen and (max-width: 332px) {
+    button {
+        margin: 1px 0px 60px 40px;
+    }
 }
