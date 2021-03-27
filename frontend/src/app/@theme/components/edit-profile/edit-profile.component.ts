@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { ServerService } from '../../services/server.service';
 import { HeaderComponent } from '../header/header.component';
@@ -15,7 +15,7 @@ export class EditProfileComponent implements OnInit {
 
   user = { firstName: '', lastName: null, userName: '', email: '', countryCode: '+234', phoneNumber: '', customerId: '', id: '', uploadImage: '', customerImageFileLocation: 'assets/header/avatar.jpg' }
   err; loading: boolean = false; msg = ''; newProfilePictureUploaded: boolean = false; profilePic;
-  constructor(private settings_: SettingsComponent, private server: ServerService, private _snackBar: MatSnackBar, private imageCompress: NgxImageCompressService, private header: HeaderComponent) { }
+  constructor(private settings_: SettingsComponent, private server: ServerService, private toast: ToastService, private imageCompress: NgxImageCompressService, private header: HeaderComponent) { }
 
   ngOnInit(): void {
     // $('#profile').modal('show');
@@ -51,11 +51,7 @@ export class EditProfileComponent implements OnInit {
     }
   }
 
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
-  }
+
 
   uploadUserInfo() {
     this.server.updateUserProfile(this.user).subscribe(dat => {
@@ -63,11 +59,11 @@ export class EditProfileComponent implements OnInit {
       if (dat.succeeded) {
         this.server.userInformations = dat.entity;
         this.msg = 'Profile Updated'
-        this.openSnackBar(this.msg)
+        this.toast.toast('success', this.msg)
       }
       else {
         this.msg = 'Error updating your profile'
-        this.openSnackBar(this.msg)
+        this.toast.toast('error', this.msg)
       }
     }, err => this.msg = 'Error updating your profile')
   }

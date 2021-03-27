@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { SuperServiceService } from '../../@theme/service/super-service.service';
 import { UsersComponent } from '../users/users.component';
 
@@ -16,7 +16,7 @@ export class AddUserComponent implements OnInit {
     roleId: 0, password: '', address: '', accessLevel: '', staffCode: '', role: '', department: '', createdBy: ""
   }; err; loading: boolean = false;
 
-  constructor(private userFunc: UsersComponent, private server: SuperServiceService, private _snackBar: MatSnackBar) { }
+  constructor(private userFunc: UsersComponent, private server: SuperServiceService, private toast: ToastService) { }
 
   ngOnInit(): void {
   }
@@ -37,24 +37,20 @@ export class AddUserComponent implements OnInit {
       this.server.addNewUser(this.newUser).subscribe(dat => {
         if (dat.succeeded) {
           this.loading = false;
-          this.openSnackBar("New User Added Successfully!");
+          this.toast.toast('success', "New User Added Successfully!");
           this.userFunc.getData();
           this.goBack();
         }
         else {
-          this.openSnackBar("Error adding new user!")
+          this.toast.toast('error', "Error adding new user!")
         }
-      }, err => this.openSnackBar("Error adding new user!"))
+      }, err => this.toast.toast('error', "Error adding new user!"))
 
     }
 
   }
 
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
-  }
+
 
 
   editProfilePic(ev) {

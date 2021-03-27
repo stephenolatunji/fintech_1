@@ -1,4 +1,4 @@
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { SuperServiceService } from 'src/app/@super-admin/@theme/service/super-service.service';
 import { Component, OnInit } from '@angular/core';
 import { UserRoleComponent } from '../user-role/user-role.component';
@@ -12,7 +12,7 @@ export class AddUserRoleComponent implements OnInit {
   newRole = {
     name: null, accessLevel: null, userId: localStorage.getItem('userId')
   }
-  constructor(private userRoleFunc: UserRoleComponent, private server: SuperServiceService, private _snackBar: MatSnackBar) { }
+  constructor(private userRoleFunc: UserRoleComponent, private server: SuperServiceService, private toast: ToastService) { }
 
   ngOnInit(): void {
   }
@@ -22,19 +22,15 @@ export class AddUserRoleComponent implements OnInit {
       if (dat.succeeded) {
         this.userRoleFunc.getData()
         this.userRoleFunc.addUserRoleClicked = false;
-        this.openSnackBar("User Role Added Successfully!")
+        this.toast.toast('success', "User Role Added Successfully!")
       }
       else {
-        this.openSnackBar("Failed to add user role.")
+        this.toast.toast('error', "Failed to add user role.")
       }
     })
   }
 
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
-  }
+
 
   goBack() {
     this.userRoleFunc.addUserRoleClicked = false;

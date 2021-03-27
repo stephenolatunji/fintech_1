@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { SuperServiceService } from '../../@theme/service/super-service.service';
 import { UsersComponent } from '../users/users.component';
 
@@ -18,7 +18,7 @@ export class EditUserComponent implements OnInit {
     roleId: 0, password: '', address: '', accessLevel: '', supervisor: '', staffCode: '', role: '', department: ''
   };
   err; loading: boolean = false;
-  constructor(private userFunc: UsersComponent, private server: SuperServiceService, private _snackBar: MatSnackBar) { }
+  constructor(private userFunc: UsersComponent, private server: SuperServiceService, private toast: ToastService) { }
 
   ngOnInit(): void {
 
@@ -45,21 +45,17 @@ export class EditUserComponent implements OnInit {
         if (dat.succeeded) {
           this.loading = false;
           this.userFunc.editUserClicked = false;
-          this.openSnackBar("User Updated Successfully!")
+          this.toast.toast('success', "User Updated Successfully!")
         }
         else {
-          this.openSnackBar("Error updating user!")
+          this.toast.toast('error', "Error updating user!")
         }
-      }, err => this.openSnackBar("Error updating user!"))
+      }, err =>this.toast.toast('error', "Error updating user!"))
 
     }
 
   }
 
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
-  }
+
 
 }

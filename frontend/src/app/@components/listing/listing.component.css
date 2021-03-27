@@ -145,7 +145,7 @@ input {
     display: block;
     justify-content: center;
     align-items: center;
-    padding: 31px;
+    padding: 50px 31px;
 }
 .countryCode {
 position: relative;
@@ -240,7 +240,7 @@ label {
 }
 .last-chart {
     text-align: right;
-    /* margin-right: 40px; */
+    margin-right: 10px;
 }
 /* @media screen and (max-width: 1705px) {
     .country {
@@ -374,7 +374,7 @@ label {
         display: none;
     }
     .square-box{
-        padding: 25px;
+        padding: 18px;
     }
 
     /* .segment1 {
@@ -404,7 +404,7 @@ label {
     }
 
     .last-box {
-        padding: 15px;
+        padding: 18px;
     }
 
 }
@@ -419,9 +419,7 @@ label {
     }
 }
 @media screen and (max-width: 538px) {
-    .imgChart {
-        /* width: 140px; */
-    }
+
     .amount-ratio {
         font-size: 16px !important;
     }

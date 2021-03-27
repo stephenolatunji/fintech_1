@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { SuperServiceService } from '../../@theme/service/super-service.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class TransactionConfigComponent implements OnInit {
   transactionDetails = {
     transactionFee: '', currency: '', transactionLimit: '', staffId: localStorage.getItem('userId')
   }
-  constructor(private server: SuperServiceService, private _snackBar: MatSnackBar) { }
+  constructor(private server: SuperServiceService, private toast: ToastService) { }
 
   ngOnInit(): void {
   }
@@ -22,15 +22,11 @@ export class TransactionConfigComponent implements OnInit {
     this.server.createtransactionlimit(this.transactionDetails).subscribe(dat=>{
       this.loading = false;
       if(dat.succeeded) {
-        this.openSnackBar("Transaction Limit Set")
+        this.toast.toast('info', "Transaction Limit Set")
       }
     })
   }
 
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
-  }
+
 
 }

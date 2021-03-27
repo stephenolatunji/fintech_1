@@ -70,6 +70,7 @@ import { TransactionConfigComponent } from './@super-admin/@components/transacti
 import { EditPaymentChannelComponent } from './@super-admin/@components/edit-payment-channel/edit-payment-channel.component';
 
 import { NgxStripeModule } from "ngx-stripe";
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -134,9 +135,10 @@ import { NgxStripeModule } from "ngx-stripe";
     MatExpansionModule,
     MatSlideToggleModule,
     MatButtonModule, MatRadioModule, MatSnackBarModule,
-    NgxStripeModule.forRoot('pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB')
+    NgxStripeModule.forRoot('pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB'),
+    ToastrModule.forRoot(),
   ],
-  providers: [NgxImageCompressService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, , JwtHelperService],
+  providers: [NgxImageCompressService, { provide: JWT_OPTIONS, useValue: JWT_OPTIONS }, JwtHelperService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

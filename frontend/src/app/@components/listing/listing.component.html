@@ -6,7 +6,7 @@
 
             <!-- create order -->
             <div class="text1">Create order</div>
-            <div class="square-box ">
+            <div class="square-box">
                 <div class="first-line">
             
                     <div class="second-line" >
@@ -154,22 +154,28 @@
             </div>
 
             <!-- destination account details -->
-            <div class="last-box row">
-                <div class="col-12 col-md-6" >
-                    <label for="bank">Bank</label><br />
-                    <select id="bank" [(ngModel)]="order.myBankName" name="myBankName" class="col-12">
-                        <option *ngFor="let bank of allBanks" [value]="bank?.name"> {{bank?.name}} </option>
-                    </select>
-                </div>
+            <div class="text1 mb-4">Destination Account Details</div>           
+            <div class="last-box">
+                <div class="row">
 
-                <div class="col-12 col-md-6 mt-4 mt-md-0 " >
-                    <label for="bank" id="account_no" >Account Number</label><br />
-                    <input type="number" id="account_no"  [(ngModel)]="order.myAccountNumber" name="myAccountNumber" class="col-12" />
+                    <div class="col-12 col-md-6" >
+                        <label for="bank">Bank</label><br />
+                        <select id="bank" [(ngModel)]="order.myBankName" name="myBankName" class="col-12">
+                            <option *ngFor="let bank of allBanks" [value]="bank?.name"> {{bank?.name}} </option>
+                        </select>
+                    </div>
+    
+                    <div class="col-12 col-md-6 mt-4 mt-md-0 " >
+                        <label for="bank" id="account_no" >Account Number</label><br />
+                        <input type="number" id="account_no"  [(ngModel)]="order.myAccountNumber" name="myAccountNumber" class="col-12" />
+                    </div>
                 </div>
                 
-                <div class="col-12 col-md-6" style="margin-top: 19.69px" *ngIf="order?.myCurrency==1">
-                    <label for="routing_no">Routing Number</label><br />
-                    <input type="text" id="routing_no" name="bankRouteNo" [(ngModel)]="order.bankRouteNo" class="col-12" />
+                <div class="row">
+                    <div class="col-12 col-md-6" style="margin-top: 19.69px" *ngIf="order?.myCurrency==1">
+                        <label for="routing_no">Routing Number</label><br />
+                        <input type="text" id="routing_no" name="bankRouteNo" [(ngModel)]="order.bankRouteNo" class="col-12" />
+                    </div>
                 </div>
 
             </div>

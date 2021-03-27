@@ -1,5 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { ServerService } from '../../services/server.service';
 import { SettingsComponent } from '../settings/settings.component';
 declare var $: any;
@@ -17,7 +17,7 @@ declare var $: any;
 export class ProfileComponent implements OnInit {
   user = { firstName: '', lastName: null, userName: '', email: '', countryCode: '+234', phoneNumber: '', customerId: '', id: '', customerImageFileLocation: '' }
   err; loading: boolean = false; msg = ''; profilePic;
-  constructor(private settings_: SettingsComponent, private server: ServerService, private _snackBar: MatSnackBar) { }
+  constructor(private settings_: SettingsComponent, private server: ServerService, private toast: ToastService) { }
 
   async ngOnInit() {
     $('#profile').modal('show');

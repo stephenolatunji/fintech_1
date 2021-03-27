@@ -1,5 +1,5 @@
 import { Component, Injectable, Input, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { Router } from '@angular/router';
 import { ServerService } from 'src/app/@theme/services/server.service';
 import { environment } from 'src/environments/environment';
@@ -19,7 +19,7 @@ export class ResponseComponent implements OnInit {
   @Input() data; loading: boolean = false; paymentHandler: any = null; paymentSuccessful: boolean = false
   success: boolean = false;
 
-  constructor(private server: ServerService, private rout: Router, private _snackBar: MatSnackBar) { }
+  constructor(private server: ServerService, private rout: Router, private toast: ToastService) { }
 
   ngOnInit(): void {
     $('#payment-success').modal('hide')
@@ -59,16 +59,12 @@ export class ResponseComponent implements OnInit {
         (dat.entity.myCurrency == 'NGN') ? this.usePayStack() : this.usePayStack()
       }
       else {
-        this.openSnackBar('Error while proccessing your request!')
+        this.toast.toast('error', 'Error while proccessing your request!')
       }
-    }, err => this.openSnackBar('Error while proccessing your request!'))
+    }, err => this.toast.toast('error', 'Error while proccessing your request!'))
   }
 
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
-  }
+
   // handlePayment(amount) {
   //   const paymentHandler = (<any>window).StripeCheckout.configure({
   //     key: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB',
@@ -127,7 +123,7 @@ export class ResponseComponent implements OnInit {
       if (dat.status) {
         window.location.href = dat.data.authorization_url;
       }
-    }, err => this.openSnackBar('Error initializing your payment'))
+    }, err => this.toast.toast('error', 'Error initializing your payment'))
   }
 
 }

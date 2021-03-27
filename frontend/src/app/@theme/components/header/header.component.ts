@@ -1,5 +1,5 @@
 import { Component, Injectable, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/@auth/guard/auth.service';
 import { ServerService } from '../../services/server.service';
@@ -15,11 +15,12 @@ import { SettingsComponent } from '../settings/settings.component';
 
 export class HeaderComponent implements OnInit {
   username: string; settings: boolean = false; profile:  boolean = false; profilePic_
-  constructor(private rout: Router, private auth: AuthService, private _snackBar: MatSnackBar, private settingsFunc: SettingsComponent, private server: ServerService, private profileFunc: ProfileComponent) { }
+  constructor(private rout: Router, private auth: AuthService, private toast: ToastService, private settingsFunc: SettingsComponent, private server: ServerService, private profileFunc: ProfileComponent) { }
 
   ngOnInit(): void {
     this.username = this.server?.userInformations?.userName;
-    this.profilePic_ = this.server?.userInformations?.customerImageFileLocation==(undefined || '' || null)? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.server.userInformations.customerImageFileLocation}`;
+    const avatar = this.server?.userInformations?.customerImageFileLocation;
+    this.profilePic_ = (avatar == undefined || avatar == '' || avatar == null) ? 'assets/header/avatar.jpg' : `data:image/jpeg;base64,${this.server.userInformations.customerImageFileLocation}`;
   }
 
   goTo(route) {
@@ -27,21 +28,21 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.openSnackBar('Logging out');
+    this.toast.toast('info', 'Logging out');
     this.auth.logout().subscribe(()=>{
+      this.server.pendingOrders = undefined;
+      this.server.getPendingOrders_ = undefined;
+      this.server.userInformations = undefined;
+      this.server.unfullfilledOrder = undefined;
       localStorage.setItem('user', null)
       localStorage.setItem('customerId', null)
       localStorage.setItem('token', null)
-      this.openSnackBar('Logout Successful');
+      this.toast.toast('success', 'Logout Successful');
       this.rout.navigate(['login']);
     });
   }
 
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
-  }
+
 
   open(x) {
     if(x=='settings') {

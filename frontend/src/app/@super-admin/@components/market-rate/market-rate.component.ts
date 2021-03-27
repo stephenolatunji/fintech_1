@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { SuperServiceService } from '../../@theme/service/super-service.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class MarketRateComponent implements OnInit {
   disable = {
     usd: true, cad: true, eur: true, gbp: true
   }; data;
-  constructor(private server: SuperServiceService, private _snackBar: MatSnackBar) { }
+  constructor(private server: SuperServiceService, private toast: ToastService) { }
 
   ngOnInit(): void {
     this.server.getAllMarketRateConfig().subscribe(dat=>{
@@ -34,16 +34,12 @@ export class MarketRateComponent implements OnInit {
     this.server.updateMarketRate(val).subscribe(dat=>{
       this.loading = false;
       if(dat.succeeded) {
-        this.openSnackBar("Market Rate Updated Successfully!")
+        this.toast.toast('success', "Market Rate Updated Successfully!")
       }
     })
   }
 
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
-  }
+
 
   handleEdit(index) {
     this.data[index].disabled = false

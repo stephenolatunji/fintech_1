@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { SuperServiceService } from '../../@theme/service/super-service.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class EditPaymentChannelComponent implements OnInit {
 
   @Input() data;
 
-  constructor(private server: SuperServiceService, private _snackBar: MatSnackBar) { }
+  constructor(private server: SuperServiceService, private toast: ToastService) { }
 
   ngOnInit(): void {
     this.paymentChannel = this.data;
@@ -28,19 +28,15 @@ export class EditPaymentChannelComponent implements OnInit {
     this.server.editPaymentChannel(this.paymentChannel).subscribe(dat => {
       this.loading = false;
       if (dat.succeeded) {
-        this.openSnackBar("Payment Channel Updated")
+        this.toast.toast('success', "Payment Channel Updated")
       }
       else {
-        this.openSnackBar("Error while updating channel")
+        this.toast.toast('error', "Error while updating channel")
       }
-    }, err => { this.openSnackBar("Error while updating channel"); this.loading = false })
+    }, err => { this.toast.toast('error', "Error while updating channel"); this.loading = false })
   }
 
 
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
-  }
+
 
 }

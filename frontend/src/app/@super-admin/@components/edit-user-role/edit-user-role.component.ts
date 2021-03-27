@@ -1,5 +1,5 @@
 import { UserRoleComponent } from './../user-role/user-role.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { SuperServiceService } from 'src/app/@super-admin/@theme/service/super-service.service';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -13,7 +13,7 @@ export class EditUserRoleComponent implements OnInit {
     roleId: null, accessLevel: null, name: null
   }
   @Input() data;
-  constructor(private roleFunc: UserRoleComponent, private server: SuperServiceService, private _snackBar: MatSnackBar) { }
+  constructor(private roleFunc: UserRoleComponent, private server: SuperServiceService, private toast: ToastService) { }
 
   ngOnInit(): void {
     this.newRole = this.data
@@ -22,15 +22,11 @@ export class EditUserRoleComponent implements OnInit {
   handleEdit() {
     this.server.editUserRole(this.newRole).subscribe(dat => {
       console.log(dat)
-      this.openSnackBar("User Role Edited Successfully!")
-    }, err => this.openSnackBar("Failed to edit user role."))
+      this.toast.toast('success', "User Role Edited Successfully!")
+    }, err => this.toast.toast('error', "Failed to edit user role."))
   }
 
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
-  }
+
 
   goBack() {
     this.roleFunc.editUserRoleClicked = false;

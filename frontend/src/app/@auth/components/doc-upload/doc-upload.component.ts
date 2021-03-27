@@ -2,9 +2,9 @@
 import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { ServerService } from 'src/app/@theme/services/server.service';
 import { HelperService } from 'src/app/@theme/services/helper.service';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { RegisterComponent } from '../register/register.component';
 import { AuthService } from '../../guard/auth.service';
 
@@ -28,7 +28,7 @@ export class DocUploadComponent implements OnInit {
     private rout: Router,
     private helper: HelperService,
     private imageCompress: NgxImageCompressService,
-    private _snackBar: MatSnackBar,
+    private toast: ToastService,
     private regFunc: RegisterComponent
   ) { }
 
@@ -60,12 +60,12 @@ export class DocUploadComponent implements OnInit {
         this.server.newUser(this.user).subscribe(dat => {
           this.loading = false;
           if (dat.succeeded) {
-            this.openSnackBar('Successful!');
+            this.toast.toast('success','Successful!');
             this.rout.navigate(['otp']);
             console.log(dat.entity)
           }
           else {
-            this.openSnackBar(`Sorry, ${dat.messages[0]}`);
+            this.toast.toast('error',`Sorry, ${dat.messages[0]}`);
             this.err = `Sorry, ${dat.messages[0]}`;
           }
         }, error => this.handleError(error))
@@ -101,13 +101,7 @@ export class DocUploadComponent implements OnInit {
     this.reg.docUpload = false;
     console.log('here')
     this.loading = false;
-    this.openSnackBar(`Sorry, Account creation was not successful!`);
-  }
-
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
+    this.toast.toast('error', `Sorry, Account creation was not successful!`);
   }
 
   goBack() {

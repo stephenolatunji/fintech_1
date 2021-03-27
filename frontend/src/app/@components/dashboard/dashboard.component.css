@@ -6,7 +6,7 @@
     display: flex;
     /* margin-top: 5%; */
     background-color: #FFFFFF;
-    height: 99vh;
+    min-height: 99vh;
 }
 .rect {
     display: block;

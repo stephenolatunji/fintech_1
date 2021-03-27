@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from './../../../@theme/services/server.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../guard/auth.service';
 import { Router } from '@angular/router';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -12,9 +12,9 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   public user = { email: null, password: null }; loading: boolean = false; type: string = 'password'; err;
-  constructor(private server: ServerService, private _snackBar: MatSnackBar, private auth: AuthService, private rout: Router) { }
+  constructor(private server: ServerService, private toast: ToastService, private auth: AuthService, private rout: Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {alert(new Date().getMonth()+1)
     if (this.auth.isAuthenticated() && localStorage.getItem('customerId') !== null) {
       this.rout.navigate(['dashboard'])
     }
@@ -29,14 +29,14 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', data.token.accessToken);
         localStorage.setItem('customerId', data.entity.customerId);
         localStorage.setItem('user', data.entity.userName);
-        this.openSnackBar('Login Successful!');
+        this.toast.toast('success', 'Login Successful!');
         this.rout.navigate(['dashboard']);
 
         this.server.userInformations = data.entity;
       }
       else {
         this.err = 'Please fill in the boxes correctly';
-        this.openSnackBar(this.err)
+        this.toast.toast('error', this.err)
       }
     }, error => this.handleError(error))
   };
@@ -47,16 +47,11 @@ export class LoginComponent implements OnInit {
   }
 
   handleError(err) {
-    this.openSnackBar('Error Logging In');
+    this.toast.toast('error', 'Error Logging In');
     this.err = 'Error Logging In!'
     this.loading = false
     console.log(err)
     // if
   }
 
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
-  }
 }

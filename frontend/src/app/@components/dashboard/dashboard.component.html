@@ -112,7 +112,7 @@
 
         <div class="group">
 
-            <div class="group1 animate__animated animate__zoomIn" id="summaryClass" *ngIf="pendingOrders!==undefined" >
+            <div class="group1 animate__animated animate__fadeIn" id="summaryClass" *ngIf="pendingOrders!==undefined" >
                 <div class="text1" *ngIf="timeCount.status">
                     Pending Order Summary
                 </div>
@@ -123,13 +123,13 @@
                     <div class="text2">Swap Amount</div>
                     <div class="text3">
                         {{
-                            pendingOrder?.myCurrency.toUpperCase()=='NGN' ? '₦' :
-                            pendingOrder?.myCurrency.toUpperCase()=='USD' ? '$' :
-                            pendingOrder?.myCurrency.toUpperCase()=='GBP' ? '£' :
-                            pendingOrder?.myCurrency.toUpperCase()=='EUR' ? 'ϵ' :
-                            pendingOrder?.myCurrency.toUpperCase()=='CAD' ? 'C$' : ''
+                            pendingOrder?.convertedCurrency.toUpperCase()=='NGN' ? '₦' :
+                            pendingOrder?.convertedCurrency.toUpperCase()=='USD' ? '$' :
+                            pendingOrder?.convertedCurrency.toUpperCase()=='GBP' ? '£' :
+                            pendingOrder?.convertedCurrency.toUpperCase()=='EUR' ? 'ϵ' :
+                            pendingOrder?.convertedCurrency.toUpperCase()=='CAD' ? 'C$' : ''
                         }}
-                        {{pendingOrders?.myAmount}}
+                        {{pendingOrders?.convertedAmount}}
                     </div>
                 </div>
                 <div class="line">
@@ -140,24 +140,24 @@
                     <div class="text2">Subtotal </div>
                     <div class="text3">
                         {{
-                            pendingOrders?.convertedCurrency.toUpperCase()=='NGN' ? '₦' :
-                            pendingOrders?.convertedCurrency.toUpperCase()=='USD' ? '$' :
-                            pendingOrders?.convertedCurrency.toUpperCase()=='GBP' ? '£' :
-                            pendingOrders?.convertedCurrency.toUpperCase()=='EUR' ? 'ϵ' :
-                            pendingOrders?.convertedCurrency.toUpperCase()=='CAD' ? 'C$' : ''
+                            pendingOrders?.myCurrency.toUpperCase()=='NGN' ? '₦' :
+                            pendingOrders?.myCurrency.toUpperCase()=='USD' ? '$' :
+                            pendingOrders?.myCurrency.toUpperCase()=='GBP' ? '£' :
+                            pendingOrders?.myCurrency.toUpperCase()=='EUR' ? 'ϵ' :
+                            pendingOrders?.myCurrency.toUpperCase()=='CAD' ? 'C$' : ''
                         }}
-                        {{pendingOrders.convertedAmount}}
+                        {{pendingOrders.myAmount}}
                     </div>
                 </div>
                 <div class="line">
                     <div class="text2">Proessing Fee </div>
                     <div class="text3">
                         {{
-                            pendingOrders?.convertedCurrency.toUpperCase()=='NGN' ? '₦' :
-                            pendingOrders?.convertedCurrency.toUpperCase()=='USD' ? '$' :
-                            pendingOrders?.convertedCurrency.toUpperCase()=='GBP' ? '£' :
-                            pendingOrders?.convertedCurrency.toUpperCase()=='EUR' ? 'ϵ' :
-                            pendingOrders?.convertedCurrency.toUpperCase()=='CAD' ? 'C$' : ''
+                            pendingOrders?.myCurrency.toUpperCase()=='NGN' ? '₦' :
+                            pendingOrders?.myCurrency.toUpperCase()=='USD' ? '$' :
+                            pendingOrders?.myCurrency.toUpperCase()=='GBP' ? '£' :
+                            pendingOrders?.myCurrency.toUpperCase()=='EUR' ? 'ϵ' :
+                            pendingOrders?.myCurrency.toUpperCase()=='CAD' ? 'C$' : ''
                         }}
                         {{pendingOrders.transactionFee}}
                     </div>
@@ -166,11 +166,11 @@
                     <div class="text2">Total </div>
                     <div class="text3">                        
                         {{
-                            pendingOrder?.myCurrency.toUpperCase()=='NGN' ? '₦' :
-                            pendingOrder?.myCurrency.toUpperCase()=='USD' ? '$' :
-                            pendingOrder?.myCurrency.toUpperCase()=='GBP' ? '£' :
-                            pendingOrder?.myCurrency.toUpperCase()=='EUR' ? 'ϵ' :
-                            pendingOrder?.myCurrency.toUpperCase()=='CAD' ? 'C$' : ''
+                            pendingOrder?.convertedCurrency.toUpperCase()=='NGN' ? '₦' :
+                            pendingOrder?.convertedCurrency.toUpperCase()=='USD' ? '$' :
+                            pendingOrder?.convertedCurrency.toUpperCase()=='GBP' ? '£' :
+                            pendingOrder?.convertedCurrency.toUpperCase()=='EUR' ? 'ϵ' :
+                            pendingOrder?.convertedCurrency.toUpperCase()=='CAD' ? 'C$' : ''
                         }} 
                         {{ pendingOrders.myAmount + pendingOrders.transactionFee}}</div>
                 </div>

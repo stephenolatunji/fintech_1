@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ServerService } from 'src/app/@theme/services/server.service';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { environment } from 'src/environments/environment';
 declare var $: any;
 declare var Stripe;
@@ -29,14 +29,14 @@ export class DashboardComponent implements OnInit {
   constructor(
     private rout: Router,
     private server: ServerService,
-    private _snackBar: MatSnackBar,
-    private actRout: ActivatedRoute
+    private actRout: ActivatedRoute,
+    private toast: ToastService
   ) { }
 
   ngOnInit(): void {
 
 
-    $('#payment-success').modal('hide');
+    // $('#payment-success').modal('hide');
 
     this.server.getPendingOrders_ == undefined ? this.fetchPendingOrders() : (this.pendingOrders = this.server.getPendingOrders_, this.countDown())
     this.server.getTop10Listing_ == undefined ? this.fetchTop10() : this.top10 = this.server.getTop10Listing_
@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
 
   paynow(amount) {
     this.server.pendingOrders = this.pendingOrders;
-    this.openSnackBar(`Please wait...`);
+    this.toast.toast('info', `Please wait...`);
     this.loading = true;
     (this.pendingOrders.myCurrency == 'NGN') ? this.usePayStack() : this.usePayStack()
     // setTimeout(() => {
@@ -99,7 +99,7 @@ export class DashboardComponent implements OnInit {
         console.log(dat);
         window.location.href = dat.data.authorization_url;
       }
-    }, err => this.openSnackBar('Error initializing your payment'))
+    }, err => this.toast.toast('error', 'Error initializing your payment'))
   }
 
   fetchTop10() {
@@ -117,7 +117,7 @@ export class DashboardComponent implements OnInit {
   swap(payment) {
     console.log(payment);
     this.server.pendingOrders = payment;
-    this.openSnackBar('Please wait...')
+    this.toast.toast('info','Please wait...')
     this.loading = true;
     (payment.myCurrency == 'NGN') ? this.usePayStack() : this.usePayStack()
   }
@@ -172,11 +172,6 @@ export class DashboardComponent implements OnInit {
     }, 1000);
   }
 
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
-  }
 
   seePendingOrder() {
     document.getElementById('summaryClass').style.display = 'none';
@@ -195,7 +190,7 @@ export class DashboardComponent implements OnInit {
       }
       else {
         $('#payment-success').modal('hide')
-        this.openSnackBar("Error while verifying your payment")
+        this.toast.toast('error', "Error while verifying your payment")
         // this.rout.navigate(['dashboard'])
       }
     })
@@ -211,7 +206,7 @@ export class DashboardComponent implements OnInit {
       }
       else {
         $('#payment-success').modal('hide')
-        this.openSnackBar("Error validating your payment")
+        this.toast.toast('error', "Error validating your payment")
       }
     })
   }

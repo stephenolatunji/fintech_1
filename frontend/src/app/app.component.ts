@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthGuardService } from './@auth/guard/auth-guard.service';
 import { AuthService } from './@auth/guard/auth.service';
 import { ServerService } from './@theme/services/server.service';
+import { ToastService } from './@theme/services/toast.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ import { ServerService } from './@theme/services/server.service';
 export class AppComponent {
   title = 'frontend'; loading: boolean = true;
 
-  constructor(private auth: AuthService, private _snackBar: MatSnackBar, private server: ServerService, private http: HttpClient) { }
+  constructor(private auth: AuthService, private toast: ToastService, private server: ServerService, private http: HttpClient) { }
 
   ngOnInit(): void {
     const x = localStorage.getItem('customerId');
@@ -29,16 +29,11 @@ export class AppComponent {
         this.http.get<any>(`https://api.paystack.co/bank`).subscribe((dat) => { this.server.allBanks = dat; setTimeout(() => {
           this.loading = false 
         }, 500); });
-      }, err => this.snackBar('Network Error'));
+      }, err => this.toast.toast('error', 'Network Error'));
     }
     else {
       this.loading = false;
-      this.snackBar('Your Session has expired!')
+      this.toast.toast('warning', 'Your Session has expired!')
     }
-  }
-  snackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { AuthService } from '../../@auth/guard/auth.service';
 
 @Component({
@@ -10,25 +10,21 @@ import { AuthService } from '../../@auth/guard/auth.service';
 })
 export class AdminHeaderComponent implements OnInit {
 
-  constructor(private auth: AuthService, private rout: Router, private _snackBar: MatSnackBar) { }
+  constructor(private auth: AuthService, private rout: Router, private toast: ToastService) { }
 
   ngOnInit(): void {
   }
 
   logout() {
-    this.openSnackBar('Logging out');
+    this.toast.toast('info', 'Logging out');
     this.auth.logout().subscribe(() => {
       localStorage.setItem('userId', null)
       localStorage.setItem('token_', null)
-      this.openSnackBar('Logout Successful');
+      this.toast.toast('success', 'Logout Successful');
       this.rout.navigate(['super-admin']);
     });
   }
 
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
-  }
+
 
 }

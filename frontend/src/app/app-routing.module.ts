@@ -44,7 +44,7 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "forgot-password", component: ForgotPasswordComponent },
   { path: "otp", component: OtpComponent },
-  { path: "listing", component: ListingComponent, canActivate: [AuthGuard] },
+  { path: "listing", component: ListingComponent },
   { path: "summary", component: PaymentSummaryComponent, canActivate: [AuthGuard] },
   { path: "dashboard", component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'notify', component: EmailNotificationComponent, canActivate: [AuthGuard] },

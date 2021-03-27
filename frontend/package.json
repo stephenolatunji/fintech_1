@@ -28,6 +28,7 @@
     "https": "^1.0.0",
     "ngx-image-compress": "^11.0.3",
     "ngx-stripe": "^7.6.0",
+    "ngx-toastr": "^13.2.1",
     "path": "^0.12.7",
     "rxjs": "~6.5.5",
     "stripe": "^8.137.0",

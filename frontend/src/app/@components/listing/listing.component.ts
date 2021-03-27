@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ServerService } from 'src/app/@theme/services/server.service';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 
 @Component({
   selector: 'app-listing',
@@ -36,7 +36,7 @@ export class ListingComponent implements OnInit {
   }
   showResponse: boolean = false; matchFound; allBanks;
 
-  constructor(private server: ServerService, private _snackBar: MatSnackBar, private rout: Router, private http: HttpClient) { }
+  constructor(private server: ServerService, private rout: Router, private http: HttpClient, private toast: ToastService) { }
 
   ngOnInit(): void {
     // check if we are coming from edit of unfullfilled order
@@ -65,7 +65,7 @@ export class ListingComponent implements OnInit {
       x == 'findMatch' ? this.findMatch() : this.handlePublish()
     }
     else {
-      this.openSnackBar('All fields must be filled correctly...');
+      this.toast.toast('warning', 'All fields must be filled correctly...');
     }
   }
 
@@ -75,16 +75,16 @@ export class ListingComponent implements OnInit {
     this.server.createOrder(this.order).subscribe(data => {
       this.loading.publish = false;
       if (data.succeeded) {
-        this.openSnackBar('Your Order has been published');
+        this.toast.toast('success','Your Order has been published');
         this.rout.navigate(['dashboard'])
       }
       else {
         this.matchFound = 'We could not publish your order';
-        this.openSnackBar(data.messages[0]);
+        this.toast.toast('error', data.messages[0]);
       }
     }, err => {
       this.loading.publish = false;
-      this.openSnackBar('Error!');
+      this.toast.toast('error', 'Error!');
     })
   }
 
@@ -94,7 +94,7 @@ export class ListingComponent implements OnInit {
     this.server.findMatch(this.order).subscribe(data => {
       this.loading.findMach = false;
       if (data.succeeded && data.entity !== null) {
-        this.openSnackBar('Finding Match...');
+        this.toast.toast('info','Finding Match...');
         data.entity.myAccountNumber = this.order.myAccountNumber.toString();
         data.entity.myBankName = this.order.myBankName;
         data.entity.bankRouteNo = this.order.bankRouteNo;
@@ -102,7 +102,7 @@ export class ListingComponent implements OnInit {
         data.entity.convertedAmount = parseFloat(data.entity.myAmount);
         data.entity.myAmount = parseFloat(data.entity.convertedAmount);
         data.entity.convertedCurrency = data.entity.myCurrency;
-        data.entity.myAmount = data.entity.convertedCurrency;
+        data.entity.myCurrency = data.entity.convertedCurrency;
 
         data.entity.findMatchResult = {
           customerId: data.entity.customerId,
@@ -123,7 +123,7 @@ export class ListingComponent implements OnInit {
       }
     }, err => {
       this.loading.findMach = false;
-      this.openSnackBar('Error!');
+      this.toast.toast('error','Error!');
     })
   }
 
@@ -134,12 +134,6 @@ export class ListingComponent implements OnInit {
     document.getElementById('eur').style.border = '0px'
     document.getElementById('gbp').style.border = '0px'
     document.getElementById(currency.toLowerCase()).style.border = '0.5px solid rgba(38, 71, 78, 0.4)'
-  }
-
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
   }
 
   comingFromEditPage() {
@@ -181,7 +175,7 @@ export class ListingComponent implements OnInit {
     this.server.editUnfulfilledOrder(this.order).subscribe(data => {
       this.loading.findMach = false;
       if (data.succeeded) {
-        this.openSnackBar('Order updated!');
+        this.toast.toast('success','Order updated!');
         data.entity.myAccountNumber = this.order.myAccountNumber.toString();
         data.entity.myBankName = this.order.myBankName;
         data.entity.bankRouteNo = this.order.bankRouteNo;
@@ -200,9 +194,9 @@ export class ListingComponent implements OnInit {
         this.showResponse = true
       }
       else {
-        this.openSnackBar('Error updating your order!')
+        this.toast.toast('error','Error updating your order!')
       }
       console.log(data)
-    }, err => { this.loading.findMach = false; this.openSnackBar('Error updating your order!') })
+    }, err => { this.loading.findMach = false;  this.toast.toast('error','Error updating your order!') })
   }
 }

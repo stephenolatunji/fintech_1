@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from './../../../@theme/services/server.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToastService } from 'src/app/@theme/services/toast.service';
 import { AuthService } from '../../@auth/guard/auth.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -14,7 +14,7 @@ import { SuperServiceService } from '../../@theme/service/super-service.service'
 export class LoginComponent implements OnInit {
 
   public user = { email: null, password: null }; loading: boolean = false; type: string = 'password'; err;
-  constructor(public jwtHelper: JwtHelperService, private server: SuperServiceService, private _snackBar: MatSnackBar, private auth: AuthService, private rout: Router) { }
+  constructor(public jwtHelper: JwtHelperService, private server: SuperServiceService, private toast: ToastService, private auth: AuthService, private rout: Router) { }
 
   ngOnInit(): void {
     if (this.auth.isAuthenticated() && localStorage.getItem('userId') !== null) {
@@ -32,14 +32,14 @@ export class LoginComponent implements OnInit {
         const stringified = this.jwtHelper.decodeToken(data.token.accessToken).StaffEntity;
         console.log(JSON.parse(stringified).StaffId)
         localStorage.setItem('userId', JSON.parse(stringified).StaffId);
-        this.openSnackBar('Login Successful!');
+        this.toast.toast('success', 'Login Successful!');
         this.rout.navigate(['super-admin/dashboard'])
 
         // this.server.userInformations = data.entity;
       }
       else {
         this.err = 'Please fill in the boxes correctly';
-        this.openSnackBar(this.err)
+        this.toast.toast('info', this.err)
       }
     }, error => this.handleError(error))
   };
@@ -50,16 +50,12 @@ export class LoginComponent implements OnInit {
   }
 
   handleError(err) {
-    this.openSnackBar('Error Logging In');
+    this.toast.toast('error', 'Error Logging In');
     this.err = 'Error Logging In!'
     this.loading = false
     console.log(err)
     // if
   }
 
-  openSnackBar(msg) {
-    this._snackBar.open(msg, '', {
-      duration: 2500,
-    });
-  }
+
 }
