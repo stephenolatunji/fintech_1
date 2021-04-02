@@ -61,37 +61,37 @@
                     <tbody >
                         <tr *ngFor="let list of top10; let i = index">
                             <td *ngIf="i < top10Index"> {{
-                                list?.order.myCurrency.toUpperCase()=='NGN' ? '₦' :
-                                list?.order.myCurrency.toUpperCase()=='USD' ? '$' :
-                                list?.order.myCurrency.toUpperCase()=='GBP' ? '£' :
-                                list?.order.myCurrency.toUpperCase()=='EUR' ? 'ϵ' :
-                                list?.order.myCurrency.toUpperCase()=='CAD' ? 'C$' : ''
+                                list?.order?.myCurrency.toUpperCase()=='USD' ? '$' :
+                                list?.order?.myCurrency.toUpperCase()=='NGN' ? '₦' :
+                                list?.order?.myCurrency.toUpperCase()=='GBP' ? '£' :
+                                list?.order?.myCurrency.toUpperCase()=='EUR' ? 'ϵ' :
+                                list?.order?.myCurrency.toUpperCase()=='CAD' ? 'C$' : ''
                                 }}
-                             {{list?.order.myAmount}}</td>
+                             {{list?.order?.myAmount}}</td>
                             <td *ngIf="i < top10Index">
-                                <img *ngIf="list?.order.convertedCurrency.toUpperCase() == 'USD'" src="assets/listing/usd.svg" width="20" height="25" alt="">
-                                <img *ngIf="list?.order.convertedCurrency.toUpperCase() == 'EUR'" src="assets/listing/euro.svg" width="20" height="25" alt="">
-                                <img *ngIf="list?.order.convertedCurrency.toUpperCase() == 'CAD'" src="assets/listing/cad.svg" width="20" height="25" alt="">
-                                <img *ngIf="list?.order.convertedCurrency.toUpperCase() == 'NGN'" src="assets/listing/ngn.svg" width="20" height="25" alt="">
+                                <img *ngIf="list?.order?.convertedCurrency.toUpperCase() == 'USD'" src="assets/listing/usd.svg" width="20" height="25" alt="">
+                                <img *ngIf="list?.order?.convertedCurrency.toUpperCase() == 'EUR'" src="assets/listing/euro.svg" width="20" height="25" alt="">
+                                <img *ngIf="list?.order?.convertedCurrency.toUpperCase() == 'CAD'" src="assets/listing/cad.svg" width="20" height="25" alt="">
+                                <img *ngIf="list?.order?.convertedCurrency.toUpperCase() == 'NGN'" src="assets/listing/ngn.svg" width="20" height="25" alt="">
                                 <!-- <img *ngIf="list?.order.convertedCurrency.toUpperCase() = JPY" src="assets/listing/jpy.svg" width="20" height="25" alt=""> -->
-                                <img *ngIf="list?.order.convertedCurrency.toUpperCase() == 'GBP'" src="assets/listing/gbp.svg" width="20" height="25" alt="">
-                                {{list?.order.convertedCurrency.toUpperCase()}}
+                                <img *ngIf="list?.order?.convertedCurrency.toUpperCase() == 'GBP'" src="assets/listing/gbp.svg" width="20" height="25" alt="">
+                                {{list?.order?.convertedCurrency.toUpperCase()}}
                             </td>
                             <td *ngIf="i < top10Index">
                                 {{
-                                    list?.order.myCurrency.toUpperCase()=='NGN' ? '₦' :
-                                    list?.order.myCurrency.toUpperCase()=='USD' ? '$' :
-                                    list?.order.myCurrency.toUpperCase()=='GBP' ? '£' :
-                                    list?.order.myCurrency.toUpperCase()=='EUR' ? 'ϵ' :
-                                    list?.order.myCurrency.toUpperCase()=='CAD' ? 'C$' : ''
+                                    list?.order?.myCurrency.toUpperCase()=='NGN' ? '₦' :
+                                    list?.order?.myCurrency.toUpperCase()=='USD' ? '$' :
+                                    list?.order?.myCurrency.toUpperCase()=='GBP' ? '£' :
+                                    list?.order?.myCurrency.toUpperCase()=='EUR' ? 'ϵ' :
+                                    list?.order?.myCurrency.toUpperCase()=='CAD' ? 'C$' : ''
                                 }}
                                 {{list?.preferredRate}}/ 
                                 {{
-                                    list?.order.convertedCurrency.toUpperCase()=='NGN' ? '₦' :
-                                    list?.order.convertedCurrency.toUpperCase()=='USD' ? '$' :
-                                    list?.order.convertedCurrency.toUpperCase()=='GBP' ? '£' :
-                                    list?.order.convertedCurrency.toUpperCase()=='EUR' ? 'ϵ' :
-                                    list?.order.convertedCurrency.toUpperCase()=='CAD' ? 'C$' : ''
+                                    list?.order?.convertedCurrency.toUpperCase()=='NGN' ? '₦' :
+                                    list?.order?.convertedCurrency.toUpperCase()=='USD' ? '$' :
+                                    list?.order?.convertedCurrency.toUpperCase()=='GBP' ? '£' :
+                                    list?.order?.convertedCurrency.toUpperCase()=='EUR' ? 'ϵ' :
+                                    list?.order?.convertedCurrency.toUpperCase()=='CAD' ? 'C$' : ''
                                 }}</td>
                             <td *ngIf="i < top10Index">@Oluchi</td>
                             <td *ngIf="i < top10Index">Published</td>

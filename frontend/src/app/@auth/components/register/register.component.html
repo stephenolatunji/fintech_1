@@ -31,29 +31,48 @@
             </div>
         </div>
 
+        <div class="form-group" style="margin-bottom: 12px">
+          <label for="username">Email</label>
+          <div class="input-box">
+            <input type="email" name="email" [(ngModel)]="user.email" />
+          </div>
+        </div>
+
         <div class="double-input">
           <div class="form-group double" >
-              <label for="email">Email</label>
-              <div class="input-box">
-                <input type="email" name="email" [(ngModel)]="user.email" />
-              </div>
-          </div>
-            <div class="form-group double" >
-              <label for="password">Password</label>
-              <div class="input-box password">
-                <input type="password" name="password" id="password" (keyup)="checkPwdValid()" [(ngModel)]="user.password" />
-                <div (click)="togglePasswordType()" style="cursor: pointer">
-                  <img src="assets/auth/eye.svg" *ngIf="type=='text'" />
-                  <img src="assets/auth/eye2.svg" *ngIf="type=='password'"/>
-                </div>
+            <label for="password">Password</label>
+            <div class="input-box password">
+              <input type="password" name="password" id="password" (keyup)="checkPwdValid()" [(ngModel)]="user.password" />
+              <div (click)="togglePasswordType('pwd')" style="cursor: pointer">
+                <img src="assets/auth/eye.svg" *ngIf="type=='text'" />
+                <img src="assets/auth/eye2.svg" *ngIf="type=='password'"/>
               </div>
             </div>
           </div>
+
+            <div class="form-group double" >
+              <label for="password">Confirm Password</label>
+              <div class="input-box password">
+                <input type="password" name="cpassword" id="cpassword" (keyup)="checkCompatibility()" [(ngModel)]="user.cpassword" />
+                <div (click)="togglePasswordType('cpwd')" style="cursor: pointer">
+                  <img src="assets/auth/eye.svg" *ngIf="type2=='text'" />
+                  <img src="assets/auth/eye2.svg" *ngIf="type2=='password'"/>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="double-pwdErr">
           <div class="pwdErr mb-2" *ngIf="messages.pwdErr">
             <div>• Upper and lowercase letters</div>
             <div>• 8 or more characters</div>
             <div>• Contains a number and symbol</div>
           </div>
+
+          <div class="pwdErr mb-2" *ngIf="messages.cpwdErr">
+            <div>• Password does not match</div>
+          </div>
+        </div>
          
         <div class="form-group" style="margin-bottom: 12px"> 
           <label for="country">Phone Number</label>
@@ -63,8 +82,7 @@
               <input type="text" name="phoneNumber" [(ngModel)]="user.phoneNumber" />
             </div>
 
-          </div>
-              
+          </div>            
         </div>
 
         <div>

@@ -21,13 +21,14 @@
                                 <option value=3 >GBP</option>
                                 <option value=5 >CAD</option>
                             </select>
-                            <input type="number" class="firstInput" name="myAmount" [(ngModel)]="order.myAmount"  (keyup)="doCalculation()"/>
+                            <input type="number" class="firstInput w-50" name="myAmount" [(ngModel)]="order.myAmount"  (keyup)="doCalculation()"/>
                         </div>
                     </div>
             
                 </div>
                 <!-- Market Rate -->
-                Market Rate
+                <div class="head">Market Rate</div>
+                
                 <div class="all-market-rate"  *ngIf="order.myCurrency==1 ">
                     <div class="market-rate_" (click)="toggelePrefferdCurrency(2, 'USD')" id="usd" style="border: 0.5px solid rgba(38, 71, 78, 0.4);">
                         <div class="countryCode">
@@ -125,27 +126,35 @@
                 </div>
                 
                 <!-- Prefered Rate -->
+                
                 <div class="third-line" style="margin-top: 35px">
-                    My preferred rate
+                    
                     <div class="whole">
-            
-                        <div class="input-section" style="margin-right: 21px">
-                          
-                            <!-- <div class="box">{{order.fromCurrency}}</div> -->
-                            <div class="box">Rate</div>
-                            <!-- <img src="assets/listing/swap.svg"  style="margin-right: 11px"/> -->
-                            <input type="number" [(ngModel)]="order.rate" name="rate"  (keyup)="doCalculation()"/>
+                        <div class="sub-whole">
+                            <div style="width: 50%;" class="head">My preferred rate</div>
+                            <div class="input-section" style="margin-right: 21px">
+                                
+                                <!-- <div class="box">{{order.fromCurrency}}</div> -->
+                                <div class="box">Rate</div>
+                                <!-- <img src="assets/listing/swap.svg"  style="margin-right: 11px"/> -->
+                                <input type="number" [(ngModel)]="order.rate" name="rate"  (keyup)="doCalculation()"/>
+                            </div>
                         </div>
-                        <div class="input-section">
-                            <select [(ngModel)]="order.convertedCurrency" class="select" name="convertedCurrency" (change)="doCalculation()" id="convertedCurrency">
-                                <option value=2>USD</option>
-                                <option value=1>NGN</option>
-                                <option value=4>EUR</option>
-                                <option value=3>GBP</option>
-                                <option value=5>CAD</option>
-                            </select>
-                            <input type="number" readonly [(ngModel)]="order.convertedAmount" name="convertedAmount"/>
+                        
+                        <div class="sub-whole">
+                            <div class="head"> You will get</div>
+                            <div class="input-section">
+                                <select [(ngModel)]="order.convertedCurrency" class="select" name="convertedCurrency" (change)="doCalculation()" id="convertedCurrency">
+                                    <option value=2>USD</option>
+                                    <option value=1>NGN</option>
+                                    <option value=4>EUR</option>
+                                    <option value=3>GBP</option>
+                                    <option value=5>CAD</option>
+                                </select>
+                                <input type="number" readonly [(ngModel)]="order.convertedAmount" name="convertedAmount"/>
+                            </div>
                         </div>
+                        
             
                     </div>
                 

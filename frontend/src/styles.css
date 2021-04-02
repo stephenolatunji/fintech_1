@@ -23,8 +23,8 @@ input, select , button{
 }
 select{ cursor: pointer;}
 *::-webkit-scrollbar {
-  width: .5em;
-  height: .1em;
+  width: 0em;
+  height: 0em;
 }
 
 *::-webkit-scrollbar-thumb {
@@ -56,4 +56,15 @@ select:-webkit-autofill:focus {
 
 .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
   background-color: #557c7c !important;
+}
+.toast-info, .toast-success, .toast-error {
+  background-color: #262C31 !important;
+}
+
+.toast-warning {
+  background-color: #F9968B !important;
+}
+
+.toast-error {
+  background-color: #F27348 !important;
 }

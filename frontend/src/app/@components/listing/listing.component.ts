@@ -114,6 +114,7 @@ export class ListingComponent implements OnInit {
 
 
         this.matchFound = data.entity;
+        this.server.whoToSeeResponse = 'listing';
         this.showResponse = true
       }
       else {

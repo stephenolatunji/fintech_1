@@ -6,7 +6,7 @@ import { environment } from "../../../environments/environment";
   providedIn: 'root'
 })
 export class ServerService {
-  getPendingOrders_; getTop10Listing_;
+  getPendingOrders_; getTop10Listing_; whoToSeeResponse;
 
   // pending order is used for holding the data when match is found to be used in payment stuff
   public userDetails; matchFound; pendingOrders; userInformations; unfullfilledOrder; allBanks;

@@ -15,14 +15,19 @@ declare var Stripe;
 @Injectable({ providedIn: "root" })
 
 export class ResponseComponent implements OnInit {
-  stripe;
+  stripe; whoToSeeResponse;
   @Input() data; loading: boolean = false; paymentHandler: any = null; paymentSuccessful: boolean = false
-  success: boolean = false;
+  success: boolean = true;
+
+  destination = {
+    bank: '', accountNumber: '', routingNumber: ''
+  }
 
   constructor(private server: ServerService, private rout: Router, private toast: ToastService) { }
 
   ngOnInit(): void {
     $('#payment-success').modal('hide')
+    this.whoToSeeResponse = this.server.whoToSeeResponse;
     if (this.data == 'No Match Found') {
       this.success = false
     }
@@ -44,7 +49,12 @@ export class ResponseComponent implements OnInit {
   //   this.rout.navigate(['listing']);
   // }
 
-  payNow() {
+  payNow(x) {
+    if(x=='destination') {
+      this.server.pendingOrders.accountNumber = this.destination.accountNumber
+      this.server.pendingOrders.bank = this.destination.bank
+      this.server.pendingOrders.routingNumber = this.destination.routingNumber
+    }
     this.data.customerId = localStorage.getItem('customerId');
     this.server.pendingOrders = this.data;
 
@@ -65,40 +75,6 @@ export class ResponseComponent implements OnInit {
   }
 
 
-  // handlePayment(amount) {
-  //   const paymentHandler = (<any>window).StripeCheckout.configure({
-  //     key: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB',
-  //     locale: 'auto',
-  //     token:  (stripeToken: any) => {
-  //       console.log(stripeToken)
-  //       console.log(this.server.pendingOrders)
-  //       $('#payment-success').modal('show')
-  //     }
-  //   });
-  //   paymentHandler.open({
-  //     name: 'Anelloh',
-  //     description: 'Payment',
-  //     amount: amount * 100
-  //   });
-  // }
-
-  // invokeStripe() {
-  //   if(!window.document.getElementById('stripe-script')) {
-  //     const script = window.document.createElement("script");
-  //     script.id = "stripe-script";
-  //     script.type = "text/javascript";
-  //     script.src = "https://checkout.stripe.com/checkout.js";
-  //     script.onload = () => {
-  //       this.paymentHandler = (<any>window).StripeCheckout.configure({
-  //         key: 'pk_test_51IAFmIEHcxMTVy8njPaKBkcPepezj949SZsi15fo8JEe5S4Kt7dR7DlOKZJtncNDZXs8If7SeE63fAXzrblrSGhz00sJSnHAqB',
-  //         locale: 'auto',
-  //         token:  (stripeToken: any) =>{
-  //           console.log(stripeToken)
-  //         }
-  //       });
-  //     }
-  //     window.document.body.appendChild(script);
-  // }}
 
   useStripe(pendingOrders) {
 

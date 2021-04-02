@@ -149,6 +149,10 @@ option {
 .pwdErr {
     color: rgb(218, 63, 63);
     font-size: 10px;
+    width: 50%;
+}
+.double-pwdErr {
+    display: flex;
 }
 @media screen and (max-width: 1221px) {
     .right {

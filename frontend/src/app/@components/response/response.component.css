@@ -1,120 +1,85 @@
 .body {
      background-color: #fff;
+     padding: 25px;
+     text-align: center;
     /* min-height: 99vh; */
 }
-.text1 {
+.header1 {
+    font-style: normal;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 22px;
-    color: #26474E;
-    margin-bottom: 10px;
     text-align: center;
+    margin-top: 40px;
+    color: #26474E;
 }
-.text2 {
-    font-weight: normal;
+.cancel {
+    float: right; cursor: pointer;
+}
+.header2 {
     font-size: 12px;
-    line-height: 17px;
+    line-height: 20px;
     text-align: center;
     letter-spacing: 0.002em;
-    margin-bottom: 8px;
     color: #4D4D4D;
-}   
-.box {
-    background: #FFFFFF;
-    box-shadow: 2px 8px 20px rgba(0, 0, 0, 0.05);
-    border-radius: 15px;
-    padding: 22px 34px;
-    margin-bottom: 10px;
-    width: 80%;
-    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 8px;
 }
-.box .d-flex div div:first-child, .box .d-flex div div:last-child, .non-flex div:first-child, .non-flex div:last-child {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    color: #262C31
+.summary {
+    padding: 10px 20px;
+    margin: 10px 18px;
 }
-
-.box .d-flex div div:nth-child(2) {
+.one {
+    border-bottom: 1.5px solid #efefef;
+    margin-top: 15px;
+}
+.sub-one {
+    display: flex;
+    justify-content: space-between;
     font-weight: bold;
     font-size: 14px;
     line-height: 22px;
     color: #F27348;
-    margin: 7px 0px 5px 0px;
 }
-
-.notice {
-    text-align: center;
+.label {
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 15px;
+    color: #262C31;
+}
+.btn-section {
+    display: flex; margin-top: 30px;
+    justify-content: space-between;
+}
+button {
+    border: 1px solid #F27348;
+    width: 48%;
+    border-radius: 12px;
+}
+.err-body {
+    padding: 40px 0px;
+}
+button:last-child {
+    background-color: #F27348; color: white;
+}
+label {
     font-weight: normal;
     font-size: 11px;
-    line-height: 16px;
-    letter-spacing: 0.002em;
-    color: #4D4D4D;
-}
-
-.btn-section {
-    display: flex;
-    justify-content: center;
-    margin: 15px 30px;
-}
-.btn-section button  {
-    /* width: 40%; */
-    border: 1px solid #F27348;
-    border-radius: 15px;
-    padding: 10px 12px;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 22px;width: 50%;
-    text-align: center;
-    background-color: #fff;
-    color: #F27348;
-    outline: none;
-}
-.btn-section button:last-child {
-    margin-left: 16px;
-    background-color: #F27348;
-    color: #fff;
-}
-.btn-section button:hover {
-    opacity: .7;
-}
-.not-btn-section {
-    display: flex;
-   justify-content: center;
-}
-.not-success-btn {
-    padding: 12px 71px   !important;
-    margin: 20px 0px 50px 0px  !important;
-    background-color: #F27348;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 22px;
-    text-align: center;
-    color: #FFFFFF;
-    border-radius: 15px;
-    outline: none;
-}
-
-.payment-success {
-    display: flex;
-    justify-content: center;
-    background-color: #fff;
-    padding: 40px 150px;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 22px;
-    /* identical to box height */
-
-    text-align: center;
-
+    line-height: 20px;
     color: #254750;
+    margin-bottom: 7px;
+    display: flex;
 }
-
-.success-text {
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 22px;
-    text-align: center;
+.input-box, select {
+    border: 1px solid #254750;
+    border-radius: 12px;
+    padding: 8px 12px;
+}
+input {
+    width: 96%;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
     color: #254750;
-    margin-top: 30px;
+    outline: none;
+    border: 0px;
 }

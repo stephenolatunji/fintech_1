@@ -15,7 +15,7 @@ declare var Stripe;
 
 export class DashboardComponent implements OnInit {
   stripe;
-  public top10; pendingOrders; top10Index = 4; buttonText = 'View more'; paymentHandler: any = null; paymentSuccessful: boolean = true;
+  public top10=[{},{},{}]; pendingOrders; top10Index = 4; buttonText = 'View more'; paymentHandler: any = null; paymentSuccessful: boolean = true;
   timeCount = {
     status: true,
     days: null,
@@ -117,9 +117,11 @@ export class DashboardComponent implements OnInit {
   swap(payment) {
     console.log(payment);
     this.server.pendingOrders = payment;
-    this.toast.toast('info','Please wait...')
-    this.loading = true;
-    (payment.myCurrency == 'NGN') ? this.usePayStack() : this.usePayStack()
+    this.server.whoToSeeResponse = 'dashboard';
+    this.rout.navigate(['summary'])
+    // this.toast.toast('info','Please wait...')
+    // this.loading = true;
+    // (payment.myCurrency == 'NGN') ? this.usePayStack() : this.usePayStack()
   }
 
   viewMore() {

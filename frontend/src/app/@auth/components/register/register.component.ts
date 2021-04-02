@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
     userName: '',
     email: '',
     password: '',
+    cpassword: '',
     phoneNumber: '',
     countryCode: '+234',
 
@@ -26,12 +27,13 @@ export class RegisterComponent implements OnInit {
     dateOfBirth: "2021-06-23",
     gender: 1,
   };
-  type: string = 'password'; docUpload: boolean = false;
+  type: string = 'password'; docUpload: boolean = false; type2: string = 'password'
 
   public messages = {
     err: '',
     loading: false,
-    pwdErr: false
+    pwdErr: false,
+    cpwdErr: false
   }
 
   constructor(private server: ServerService, private router: Router) { }
@@ -54,9 +56,15 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  togglePasswordType() {
-    this.type = document.getElementById("password").getAttribute("type") == 'password' ? 'text' : 'password';
-    document.getElementById("password").setAttribute("type", this.type);
+  togglePasswordType(x) {
+    if(x=='pwd') {
+      this.type = document.getElementById("password").getAttribute("type") == 'password' ? 'text' : 'password';
+      document.getElementById("password").setAttribute("type", this.type);
+    }
+    else {
+      this.type2 = document.getElementById("cpassword").getAttribute("type") == 'password' ? 'text' : 'password';
+      document.getElementById("cpassword").setAttribute("type", this.type2);
+    }
   }
 
   checkPwdValid() {
@@ -74,6 +82,15 @@ export class RegisterComponent implements OnInit {
     }
     else {
       this.messages.pwdErr = true
+    }
+  }
+
+  checkCompatibility() {
+    if(this.user.password == this.user.cpassword) {
+      this.messages.cpwdErr = false
+    }
+    else {
+      this.messages.cpwdErr = true
     }
   }
 

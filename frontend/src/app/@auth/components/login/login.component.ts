@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   public user = { email: null, password: null }; loading: boolean = false; type: string = 'password'; err;
   constructor(private server: ServerService, private toast: ToastService, private auth: AuthService, private rout: Router) { }
 
-  ngOnInit(): void {alert(new Date().getMonth()+1)
+  ngOnInit(): void {
     if (this.auth.isAuthenticated() && localStorage.getItem('customerId') !== null) {
       this.rout.navigate(['dashboard'])
     }

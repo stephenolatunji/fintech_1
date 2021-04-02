@@ -11,7 +11,7 @@
               <i class="fa fa-arrow-left" aria-hidden="true" (click)="close()"></i>
             </div> -->
       
-            <div class="body modal-body" *ngIf="success">
+            <!-- <div class="body modal-body" *ngIf="success">
                 <div class="d-flex"><img src="assets/listing/close.svg" class="ml-auto" alt="" (click)="close()"></div>
                 <div class="success text-center">
                     <img src="assets/listing/success.svg" width="200" height="200" alt="">
@@ -77,10 +77,10 @@
                         <img *ngIf="loading" src="assets/auth/loader.gif" width="20" height="20" alt="">
                     </button>
                 </div>
-            </div>
+            </div> -->
             
             <!-- unsuccessful -->
-            <div class="body modal-body" *ngIf="!success">
+            <!-- <div class="body modal-body" *ngIf="!success">
                 <div class="d-flex"><img src="assets/listing/close.svg" class="ml-auto" alt=""></div>
                 <div class="success text-center">
                     <img src="assets/listing/notSuccess.svg" alt="">
@@ -92,8 +92,182 @@
                 <div class="not-btn-section">
                     <button mat-button class="not-success-btn"  (click)="close()">View Listing</button>
                 </div>
-            </div>
+            </div> -->
             
+            <div class="body modal-body" *ngIf="success">
+                <div class="cancel"><img src="assets/response/clear.svg" alt="" (click)="close()" height="15" width="15"></div>
+
+                <div class="header1" *ngIf="whoToSeeResponse=='listing'">You order has been matched!!</div>
+                <div class="header2" *ngIf="whoToSeeResponse=='listing'">You may now complete your transaction.</div>
+                <div class="summary">
+                    <div class="header1 d-flex mt-0 mb-3">
+                        <div>Summary</div>
+                        <div></div>
+                    </div> 
+
+                    <div class="one pb-1">
+                        <div class="sub-one">
+                            <div class="label">You will recieve</div>
+                            <div>
+                                {{
+                                    data?.convertedCurrency == 'NGN' ? '₦' :
+                                    data?.convertedCurrency == 'USD' ? '$' :
+                                    data?.convertedCurrency == 'CAD' ? 'C$' :
+                                    data?.convertedCurrency == 'GBP' ? '£' : 
+                                    data?.convertedCurrency == 'EUR' ? '€' : data?.convertedCurrency 
+                                }}
+                                 {{data?.convertedAmount}}
+                            </div>
+                        </div>
+                        <div class="sub-one mt-2">
+                            <div class="label">Match rate</div>
+                            <div>
+                                {{
+                                    data?.myCurrency == 'NGN' ? '₦' :
+                                    data?.myCurrency == 'USD' ? '$' :
+                                    data?.myCurrency == 'CAD' ? 'C$' :
+                                    data?.myCurrency == 'GBP' ? '£' :
+                                    data?.myCurrency == 'EUR' ? '€' : data?.myCurrency
+                                }}
+                                {{data?.rate}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="one pb-1">
+                        <div class="sub-one">
+                            <div class="label">You will pay</div>
+                            <div>
+                                {{
+                                    data?.myCurrency == 'NGN' ? '₦' :
+                                    data?.myCurrency == 'USD' ? '$' :
+                                    data?.myCurrency == 'CAD' ? 'C$' :
+                                    data?.myCurrency == 'GBP' ? '£' :
+                                    data?.myCurrency == 'EUR' ? '€' : data?.myCurrency
+                                }} {{ data?.myConverted }}
+                            </div>
+                        </div>
+                        <div class="sub-one mt-2">
+                            <div class="label">Your Rate </div>
+                            <div>
+                                {{
+                                    data?.myCurrency == 'NGN' ? '₦' :
+                                    data?.myCurrency == 'USD' ? '$' :
+                                    data?.myCurrency == 'CAD' ? 'C$' :
+                                    data?.myCurrency == 'GBP' ? '£' :
+                                    data?.myCurrency == 'EUR' ? '€' : data?.myCurrency
+                                }}
+                                {{data?.rate}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="one pb-1">
+                        <div class="sub-one">
+                            <div class="label">Subtotal </div>
+                            <div>
+                                {{
+                                    data?.myCurrency == 'NGN' ? '₦' :
+                                    data?.myCurrency == 'USD' ? '$' :
+                                    data?.myCurrency == 'CAD' ? 'C$' :
+                                    data?.myCurrency == 'GBP' ? '£' :
+                                    data?.myCurrency == 'EUR' ? '€' : data?.myCurrency
+                                }}
+                                {{ data?.myAmount }}
+                            </div>
+                        </div>
+                        <div class="sub-one mt-2">
+                            <div class="label">Proessing Fee</div>
+                            <div>
+                                {{
+                                    data?.myCurrency == 'NGN' ? '₦' :
+                                    data?.myCurrency == 'USD' ? '$' :
+                                    data?.myCurrency == 'CAD' ? 'C$' :
+                                    data?.myCurrency == 'GBP' ? '£' :
+                                    data?.myCurrency == 'EUR' ? '€' : data?.myCurrency
+                                }}
+                                {{data?.transactionFee }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="one" style="border-bottom: 0;">
+                        <div class="sub-one">
+                            <div class="label">Total</div>
+                            <div>
+                                {{
+                                    data?.myCurrency == 'NGN' ? '₦' :
+                                    data?.myCurrency == 'USD' ? '$' :
+                                    data?.myCurrency == 'CAD' ? 'C$' :
+                                    data?.myCurrency == 'GBP' ? '£' :
+                                    data?.myCurrency == 'EUR' ? '€' : data?.myCurrency
+                                }}
+                                {{data?.transactionFee + data?.myAmount}}
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="label">
+                    <img src="assets/listing/notice.svg" alt="" width="12" height="12">
+                    You have 12 hours to make payment or  your match <br />will be cancelled.
+                </div>
+
+                <div class="btn-section" *ngIf="whoToSeeResponse=='listing'">
+                    <button mat-button (click)="close()">Pay Later</button>
+                    <button mat-button (click)="payNow('summary')">Pay Now</button>
+                </div>
+
+                <!-- Destination Account -->
+                <!-- *ngIf="whoToSeeResponse=='dashboard'" -->
+                <div class="mt-4" *ngIf="whoToSeeResponse=='dashboard'">
+                    <div class="header1 d-flex mt-0 mb-3">
+                        <div>Destination Account Details</div>
+                        <div></div>
+                    </div> 
+
+                    <div class="form-group" style="margin-bottom: 12px">
+                        <label for="bank">Bank</label>
+                        <div class="input-box">
+                          <input type="text" [(ngModel)]="destination.bank" name="bank"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 12px">
+                        <label for="bank">Account Name</label>
+                        <div class="input-box">
+                          <input type="text" [(ngModel)]="destination.accountName" name="accountName"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-bottom: 12px" *ngIf="data?.convertedCurrency!=='NGN'">
+                        <label for="bank">Routing Number</label>
+                        <div class="input-box">
+                          <input type="text" [(ngModel)]="destination.routingNumber" name="routingNumber"/>
+                        </div>
+                    </div>
+
+                    <div class="text-right mt-4">
+                        <button mat-button (click)="payNow('destination')">Pay</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="body modal-body" *ngIf="!success">
+                <div class="cancel"><img src="assets/response/clear.svg" alt="" (click)="close()" height="15" width="15"></div>
+
+                <div class="err-body">
+                    <div class="header1">Sorry, we couldn’t find a match.</div>
+                    <div class="header2">You may post your order to get a match<br /> later or view listing to find a prefered <br />match.</div>
+                </div>
+            
+
+                <div class="btn-section">
+                    <button mat-button>View Listing</button>
+                    <button mat-button>Post Order</button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
