@@ -7,7 +7,7 @@
     </div>
 
     <div class="content">
-        <div class="content_">
+        <!-- <div class="content_">
             <label for="">Base Currency</label><br />
             <div class="row">
                 <div class="col-6 mt-3" *ngFor="let item of data">
@@ -24,16 +24,29 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
 
         <div class="content_ mt-4">
-            <label for="">Variable Currency</label><br />
+            <!-- <label for="">Variable Currency</label><br /> -->
             <div class="row ">
-                <div class="col-6 mt-3" *ngFor="let marketRate of data; let i = index">
-                    <span>NGN</span>
+                <div class="col-6 d-flex mt-4" style="display: flex; align-items: center;" *ngFor="let marketRate of data; let i = index">
+                    <div class="d-flex currency">
+                        <div class="d-flex">
+                          
+                            {{marketRate?.baseCurrency}} 
+                            ({{
+                                marketRate?.baseCurrency=='USD'? '$ 1' :
+                                marketRate?.baseCurrency=='CAD'? 'C$ 1' :
+                                marketRate?.baseCurrency=='GBP'? '£ 1' :
+                                marketRate?.baseCurrency=='EUR'? '€ 1' :
+                                marketRate?.baseCurrency
+                            }}) / 
+                            {{marketRate?.variableCurrency}}
+                        </div>
+                    </div>
                     <input type="number" placeholder="N 0.00" [value]="marketRate?.marketRate"  name="usd" [id]=marketRate?.id #rate [disabled]=marketRate?.disabled />
-                    <img src="assets/super-admin/market-rate/edit.svg" alt="" (click)="handleEdit(i)">
-                    <img src="assets/super-admin/market-rate/bookmark.svg" alt="" (click)="handleSubmit(marketRate?.baseCurrency, rate.value, marketRate?.id)" >
+                    <img width="45" height="45" src="assets/super-admin/market-rate/edit.svg" alt="" (click)="handleEdit(i)">
+                    <img width="45" height="45" src="assets/super-admin/market-rate/bookmark.svg" alt="" (click)="handleSubmit(marketRate?.baseCurrency, rate.value, marketRate?.id)" >
                 </div>
                
             </div>

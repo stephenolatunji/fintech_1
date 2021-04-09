@@ -14,16 +14,16 @@ export class MarketRateComponent implements OnInit {
   loading: boolean = false;
   disable = {
     usd: true, cad: true, eur: true, gbp: true
-  }; data;
+  }; data = [{baseCurrency: 'USD', marketRate: 200, id: 1, variableCurrency: "NGN", disabled: true},{baseCurrency: 'GBP', marketRate: 300, id: 2, disabled: true,  variableCurrency: "NGN"},{baseCurrency: 'CAD', marketRate: 240, id: 3, disabled: true,  variableCurrency: "NGN"}];
   constructor(private server: SuperServiceService, private toast: ToastService) { }
 
   ngOnInit(): void {
-    this.server.getAllMarketRateConfig().subscribe(dat=>{
-      this.data = dat.entity;
-      for (let index = 0; index < this.data.length; index++) {
-        this.data[index].disabled = true;
-      }
-    })
+    // this.server.getAllMarketRateConfig().subscribe(dat=>{
+    //   this.data = dat.entity;
+    //   for (let index = 0; index < this.data.length; index++) {
+    //     this.data[index].disabled = true;
+    //   }
+    // })
   }
 
   handleSubmit(baseCurrency, marketRate, id) {

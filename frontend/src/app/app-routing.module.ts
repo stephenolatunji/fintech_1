@@ -66,7 +66,7 @@ const routes: Routes = [
 
   { path: 'super-admin/market-rate', component: MarketRateComponent,  canActivate: [AdminAuthGuard]},
   { path: 'super-admin/payment-channel', component: PaymentChannelComponent, canActivate: [AdminAuthGuard] },
-  { path: 'super-admin/transaction', component: TransactionConfigComponent, canActivate: [AdminAuthGuard] },
+  { path: 'super-admin/transaction', component: TransactionConfigComponent },
 ];
 
 @NgModule({

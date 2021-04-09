@@ -28,7 +28,7 @@ label {
 }
 span {
     font-weight: 600;
-    font-size: 12px;
+    font-size: 10px;
     line-height: 20px;
 }
 
@@ -42,7 +42,7 @@ button {
 button:first-child {
     color: #F27348;
 }
-button:nth-child(2) {
+button:nth-child(2), .save {
     color: white;
     background-color: #F27348;
     margin-left: 10px;

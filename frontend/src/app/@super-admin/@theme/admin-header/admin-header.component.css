@@ -3,7 +3,7 @@
     width: 100%;
     top: 0px;
     /* z-index: -1; */
-    padding: 10px 31px;
+    padding: 5px 31px;
     background-color: #FFFFFF;
     box-shadow: 2px 8px 15px rgba(85, 85, 85, 0.05);
 }
@@ -13,9 +13,9 @@
 .search-box {
     background-color: #FFFFFF;
     border: 1px solid #848484;
-    box-sizing: border-box;
-    border-radius: 15px;
-    padding: 6px 0px 10px 44px;
+    border-radius: 12px;
+    display: flex; align-items: center;
+    padding-left: 10px;
     width: 360px;
 }
 .search-box img {
@@ -24,7 +24,8 @@
 input {
     border: 0px;
     outline: none;
-    width: 80%
+    width: 80%;
+    font-size: 13px;
 }
 .lastChild {
     display: flex;

@@ -45,11 +45,11 @@
                     <option value=""></option>
                     <option value=""></option>
                     <option value=""></option>
-                </select>
-            </div> -->
+                </select>-->
+            </div> 
         </div>
 
-        <button mat-button class="mt-3">Save</button>
+        <button mat-button class="mt-3 save">Save</button>
     </div>
 
     <!-- Transaction Fee -->
@@ -58,30 +58,35 @@
     </div>
     <div class="content">
         <div class="group">
-            <div style="width: 30%;">
-                <label for="">USD</label><br />
-                <input type="text" placeholder="0.00" name="" id="">
+            <div style="width: 48%; display: flex; align-items: center;">
+                <span>USD ($ 1) / NGN</span>     
+                <div style="width: 70%; margin-left: 10px;">
+                    <input type="text" placeholder="0.00" name="" id="">
+                </div>      
             </div>
-            <div style="width: 30%;">
-                <label for="">CAD</label><br />
-                <input type="text" placeholder="0.00" name="" id="">
-            </div>
-            <div style="width: 30%;">
-                <label for="">NGN</label><br />
-                <input type="text" placeholder="0.00" name="" id="">
+
+            <div style="width: 48%; display: flex; align-items: center;">
+                <span>CAD (C$ 1) / NGN</span>     
+                <div style="width: 70%; margin-left: 10px;">
+                    <input type="text" placeholder="0.00" name="" id="">
+                </div>      
             </div>
         </div>
-
+        
         <div class="group mt-2">
-            <div style="width: 30%;">
-                <label for="">GBP</label><br />
-                <input type="text" placeholder="0.00" name="" id="">
+            <div style="width: 48%; display: flex; align-items: center;">
+                <span>GBP (£ 1) / NGN</span>     
+                <div style="width: 70%; margin-left: 10px;">
+                    <input type="text" placeholder="0.00" name="" id="">
+                </div>      
             </div>
-            <div style="width: 30%;">
-                <label for="">EUR</label><br />
-                <input type="text" placeholder="0.00" name="" id="">
+
+            <div style="width: 48%; display: flex; align-items: center;">
+                <span>CAD (€ 1) / NGN</span>     
+                <div style="width: 70%; margin-left: 10px;">
+                    <input type="text" placeholder="0.00" name="" id="">
+                </div>      
             </div>
-            <div style="min-width: 30%;"></div>
         </div>
 
         <div class="mt-3">
@@ -89,7 +94,7 @@
             <button mat-button>Save</button>
         </div>
     </div>
-    </div>
+    
     
 
 </div>
