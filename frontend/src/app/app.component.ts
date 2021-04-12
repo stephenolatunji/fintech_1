@@ -27,13 +27,19 @@ export class AppComponent {
 
         // getAllBanks
         this.http.get<any>(`https://api.paystack.co/bank`).subscribe((dat) => { this.server.allBanks = dat; setTimeout(() => {
-          this.loading = false 
+          // get all international banks
+          this.http.get<any>(`https://api.paystack.co/bank`).subscribe((dat) => { 
+            this.server.intBanks = dat; 
+            this.loading = false 
+          });
         }, 500); });
       }, err => this.toast.toast('error', 'Network Error'));
+      
     }
     else {
       this.loading = false;
       this.toast.toast('warning', 'Your Session has expired!')
     }
   }
+
 }

@@ -4,6 +4,7 @@ import { AuthService } from '../../guard/auth.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/@theme/services/toast.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +12,7 @@ import { ToastService } from 'src/app/@theme/services/toast.service';
 })
 export class LoginComponent implements OnInit {
 
-  public user = { email: null, password: null }; loading: boolean = false; type: string = 'password'; err;
+  public user = { email: null, password: null, applicationType: 2, deviceid: localStorage.getItem('deviceId')  }; loading: boolean = false; type: string = 'password'; err;
   constructor(private server: ServerService, private toast: ToastService, private auth: AuthService, private rout: Router) { }
 
   ngOnInit(): void {
@@ -21,11 +22,14 @@ export class LoginComponent implements OnInit {
   }
 
   handleSubmit() {
+
     this.loading = true
+
     this.server.logIn(this.user).subscribe(data => {
       this.loading = false;
       if (data.isSuccess) {
         console.log(data)
+       
         localStorage.setItem('token', data.token.accessToken);
         localStorage.setItem('customerId', data.entity.customerId);
         localStorage.setItem('user', data.entity.userName);

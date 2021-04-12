@@ -3,7 +3,7 @@
 <!-- !successful -->
 
 
-<div class="modal fade"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTittle" aria-hidden="true" >
+<div class="modal fade"  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalTittle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
 
@@ -110,26 +110,25 @@
                             <div class="label">You will recieve</div>
                             <div>
                                 {{
-                                    data?.convertedCurrency == 'NGN' ? '₦' :
-                                    data?.convertedCurrency == 'USD' ? '$' :
-                                    data?.convertedCurrency == 'CAD' ? 'C$' :
-                                    data?.convertedCurrency == 'GBP' ? '£' : 
-                                    data?.convertedCurrency == 'EUR' ? '€' : data?.convertedCurrency 
-                                }}
-                                 {{data?.convertedAmount}}
+                                    data?.myCurrency == 'NGN' || data?.myCurrency == 1 ? '₦' :
+                                    data?.myCurrency == 'USD' || data?.myCurrency == 2 ? '$' :
+                                    data?.myCurrency == 'CAD' || data?.myCurrency == 4 ? 'C$' :
+                                    data?.myCurrency == 'GBP' || data?.myCurrency == 3 ? '£' :
+                                    data?.myCurrency == 'EUR' || data?.myCurrency == 5 ? '€' : data?.myCurrency
+                                }} {{ data?.myAmount }}
                             </div>
                         </div>
                         <div class="sub-one mt-2">
                             <div class="label">Match rate</div>
                             <div>
-                                {{
+                                <!-- {{
                                     data?.myCurrency == 'NGN' ? '₦' :
                                     data?.myCurrency == 'USD' ? '$' :
                                     data?.myCurrency == 'CAD' ? 'C$' :
                                     data?.myCurrency == 'GBP' ? '£' :
                                     data?.myCurrency == 'EUR' ? '€' : data?.myCurrency
-                                }}
-                                {{data?.rate}}
+                                }} -->
+                                ₦{{data?.rate}}
                             </div>
                         </div>
                     </div>
@@ -139,25 +138,27 @@
                             <div class="label">You will pay</div>
                             <div>
                                 {{
-                                    data?.myCurrency == 'NGN' ? '₦' :
-                                    data?.myCurrency == 'USD' ? '$' :
-                                    data?.myCurrency == 'CAD' ? 'C$' :
-                                    data?.myCurrency == 'GBP' ? '£' :
-                                    data?.myCurrency == 'EUR' ? '€' : data?.myCurrency
-                                }} {{ data?.myConverted }}
+                                    data?.convertedCurrency == 'NGN' || data?.convertedCurrency == 1 ? '₦' :
+                                    data?.convertedCurrency == 'USD' || data?.convertedCurrency == 2 ? '$' :
+                                    data?.convertedCurrency == 'CAD' || data?.convertedCurrency == 4 ? 'C$' :
+                                    data?.convertedCurrency == 'GBP' || data?.convertedCurrency == 3 ? '£' : 
+                                    data?.convertedCurrency == 'EUR' || data?.convertedCurrency == 5 ? '€' : data?.convertedCurrency 
+                                }}
+                                 {{data?.convertedAmount}}
+
                             </div>
                         </div>
                         <div class="sub-one mt-2">
                             <div class="label">Your Rate </div>
                             <div>
-                                {{
+                                <!-- {{
                                     data?.myCurrency == 'NGN' ? '₦' :
                                     data?.myCurrency == 'USD' ? '$' :
                                     data?.myCurrency == 'CAD' ? 'C$' :
                                     data?.myCurrency == 'GBP' ? '£' :
                                     data?.myCurrency == 'EUR' ? '€' : data?.myCurrency
-                                }}
-                                {{data?.rate}}
+                                }} -->
+                                ₦{{data?.rate}}
                             </div>
                         </div>
                     </div>
@@ -167,24 +168,24 @@
                             <div class="label">Subtotal </div>
                             <div>
                                 {{
-                                    data?.myCurrency == 'NGN' ? '₦' :
-                                    data?.myCurrency == 'USD' ? '$' :
-                                    data?.myCurrency == 'CAD' ? 'C$' :
-                                    data?.myCurrency == 'GBP' ? '£' :
-                                    data?.myCurrency == 'EUR' ? '€' : data?.myCurrency
+                                    data?.convertedCurrency == 'NGN' || data?.convertedCurrency == 1 ? '₦' :
+                                    data?.convertedCurrency == 'USD' || data?.convertedCurrency == 2 ? '$' :
+                                    data?.convertedCurrency == 'CAD' || data?.convertedCurrency == 4 ? 'C$' :
+                                    data?.convertedCurrency == 'GBP' || data?.convertedCurrency == 3 ? '£' : 
+                                    data?.convertedCurrency == 'EUR' || data?.convertedCurrency == 5 ? '€' : data?.convertedCurrency 
                                 }}
-                                {{ data?.myAmount }}
+                                 {{data?.convertedAmount}}
                             </div>
                         </div>
                         <div class="sub-one mt-2">
                             <div class="label">Proessing Fee</div>
                             <div>
                                 {{
-                                    data?.myCurrency == 'NGN' ? '₦' :
-                                    data?.myCurrency == 'USD' ? '$' :
-                                    data?.myCurrency == 'CAD' ? 'C$' :
-                                    data?.myCurrency == 'GBP' ? '£' :
-                                    data?.myCurrency == 'EUR' ? '€' : data?.myCurrency
+                                    data?.convertedCurrency == 'NGN' || data?.convertedCurrency == 1?  '₦' :
+                                    data?.convertedCurrency == 'USD' || data?.convertedCurrency == 2?  '$' :
+                                    data?.convertedCurrency == 'CAD' || data?.convertedCurrency == 4?  'C$' :
+                                    data?.convertedCurrency == 'GBP' || data?.convertedCurrency == 3?  '£' : 
+                                    data?.convertedCurrency == 'EUR' || data?.convertedCurrency == 5?  '€' : data?.convertedCurrency 
                                 }}
                                 {{data?.transactionFee }}
                             </div>
@@ -196,13 +197,13 @@
                             <div class="label">Total</div>
                             <div>
                                 {{
-                                    data?.myCurrency == 'NGN' ? '₦' :
-                                    data?.myCurrency == 'USD' ? '$' :
-                                    data?.myCurrency == 'CAD' ? 'C$' :
-                                    data?.myCurrency == 'GBP' ? '£' :
-                                    data?.myCurrency == 'EUR' ? '€' : data?.myCurrency
+                                    data?.convertedCurrency == 'NGN' || data?.convertedCurrency == 1? '₦' :
+                                    data?.convertedCurrency == 'USD' || data?.convertedCurrency == 2? '$' :
+                                    data?.convertedCurrency == 'CAD' || data?.convertedCurrency == 4? 'C$' :
+                                    data?.convertedCurrency == 'GBP' || data?.convertedCurrency == 3? '£' : 
+                                    data?.convertedCurrency == 'EUR' || data?.convertedCurrency == 5? '€' : data?.convertedCurrency 
                                 }}
-                                {{data?.transactionFee + data?.myAmount}}
+                                 {{data?.convertedAmount + data?.transactionFee}}
                             </div>
                         </div>
                     </div>
@@ -229,18 +230,21 @@
                     <div class="form-group" style="margin-bottom: 12px">
                         <label for="bank">Bank</label>
                         <div class="input-box">
-                          <input type="text" [(ngModel)]="destination.bank" name="bank"/>
+                            <select id="bank" [(ngModel)]="destination.bank" name="bank" class="col-12 p-0">
+                                <option *ngFor="let bank of allBanks" [value]="bank?.name"> {{bank?.name}} </option>
+                            </select>
+                          <!-- <input type="text" [(ngModel)]="destination.bank" name="bank"/> -->
                         </div>
                     </div>
 
                     <div class="form-group" style="margin-bottom: 12px">
-                        <label for="bank">Account Name</label>
+                        <label for="bank">Account Number</label>
                         <div class="input-box">
-                          <input type="text" [(ngModel)]="destination.accountName" name="accountName"/>
+                          <input type="text" [(ngModel)]="destination.accountNumber" name="accountNumber"/>
                         </div>
                     </div>
 
-                    <div class="form-group" style="margin-bottom: 12px" *ngIf="data?.convertedCurrency!=='NGN'">
+                    <div class="form-group" style="margin-bottom: 12px" *ngIf="data?.myCurrency!=='NGN' && data?.myCurrency!==1">
                         <label for="bank">Routing Number</label>
                         <div class="input-box">
                           <input type="text" [(ngModel)]="destination.routingNumber" name="routingNumber"/>
@@ -248,7 +252,8 @@
                     </div>
 
                     <div class="text-right mt-4">
-                        <button mat-button (click)="payNow('destination')">Pay</button>
+                        <button mat-button *ngIf="whoToSeeResponse=='listing'" (click)="payNow('listing')"> <span *ngIf="!loading">Pay</span><img *ngIf="loading" src="assets/auth/loader.gif" width="20" height="20" alt=""> </button>
+                        <button mat-button *ngIf="whoToSeeResponse=='dashboard'" (click)="payNow('dashboard')"><span *ngIf="!loading">Find Match</span><img *ngIf="loading" src="assets/auth/loader.gif" width="20" height="20" alt=""> </button>
                     </div>
 
                 </div>

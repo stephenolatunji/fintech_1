@@ -9,7 +9,7 @@ export class ServerService {
   getPendingOrders_; getTop10Listing_; whoToSeeResponse;
 
   // pending order is used for holding the data when match is found to be used in payment stuff
-  public userDetails; matchFound; pendingOrders; userInformations; unfullfilledOrder; allBanks;
+  public userDetails; matchFound; pendingOrders; userInformations; unfullfilledOrder; allBanks; intBanks;
   comingFromStripe: boolean = false;
 
   constructor(private http: HttpClient) { }
@@ -39,37 +39,38 @@ export class ServerService {
   }
 
   createAndMatchOrder(matchDetails) {
-    if (matchDetails.myCurrency.toUpperCase() == 'NGN') {
+    if (matchDetails.myCurrency == 'NGN') {
       matchDetails.myCurrency = 1
     }
-    else if (matchDetails.myCurrency.toUpperCase() == 'USD') {
+    else if (matchDetails.myCurrency == 'USD') {
       matchDetails.myCurrency = 2
     }
-    else if (matchDetails.myCurrency.toUpperCase() == 'GBP') {
+    else if (matchDetails.myCurrency == 'GBP') {
       matchDetails.myCurrency = 3
     }
-    else if (matchDetails.myCurrency.toUpperCase() == 'EUR') {
+    else if (matchDetails.myCurrency == 'EUR') {
       matchDetails.myCurrency = 4
     }
-    else if (matchDetails.myCurrency.toUpperCase() == 'CAD') {
+    else if (matchDetails.myCurrency == 'CAD') {
       matchDetails.myCurrency = 5
     }
 
-    if (matchDetails.convertedCurrency.toUpperCase() == 'NGN') {
+    if (matchDetails.convertedCurrency == 'NGN') {
       matchDetails.convertedCurrency = 1
     }
-    else if (matchDetails.convertedCurrency.toUpperCase() == 'USD') {
+    else if (matchDetails.convertedCurrency == 'USD') {
       matchDetails.convertedCurrency = 2
     }
-    else if (matchDetails.convertedCurrency.toUpperCase() == 'GBP') {
+    else if (matchDetails.convertedCurrency == 'GBP') {
       matchDetails.convertedCurrency = 3
     }
-    else if (matchDetails.convertedCurrency.toUpperCase() == 'EUR') {
+    else if (matchDetails.convertedCurrency == 'EUR') {
       matchDetails.convertedCurrency = 4
     }
-    else if (matchDetails.convertedCurrency.toUpperCase() == 'CAD') {
+    else if (matchDetails.convertedCurrency == 'CAD') {
       matchDetails.convertedCurrency = 5
     }
+
     console.log(matchDetails)
     return this.http.post<any>(`${environment.url}/api/orders/createandmatchorder`, matchDetails, { headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}` } })
   }

@@ -74,7 +74,7 @@ label {
     border-radius: 12px;
     padding: 8px 12px;
 }
-input {
+input, select {
     width: 96%;
     font-weight: normal;
     font-size: 14px;

@@ -42,7 +42,7 @@ export class ListingComponent implements OnInit {
     // check if we are coming from edit of unfullfilled order
     this.comingFromEditPage()
     // getAllBanksFromServer
-    this.allBanks = this.server?.allBanks?.data;
+    this.allBanks = this.order?.myCurrency==1? this.server?.intBanks?.data : this.server?.allBanks?.data;
   }
 
   doCalculation() {

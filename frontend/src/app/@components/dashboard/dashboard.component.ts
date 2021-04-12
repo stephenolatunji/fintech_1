@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit {
     this.server.pendingOrders = this.pendingOrders;
     this.toast.toast('info', `Please wait...`);
     this.loading = true;
-    (this.pendingOrders.myCurrency == 'NGN') ? this.usePayStack() : this.usePayStack()
+    (this.pendingOrders.myCurrency == 'NGN' || this.pendingOrders.myCurrency == 1) ? this.usePayStack() : this.usePayStack()
     // setTimeout(() => {
     //   this.handlePayment(amount)  
     // }, 2000);
@@ -217,6 +217,8 @@ export class DashboardComponent implements OnInit {
 
     // checkIfAmRoutedFromPaymentPlatform
     this.actRout.queryParams.subscribe(params => {
+      console.log(params);
+      
       if (params.reference !== undefined) {
         // handle send reference and order detais to backend
         this.handlePayStackReference(params.reference);

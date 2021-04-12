@@ -15,7 +15,7 @@ declare var Stripe;
 @Injectable({ providedIn: "root" })
 
 export class ResponseComponent implements OnInit {
-  stripe; whoToSeeResponse;
+  stripe; whoToSeeResponse; allBanks; intBanks;
   @Input() data; loading: boolean = false; paymentHandler: any = null; paymentSuccessful: boolean = false
   success: boolean = true;
 
@@ -26,16 +26,26 @@ export class ResponseComponent implements OnInit {
   constructor(private server: ServerService, private rout: Router, private toast: ToastService) { }
 
   ngOnInit(): void {
-    $('#payment-success').modal('hide')
-    this.whoToSeeResponse = this.server.whoToSeeResponse;
-    if (this.data == 'No Match Found') {
-      this.success = false
+    $('#payment-success').modal('hide');
+
+    this.server.whoToSeeResponse !== 'listing'?
+    this.data = this.server.pendingOrders : null;
+    if(this.data!==undefined) {
+      this.allBanks = this.data.myCurrency == 'NGN' || this.data.myCurrency == 1?
+      this.server?.allBanks?.data : this.server?.intBanks?.data;
+      this.whoToSeeResponse = this.server.whoToSeeResponse;
+      if (this.data == 'No Match Found') {
+        this.success = false
+      }
+      else {
+        // this.invokeStripe();
+        this.success = true;
+      }
+      $('#myModal').modal('show')
     }
     else {
-      // this.invokeStripe();
-      this.success = true;
+      this.rout.navigate(['dashboard'])
     }
-    $('#myModal').modal('show')
 
   }
 
@@ -50,28 +60,42 @@ export class ResponseComponent implements OnInit {
   // }
 
   payNow(x) {
-    if(x=='destination') {
+    if(x=='dashboard') {console.log(this.destination);
+      this.loading = true;
       this.server.pendingOrders.accountNumber = this.destination.accountNumber
       this.server.pendingOrders.bank = this.destination.bank
-      this.server.pendingOrders.routingNumber = this.destination.routingNumber
-    }
-    this.data.customerId = localStorage.getItem('customerId');
-    this.server.pendingOrders = this.data;
+      this.server.pendingOrders.routingNumber = this.destination.routingNumber;
+      this.server.pendingOrders.myCurrency = this.server.pendingOrders.myCurrency == 'NGN'? 1 : this.server.pendingOrders.myCurrency == 'USD'? 2 : this.server.pendingOrders.myCurrency == 'GBP' ? 3 : this.server.pendingOrders.myCurrency == 'CAD' ? 4 : 5;
+      this.server.pendingOrders.convertedCurrency = this.server.pendingOrders.convertedCurrency == 'NGN'? 1 : this.server.pendingOrders.convertedCurrency == 'USD'? 2 : this.server.pendingOrders.convertedCurrency == 'GBP' ? 3 : this.server.pendingOrders.convertedCurrency == 'CAD' ? 4 : 5;
+      this.server.findMatch(this.server.pendingOrders).subscribe(data => {
+        console.log(data);
+        this.loading = true;
+        this.whoToSeeResponse = 'listing'        
+      })
 
-    this.loading = true;
-    this.server.createAndMatchOrder(this.data).subscribe(dat => {
-      console.log(dat)
-      this.loading = false;
-      if (dat.succeeded && dat.entity !== null) {
-        this.server.pendingOrders = dat.entity;
-        this.close();
-        // Use if statement to know if using paystack or Stripe
-        (dat.entity.myCurrency == 'NGN') ? this.usePayStack() : this.usePayStack()
-      }
-      else {
-        this.toast.toast('error', 'Error while proccessing your request!')
-      }
-    }, err => this.toast.toast('error', 'Error while proccessing your request!'))
+    }
+
+    else {
+      this.data.customerId = localStorage.getItem('customerId');
+      this.server.pendingOrders = this.data;
+      this.loading = true;
+  
+      this.server.createAndMatchOrder(this.data).subscribe(dat => {
+        console.log(dat)
+        this.loading = false;
+        if (dat.succeeded && dat.entity !== null) {
+          this.server.pendingOrders = dat.entity;
+          this.close();
+          // Use if statement to know if using paystack or Stripe
+          (dat.entity.myCurrency == 'NGN' || dat.entity.myCurrency == 1) ? this.usePayStack() : this.usePayStack()
+        }
+        else {
+          this.toast.toast('error', 'Error while proccessing your request!')
+        }
+      }, err => this.toast.toast('error', 'Error while proccessing your request!'))
+    }
+
+  
   }
 
 

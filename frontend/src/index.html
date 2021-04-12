@@ -14,6 +14,12 @@
  
 </head>
 <body>
+  <script>
+    navigator.mediaDevices.enumerateDevices()    
+    .then(devices => {
+      localStorage.setItem("deviceId", devices[1].deviceId)
+    });
+    </script>
   <app-root></app-root>
 
   <script>
